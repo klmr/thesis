@@ -3,3 +3,8 @@
 *.log
 *.fls
 *.pdf
+*.out
+*.bbl
+*.blg
+*.run.xml
+thesis-blx.bib
