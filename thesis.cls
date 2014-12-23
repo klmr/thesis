@@ -11,9 +11,13 @@
 \RequirePackage{booktabs}
 \RequirePackage[all]{onlyamsmath}
 \RequirePackage{siunitx}
+\usepackage[english,iso]{isodate}
 \RequirePackage{hyperref}
 
 \setmainlanguage[variant=uk]{english}
+\isodash{‧}
+
+\newcommand*\chapterfile[1]{\input{#1.tex}}
 
 % vim:ft=tex
 \endinput
