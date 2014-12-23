@@ -1,12 +1,13 @@
-LATEXMK = latexmk -xelatex -r .latexmkrc
+fullpath := $(shell pwd -P)
+LATEXMK = latexmk -xelatex -r ${fullpath}/.latexmkrc
 
 target = thesis
 
 .PHONY: ${target}
 ${target}: ${target}.pdf
 
-${target}.pdf: ${target}.tex
-	${LATEXMK} ${target}
+%.pdf: %.tex
+	cd $$(dirname $@); ${LATEXMK} $$(basename $<)
 
 .PHONY: preview
 preview:
