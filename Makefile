@@ -1,10 +1,13 @@
 fullpath := $(shell pwd -P)
-LATEXMK = latexmk -xelatex -r ${fullpath}/.latexmkrc
+LATEXMK := latexmk -xelatex -r ${fullpath}/.latexmkrc
 
-target = thesis
+target := thesis
+includes := $(shell ls *.tex)
 
 .PHONY: ${target}
 ${target}: ${target}.pdf
+
+${target}.pdf: ${includes}
 
 %.pdf: %.tex
 	cd $$(dirname $@); ${LATEXMK} $$(basename $<)
