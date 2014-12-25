@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{thesis}
 
-\LoadClass{scrreprt}
+\LoadClass[twoside, titlepage]{scrreprt}
 
 \RequirePackage{fixltx2e}
 \RequirePackage{fontspec}
