@@ -6,5 +6,6 @@
 *.out
 *.bbl
 *.blg
+*.bcf
 *.run.xml
 thesis-blx.bib
