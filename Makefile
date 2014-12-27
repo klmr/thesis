@@ -2,7 +2,7 @@ fullpath := $(shell pwd -P)
 LATEXMK := latexmk -xelatex -r ${fullpath}/.latexmkrc
 
 target := thesis
-includes := $(shell ls *.tex)
+includes := $(shell ls *.{tex,cls})
 
 .PHONY: ${target}
 ${target}: ${target}.pdf
