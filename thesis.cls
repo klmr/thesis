@@ -19,7 +19,9 @@
 % General settings
 
 \setmainlanguage[variant=uk]{english}
-\isodash{‧}
+\setmainfont[Ligatures=TeX, Numbers=OldStyle]{TeX Gyre Pagella}
+\setsansfont[Ligatures=TeX, Numbers=OldStyle]{Linux Biolinum}
+\isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
 % General helper commands
 
