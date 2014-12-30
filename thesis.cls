@@ -25,7 +25,9 @@
 
 % General helper commands
 
-\newcommand*\todo[1]{\marginpar{\textcolor[HTML]{A00000}{\textbf{To do:}\\#1}}}
+\newcommand*\todo[1]{%
+    \textcolor[HTML]{A00000}{\textbf{|}}%
+    \marginpar{\textcolor[HTML]{A00000}{\textbf{To do:}\\#1}}}
 
 % Organisation
 
