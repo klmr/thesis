@@ -1,0 +1,55 @@
+#!/usr/bin/env python
+
+import bibtexparser
+import bibtexparser.bibdatabase
+import codecs
+import sys
+import re
+
+"""
+Usage:
+
+{0} filename1.bib ... > output.bib
+"""
+
+
+def main():
+    database = bibtexparser.bibdatabase.BibDatabase()
+
+    filenames = sys.argv[1 : ]
+
+    for filename in filenames:
+        with open(filename, 'r') as f:
+            database.entries += bibtexparser.load(f).entries
+
+    all_keys = set()
+
+    # Transform IDs
+    for entry in database.entries:
+        key = ensure_unique(prettify(entry['id']), all_keys)
+        all_keys.add(key)
+        entry['id'] = key
+
+    out = codecs.getwriter('UTF-8')(sys.stdout)
+    bibtexparser.dump(database, out)
+
+
+def prettify(key):
+    # `key` is in format "nameyear-xy" or "name:yearx"
+    # transform to "name:year"
+    return re.sub(r'^(\D+?):?(\d+)-?[a-z]*$', r'\1:\2', key)
+
+
+def ensure_unique(key, all_keys):
+    suffix = 'a'
+    radix = key
+    while key in all_keys:
+        key = radix + suffix
+        # Assume no more than 26 duplicates!
+        suffix = chr(ord(suffix) + 1)
+
+    return key
+
+
+if __name__ == '__main__':
+    sys.exit(main())
