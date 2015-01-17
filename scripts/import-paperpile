@@ -1,0 +1,90 @@
+#!/usr/bin/env python
+
+import bibtexparser
+import bibtexparser.bibdatabase
+import codecs
+import sys
+import re
+import itertools
+
+"""
+Usage:
+
+{0} filename1.bib ... > output.bib
+"""
+
+
+def main():
+    database = bibtexparser.bibdatabase.BibDatabase()
+
+    filenames = sys.argv[1 : ]
+
+    for filename in filenames:
+        with open(filename, 'r') as f:
+            database.entries += bibtexparser.load(f).entries
+
+    fix_dois(database)
+    database = merge_by_doi(database)
+
+    all_keys = set()
+
+    # Transform IDs
+    for entry in database.entries:
+        key = ensure_unique_key(prettify_key(entry['id']), all_keys)
+        all_keys.add(key)
+        entry['id'] = key
+
+    out = codecs.getwriter('UTF-8')(sys.stdout)
+    bibtexparser.dump(database, out)
+
+
+def fix_dois(database):
+    # Some DOIs are prefixed by 'doi:'. Remove this.
+    for entry in database.entries:
+        if 'doi' in entry:
+            entry['doi'] = re.sub(r'^doi:(.*)$', r'\1', entry['doi'])
+
+
+def merge_by_doi(database):
+    # Merge entries with the same ID by merging their fields; give preference to
+    # the first entry; that is: do not overwrite its existing fields
+    key = lambda item: item.get('doi')
+    by_doi = itertools.groupby(sorted(database.entries, key = key), key)
+    new_db = bibtexparser.bibdatabase.BibDatabase()
+
+    for key, group in by_doi:
+        if key is None:
+            new_db.entries += list(group)
+            continue
+
+        group = list(group)
+        new_item = group[0]
+        for items in group[1: ]:
+            for name, attr in items.items():
+                if name not in new_item.keys():
+                    new_item[name] = attr
+
+        new_db.entries.append(new_item)
+
+    return new_db
+
+
+def prettify_key(key):
+    # `key` is in format "nameyear-xy" or "name:yearx"
+    # transform to "name:year"
+    return re.sub(r'^(\D+?):?(\d+)-?[a-z]*$', r'\1:\2', key)
+
+
+def ensure_unique_key(key, all_keys):
+    suffix = 'a'
+    radix = key
+    while key in all_keys:
+        key = radix + suffix
+        # Assume no more than 26 duplicates!
+        suffix = chr(ord(suffix) + 1)
+
+    return key
+
+
+if __name__ == '__main__':
+    sys.exit(main())
