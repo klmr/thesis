@@ -13,7 +13,8 @@
 \RequirePackage{booktabs}
 \RequirePackage[all]{onlyamsmath}
 \RequirePackage{siunitx}
-\usepackage[english,iso]{isodate}
+\RequirePackage[english,iso]{isodate}
+\RequirePackage{xspace}
 \RequirePackage{hyperref}
 
 % General settings
