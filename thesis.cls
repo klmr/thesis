@@ -24,6 +24,8 @@
 \setsansfont[Ligatures=TeX, Numbers=OldStyle]{Linux Biolinum}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
+\DefineBibliographyStrings{english}{andothers = {\&~al\adddot}}
+
 % General helper commands
 
 \newcommand*\todo[1]{%
