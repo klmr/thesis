@@ -3,7 +3,7 @@ LATEXMK := latexmk -xelatex -r ${fullpath}/.latexmkrc
 
 target := thesis
 references := references.bib
-includes := $(shell ls *.{tex,cls})
+includes := $(shell ls *.{tex,cls}) ${references}
 bib_sources := $(shell cat bib_sources.conf)
 
 .PHONY: ${target}
@@ -25,6 +25,8 @@ ${references}: ${bib_sources}
 clean:
 	${RM} $(filter-out %.tex %.cls %.pdf,$(shell ls ${target}.*))
 	${RM} ${target}-blx.bib
+	${RM} texput.log
+	${RM} xelatex*.fls
 
 .PHONY: cleanall
 cleanall: clean
