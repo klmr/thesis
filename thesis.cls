@@ -9,7 +9,7 @@
 \RequirePackage{xcolor}
 \RequirePackage{microtype}
 \RequirePackage{polyglossia}
-\RequirePackage[natbib]{biblatex}
+\RequirePackage[natbib, style=authoryear, maxnames=2]{biblatex}
 \RequirePackage{booktabs}
 \RequirePackage[all]{onlyamsmath}
 \RequirePackage{siunitx}
