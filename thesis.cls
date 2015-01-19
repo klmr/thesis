@@ -28,6 +28,20 @@
 
 \graphicspath{{gfx/}}
 
+% General programming tools
+
+\def\gobbleuntil#1\relax{}
+
+\def\initialof#1{#1\gobbleuntil}
+
+\def\initialsof#1 #2\relax{%
+    \expandafter\initialof#1\relax%
+    \notblank{#2}{\initialsof#2 \relax}{}}
+
+\newcommand*\initials[1]{\initialsof#1 \relax}
+
+\def\secondword#1 #2{#2}
+
 % General helper commands
 
 \newcommand*\todo[1]{%
@@ -50,13 +64,14 @@
 }
 
 \newcommand*\hashtag[1]{%
-    {\footnotesize\textcolor[HTML]{808080}{\#}\kern 0.1em}#1}
+    {\footnotesize\textcolor[HTML]{808080}{\#}\kern0.1em}#1}
 
 \newcommand*\newspecies[2]{%
     % #1: species label
     % #2: species name to print
-    \csdef{species@#1}{#2}
-}
+    \csdef{species@#1}{%
+        \global\csdef{species@#1}{\initialof#2\relax.~\secondword#2}%
+        #2}}
 
 \newcommand*\species[1]{\textit{\csuse{species@#1}}\xspace}
 
@@ -79,16 +94,6 @@
 \newcommand*\chapterfile[1]{\input{#1.tex}}
 
 % Titles
-
-\def\gobbleuntil#1\relax{}
-
-\def\initialof#1{#1\gobbleuntil}
-
-\def\initialsof#1 #2\relax{%
-    \expandafter\initialof#1\relax%
-    \notblank{#2}{\initialsof#2 \relax}{}}
-
-\newcommand*\initials[1]{\initialsof#1 \relax}
 
 \newcommand*\second[1]{{\small \initials{#1}}}
 
