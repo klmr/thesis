@@ -48,6 +48,32 @@
         \caption{\label{fig:#2}\labelfont{#3} #4}
     \end{figure}
 }
+
+\newcommand*\hashtag[1]{%
+    {\footnotesize\textcolor[HTML]{808080}{\#}\kern 0.1em}#1}
+
+\newcommand*\newspecies[2]{%
+    % #1: species label
+    % #2: species name to print
+    \csdef{species@#1}{#2}
+}
+
+\newcommand*\species[1]{\textit{\csuse{species@#1}}\xspace}
+
+\newspecies{mmu}{Mus musculus}
+\newspecies{hsa}{Homo sapiens}
+
+\newcommand*\abbrev[3][]{%
+    % #1 [optional] long description
+    % #2 macro name
+    % #3 expanded abbreviation
+    \csdef{#2}{%
+        \ifblank{#1}{\hashtag{#3}}{#1 (\hashtag{#3})}%
+        \csdef{#2}{#3\xspace}%
+        \xspace}}
+
+\input{abbreviations.tex}
+
 % Organisation
 
 \newcommand*\chapterfile[1]{\input{#1.tex}}
