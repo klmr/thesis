@@ -26,12 +26,28 @@
 
 \DefineBibliographyStrings{english}{andothers = {\&~al\adddot}}
 
+\graphicspath{{gfx/}}
+
 % General helper commands
 
 \newcommand*\todo[1]{%
     \textcolor[HTML]{A00000}{\textbf{|}}%
     \marginpar{\textcolor[HTML]{A00000}{\textbf{To do:}\\#1}}}
 
+\let\labelfont\textbf
+
+\newcommand*\textfigure[4][float]{%
+    % #1: alignment (default: float)
+    % #2: figure name (equals label)
+    % #3: figure caption
+    % #4: figure description
+    % TODO: Implement proper positioning
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{#2}
+        \caption{\label{fig:#2}\labelfont{#3} #4}
+    \end{figure}
+}
 % Organisation
 
 \newcommand*\chapterfile[1]{\input{#1.tex}}
