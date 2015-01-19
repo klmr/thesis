@@ -3,6 +3,7 @@
 *.log
 *.fls
 *.pdf
+!gfx/*.pdf
 *.out
 *.bbl
 *.blg
