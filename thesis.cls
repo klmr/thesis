@@ -15,8 +15,11 @@
 \RequirePackage{siunitx}
 \RequirePackage[english,iso]{isodate}
 \RequirePackage{xspace}
+\RequirePackage{caption}
 \RequirePackage{ifoddpage}
 \RequirePackage{hyperref}
+% “… cleveref must be loaded *last*”
+\RequirePackage[nameinlink,noabbrev]{cleveref}
 
 % General settings
 
@@ -28,6 +31,14 @@
 \DefineBibliographyStrings{english}{andothers = {\&~al\adddot}}
 
 \graphicspath{{gfx/}}
+
+\captionsetup{%
+    format=plain,
+    font={sf,small},
+    labelfont={bf},
+    labelformat=simple,
+    labelsep=colon,
+    justification=justified}
 
 % General programming tools
 
