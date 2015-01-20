@@ -15,6 +15,7 @@
 \RequirePackage{siunitx}
 \RequirePackage[english,iso]{isodate}
 \RequirePackage{xspace}
+\RequirePackage{ifoddpage}
 \RequirePackage{hyperref}
 
 % General settings
@@ -50,18 +51,28 @@
 
 \let\labelfont\textbf
 
-\newcommand*\textfigure[4][float]{%
+\newcommand*\textfigure[5][float]{%
+    % #1: alignment (default: float)
+    % #2: figure label
+    % #3: figure contents
+    % #4: figure caption
+    % #5: figure description
+    % TODO: Implement proper positioning
+    % By default, we spill into the outer margin. Because we can.
+    % Use <http://tex.stackexchange.com/a/10507/42> to align properly.
+    \begin{figure}[h]
+        \checkoddpage%
+        \edef\side{\ifoddpage l\else r\fi}%
+        \makebox[\textwidth][\side]{#3}%
+        \caption{\label{fig:#2}\labelfont{#4} #5}
+    \end{figure}}
+
+\newcommand*\textfig[4][float]{%
     % #1: alignment (default: float)
     % #2: figure name (equals label)
     % #3: figure caption
     % #4: figure description
-    % TODO: Implement proper positioning
-    \begin{figure}
-        \centering
-        \includegraphics[width=\textwidth]{#2}
-        \caption{\label{fig:#2}\labelfont{#3} #4}
-    \end{figure}
-}
+    \textfigure[#1]{#2}{\includegraphics[width=\textwidth]{#2}}{#3}{#4}}
 
 \newcommand*\hashtag[1]{%
     {\footnotesize\textcolor[HTML]{808080}{\#}\kern0.1em}#1}
