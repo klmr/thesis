@@ -12,6 +12,20 @@ genes share the exact same sequence.
     {Parts of a multiple sequence alignment of \trna genes in \mmu generated
     with COVE\@. Shown are the \trna genes coding for Asn.}
 
+In order to identify individual \trna genes and quantify their expression, we
+therefore cannot resort to conventional \rnaseq: the \rna reads covering only
+the transcribed gene region are indistinguishable.
+
+With the \pol3 \chipseq data, we do not have this problem: reads cover both the
+transcribed sequence and the flanking regions of each gene
+(\cref{fig:trna-pol3-binding-profile}).
+
+\textfig{trna-pol3-binding-profile}{\trna \pol3 \chip binding profile.}
+    {The shaded, bell-shaped area shows an idealised binding profile of \chipseq
+    data spanning the \trna gene, as well as its flanking regions upstream
+    and downstream of the gene body. This overlap plays a role in identifying
+    the individual gene.}
+
 \section{… all the rest}
 
 \section{An overview over failed analysis approaches}
