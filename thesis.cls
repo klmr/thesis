@@ -100,6 +100,21 @@
 
 \input{abbreviations.tex}
 
+% From <http://tex.stackexchange.com/a/74469/42>
+\newcommand*\reducedstrut{%
+    \vrule width 0pt height .9\ht\strutbox depth .9\dp\strutbox\relax}
+
+% Formatting of biological sequences
+
+\newcommand*\seq[1]{\mbox{\texttt{#1}}}
+
+\newcommand*\mismatch[1]{%
+    % Fix for spacing from <http://tex.stackexchange.com/a/74469/42>
+    \begingroup
+    \setlength\fboxsep{0pt}%
+    \colorbox[HTML]{FFA0A0}{\reducedstrut#1\/}%
+    \endgroup}
+
 % Organisation
 
 \newcommand*\chapterfile[1]{\input{#1.tex}}
