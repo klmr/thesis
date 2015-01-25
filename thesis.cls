@@ -15,6 +15,7 @@
 \RequirePackage{siunitx}
 \RequirePackage[english,iso]{isodate}
 \RequirePackage{xspace}
+\RequirePackage{scalefnt}
 \RequirePackage{caption}
 \RequirePackage{ifoddpage}
 \RequirePackage{hyperref}
@@ -86,7 +87,7 @@
     \textfigure[#1]{#2}{\includegraphics[width=\textwidth]{#2}}{#3}{#4}}
 
 \newcommand*\hashtag[1]{%
-    {\footnotesize\textcolor[HTML]{808080}{\#}\kern0.1em}#1}
+    {\mbox{\scalefont{0.75}\textcolor[HTML]{808080}{\#}\kern0.1em}#1}}
 
 \newcommand*\newspecies[2]{%
     % #1: species label
