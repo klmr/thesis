@@ -104,10 +104,13 @@
     % #1 [optional] long description
     % #2 macro name
     % #3 expanded abbreviation
-    \csdef{#2}{%
-        \ifblank{#1}{\hashtag{#3}}{#1 (\hashtag{#3})}%
-        \csdef{#2}{#3\xspace}%
-        \xspace}}
+    \csdef{abbrev@#2}##1{%
+        % FIXME Why does the following command definition only require two
+        % `#`s to define its arguments, and not three?
+        \global\csdef{abbrev@#2}##1{#3##1}%
+        \ifblank{#1}{\hashtag{#3}##1}{#1##1 (\hashtag{#3})}}%
+    \expandafter\newrobustcmd\expandafter*\csname #2\endcsname[1][]{%
+        \csuse{abbrev@#2}{##1}\xspace}}
 
 \input{abbreviations.tex}
 
