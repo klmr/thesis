@@ -27,6 +27,7 @@ clean:
 	${RM} ${target}-blx.bib
 	${RM} texput.log
 	${RM} xelatex*.fls
+	${RM} -r $(shell biber --cache)
 
 .PHONY: cleanall
 cleanall: clean
