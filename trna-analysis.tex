@@ -22,9 +22,9 @@ transcribed sequence and the flanking regions of each gene
 
 \textfig{trna-pol3-binding-profile}{\trna \pol3 \chip binding profile.}
     {The shaded, bell-shaped area shows an idealised binding profile of \chipseq
-    data spanning the \trna gene, as well as its flanking regions upstream
-    and downstream of the gene body. This overlap plays a role in identifying
-    the individual gene.}
+    data spanning the \trna gene with the A and B box highlighted, as well as
+    its flanking regions upstream and downstream of the gene body. This overlap
+    plays a role in identifying the individual gene.}
 
 When mapping the reads, we therefore do not discard all non-uniquely mapping
 reads as is otherwise customary.\footnote{We still discard reads which are
@@ -48,15 +48,23 @@ be allocated to a target \trna gene \(i\) randomly with probability
     \end{cases}
 \end{equation}
 
-\textfig{trna-pol3-map-ambiguous-reads-1}{Mapping ambiguous \chip reads.}
-    {\chip reads originating from \trna genes can often not be mapped
-    unambiguously to any given \trna. Instead, information form the gene’s
-    flanking regions is used to determine the more likely provenance.}
-
-\textfig{trna-pol3-map-ambiguous-reads-2}{Mapping ambiguous \chip reads.}
-    {\chip reads originating from \trna genes can often not be mapped
-    unambiguously to any given \trna. Instead, information form the gene’s
-    flanking regions is used to determine the more likely provenance.}
+\begin{figure}[h]
+    \centering
+    \begingroup
+        \includegraphics[width=\textwidth]{trna-pol3-map-ambiguous-reads-1}
+        \subcaption{Two potential match candidate \trna genes for a read.}
+    \endgroup
+    \begingroup
+        \includegraphics[width=\textwidth]{trna-pol3-map-ambiguous-reads-2}
+        \subcaption{Using the count data from the flanking regions to
+            extrapolate most likely mapping positions for ambiguous reads.}
+    \endgroup
+    \figcap{trna-pol3-map-ambiguous-reads-1}
+        {Mapping ambiguous \chip reads.}
+        {\chip reads originating from \trna genes can often not be mapped
+        unambiguously to any given \trna. Instead, information form the gene’s
+        flanking regions is used to determine the more likely provenance.}
+\end{figure}
 \todo{Fix figure legend}
 
 \section{… all the rest}
