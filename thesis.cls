@@ -18,6 +18,7 @@
 \RequirePackage{xspace}
 \RequirePackage{scalefnt}
 \RequirePackage{caption}
+\RequirePackage{subcaption}
 \RequirePackage{ifoddpage}
 \RequirePackage{hyperref}
 % “… cleveref must be loaded *last*”
@@ -64,6 +65,8 @@
 
 \let\labelfont\textbf
 
+\newcommand*\figcap[3]{\caption{\label{fig:#1}\labelfont{#2} #3}}
+
 \newcommand*\textfigure[5][float]{%
     % #1: alignment (default: float)
     % #2: figure label
@@ -77,7 +80,7 @@
         \checkoddpage%
         \edef\side{\ifoddpage l\else r\fi}%
         \makebox[\textwidth][\side]{#3}%
-        \caption{\label{fig:#2}\labelfont{#4} #5}
+        \figcap{fig:#2}{#4}{#5}
     \end{figure}}
 
 \newcommand*\textfig[4][float]{%
