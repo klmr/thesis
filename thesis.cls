@@ -6,6 +6,7 @@
 \RequirePackage{fixltx2e}
 \RequirePackage{etoolbox}
 \RequirePackage{fontspec}
+\RequirePackage{amsmath}
 \RequirePackage{xcolor}
 \RequirePackage{microtype}
 \RequirePackage{polyglossia}
