@@ -31,10 +31,10 @@ reads as is otherwise customary.\footnote{We still discard reads which are
 likely \pcr duplicates, i.e.\ map to many locations; we more or less arbitrarily
 used the threshold of \num{50} non-unique mapping locations} We thus end up with
 reads which have not been assigned to a given \trna gene
-(\cref{fig:trna-pol3-map-ambiguous-reads-1}). In order to assign these reads to
+(\cref{fig:trna-pol3-map-ambiguous-reads}). In order to assign these reads to
 \trna genes, we \emph{reallocated} reads after mapping, using the number of
 uniquely mapping reads in \trna genes’ flanking regions to determine the most
-likely origin (\cref{fig:trna-pol3-map-ambiguous-reads-2}) \citep{Kutter:2011}.
+likely origin (\cref{fig:trna-pol3-map-ambiguous-reads}) \citep{Kutter:2011}.
 
 Formally, let \(i\) be the \(i\)th \trna gene locus, and \(c_i\) be the count of
 uniquely mapped reads in its flanking region (we used \SI{\pm100}{bp}). A
@@ -59,7 +59,7 @@ be allocated to a target \trna gene \(i\) randomly with probability
         \subcaption{Using the count data from the flanking regions to
             extrapolate most likely mapping positions for ambiguous reads.}
     \endgroup
-    \figcap{trna-pol3-map-ambiguous-reads-1}
+    \figcap{trna-pol3-map-ambiguous-reads}
         {Mapping ambiguous \chip reads.}
         {\chip reads originating from \trna genes can often not be mapped
         unambiguously to any given \trna. Instead, information form the gene’s
