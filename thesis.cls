@@ -80,7 +80,7 @@
         \checkoddpage%
         \edef\side{\ifoddpage l\else r\fi}%
         \makebox[\textwidth][\side]{#3}%
-        \figcap{fig:#2}{#4}{#5}
+        \figcap{#2}{#4}{#5}
     \end{figure}}
 
 \newcommand*\textfig[4][float]{%
@@ -122,6 +122,10 @@
 % From <http://tex.stackexchange.com/a/74469/42>
 \newcommand*\reducedstrut{%
     \vrule width 0pt height .9\ht\strutbox depth .9\dp\strutbox\relax}
+
+\newcommand*\name[1]{\textsf{#1}}
+
+\newcommand*\dfn[1]{\emph{#1}}
 
 % Formatting of biological sequences
 
