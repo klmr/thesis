@@ -19,6 +19,7 @@
 \RequirePackage{scalefnt}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
+\RequirePackage{ragged2e}
 \RequirePackage{ifoddpage}
 \RequirePackage{hyperref}
 % “… cleveref must be loaded *last*”
@@ -61,7 +62,7 @@
 
 \newcommand*\todo[1]{%
     \textcolor[HTML]{A00000}{\textbf{|}}%
-    \marginpar{\textcolor[HTML]{A00000}{\textbf{To do:}\\#1}}}
+    \marginpar{\textcolor[HTML]{A00000}{\RaggedRight\textbf{To do:}\\#1}}}
 
 \let\labelfont\textbf
 
