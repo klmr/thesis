@@ -68,23 +68,30 @@
 
 \newcommand*\figcap[3]{\caption{\label{fig:#1}\labelfont{#2} #3}}
 
-\newcommand*\textfigure[5][float]{%
+\newcommand\spillfigure[2][]{%
     % #1: alignment (default: float)
-    % #2: figure label
-    % #3: figure contents
-    % #4: figure caption
-    % #5: figure description
+    % #2: figure contents
     % TODO: Implement proper positioning
     % By default, we spill into the outer margin. Because we can.
     % Use <http://tex.stackexchange.com/a/10507/42> to align properly.
     \begin{figure}[h]
         \checkoddpage%
         \edef\side{\ifoddpage l\else r\fi}%
-        \makebox[\textwidth][\side]{#3}%
-        \figcap{#2}{#4}{#5}
+        \makebox[\textwidth][\side]{#2}%
     \end{figure}}
 
-\newcommand*\textfig[4][float]{%
+\newcommand\textfigure[5][float]{%
+    % #1: alignment (default: float)
+    % #2: figure label
+    % #3: figure contents
+    % #4: figure caption
+    % #5: figure description
+    \spillfigure{%
+        \begin{minipage}{1.2\textwidth}
+            #3\figcap{#2}{#4}{#5}
+        \end{minipage}}}
+
+\newcommand\textfig[4][float]{%
     % #1: alignment (default: float)
     % #2: figure name (equals label)
     % #3: figure caption
