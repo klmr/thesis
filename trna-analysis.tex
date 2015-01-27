@@ -8,8 +8,9 @@ genes are unfortunately not identifiable by their sequence alone: performing a
 multiple sequence alignment of \trna genes in \mmu reveals that several \trna
 genes share the exact same sequence.
 
+\todo{Fix alignment of table}
 \textfigure{trna-alignment}
-    {{\footnotesize\input{data/mm10-trna-cove-asn.tex}}}
+    {\footnotesize\input{data/mm10-trna-cove-asn.tex}}
     {Alignment of Asn \trna genes.}
     {Parts of a multiple sequence alignment of \trna genes in \mmu generated
     with COVE\@. Shown are the \trna genes coding for Asn.}
@@ -45,8 +46,8 @@ be allocated to a target \trna gene \(i\) randomly with probability
 
 \begin{equation}
     p_i = \begin{cases}
-        \frac{c_i}{\sum_{x \in T}c_x} & \text{if } \sum_{x \in T}c_x \neq 0 \\
-        \frac{1}{\vert T \rvert} & \text{otherwise.}
+        {c_i}/{\sum_{x \in T}c_x} & \text{if \(\sum_{x \in T}c_x \neq 0\),} \\
+        {1}/{\vert T \rvert} & \text{otherwise.}
     \end{cases}
 \end{equation}
 
@@ -67,7 +68,6 @@ be allocated to a target \trna gene \(i\) randomly with probability
         unambiguously to any given \trna. Instead, information form the gene’s
         flanking regions is used to determine the more likely provenance.}
 \end{figure}
-\todo{Fix figure legend}
 
 \section{Normalisation of \trna gene expression}
 
