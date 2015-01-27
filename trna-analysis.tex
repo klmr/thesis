@@ -1,5 +1,7 @@
 \chapter{Analysis challenges concerning tRNA expression data}
 
+\section{Quantifying expression of \trna genes}
+
 We quantified \trna gene expression via \pol3 \chipseq. The reason for using
 this, on the first glance indirect, measure is caused by the fact that \trna
 genes are unfortunately not identifiable by their sequence alone: performing a
@@ -66,6 +68,22 @@ be allocated to a target \trna gene \(i\) randomly with probability
         flanking regions is used to determine the more likely provenance.}
 \end{figure}
 \todo{Fix figure legend}
+
+\section{Normalisation of \trna gene expression}
+
+Raw \trna gene expression counts show strong differences between sequencing
+libraries. For \mrna count data, it is customary to use \name{DEseq}’s
+\dfn{library size normalisation} \citep{Anders:2010}. However, as shown in
+\cref{fig:trna-libraries-example}, library size normalised data still follows
+distinct distributions, which we deem biologically implausible, and probably due
+to technical bias.
+
+As a consequence, we opted to \dfn{quantile normalise} the count data\todo{find
+reference for quantile normalisation}.
+
+\textfigure{trna-libraries-example}{\centering\Huge Placeholder}{Placeholder}{Placeholder}
+
+\section{Codon usage and correlation with anticodon abundance}
 
 \section{… all the rest}
 
