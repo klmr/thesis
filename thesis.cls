@@ -128,6 +128,10 @@
 
 \newcommand*\dfn[1]{\emph{#1}}
 
+\newcommand*\gene[1]{\textit{#1}}
+
+\newcommand*\protein[1]{\textrm{#1}}
+
 % Formatting of biological sequences
 
 \newcommand*\seq[1]{\mbox{\texttt{#1}}}
