@@ -28,13 +28,15 @@
 % General settings
 
 \setmainlanguage[variant=uk]{english}
+\graphicspath{{gfx/}}
+
+% General formatting
+
 \setmainfont[Ligatures=TeX, Numbers=OldStyle]{TeX Gyre Pagella}
 \setsansfont[Ligatures=TeX, Numbers=OldStyle]{Linux Biolinum}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
 \DefineBibliographyStrings{english}{andothers = {\&~al\adddot}}
-
-\graphicspath{{gfx/}}
 
 \captionsetup{%
     format=plain,
@@ -43,6 +45,8 @@
     labelformat=simple,
     labelsep=colon,
     justification=justified}
+
+\renewcommand*\thefootnote{\fnsymbol{footnote}}
 
 % General programming tools
 
@@ -156,7 +160,7 @@
 
 % Titles
 
-\newcommand*\second[1]{{\small \initials{#1}}}
+\newcommand*\second[1]{{\initials{#1}}}
 
 % vim:ft=tex
 \endinput
