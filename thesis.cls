@@ -8,6 +8,7 @@
 \RequirePackage{fontspec}
 \RequirePackage{amsmath}
 \RequirePackage{xcolor}
+\RequirePackage{wrapfig}
 \RequirePackage{microtype}
 \RequirePackage{polyglossia}
 \RequirePackage[natbib, style=authoryear, maxnames=2]{biblatex}
@@ -78,35 +79,71 @@
 
 \newcommand*\figcap[3]{\caption{\label{fig:#1}\labelfont{#2} #3}}
 
-\newcommand\spillfigure[2][]{%
-    % #1: alignment (default: float)
-    % #2: figure contents
-    % TODO: Implement proper positioning
-    % By default, we spill into the outer margin. Because we can.
-    % Use <http://tex.stackexchange.com/a/10507/42> to align properly.
-    \begin{figure}[h]
-        \checkoddpage%
-        \edef\side{\ifoddpage l\else r\fi}%
-        \makebox[\textwidth][\side]{#2}%
+\newcommand\align@body[1]{%
+    \begin{figure}[h!]
+        \centering
+        #1
     \end{figure}}
 
-\newcommand\textfigure[5][float]{%
-    % #1: alignment (default: float)
-    % #2: figure label
-    % #3: figure contents
+\newcommand\align@spill[1]{%
+    % Use <http://tex.stackexchange.com/a/10507/42> to align properly.
+    \begin{figure}[h!]
+        \checkoddpage%
+        \edef\side{\ifoddpage l\else r\fi}%
+        \makebox[\textwidth][\side]{%
+            \begin{minipage}{1.2\textwidth}
+                #1
+            \end{minipage}}
+    \end{figure}}
+
+\newcommand\align@wrap[1]{%
+    \begin{wrapfigure}{o}{0.5\textwidth}
+        \centering
+        #1
+    \end{wrapfigure}}
+
+\newcommand\textfloat[5]{
+    % #1: label
+    % #2: alignment command
+    % #3: content
     % #4: figure caption
     % #5: figure description
-    \spillfigure{%
-        \begin{minipage}{1.2\textwidth}
-            #3\figcap{#2}{#4}{#5}
-        \end{minipage}}}
+    \csuse{align@#2}{%
+        #3
+        \figcap{#1}{#4}{#5}}}
 
-\newcommand\textfig[4][float]{%
-    % #1: alignment (default: float)
-    % #2: figure name (equals label)
-    % #3: figure caption
-    % #4: figure description
-    \textfigure[#1]{#2}{\includegraphics[width=\textwidth]{#2}}{#3}{#4}}
+\newcommand\textfloatbare[2]{
+    % #1: alignment command
+    % #2: content
+    \csuse{align@#1}{#2}}
+
+\newcommand*\textfig[5]{%
+    % #1: label
+    % #2: alignment command
+    % #3: width
+    % #4: figure caption
+    % #5: figure description
+    \textfloat{#1}{#2}{\includegraphics[width=#3]{#1}}{#4}{#5}}
+
+\newcommand*\textfigtwo[6]{%
+    % #1 label 1
+    % #2 figure caption 1
+    % #3 figure description 1
+    % #4 label 2
+    % #5 figure caption 2
+    % #6 figure description 2
+    \textfloatbare{spill}{%
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{#1}
+            \figcap{#1}{#2}{#3}
+        \end{minipage}
+        \hspace{0.1\textwidth}%
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{#4}
+            \figcap{#4}{#5}{#6}
+        \end{minipage}}}
 
 \newcommand*\hashtag[1]{%
     {\mbox{\scalefont{0.75}\textcolor[HTML]{808080}{\#}\kern0.1em}#1}}
