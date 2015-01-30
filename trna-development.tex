@@ -14,12 +14,9 @@ summarises the experimental procedure.\footnote{The wet-lab work of this project
 was performed by Bianca Schmitt.}
 \todo{Remove background gradients from graphics}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{trna-project-outline}
-    \figcap{trna-project-outline}{Sample analysis outline}
-        {Samples were collected in eight distinct time points …}
-\end{figure}
+\textfig{trna-project-outline}{body}{0.8\textwidth}
+    {Sample analysis outline}
+    {Samples were collected in eight distinct time points …}
 
 In addition to the six time points described above, tissue was also collected at
 two earlier stages, E9.5 and E12.5. Unfortunately, the embryo at such early
@@ -72,25 +69,16 @@ changes in cell function between tissues, and over the course of development.
     down over the course of development, correspoding to either an up- or
     downregulation.}
 
-\textfloatbare{spill}{%
-    \begin{minipage}{0.55\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{mrna-pca}
-        \figcap{mrna-pca}{\pca of \mrna genes.}
-            {Rotations \num{1} and \num{2} of the correlation matrix of
-            protein-coding gene expressions. The percentage on the axes shows
-            the amount of variance explained by each rotation.}
-    \end{minipage}
-    \hspace{0.1\textwidth}%
-    \begin{minipage}{0.55\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{mrna-de-matrix}
-        \figcap{mrna-de-matrix}
-            {Number of differentially expressed \mrna genes between stages:}
-            {Each off-diagonal square shows the number of differentially
-            expressed genes (at a significance threshold of \(p<0.01\)) between
-            the two indicated developmental stages.}
-    \end{minipage}}
+\textfigtwo{mrna-pca}
+    {\pca of \mrna genes.}
+    {Rotations \num{1} and \num{2} of the correlation matrix of
+    protein-coding gene expressions. The percentage on the axes shows
+    the amount of variance explained by each rotation.}
+    {mrna-de-matrix}
+    {Number of differentially expressed \mrna genes between stages:}
+    {Each off-diagonal square shows the number of differentially
+    expressed genes (at a significance threshold of \(p<0.01\)) between
+    the two indicated developmental stages.}
 
 \section{Dynamic changes of tRNA gene expression during mouse development}
 
@@ -102,15 +90,14 @@ observe that many \trna gene expression levels remain stable
 percent of all \trna genes are differentially expressed. One specific example of
 this is shown in \cref{fig:liver-trna-expression-change}.
 
-\textfig{trna-counts}{body}{0.5\textwidth}
+\textfigtwo{trna-counts}
     {Overview over \trna gene expression change.}
     {Bar plots show different types of \trna gene expression dynamics: \trna
     genes without change in their expression levels, \trna genes with changes to
     their expression levels, which are nevertheless expressed in all stages of
     development across both tissues; and \trna genes which are only expressed in
     a subset of all conditions.}
-
-\textfig{liver-trna-expression-change}{body}{0.5\textwidth}
+    {liver-trna-expression-change}
     {Example of dynamically changing \trna genes.}
     {Genomic region showing different types of \trna gene expression behaviour;
     the label colours on the x axis corresponds to the colours in
