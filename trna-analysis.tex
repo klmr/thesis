@@ -9,7 +9,7 @@ multiple sequence alignment of \trna genes in \mmu reveals that several \trna
 genes share the exact same sequence.
 
 \todo{Fix alignment of table}
-\textfigure{trna-alignment}
+\textfloat{trna-alignment}{spill}
     {\footnotesize\input{data/mm10-trna-cove-asn.tex}}
     {Alignment of Asn \trna genes.}
     {Parts of a multiple sequence alignment of \trna genes in \mmu generated
@@ -23,7 +23,8 @@ With the \pol3 \chipseq data, we do not have this problem: reads cover both the
 transcribed sequence and the flanking regions of each gene
 (\cref{fig:trna-pol3-binding-profile}).
 
-\textfig{trna-pol3-binding-profile}{\trna \pol3 \chip binding profile.}
+\textfig{trna-pol3-binding-profile}{spill}{\textwidth}
+    {\trna \pol3 \chip binding profile.}
     {The shaded, bell-shaped area shows an idealised binding profile of \chipseq
     data spanning the \trna gene with the A and B box highlighted, as well as
     its flanking regions upstream and downstream of the gene body. This overlap
@@ -81,7 +82,8 @@ to technical bias.
 As a consequence, we opted to \dfn{quantile normalise} the count data\todo{find
 reference for quantile normalisation}.
 
-\textfigure{trna-libraries-example}{\centering\Huge Placeholder}{Placeholder}{Placeholder}
+\textfloat{trna-libraries-example}{body}
+    {\Huge Placeholder}{Placeholder}{Placeholder}
 
 \section{Codon usage and correlation with anticodon abundance}
 

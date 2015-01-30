@@ -55,27 +55,24 @@ protein abundance and thus protein-coding gene transcription --- the patterns of
 gene expression similarity shown in the \pca therefore recapitulate the expected
 changes in cell function between tissues, and over the course of development.
 
-\spillfigure{%
-    \begin{minipage}{1.2\textwidth}
-        \centering
-        \begingroup
-            \includegraphics[width=\textwidth]{liver-mrna-expression-change}
-            \subcaption{Gene expression changes of \gene{Apob} and \gene{Afp}.}
-        \endgroup
-        \par
-        \begingroup
-            \includegraphics[width=\textwidth]{brain-mrna-expression-change}
-            \subcaption{Gene expression changes of \gene{Foxp2} and \gene{Calm1}.}
-        \endgroup
-        \figcap{mrna-expression-change}
-            {Example of gene expression changes in development.}
-            {The four genes are representative for tissue- and stage-specific genes,
-            whose expression changes drive cell function. These changes can go up or
-            down over the course of development, correspoding to either an up- or
-            downregulation.}
-    \end{minipage}}
+\textfloat{mrna-expression-change}{spill}{%
+    \centering
+    \begingroup
+        \includegraphics[width=\textwidth]{liver-mrna-expression-change}
+        \subcaption{Gene expression changes of \gene{Apob} and \gene{Afp}.}
+    \endgroup
+    \par
+    \begingroup
+        \includegraphics[width=\textwidth]{brain-mrna-expression-change}
+        \subcaption{Gene expression changes of \gene{Foxp2} and \gene{Calm1}.}
+    \endgroup}
+    {Example of gene expression changes in development.}
+    {The four genes are representative for tissue- and stage-specific genes,
+    whose expression changes drive cell function. These changes can go up or
+    down over the course of development, correspoding to either an up- or
+    downregulation.}
 
-\spillfigure{%
+\textfloatbare{spill}{%
     \begin{minipage}{0.55\textwidth}
         \centering
         \includegraphics[width=\textwidth]{mrna-pca}
@@ -105,14 +102,15 @@ observe that many \trna gene expression levels remain stable
 percent of all \trna genes are differentially expressed. One specific example of
 this is shown in \cref{fig:liver-trna-expression-change}.
 
-\textfig{trna-counts}{Overview over \trna gene expression change.}
+\textfig{trna-counts}{body}{0.5\textwidth}
+    {Overview over \trna gene expression change.}
     {Bar plots show different types of \trna gene expression dynamics: \trna
     genes without change in their expression levels, \trna genes with changes to
     their expression levels, which are nevertheless expressed in all stages of
     development across both tissues; and \trna genes which are only expressed in
     a subset of all conditions.}
 
-\textfig{liver-trna-expression-change}
+\textfig{liver-trna-expression-change}{body}{0.5\textwidth}
     {Example of dynamically changing \trna genes.}
     {Genomic region showing different types of \trna gene expression behaviour;
     the label colours on the x axis corresponds to the colours in
