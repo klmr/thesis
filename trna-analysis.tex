@@ -52,7 +52,7 @@ be allocated to a target \trna gene \(i\) randomly with probability
     \end{cases}
 \end{equation}
 
-\begin{figure}[h]
+\textfloat{trna-pol3-map-ambiguous-reads}{spill}{%
     \centering
     \begingroup
         \includegraphics[width=\textwidth]{trna-pol3-map-ambiguous-reads-1}
@@ -62,13 +62,11 @@ be allocated to a target \trna gene \(i\) randomly with probability
         \includegraphics[width=\textwidth]{trna-pol3-map-ambiguous-reads-2}
         \subcaption{Using the count data from the flanking regions to
             extrapolate most likely mapping positions for ambiguous reads.}
-    \endgroup
-    \figcap{trna-pol3-map-ambiguous-reads}
-        {Mapping ambiguous \chip reads.}
-        {\chip reads originating from \trna genes can often not be mapped
-        unambiguously to any given \trna. Instead, information form the gene’s
-        flanking regions is used to determine the more likely provenance.}
-\end{figure}
+    \endgroup}
+    {Mapping ambiguous \chip reads.}
+    {\chip reads originating from \trna genes can often not be mapped
+    unambiguously to any given \trna. Instead, information form the gene’s
+    flanking regions is used to determine the more likely provenance.}
 
 \section{Normalisation of \trna gene expression}
 
