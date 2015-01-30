@@ -66,7 +66,7 @@
 % General helper commands
 
 \newcommand*\todo[1]{%
-    \textcolor[HTML]{A00000}{\textbf{|}}%
+    \textcolor[HTML]{A00000}{\kern-0.2em\textbf{|}\kern-0.2em}%
     \marginpar{
         \colorbox{pink}{\parbox{\marginparwidth}{%
             \RaggedRight%
