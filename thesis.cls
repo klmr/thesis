@@ -119,6 +119,26 @@
     % #5: figure description
     \textfloat{#1}{#2}{\includegraphics[width=#3]{#1}}{#4}{#5}}
 
+\newcommand*\textfigtwo[6]{%
+    % #1 label 1
+    % #2 figure caption 1
+    % #3 figure description 1
+    % #4 label 2
+    % #5 figure caption 2
+    % #6 figure description 2
+    \textfloatbare{spill}{%
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{#1}
+            \figcap{#1}{#2}{#3}
+        \end{minipage}
+        \hspace{0.1\textwidth}%
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{#4}
+            \figcap{#4}{#5}{#6}
+        \end{minipage}}}
+
 \newcommand*\hashtag[1]{%
     {\mbox{\scalefont{0.75}\textcolor[HTML]{808080}{\#}\kern0.1em}#1}}
 
