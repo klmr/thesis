@@ -66,7 +66,13 @@
 
 \newcommand*\todo[1]{%
     \textcolor[HTML]{A00000}{\textbf{|}}%
-    \marginpar{\textcolor[HTML]{A00000}{\RaggedRight\textbf{To do:}\\#1}}}
+    \marginpar{
+        \colorbox{pink}{\parbox{\marginparwidth}{%
+            \RaggedRight%
+            \vskip2pt
+            \leftskip2pt\rightskip2pt
+            \textcolor[HTML]{A00000}{\textsf{\textbf{To do:}\\#1}}
+            \vskip2pt}}}}
 
 \let\labelfont\textbf
 
