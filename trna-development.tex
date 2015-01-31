@@ -1,4 +1,4 @@
-\chapter{Developmental stability of the \mrna--\trna interface}
+\chapter{Developmental stability of the mRNA--tRNA interface}
 
 In order to study how changes in \mrna gene expression relate to changes in
 \trna gene expression, we collected tissue samples from six time points in mouse
@@ -56,9 +56,14 @@ Similarly, \mrna gene expression changes highlight the role of α-fetoproteine
 \citep{Chen:1997}.\todo{Explain brain examples as well?}
 
 A more systematic analysis shows that changes in gene expression happen
-incrementally across the profiled stages of development: both in variance
-(\cref{fig:mrna-pca}) and in the number of differentially expressed genes
-between stages (\cref{fig:mrna-de-matrix}).
+incrementally across the profiled stages of development: The \pca of the
+pairwise correlation between all stages (and their gene expression values)
+reveals that the first principal component is correlated with tissue identity,
+and the second principal component is correlated with developmental time.
+(\cref{fig:mrna-pca}). The number of differentially expressed genes between all
+pairwise developmental stages shows a similar pattern, with more distinct
+developmental stages having higher numbers of differentially expressed genes
+(\cref{fig:mrna-de-matrix}).
 
 These patterns are noteworthy because they recapitulate tissue identity and
 linear progression through the stages of tissue development. But they are not
@@ -137,7 +142,6 @@ We therefore went on to quantify the codon pool corresponding to each given
 transcriptome\footnote{I shall refrain from using the term “codome” to refer to
 the -ome of codons}, as well as the pool of available \trna genes, grouped by
 their anticodon isoacceptor identity.
-
 
 \section{Every mouse mRNA transcriptome encodes the same distribution of
 triplet codons and amino acids}
