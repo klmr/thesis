@@ -40,7 +40,6 @@ def main():
 
 def fix_dois(database):
     # Some DOIs are prefixed by 'doi:'. Remove this.
-    # TODO Find DOIs in other fields (URLs …)
     for entry in database.entries:
         if 'doi' in entry:
             entry['doi'] = re.sub(r'^doi:(.*)$', r'\1', entry['doi'])

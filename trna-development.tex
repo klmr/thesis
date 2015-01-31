@@ -47,6 +47,14 @@ abundance of proteins, are known to drive cellular behaviour\todo{ref}. Our data
 confirms that tissue development in mice is accompanied by large-scale changes
 to the \mrna transcriptome (\cref{fig:mrna-expression-change}).
 
+This is nicely illustrated by looking at individual gene expression patterns.
+For example, we can confirm the functional relevance of apolipoprotein B
+(\protein{APOB}) as the primary carrier of lipoproteins, which becomes
+increasingly relevant as the organ shifts to metabolism \citep{Knott:1986}.
+Similarly, \mrna gene expression changes highlight the role of α-fetoproteine
+(\protein{AFP}) as the fetal version of serum albumin (\cref{fig:apob-afp})
+\citep{Chen:1997}.\todo{Explain brain examples as well?}
+
 A more systematic analysis shows that changes in gene expression happen
 incrementally across the profiled stages of development: both in variance
 (\cref{fig:mrna-pca}) and in the number of differentially expressed genes
@@ -63,7 +71,7 @@ changes in cell function between tissues, and over the course of development.
     \centering
     \begingroup
         \includegraphics[width=\textwidth]{liver-mrna-expression-change}
-        \subcaption{Gene expression changes of \gene{Apob} and \gene{Afp}.}
+        \subcaption{\label{fig:apob-afp}Gene expression changes of \gene{Apob} and \gene{Afp}.}
     \endgroup
     \par
     \begingroup
