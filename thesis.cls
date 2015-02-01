@@ -143,8 +143,9 @@
             \figcap{#4}{#5}{#6}
         \end{minipage}}}
 
-\newcommand*\hashtag[1]{%
-    {\mbox{\scalefont{0.75}\textcolor[HTML]{808080}{\#}\kern0.1em}#1}}
+%\newcommand*\hashtag[1]{%
+%    {\mbox{\scalefont{0.75}\textcolor[HTML]{808080}{\#}\kern0.1em}#1}}
+\newcommand*\hashtag[1]{#1}
 
 \newcommand*\newspecies[2]{%
     % #1: species label
