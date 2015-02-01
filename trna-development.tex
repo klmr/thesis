@@ -1,11 +1,12 @@
-\chapter{Developmental stability of the mRNA--tRNA interface}
+\chapter{Developmental stability of the \abbr{mrna}--\abbr{trna} interface}
 
 In order to study how changes in \mrna gene expression relate to changes in
 \trna gene expression, we collected tissue samples from six time points in mouse
-development: two before birth (E15.5 and E18.5, which stands for \num{15.5} and
-\num{18.5} days after gestation of the oocyte, respectively); two shortly after
-birth, happening around E20 (P0.5 and P4 --- \num{0.5} and \num{4} days after
-birth, respectively) and two after weaning the juvenile mice (P22 and P29).
+(\mmu) development: two before birth (E15.5 and E18.5, which stands for
+\num{15.5} and \num{18.5} days after gestation of the oocyte, respectively); two
+shortly after birth, happening around E20 (P0.5 and P4 --- \num{0.5} and \num{4}
+days after birth, respectively) and two after weaning the juvenile mice (P22 and
+P29).
 
 For each of these time points, tissue was collected from whole liver and whole
 brain (homogenised) and prepared for \rnaseq and \pol3 \chipseq in order to
@@ -90,25 +91,26 @@ changes in cell function between tissues, and over the course of development.
     downregulation.}
 
 \textfigtwo{mrna-pca}
-    {\pca of \mrna genes.}
+    {\pca of \mrna gene expression per developmental stage.}
     {Rotations \num{1} and \num{2} of the correlation matrix of
-    protein-coding gene expressions. The percentage on the axes shows
-    the amount of variance explained by each rotation.}
+    protein-coding gene expression in each developmental stage. The percentage
+    on the axes shows the amount of variance explained by each rotation.}
     {mrna-de-matrix}
     {Number of differentially expressed \mrna genes between stages:}
     {Each off-diagonal square shows the number of differentially
     expressed genes (at a significance threshold of \(p<0.01\)) between
     the two indicated developmental stages.}
 
-\section{Dynamic changes of tRNA gene expression during mouse development}
+\section{Dynamic changes of \trna gene expression during mouse development}
 
 Unlike protein-coding genes, \trna genes are not directly implicated in changes
-of cellular function. We therefore do not expect many changes of the levels of
-\trna gene expression over the course of development. Consistent with that, we
-observe that many \trna gene expression levels remain stable
-(\cref{fig:trna-counts}). However, we \emph{do} observe that around \num{50} per
-cent of all \trna genes are differentially expressed. One specific example of
-this is shown in \cref{fig:liver-trna-expression-change}.
+of cellular function. We therefore did not expect many changes of the levels of
+\trna gene expression over the course of development. We do in fact observe that
+many \trna gene expression levels remain stable (\cref{fig:trna-counts}).
+Nevertheless, we also observe that around \num{50} per cent of all \trna genes
+\emph{are} differentially expressed. \Cref{fig:liver-trna-expression-change}
+shows a genomic location containing \trna genes which display these different
+dynamics.
 
 \textfigtwo{trna-counts}
     {Overview over \trna gene expression change.}
@@ -123,10 +125,26 @@ this is shown in \cref{fig:liver-trna-expression-change}.
     the label colours on the x axis corresponds to the colours in
     \cref{fig:trna-counts}}
 
-Surprisingly, the \trna gene expression differences follow similar patterns as
-those observed in \mrna genes \todo{fig-ref} but unlike those, they are not
-readily explainable by the physiological changes to the cell; something else
-needs to account for the changes.
+Surprisingly, the \trna gene expression differences follow similar patterns to
+those observed in \mrna genes when plotting the first two principal components
+of their \pca (\cref{fig:trna-pca}). The observed patterns are incompatible with
+mere \emph{random} expression changes. Something must account for these
+concerted changes in \trna gene expression.
+
+\textfig{trna-pca}{body}{0.5\textwidth}
+    {\pca of \trna gene expression per developmental stage.}
+    {Rotations \num{1} and \num{2} of the correlation matrix of
+    \trna gene expression in each developmental stage. The percentage on the
+    axes shows the amount of variance explained by each rotation.}
+
+In the case of the protein-coding genes, we can explain the nonrandom changes in
+gene expression by known gene regulatory mechanisms, which control the
+transcriptome of each cell and developmental stage. The fact that \trna gene
+expression changes across development exhibit the same patterns as \mrna gene
+expression changes suggests that \trna gene expression is subject to similar
+regulatory constraints. We therefore attempted to explain \emph{why} \trna gene
+expression requires changing in a regulated manner, and \emph{how} this \trna
+gene regulation is carried out by the cell.
 
 Our first suspicion was that changes in \mrna gene expression might lead to
 changes in codon demand, since different protein-coding genes are made up from
@@ -143,14 +161,152 @@ transcriptome\footnote{I shall refrain from using the term “codome” to refer
 the -ome of codons}, as well as the pool of available \trna genes, grouped by
 their anticodon isoacceptor identity.
 
-\section{Every mouse mRNA transcriptome encodes the same distribution of
+\section{Every mouse \mrna transcriptome encodes the same distribution of
 triplet codons and amino acids}
+
+The codon pool of a given \mrna transcript is given by the destribution of
+triplet codons in its sequence. There are 64 possible triplet codons, of which
+61 encode 20 different amino acids, and three encode the stop codon, marking the
+end of translation.\footnote{Our analysis ignores selenocysteine, which is a
+\num{21}st possible amino acid, and which can be encoded by one of the stop
+codons under very rare circumstances.} Using this information and the transcript
+abundance, quantified by our \rnaseq data, we calculated the abundance of each
+triplet codon as well as each amino acid in the transcriptome of each
+developmental stage. We then compared these across stages to find out how they
+varied.
+
+We find that on the transcriptome level, codon abundance is highly stable across
+development in both tissues (Spearman’s \(\rho > 0.97\)) ---
+\cref{fig:codon-anticodon-abundance} top left shows this by way of example using
+the codons for arginine in the different stages in liver.
+
+Given this stability, we wondered how much variation should be expected, by
+simulating random transcriptomes, and computing their codon usage.
+\Cref{fig:codon-anticodon-abundance} top middle and right shows that even for
+simulated transcriptomes the codon usage remains unchanged. In fact, both
+observed and simulated transcriptomes seem to simply reflect the codon abundance
+found in the coding part of the genome, regardless of the sometimes strong
+variations in gene expression between different transcriptomes.
+
+\textfig{codon-anticodon-abundance}{spill}{0.8\textwidth}
+    {Codon and anticodon abundance across stages of development.}
+    {The figure consists of three panels (right, middle, left) with three
+    subfigures (top, centre, bottom) each. The left panel shows observed data
+    for each of the developmental stages in liver (brain data is comparable).
+    The middle and right panels show simulated data from randomised
+    transcriptomes. The middle panel used only expressed genes of each
+    respective stage in the simulated data, whereas the right panel uses all
+    genes, also unexpressed ones). The top figures of each panel show relative
+    \mrna transcript triplet codon usage, using the representative example of
+    arginine. The centre figures show the relative \trna anticodon abundance of
+    the arginine isotype family. The bottom right figure shows the linear
+    regression of relative codon usage against relative anticodon abundance in
+    liver E15.5, along with its Spearman rank correlation. Triplet codons
+    without directly corresponding anticodon (grey dots) were ignored in the
+    calculation. The bottom middle and right figure shows the Spearman rank
+    correlation coefficient of each stage’s relative codon and anticodon
+    abundance (diamond), and the range of correlation coefficients for the
+    simulated codon and anticodon pools (box plots) for each stage.}
 
 \section{Stable isoacceptor anticodon abundance through development indicates
 tight regulation of tRNA gene expression}
 
-\section{mRNA triplet codon usage is highly correlated with tRNA anticodon
+Next, we looked at the abundance of the matching \trna isoacceptors by summing
+the expression of all \trna genes belonging to the same isoacceptor family.
+\Cref{fig:codon-anticodon-abundance} centre left shows the relative anticodon
+isoacceptor abundance of the arginine isotype family. Again we find that the
+abundance stays stable across development in both tissues (Spearman’s \(\rho >
+0.96\)).
+
+In the same way as for the \mrna transcriptome, we then simulated random \trna
+transcriptomes and calculated the relative abundance of all isoacceptor
+families. Unlike for the observed \trna data, we find that simulated \trna
+transcriptomes create highly variable pools of anticodon isoacceptors
+(\cref{fig:codon-anticodon-abundance} centre middle and right). The variability
+observed here is explained by the fact that there are only \num{433} \trna genes
+in \mmu (of which only \num{311} were expressed in our samples), compared to the
+approximately \num{20000} protein-coding genes, which leads to a bigger
+influence of random sampling. In contrast to \mrna gene expression, the stable
+anticodon isoacceptor abundance distribution we observe across development is
+therefore not compatible with random variation in the \trna gene expression:
+instead, it demonstrates the necessity of a mechanism actively stabilising \trna
+gene expression variation at the anticodon isoacceptor level.
+
+\section{\mrna triplet codon usage is highly correlated with \trna anticodon
 isoacceptor abundance during development}
 
-\section{tRNA anticodon isoacceptor families are transcriptionally compensated
+Codons and anticodon-carrying \trna[s] form the biochemical interface between
+the genetic code and the amino acid sequence of proteins during \mrna
+translation. We investigated this correspondence between \mrna-driven codon
+demand and \trna anticodon supply by looking at the correlation of codons’ usage
+in an \mrna transcriptome and its matching \trna anticodon isoacceptor
+abundances in matching stages of development
+(\cref{fig:codon-anticodon-abundance} bottom left). Across both tissues and all
+stages of development, we find that \mrna codon demand and \trna anticodon
+isoacceptor abundance are highly correlated (\(0.64 < \rho \leq 0.76\)
+Spearman’s rank correlation, all \(p < 0.001\); the calculation excluded
+unmatched \mrna codons due to wobble base pairing\footnote{This method was used
+mainly for of simplicity; \cref{sec:trna-analysis} contains a discussion of more
+accurate measures of the match between codon demand and \trna anticodon supply;
+however, while this changes the numbers we find, these changes don’t affect the
+conclusion.}).\todo{Mention correlation in pools of highly/lowly expressed \mrna
+genes?}
+
+We can compare these correlations between \mrna codon demand and \trna anticodon
+supply with the correlations we find between our simulated \mrna and \trna
+transcriptomes. In fact, correlating all \num{100} randomly simulated \trna
+transcriptomes per tissue with the simulated \mrna transcriptomes yields a
+distribution of significantly lower rank correlation coefficients
+(\cref{fig:codon-anticodon-abundance} bottom middle and right).
+
+This result provides further evidence that random variation of \trna gene
+expression cannot account for the observed patterns of expression, and that
+\trna gene expression must be actively regulated to stabilise the steady
+abundance of the of \trna anticodon isoacceptors, matching the triplet codon
+demand of the \mrna transcriptome.
+
+\section{\trna anticodon isoacceptor families are transcriptionally compensated
 across development}
+
+Having established that \trna gene expression varies in a controlled fashion, we
+were interested in finding out more about the mechanism driving this variation.
+From what we know about the regulation of protein-coding genes, it seemed likely
+that local genomic features around each \trna gene would be implicated in its
+transcriptional regulation.
+
+Previously published results indicate that there is no clear relationship
+between sequence variation of the internal promoters of \trna gene and their
+expression levels \citep{Oler:2010,Canella:2012}. We therefore focussed on the
+sequence upstream of the \tss of \trna genes to search for \emph{cis}-regulatory
+regions.
+
+\textfloat{compensation}{spill}{%
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{correlation-cag}
+        \subcaption{Isoacceptor CAG \trna gene expression levels}
+    \end{minipage}
+    \hspace{0.05\textwidth}%
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{compensation-cag}
+        \subcaption{Density curve of isoacceptor CAG \trna gene expression
+        correlations}
+    \end{minipage}
+    \par
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{correlation-gcc}
+        \subcaption{Isoacceptor GCC \trna gene expression levels}
+    \end{minipage}
+    \hspace{0.05\textwidth}%
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{compensation-gcc}
+        \subcaption{Density curve of isoacceptor GCC \trna gene expression
+        correlations}
+    \end{minipage}}
+    {\trna gene expression is compensated at the anticodon isoacceptor level
+    during mouse development.}
+    {…}
