@@ -81,7 +81,6 @@
 
 \newcommand\align@body[1]{%
     \begin{figure}[h!]
-        \centering
         #1
     \end{figure}}
 
@@ -98,7 +97,6 @@
 
 \newcommand\align@wrap[1]{%
     \begin{wrapfigure}{o}{0.5\textwidth}
-        \centering
         #1
     \end{wrapfigure}}
 
@@ -123,7 +121,7 @@
     % #3: width
     % #4: figure caption
     % #5: figure description
-    \textfloat{#1}{#2}{\includegraphics[width=#3]{#1}}{#4}{#5}}
+    \textfloat{#1}{#2}{\centering\includegraphics[width=#3]{#1}}{#4}{#5}}
 
 \newcommand*\textfigtwo[6]{%
     % #1 label 1
