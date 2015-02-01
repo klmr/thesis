@@ -159,15 +159,18 @@
 \newspecies{mmu}{Mus musculus}
 \newspecies{hsa}{Homo sapiens}
 
+\newcommand*\abbr[1]{\csuse{abbr@#1}}
+
 \newcommand*\abbrev[3][]{%
     % #1 [optional] long description
     % #2 macro name
     % #3 expanded abbreviation
+    \csdef{abbr@#2}{#3}
     \csdef{abbrev@#2}##1{%
         % FIXME Why does the following command definition only require two
         % `#`s to define its arguments, and not three?
-        \global\csdef{abbrev@#2}##1{#3##1}%
-        \ifblank{#1}{\hashtag{#3}##1}{#1##1 (\hashtag{#3})}}%
+        \global\csdef{abbrev@#2}##1{\abbr{#2}##1}%
+        \ifblank{#1}{\hashtag{\abbr{#2}}##1}{#1##1 (\hashtag{\abbr{#2}})}}%
     \expandafter\newrobustcmd\expandafter*\csname #2\endcsname[1][]{%
         \csuse{abbrev@#2}{##1}\xspace}}
 
