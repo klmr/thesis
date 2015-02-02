@@ -182,6 +182,8 @@
 
 \newcommand*\name[1]{\textsf{#1}}
 
+\newcommand*\identifier[1]{\texttt{#1}}
+
 \newcommand*\dfn[1]{\emph{#1}}
 
 \newcommand*\gene[1]{\textit{#1}}
