@@ -8,6 +8,7 @@
 \RequirePackage{fontspec}
 \RequirePackage{amsmath}
 \RequirePackage{xcolor}
+\RequirePackage{marginnote}
 \RequirePackage{wrapfig}
 \RequirePackage{microtype}
 \RequirePackage{polyglossia}
@@ -65,9 +66,22 @@
 
 % General helper commands
 
+%\newcommand\IfFloat[2]{\ifnum\@floatpenalty<0\relax#1\else#2\fi}
+
+% From <http://tex.stackexchange.com/q/27172/42>
+\newbool{detect@float}
+\appto\@endfloatbox{\boolfalse{detect@float}}
+\preto\@floatboxreset{\booltrue{detect@float}}
+\newrobustcmd\IfFloat[2]{\ifbool{detect@float}{#1}{#2}}
+
 \newcommand*\todo[1]{%
     \textcolor[HTML]{A00000}{\kern-0.2em\textbf{|}\kern-0.2em}%
-    \marginpar{
+    \ifmmode% for equations
+        \let\mp\marginnote%
+    \else
+        \IfFloat{\let\mp\marginnote}{\let\mp\marginpar}
+    \fi
+    \mp{
         \colorbox{pink}{\parbox{\marginparwidth}{%
             \RaggedRight%
             \vskip2pt
@@ -115,13 +129,13 @@
     % #2: content
     \csuse{align@#1}{#2}}
 
-\newcommand*\textfig[5]{%
+\newcommand\textfig[6][]{%
     % #1: label
     % #2: alignment command
     % #3: width
     % #4: figure caption
     % #5: figure description
-    \textfloat{#1}{#2}{\centering\includegraphics[width=#3]{#1}}{#4}{#5}}
+    \textfloat{#2}{#3}{\centering\includegraphics[width=#4]{#2}#1}{#5}{#6}}
 
 \newcommand*\textfigtwo[6]{%
     % #1 label 1
