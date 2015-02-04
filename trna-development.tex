@@ -22,9 +22,9 @@ changes all through development.\todo{ref}
 Each experiment was performed in two biological replicates, which were highly
 correlated. \Cref{fig:trna-project-outline} summarises the experimental
 procedure.\footnote{The wet-lab work of this project was performed by Bianca
-Schmitt.} \todo{Remove background gradients from graphics}
+Schmitt.}
 
-\textfig{trna-project-outline}{body}{0.8\textwidth}
+\textfig[\todo{Remove background gradients from graphics}]{trna-project-outline}{body}{0.8\textwidth}
     {Sample analysis outline}
     {Samples were collected in eight distinct time points …}
 
@@ -34,7 +34,8 @@ stages of development is too small to permit collecting enough tissue-specific
 material. For that reason, we used the whole embryo at E9.5 and separated the
 E12.5 embryo into torso and upper body. The subsequent analysis was performed on
 the six later stages in liver and brain, unless noted otherwise.\todo{never
-mentioned again}
+mentioned again} However, the earlier stages were able confirm the general
+patterns found by analysing the remaining data.\todo{add supplementary PCA}
 
 The results presented in this chapter are published as \citet{Schmitt:2014}.
 
@@ -44,35 +45,23 @@ The results presented in this chapter are published as \citet{Schmitt:2014}.
 \section{Protein-coding gene expression changes dynamically during mouse
 development}
 
+In order to investigate how protein-coding genes change expression during
+development, we used the generated \rnaseq expression data, which reports counts
+for each gene in each condition proportional to the expression strength of that
+gene.
+
 Changes in the expression of protein-coding genes, leading to changes in
 abundance of proteins, are known to drive cellular behaviour\todo{ref}. Our data
 confirms that tissue development in mice is accompanied by large-scale changes
-to the \mrna transcriptome (\cref{fig:mrna-expression-change}).
-
-This is nicely illustrated by looking at individual gene expression patterns.
-For example, we can confirm the functional relevance of apolipoprotein B
-(\protein{APOB}) as the primary carrier of lipoproteins, which becomes
-increasingly relevant as the organ shifts to metabolism \citep{Knott:1986}.
-Similarly, \mrna gene expression changes highlight the role of α-fetoproteine
-(\protein{AFP}) as the fetal version of serum albumin (\cref{fig:apob-afp})
-\citep{Chen:1997}.\todo{Explain brain examples as well?}
-
-A more systematic analysis shows that changes in gene expression happen
-incrementally across the profiled stages of development: The \pca of the
-pairwise correlation between all stages (and their gene expression values)
-reveals that the first principal component is correlated with tissue identity,
-and the second principal component is correlated with developmental time.
-(\cref{fig:mrna-pca}). The number of differentially expressed genes between all
-pairwise developmental stages shows a similar pattern, with more distinct
-developmental stages having higher numbers of differentially expressed genes
-(\cref{fig:mrna-de-matrix}).
-
-These patterns are noteworthy because they recapitulate tissue identity and
-linear progression through the stages of tissue development. But they are not
-particularly surprising: after all, cell function is dictated by specific
-protein abundance and thus protein-coding gene transcription --- the patterns of
-gene expression similarity shown in the \pca therefore recapitulate the expected
-changes in cell function between tissues, and over the course of development.
+to the \mrna transcriptome. This is nicely illustrated by looking at individual
+gene expression counts, plotted against their genomic location
+(\cref{fig:mrna-expression-change}). For example, we can confirm the functional
+relevance of apolipoprotein B (\protein{APOB}) as the primary carrier of
+lipoproteins, which becomes increasingly relevant as the organ shifts to
+metabolism \citep{Knott:1986}. Similarly, \mrna gene expression changes
+highlight the role of α-fetoproteine (\protein{AFP}) as the fetal version of
+serum albumin (\cref{fig:apob-afp}) \citep{Chen:1997}.\todo{Explain brain
+examples as well?}
 
 \textfloat{mrna-expression-change}{spill}{%
     \centering
@@ -91,6 +80,39 @@ changes in cell function between tissues, and over the course of development.
     down over the course of development, correspoding to either an up- or
     downregulation.}
 
+For a more systematic analysis, I took the matrix of normalised count data of
+all library replicates and all \mrna[s], \(m_{ij}\), for each \mrna gene \(i\)
+and each library replicate \(j\), and calculated pairwise Spearman rank
+correlations between all replicates,
+
+\begin{equation}
+    c_{ij} = \operatorname{cor}(m_{\dots i}, m_{\dots j}) \text{ for all
+        libraries \(i\), \(j\).}\todo{check typography}
+\end{equation}
+
+I then performed \pca on the correlation matrix, which allows to project the
+variation in the data onto uncorrelated axes, so that the first axis represents
+the greatest variance of the data, and the second axis represents the second
+greatest variance.
+
+The resulting \pca in \cref{fig:mrna-pca} shows that the biggest source of
+variance in the correlation structure of the expression data is tissue identity,
+which explains \num{97} per cent of the total variance. However, of the
+remaining variance, \num{60} per cent is explained by progression of tissue
+development in a way which nicely mirrors biology: the plot’s \(y\) axis shows
+the linear progression of development from early stages at the bottom to late
+stages at the top.
+
+Next, I used \name{DESeq2} \citep{Love:2014} to call differentially expressed
+genes between stages and tissues. Genes are counted as differentially expressed
+here if their Benjamini–Hochberg \fdr-corrected \(p\)-value is below
+\num{0.001}. The number of differentially expressed genes between all pairwise
+developmental stages unsurprisingly shows that more distinct developmental
+stages having higher numbers of differentially expressed genes
+(\cref{fig:mrna-de-matrix}). Furthermore, there is a clear gap between pre- and
+post-weaning stages, with a large jump in the number of differentially expressed
+genes across the weaning boundary, in both liver and brain.
+
 \textfigtwo{mrna-pca}
     {\pca of \mrna gene expression per developmental stage.}
     {Rotations \num{1} and \num{2} of the correlation matrix of
@@ -101,6 +123,14 @@ changes in cell function between tissues, and over the course of development.
     {Each off-diagonal square shows the number of differentially
     expressed genes (at a significance threshold of \(p<0.01\)) between
     the two indicated developmental stages.}
+
+These patterns are noteworthy because they recapitulate tissue identity and
+linear progression through the stages of tissue development. But they are not
+particularly surprising: after all, cell function is dictated by specific
+protein abundance and thus protein-coding gene transcription --- the patterns of
+gene expression similarity shown in the \pca and in the number of differentially
+expressed genes therefore recapitulate the expected changes in cell function
+between tissues, and over the course of development.
 
 \section{Dynamic changes of \trna gene expression during mouse development}
 

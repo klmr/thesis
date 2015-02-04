@@ -34,14 +34,7 @@ sex chromosomes.
 
 \section{Differential expression analysis}
 
-\name{DESeq2} \citep{Love:2014} was used to call differentially expressed genes
-for both \mrna and \trna genes between stages and tissues. In our analysis, we
-called genes differentially expressed when their Benjamini–Hochberg
-\fdr-corrected \(p\)-value was below \num{0.001}.
-
 \section{PCA}
-
-\todo{Write something about PCAs}
 
 \section{Codon usage and correlation with anticodon abundance}
 
@@ -58,7 +51,7 @@ calculated using
     x_{ij}^* = x_{ij}\left(\sum_{k=1}^n x_{kj}\right)^{-1},
 \end{equation}
 
-where \(x_ij\) is the triplet codon usage for triplet codon \(i\) in stage
+where \(x_{ij}\) is the triplet codon usage for triplet codon \(i\) in stage
 \(j\), and \(x_{ij}^*\) is the relative usage.
 
 Anticodon abundance was calculated by taking the mean of the expression values
@@ -164,7 +157,7 @@ Spearman’s rank correlation (across developmental stages) between the expressi
 values of each pair of its corresponding \trna genes, i.e.\ we calculate
 
 \begin{equation}
-    c_{ij} = \operatorname{Cor}(x_i, x_j) \text{ for \(i, j \in T, i < j\)},
+    c_{ij} = \operatorname{cor}(x_i, x_j) \text{ for \(i, j \in T, i < j\)},
 \end{equation}
 
 where \(T\) is the set of \trna genes in the isoacceptor family, and \(x_i\) is
@@ -173,7 +166,7 @@ development. For the same set of genes, we calculated a null set of correlations
 as follows:
 
 \begin{equation}
-    b_{ijk} = \operatorname{Cor}(\operatorname{perm}_k(x_i), x_j)
+    b_{ijk} = \operatorname{cor}(\operatorname{perm}_k(x_i), x_j)
         \text{ for \(i, j \in T, i < j; k \in 1\dots\lvert x_i\rvert!\)}.
 \end{equation}
 
