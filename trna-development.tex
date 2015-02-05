@@ -47,8 +47,8 @@ development}
 
 In order to investigate how protein-coding genes change expression during
 development, we used the generated \rnaseq expression data, which reports counts
-for each gene in each condition proportional to the expression strength of that
-gene.
+for each gene in each condition proportional to the expression strength times
+the length of that gene.
 
 Changes in the expression of protein-coding genes, leading to changes in
 abundance of proteins, are known to drive cellular behaviour\todo{ref}. Our data
@@ -134,6 +134,12 @@ between tissues, and over the course of development.
 
 \section{Dynamic changes of \trna gene expression during mouse development}
 
+I treated \trna gene expression count data in the same way as the \mrna gene
+expression data, with one exceptions: as described in \cref{sec:chip}, I
+filtered unexpressed \trna genes using a fixed threshold. The following analysis
+is thus using only the \num{311} expressed out of \num{433} total genes
+(\num{72} per cent).
+
 Unlike protein-coding genes, \trna genes are not directly implicated in changes
 of cellular function. We therefore did not expect many changes of the levels of
 \trna gene expression over the course of development, and we do in fact observe
@@ -158,9 +164,10 @@ dynamics.
 
 Surprisingly, the \trna gene expression differences follow similar patterns to
 those observed in \mrna genes when plotting the first two principal components
-of their \pca (\cref{fig:trna-pca}). The observed patterns are incompatible with
-mere \emph{random} expression changes. Something must account for these
-concerted changes in \trna gene expression.
+of the \pca of the rank correlated replicates (\cref{fig:trna-pca}). The
+observed patterns are incompatible with mere \emph{random} expression changes
+(which would result in an unordered cloud of points). Something must account for
+these concerted changes in \trna gene expression.
 
 \textfig{trna-pca}{body}{0.5\textwidth}
     {\pca of \trna gene expression per developmental stage.}
@@ -195,16 +202,30 @@ their anticodon isoacceptor identity.
 \section{Every mouse \mrna transcriptome encodes the same distribution of
 triplet codons and amino acids}
 
-The codon pool of a given \mrna transcript is given by the destribution of
+The codon pool of a given \mrna transcript is given by the distribution of
 triplet codons in its sequence. There are 64 possible triplet codons, of which
 61 encode 20 different amino acids, and three encode the stop codon, marking the
-end of translation.\footnote{Our analysis ignores selenocysteine, which is a
-\num{21}st possible amino acid, and which can be encoded by one of the stop
-codons under very rare circumstances.} Using this information and the transcript
-abundance, quantified by our \rnaseq data, we calculated the abundance of each
+end of translation.\footnote{My analysis ignores selenocysteine, which is a
+\num{21}st possible amino acid, and which can be encoded by the stop codons
+\codon{UGA} under rare circumstances.} Using this information and the transcript
+abundance, quantified by our \rnaseq data, I calculated the abundance of each
 triplet codon as well as each amino acid in the transcriptome of each
-developmental stage. We then compared these across stages to find out how they
+developmental stage. I then compared these across stages to find out how they
 varied.
+
+First, for every gene, the number of occurrences of each codon in the longest
+annotated transcript (the “canonical” transcript) was determined and this value
+was multiplied by the gene’s expression (normalised for transcript length).
+Next, the overall usage of each codon was obtained by summing these values
+across all genes. Relative codon and usage (excluding selenocysteine) were
+calculated using
+
+\begin{equation}
+    x_{ij}^* = x_{ij}\left(\sum_{k=1}^n x_{kj}\right)^{-1},
+\end{equation}
+
+where \(x_{ij}\) is the triplet codon usage for triplet codon \(i\) in stage
+\(j\), and \(x_{ij}^*\) is the relative usage.
 
 We find that on the transcriptome level, codon abundance is highly stable across
 development in both tissues (Spearman’s \(\rho > 0.97\)) ---
@@ -213,6 +234,15 @@ the codons for arginine in the different stages in liver.
 
 Given this stability, we wondered how much variation should be expected, by
 simulating random transcriptomes, and computing their codon usage.
+
+I used our library-size normalised \rnaseq data to simulate background
+distributions in liver and brain for each specific developmental stage. I
+randomly rearranged the expression values across genes for the expressed
+(“\textsc{expr}”) and all genomically annotated (“\textsc{all}”) protein-coding
+genes. For each developmental stage, I created \num{100} such random background
+distributions. I then calculated the triplet codon usage for the rearranged
+protein-coding \rna expression distributions.
+
 \Cref{fig:codon-anticodon-abundance} top middle and right shows that even for
 simulated transcriptomes the codon usage remains unchanged. In fact, both
 observed and simulated transcriptomes seem to simply reflect the codon abundance
@@ -242,50 +272,77 @@ variations in gene expression between different transcriptomes.
 \section{Stable isoacceptor anticodon abundance through development indicates
 tight regulation of tRNA gene expression}
 
-Next, we looked at the abundance of the matching \trna isoacceptors by summing
+Next, I looked at the abundance of the matching \trna isoacceptors by summing
 the expression of all \trna genes belonging to the same isoacceptor family.
+Anticodon abundance was calculated by averaging the expression values for all
+\trna genes in a given anticodon isoacceptor family.
 \Cref{fig:codon-anticodon-abundance} centre left shows the relative anticodon
 isoacceptor abundance of the arginine isotype family. Again we find that the
 abundance stays stable across development in both tissues (Spearman’s \(\rho >
 0.96\)).
 
-In the same way as for the \mrna transcriptome, we then simulated random \trna
-transcriptomes and calculated the relative abundance of all isoacceptor
-families. Unlike for the observed \trna data, we find that simulated \trna
-transcriptomes create highly variable pools of anticodon isoacceptors
-(\cref{fig:codon-anticodon-abundance} centre middle and right). The variability
-observed here is explained by the fact that there are only \num{433} \trna genes
-in \mmu (of which only \num{311} were expressed in our samples), compared to the
-approximately \num{20000} protein-coding genes, which leads to a bigger
-influence of random sampling. In contrast to \mrna gene expression, the stable
-anticodon isoacceptor abundance distribution we observe across development is
-therefore not compatible with random variation in the \trna gene expression:
-instead, it demonstrates the necessity of a mechanism actively stabilising \trna
-gene expression variation at the anticodon isoacceptor level.
+In the same way as for the \mrna transcriptome, I then simulated \num{100}
+random \trna transcriptomes per developmenta stage and calculated the relative
+abundance of all isoacceptor families. Unlike for the observed \trna data, we
+find that simulated \trna transcriptomes create highly variable pools of
+anticodon isoacceptors (\cref{fig:codon-anticodon-abundance} centre middle and
+right). The variability observed here is explained by the fact that there are
+only \num{433} \trna genes in \mmu (of which only \num{311} were expressed in
+our samples), compared to the approximately \num{20000} protein-coding genes,
+which leads to a bigger relative influence of random sampling on the
+distribution. In contrast to \mrna gene expression, the stable anticodon
+isoacceptor abundance distribution we observe across development is therefore
+not compatible with random variation in the \trna gene expression: instead, it
+demonstrates the necessity of a mechanism actively stabilising \trna gene
+expression variation at the anticodon isoacceptor level.
 
 \section{\mrna triplet codon usage is highly correlated with \trna anticodon
 isoacceptor abundance during development}
 
 Codons and anticodon-carrying \trna[s] form the biochemical interface between
 the genetic code and the amino acid sequence of proteins during \mrna
-translation. We investigated this correspondence between \mrna-driven codon
+translation. I investigated this correspondence between \mrna-driven codon
 demand and \trna anticodon supply by looking at the correlation of codons’ usage
 in an \mrna transcriptome and its matching \trna anticodon isoacceptor
 abundances in matching stages of development
-(\cref{fig:codon-anticodon-abundance} bottom left). Across both tissues and all
-stages of development, we find that \mrna codon demand and \trna anticodon
-isoacceptor abundance are highly correlated (\(0.64 < \rho \leq 0.76\)
-Spearman’s rank correlation, all \(p < 0.001\); the calculation excluded
-unmatched \mrna codons due to wobble base pairing\footnote{This method was used
-mainly for of simplicity; \cref{sec:trna-analysis} contains a discussion of more
-accurate measures of the match between codon demand and \trna anticodon supply;
-however, while this changes the numbers we find, these changes don’t affect the
-conclusion.}).\todo{Mention correlation in pools of highly/lowly expressed \mrna
-genes?}
+(\cref{fig:codon-anticodon-abundance} bottom left).
+
+In order to compare how well the anticodon supply of a given transcriptome was
+adapted to its codon demand, I initially calculated the Spearman rank
+correlation between the codon usage and the anticodon isoacceptor abundance.
+Since not all codons have a corresponding anticodon-carrying \trna, unmatched
+“orphan” triplet codons were discarded from the calculation.
+
+The correlation coefficients I calculated thus ignores the possibility of
+wobble base pairing. In order to account for it, one could use an alternative
+metric for how well adapted the \trna pool is to the codon pool
+\citep{Gingold:2011}. In particular, \citet{Dos_Reis:2004} describe the \tai,
+which takes into account all possible wobble base pairings when calculating the
+fit between codon usage and anticodon abundance.\todo{Expand on tAI}
+
+Rather than accounting for all possible base pairings, I opted for a simplified
+version, in which non-orphan codons are matched with their directly
+corresponding anticodons. Orphan codons were matched to the weighted sum of all
+possible \trna anticodon isoacceptor matches by wobble base pairing. For this,
+each anticodon isoacceptor abundance was weighted by estimating its probability
+to pair with each possible codon.\todo{expand using equations}
+
+Across both tissues and all stages of development, we find that \mrna triplet
+codon demand and \trna anticodon isoacceptor abundance are highly correlated
+(\(0.64 < \rho \leq 0.76\) Spearman’s rank correlation, all \(p < 0.001\)),
+ignoring wobble base pairing. Accounting for wobble base pairing in the
+calculation of the adaptation of codon demand and anticodon supply does not
+substantially change these numbers.\todo{Mention correlation in pools of
+highly/lowly expressed \mrna genes?}
 
 We can compare these correlations between \mrna codon demand and \trna anticodon
 supply with the correlations we find between our simulated \mrna and \trna
-transcriptomes. In fact, correlating all \num{100} randomly simulated \trna
+transcriptomes. To calculate correlations for the simulated transcriptomes, I
+first determined the means for each of the \num{100} shuffled triplet codon
+distributions and calculated their Spearman rank correlation with each of the
+\num{100} shuffled isoacceptor distributions.
+
+In fact, correlating all \num{100} randomly simulated \trna
 transcriptomes per tissue with the simulated \mrna transcriptomes yields a
 distribution of significantly lower rank correlation coefficients
 (\cref{fig:codon-anticodon-abundance} bottom middle and right).
@@ -311,32 +368,74 @@ sequence upstream of the \tss of \trna genes to search for \emph{cis}-regulatory
 regions.
 
 In order to find enriched motifs in the vicinity of differentially expressed
-\trna genes between different developmental stages we used the \SI{500}{bp}
-upstream regions of differentially expressed \trna genes and ran a motif
-enrichment algorithm (\name{MEME}, \citet{Bailey:2009}), using stably expressed
-\trna genes as a background. The resulting enriched motifs were checked against
-databases of known \tf binding sites with \name{TOMTOM} \citep{Gupta:2007}. The
-analysis failed to turn up strongly enriched, annotated motifs which may suggest
-that the upstream region of \trna genes does not contain regulatory sequences
-explaining the observed differences in \trna gene expression.\todo{extend?}
+\trna genes between different developmental stages I collected the sequence on
+the forward and reverse strand of the \SI{500}{bp} upstream regions of
+differentially expressed \trna genes. These sequences were cleaned of
+low-complexity regions using the \name{dust} application. A first-order Markov
+model built from the upstream regions of all nondifferentially expressed
+\trna[s] in the appropriate stage–stage contrast was used as background. Motif
+enrichment analysis in the sequences was conducted with \name{MEME}
+\citep{Bailey:2009}, configured to search for zero or one occurrences of one
+motif per sequence, up to a maximum of three distinct motifs, with a minimum
+motif size of \SI{6}{bp}.
+
+Subsequently, \name{TOMTOM} \citep{Gupta:2007} was used to search for the
+enriched motifs in the \name{MEME} output in databases of known \tf binding
+sites. I used the databases \identifier{JASPAR\_CORE\_2009\_vertebrates} and
+\identifier{uniprobe\_mouse}. A minimum overlap of \SI{5}{bp} with an
+\(E\)-value threshold of \num{10} was required. The analysis failed to turn up
+strongly enriched, annotated motifs, which may suggest that the upstream region
+of \trna genes does not contain regulatory sequences explaining the observed
+differences in \trna gene expression.\todo{extend?}
 
 In the absence of clear evidence for nearby \tf binding sites, we hypothesised
 that the transcription regulation of nearby protein-coding genes might influence
-\trna gene expression. We therefore went on to look for enrichment of
+\trna gene expression. I therefore went on to look for enrichment of
 differentially expressed \trna genes in close vicinity to differentially
-expressed protein-coding genes. As for the case of \tf binding sites, we were
+expressed protein-coding genes.
+
+A test for colocalisation of differentially expressed \trna genes and
+differentially expressed \mrna genes was performed between developmental stages
+(E15.5–P22 in liver and P4–P29 in brain, because those were the contrasts with
+the largest number of differentially expressed \trna genes). For each
+up-regulated \trna gene \(i\) we counted the number of up-regulated
+protein-coding genes, \(n_i\), and the total number of protein-coding genes,
+\(b_i\), in the same genomic region of varying window sizes
+(\SIlist{10;50;100}{kb}), which allowed us to compute the ratio \(r_i =
+{n_i}/{b_i}\). We repeated this analysis for each non-differentially expressed
+\trna gene \(j\) to obtain the ratio \(r_j^*\). A Kolmogorov–Smirnov test was
+performed to assess whether the distribution \(r\) of ratios of up-regulated
+protein-coding genes was significantly different in the vicinity of up-regulated
+\trna genes from the distribution \(r^*\) in the vicinity of nondifferentially
+expressed \trna genes with varying significance thresholds
+(\numlist{0.1;0.05;0.01}).
+
+As for the case of \tf binding sites, we were
 unable to demonstrate such an association.\todo{figure}
 
 Besides \emph{cis}-regulatory \emph{sequence} features, another possibility is
 chromatin modifications regulate \trna gene expression in such a way as to show
 the patterns we observed. Previous studies by \citet{Barski:2010,Oler:2010}
 indicate that several chromatin modifications have an influence on \pol3-driven
-transcription. Using previously published data \citep{Shen:2012}, we
-investigated whether three specific histone modifications were associated with
-differential \trna gene expression: H3K27ac, H3K4me3 and H3K4me1. We furthermore
-investigated binding of \pol2 as well as \ctcf. For each of these factors, we
-tested for enrichment around differentially expressed \trna gene loci within
-window sizes of \SIlist{0.1;0.5;1.0}{kb}.
+transcription. Using publicly available, previously published data
+\citep{Shen:2012} (\geo accession \identifier{GSE29184}), I investigated three
+histone modifications associated with genomic regions of promoters and enhancers
+(H3K4me3, H3K4me1, H3K27ac) as well as \pol2 and an insulator, \ctcf. For each
+of these factors, I assayed their association with
+
+\begin{shortenumerate}
+    \item active versus inactive \trna genes in embryonic (E15.5) and adult
+        (P29) tissues; and
+    \item differentially expressed \trna genes between E15.5 and P29,
+\end{shortenumerate}
+
+using Fisher’s exact test in mouse liver and brain tissues. Occurrence of these
+chromatin marks was measured \SIlist{0.1;0.5;1}{kb} upstream of and downstream
+from \trna genes. Our embryonic (E15.5) and adult (P29) \pol3 data was
+complemented with embryonic (E14.5) and adult (P56) \chipseq data, as different
+time points were selected in our and in the \citet{Shen:2012} study. Likewise,
+our brain P29 data was compared with P56 data by merging “cortex” and
+“cerebellum” \chipseq data from \citet{Shen:2012}.
 
 Between E15.5 and P29 in liver, we did indeed find significant association
 between differentially expressed \trna genes and levels of H3K27ac (\(p <
