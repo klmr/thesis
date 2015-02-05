@@ -16,6 +16,7 @@
 \RequirePackage{booktabs}
 \RequirePackage[all]{onlyamsmath}
 \RequirePackage{siunitx}
+\RequirePackage{textcase}
 \RequirePackage[english,iso]{isodate}
 \RequirePackage{xspace}
 \RequirePackage{scalefnt}
@@ -208,12 +209,30 @@
 
 \newcommand*\seq[1]{\mbox{\texttt{#1}}}
 
+\newcommand*\codon[1]{\seq{#1}}
+
+\newcommand*\anticodon[1]{\MakeTextLowercase{\seq{#1}}}
+
 \newcommand*\mismatch[1]{%
     % Fix for spacing from <http://tex.stackexchange.com/a/74469/42>
     \begingroup
     \setlength\fboxsep{0pt}%
     \colorbox[HTML]{FFA0A0}{\reducedstrut#1\/}%
     \endgroup}
+
+\newenvironment{shortenumerate}{%
+    \begin{enumerate}
+        \setlength\itemsep{0pt}
+        \setlength\parskip{0pt}
+        \setlength\parsep{0pt}}
+    {\end{enumerate}}
+
+\newenvironment{shortitemize}{%
+    \begin{itemize}
+        \setlength\itemsep{0pt}
+        \setlength\parskip{0pt}
+        \setlength\parsep{0pt}}
+    {\end{itemize}}
 
 % Organisation
 
