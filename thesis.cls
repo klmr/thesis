@@ -94,6 +94,8 @@
 
 \newcommand*\figcap[3]{\caption{\label{fig:#1}\labelfont{#2} #3}}
 
+\newcommand*\tabcap[3]{\caption{\label{tab:#1}\labelfont{#2} #3}}
+
 \newcommand\align@body[1]{%
     \begin{figure}[h!]
         #1

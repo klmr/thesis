@@ -32,35 +32,6 @@ sex chromosomes.
 %\textfloat{trna-libraries-example}{body}
 %    {\centering\Huge Placeholder}{Placeholder}{Placeholder}
 
-\section{Compensation}
-
-For each isoacceptor that is encoded by more than two \trna genes, we calculated
-Spearman’s rank correlation (across developmental stages) between the expression
-values of each pair of its corresponding \trna genes, i.e.\ we calculate
-
-\begin{equation}
-    c_{ij} = \operatorname{cor}(x_i, x_j) \text{ for \(i, j \in T, i < j\)},
-\end{equation}
-
-where \(T\) is the set of \trna genes in the isoacceptor family, and \(x_i\) is
-the vector of expression values of the \(i\)th \trna gene across all stages of
-development. For the same set of genes, we calculated a null set of correlations
-as follows:
-
-\begin{equation}
-    b_{ijk} = \operatorname{cor}(\operatorname{perm}_k(x_i), x_j)
-        \text{ for \(i, j \in T, i < j; k \in 1\dots\lvert x_i\rvert!\)}.
-\end{equation}
-
-Here, \(\operatorname{perm}_k(x_i)\) is the \(k\)th permutation of the vector
-\(x_i\).
-
-Next, we used the \(\chi^2\)-test to investigate whether there was a significant
-difference between the background \(b\) and the observed correlation
-distributions \(c\). We reported the Bonferroni-corrected \(p\)-value for the
-\num{27} isoacceptor families with six or more genes, since isoacceptor families
-with less than six genes did not enough points for meaningful interpretation.
-
 \section{Genomic clusters}
 
 We defined \num{69} clusters of all genomically annotated \trna genes that lie
