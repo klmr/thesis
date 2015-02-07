@@ -90,3 +90,18 @@ a \trna gene had to be present in all replicates of at least one condition with
 a count of at least \num{10}, after size-factor normalisation. The threshold
 \num{10} was chosen so that small variations in either direction would have a
 minimal impact on the thresholding.
+
+%\section{Normalisation of \trna gene expression}
+%
+%Raw \trna gene expression counts show strong differences between sequencing
+%libraries. For \mrna count data, it is customary to use \name{DESeq}’s
+%\dfn{library size normalisation} \citep{Anders:2010}. However, as shown in
+%\cref{fig:trna-libraries-example}, library size normalised data still follows
+%distinct distributions, which we deem biologically implausible, and probably due
+%to technical bias.
+%
+%As a consequence, we opted to \dfn{quantile normalise} the count data\todo{find
+%reference for quantile normalisation}.
+%
+%\textfloat{trna-libraries-example}{body}
+%    {\centering\Huge Placeholder}{Placeholder}{Placeholder}

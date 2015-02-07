@@ -6,6 +6,7 @@
 \RequirePackage{fixltx2e}
 \RequirePackage{etoolbox}
 \RequirePackage{fontspec}
+\RequirePackage{pifont}
 \RequirePackage{amsmath}
 \RequirePackage{xcolor}
 \RequirePackage{marginnote}
@@ -80,7 +81,7 @@
     \ifmmode% for equations
         \let\mp\marginnote%
     \else
-        \IfFloat{\let\mp\marginnote}{\let\mp\marginpar}
+        \IfFloat{\let\mp\marginnote}{\let\mp\marginpar}%
     \fi
     \mp{
         \colorbox{pink}{\parbox{\marginparwidth}{%
@@ -239,6 +240,11 @@
 % Organisation
 
 \newcommand*\chapterfile[1]{\input{#1.tex}}
+
+\newcommand*\parrule[1][\ding{118}]{%
+    \vspace{\baselineskip}
+    \noindent\hfill{#1}\hfill
+    \vspace{\baselineskip}}
 
 % Titles
 

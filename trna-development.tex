@@ -24,7 +24,8 @@ correlated. \Cref{fig:trna-project-outline} summarises the experimental
 procedure.\footnote{The wet-lab work of this project was performed by Bianca
 Schmitt.}
 
-\textfig[\todo{Remove background gradients from graphics}]{trna-project-outline}{body}{0.8\textwidth}
+\textfig[\todo{Remove background gradients from graphics}]
+    {trna-project-outline}{body}{0.8\textwidth}
     {Sample analysis outline}
     {Samples were collected in eight distinct time points …}
 
@@ -527,6 +528,23 @@ existence of two distinct clusters of \trna genes within the isoacceptor
 families, which compensate for each others’ expression changes. However, these
 clusters of genes do not form genomic clusters, i.e.\ the \trna genes within
 each cluster are not closer to one another than to other clusters.
+
+In order to establish this, we defined \num{69} clusters of all genomically
+annotated \trna genes that lie within \SI{7.5}{kb} of each other. I counted how
+many active \trna genes of an isoacceptor family colocalised in a genomic
+cluster with \trna genes of the same isoacceptor family. I calculated the
+fraction of \trna for each isoacceptor family belonging to a genomic cluster. In
+order to test whether genes in isoacceptor families tend to genomically
+colocalise more than expected by chance, we randomly assigned \trna genes to
+isoacceptor families (preserving the actual isoacceptor family gene numbers)
+\num{1000} times. I then tested whether the mean percentage of clustering \trna
+genes per isoacceptor family differed from the mean percentage expected by
+chance, by using a binomial test. Finally, we tested whether there wa a
+difference in these percentages between isoacceptor families that show evidence
+for compensation, and isoacceptor families that show no such evidence by
+applying a \(\chi^2\)-test.
+
+\parrule
 
 In summary, while we cannot use genomic data to fully explain the \trna gene
 expression patterns we observe over the course of tissue development
