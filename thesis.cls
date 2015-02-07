@@ -6,8 +6,10 @@
 \RequirePackage{fixltx2e}
 \RequirePackage{etoolbox}
 \RequirePackage{fontspec}
+\RequirePackage{pifont}
 \RequirePackage{amsmath}
 \RequirePackage{xcolor}
+\RequirePackage{marginnote}
 \RequirePackage{wrapfig}
 \RequirePackage{microtype}
 \RequirePackage{polyglossia}
@@ -15,6 +17,7 @@
 \RequirePackage{booktabs}
 \RequirePackage[all]{onlyamsmath}
 \RequirePackage{siunitx}
+\RequirePackage{textcase}
 \RequirePackage[english,iso]{isodate}
 \RequirePackage{xspace}
 \RequirePackage{scalefnt}
@@ -65,9 +68,22 @@
 
 % General helper commands
 
+%\newcommand\IfFloat[2]{\ifnum\@floatpenalty<0\relax#1\else#2\fi}
+
+% From <http://tex.stackexchange.com/q/27172/42>
+\newbool{detect@float}
+\appto\@endfloatbox{\boolfalse{detect@float}}
+\preto\@floatboxreset{\booltrue{detect@float}}
+\newrobustcmd\IfFloat[2]{\ifbool{detect@float}{#1}{#2}}
+
 \newcommand*\todo[1]{%
     \textcolor[HTML]{A00000}{\kern-0.2em\textbf{|}\kern-0.2em}%
-    \marginpar{
+    \ifmmode% for equations
+        \let\mp\marginnote%
+    \else
+        \IfFloat{\let\mp\marginnote}{\let\mp\marginpar}%
+    \fi
+    \mp{
         \colorbox{pink}{\parbox{\marginparwidth}{%
             \RaggedRight%
             \vskip2pt
@@ -78,6 +94,8 @@
 \let\labelfont\textbf
 
 \newcommand*\figcap[3]{\caption{\label{fig:#1}\labelfont{#2} #3}}
+
+\newcommand*\tabcap[3]{\caption{\label{tab:#1}\labelfont{#2} #3}}
 
 \newcommand\align@body[1]{%
     \begin{figure}[h!]
@@ -115,13 +133,13 @@
     % #2: content
     \csuse{align@#1}{#2}}
 
-\newcommand*\textfig[5]{%
+\newcommand\textfig[6][]{%
     % #1: label
     % #2: alignment command
     % #3: width
     % #4: figure caption
     % #5: figure description
-    \textfloat{#1}{#2}{\centering\includegraphics[width=#3]{#1}}{#4}{#5}}
+    \textfloat{#2}{#3}{\centering\includegraphics[width=#4]{#2}#1}{#5}{#6}}
 
 \newcommand*\textfigtwo[6]{%
     % #1 label 1
@@ -194,6 +212,10 @@
 
 \newcommand*\seq[1]{\mbox{\texttt{#1}}}
 
+\newcommand*\codon[1]{\seq{#1}}
+
+\newcommand*\anticodon[1]{\MakeTextLowercase{\seq{#1}}}
+
 \newcommand*\mismatch[1]{%
     % Fix for spacing from <http://tex.stackexchange.com/a/74469/42>
     \begingroup
@@ -201,9 +223,28 @@
     \colorbox[HTML]{FFA0A0}{\reducedstrut#1\/}%
     \endgroup}
 
+\newenvironment{shortenumerate}{%
+    \begin{enumerate}
+        \setlength\itemsep{0pt}
+        \setlength\parskip{0pt}
+        \setlength\parsep{0pt}}
+    {\end{enumerate}}
+
+\newenvironment{shortitemize}{%
+    \begin{itemize}
+        \setlength\itemsep{0pt}
+        \setlength\parskip{0pt}
+        \setlength\parsep{0pt}}
+    {\end{itemize}}
+
 % Organisation
 
 \newcommand*\chapterfile[1]{\input{#1.tex}}
+
+\newcommand*\parrule[1][\ding{118}]{%
+    \vspace{\baselineskip}
+    \noindent\hfill{#1}\hfill
+    \vspace{\baselineskip}}
 
 % Titles
 

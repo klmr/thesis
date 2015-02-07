@@ -1,0 +1,16 @@
+\chapter{\abbr{rna} sequencing quantifies protein-coding gene expression}
+
+\section{Quantifying expression of \mrna genes}
+
+In order to investigate protein-coding gene expression, we quantified the \mrna
+abundance from \rrna-depleted \rnaseq data (strand-specific \SI{75}{bp}
+paired-end reads from \name{Illumina} \name{HiSeq~2000}). Reads were mapped to
+the \mmu reference genome (\abbr{ncbim37}) using \name{iRAP}
+\citep{Fonseca:2014} and \name{TopHat2} \citep{Kim:2013}. Read counts were
+quantified using \name{HTSeq} \citep{Anders:2014}, and assigned to
+protein-coding genes from the \name{Ensembl} release \num{67}
+\citep{Flicek:2014}.\todo{add \chipseq and \rnaseq pipeline flowcharts}
+
+We excluded mitochondrial chromosomes from the analysis, because mitochondrial
+genes use a slightly distinct genetic code\todo{ref}. Furthermore, we excluded
+sex chromosomes.
