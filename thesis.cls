@@ -20,6 +20,7 @@
 \RequirePackage{textcase}
 \RequirePackage[english,iso]{isodate}
 \RequirePackage{xspace}
+\RequirePackage{tikz}
 \RequirePackage{scalefnt}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
@@ -31,8 +32,14 @@
 
 % General settings
 
+\usetikzlibrary{external}
+
 \setmainlanguage[variant=uk]{english}
 \graphicspath{{gfx/}}
+\tikzexternalize[mode=list and make, prefix=cache/]
+% We get an unrecoverable error otherwise.
+% Taken from <http://tex.stackexchange.com/a/165937/42>
+\global\let\tikz@ensure@dollar@catcode=\relax
 
 % General formatting
 
@@ -244,7 +251,9 @@
 \newcommand*\parrule[1][\ding{118}]{%
     \vspace{\baselineskip}
     \noindent\hfill{#1}\hfill
-    \vspace{\baselineskip}}
+    \vspace{\baselineskip}%
+    \@afterindentfalse%
+    \@afterheading}
 
 % Titles
 
