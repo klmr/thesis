@@ -1,9 +1,34 @@
 \chapter{Introduction}
 
+\section{The central dogma}
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        [circle, draw, inner sep=1em, node distance=3em]
+        \node (dna) {DNA};
+        \node (rna) [right of=dna] {RNA};
+        \node (protein) [right of=rna] {protein};
+        \draw [->] (dna) -- (rna);
+        \draw [->] (rna) -- (protein);
+    \end{tikzpicture}
+    \figcap{dogma}{The central dogma of molecular biology.}{}
+\end{figure}
+
+\subsection{Aside: modern modifications to the central dogma and evolution}
+
+\subsection{Transcription}
+
+\subsection{Translation}
+
+\subsection{The role of \abbr{trna}s in translation}
+
 \section{Gene expression and its regulation}
 
 \section{Using high-throughput sequencing for whole-genome analysis}
 
-\section{Types of non-coding RNA, their function and expression}
+\subsection{Explain history and technology of \abbr{hts}}
+
+\section{Types of non-coding \abbr{rna}, their function and expression}
 
 \section{Structure of this thesis}
