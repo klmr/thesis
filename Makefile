@@ -14,6 +14,17 @@ ${target}.pdf: ${includes}
 %.pdf: %.tex
 	cd $$(dirname $@); ${LATEXMK} $$(basename $<)
 
+# FIXME: This isn’t perfect, because it needs to be triggered manually.
+.PHONY: figures
+figures: ${$(shell cat ${target}.figlist):%=%.md5} figures.make cache
+	${MAKE} -f figures.make
+
+figures.make: ${target}.makefile
+	sed -e 's/pdflatex/xelatex/g' -e 's/\^\^I/	/g' $< > $@
+
+cache:
+	mkdir -p cache
+
 .PHONY: preview
 preview:
 	${LATEXMK} -pvc ${target}
@@ -28,6 +39,8 @@ clean:
 	${RM} texput.log
 	${RM} xelatex*.fls
 	${RM} -r $(shell biber --cache)
+	${RM} cache/*
+	${RM} figures.make
 
 .PHONY: cleanall
 cleanall: clean
