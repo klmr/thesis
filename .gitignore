@@ -12,3 +12,7 @@
 thesis-blx.bib
 bib_sources.conf
 references.bib
+figures.make
+*.figlist
+*.makefile
+cache
