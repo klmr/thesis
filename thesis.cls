@@ -205,6 +205,8 @@
 \newcommand*\reducedstrut{%
     \vrule width 0pt height .9\ht\strutbox depth .9\dp\strutbox\relax}
 
+\newcommand*\texttitle[1]{\textit{“#1”}}
+
 \newcommand*\name[1]{\textsf{#1}}
 
 \newcommand*\identifier[1]{\texttt{#1}}
