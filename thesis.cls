@@ -10,6 +10,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{xcolor}
 \RequirePackage{marginnote}
+\RequirePackage{enumitem}
 \RequirePackage{wrapfig}
 \RequirePackage{microtype}
 \RequirePackage{polyglossia}
@@ -83,7 +84,7 @@
 \preto\@floatboxreset{\booltrue{detect@float}}
 \newrobustcmd\IfFloat[2]{\ifbool{detect@float}{#1}{#2}}
 
-\newcommand*\todo[1]{%
+\newcommand\todo[1]{%
     \textcolor[HTML]{A00000}{\kern-0.2em\textbf{|}\kern-0.2em}%
     \ifmmode% for equations
         \let\mp\marginnote%
