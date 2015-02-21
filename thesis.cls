@@ -10,7 +10,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{xcolor}
 \RequirePackage{marginnote}
-\RequirePackage{enumitem}
+\RequirePackage[inline]{enumitem}
 \RequirePackage{wrapfig}
 \RequirePackage{microtype}
 \RequirePackage{polyglossia}
@@ -86,10 +86,14 @@
 
 \newcommand\todo[1]{%
     \textcolor[HTML]{A00000}{\kern-0.2em\textbf{|}\kern-0.2em}%
-    \ifmmode% for equations
+    \ifinner%
         \let\mp\marginnote%
     \else
-        \IfFloat{\let\mp\marginnote}{\let\mp\marginpar}%
+        \ifmmode%
+            \let\mp\marginnote%
+        \else
+            \IfFloat{\let\mp\marginnote}{\let\mp\marginpar}%
+        \fi
     \fi
     \mp{
         \colorbox{pink}{\parbox{\marginparwidth}{%
