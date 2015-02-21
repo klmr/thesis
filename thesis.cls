@@ -202,6 +202,8 @@
 
 \input{abbreviations.tex}
 
+\newcommand*\define[1]{\emph{#1}}
+
 % From <http://tex.stackexchange.com/a/74469/42>
 \newcommand*\reducedstrut{%
     \vrule width 0pt height .9\ht\strutbox depth .9\dp\strutbox\relax}
