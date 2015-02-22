@@ -55,6 +55,9 @@
     BoldItalicFont={* Italic}]{Gill Sans}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
+\let\old@amp\&
+\def\&{\textit{\old@amp}}
+
 \DefineBibliographyStrings{english}{andothers = {\&~al\adddot}}
 
 \captionsetup{%
