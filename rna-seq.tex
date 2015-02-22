@@ -85,11 +85,64 @@ high-throughput sequencing machine (\cref{fig:rna-seq-procedure}).
 
 \textfig{rna-seq-procedure}{spill}{\textwidth}
     {\rnaseq procedure.}
-    {Modified from \citet{Mortazavi:2008}.}
+    {Adapted from \citet{Mortazavi:2008}.}
 
 \subsection{Computational methods to analyse \abbr{rnaseq} data}
 
+Sequencing the \rnaseq samples yields short-read libraries several tens of
+millions of reads in size, with reads of uniform length from \SI{25}{bp} up to
+(currently) about \SI{125}{bp}. These are then mapped to a reference --- either
+the whole genome or the transcriptome --- or assembled \emph{de novo} (usually
+in absence of a suitable reference). This assigns reads to genomic locations,
+which can be queried and matched to features (usually genes or exons).
+
+One important distinction depends on whether the \cdna fragments were sequenced
+from both ends or from one end only. In the first case, instead of single reads
+we end up with paired-end reads, which are separated by a known distance.
+Mapping and assembling paired-end reads creates further algorithmic challenges
+but increases the amount of information contained in a read (pair), which
+increases the amount of unambiguously mappable data.
+
 \subsection{Expression normalisation}
+
+Since the end goal of \rnaseq is to quantify transcript abundance, the next step
+is to quantify the number of reads mapping to genomic features. In the simplest
+case, one can count the number of reads overlapping with a feature’s genomic
+range. This is what e.g.\ \name{HTSeq} \citep{Anders:2014} does. However, read
+counts obtained in this manner vary with the length of the mappable region ---
+longer features originate more sequenced fragments, and hence more reads, with
+equal coverage, compared to shorter features --- and with the total size of the
+sequenced library.
+
+\cite{Mortazavi:2008} therefore introduced a relative measure of transcript
+abundance, the \rpkm, defined as
+
+\begin{equation}
+    x^*_i = \frac{x_i}{\tilde l_i \cdot 10^{-3} \cdot n \cdot 10^{-6}}
+        \text{\ ,}
+\end{equation}
+
+where \(x^*_i\) is the \rpkm of transcript \(i\), \(x_i\) is the read count on
+the transcript, \(\tilde l_i\) is the effective length of the transcript (i.e.\ 
+its length minus the fragment length plus \num{1}) and \(n\) is the library size
+(in number of reads). With the advent of paired-end sequencing this measure has
+been supplanted by the \fpkm, simply replacing the number of reads in the
+equation with the number of fragments (i.e.\ the read pairs rather than single
+reads in the case of paired-end data).
+
+A related measure is the \tpm, which additionally normalise by the total
+transcript abundance \citep{Li:2010}. In other words,
+
+\begin{equation}
+    x^*_i = \frac{x_i}{\tilde l_i} \cdot \left(\sum_j{\frac{x_j}{\tilde
+        l_j}}\right)^{-1} \cdot 10^6 \text{\ .}
+\end{equation}
+
+\tpm succinctly answers the question, “given one million transcript in my
+sample, how often will I see transcript \(i\)?” It is important to note that
+both approaches give a sample dependent abundance, and thus neither of
+these units makes measured transcript abundance comparable across different
+experiments. To do this, a different approach has to be taken.
 
 \subsection{Differential expression}
 
