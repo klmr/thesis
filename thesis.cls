@@ -200,13 +200,13 @@
         % FIXME Why does the following command definition only require two
         % `#`s to define its arguments, and not three?
         \global\csdef{abbrev@#2}##1{\abbr{#2}##1}%
-        \ifblank{#1}{\hashtag{\abbr{#2}}##1}{#1##1 (\hashtag{\abbr{#2}})}}%
+        \ifblank{#1}{\define{\abbr{#2}}##1}{#1##1 (\define{\abbr{#2}})}}%
     \expandafter\newrobustcmd\expandafter*\csname #2\endcsname[1][]{%
         \csuse{abbrev@#2}{##1}\xspace}}
 
 \input{abbreviations.tex}
 
-\newcommand*\define[1]{\emph{#1}}
+\newcommand*\define[1]{\emph{\hashtag{#1}}}
 
 % From <http://tex.stackexchange.com/a/74469/42>
 \newcommand*\reducedstrut{%
