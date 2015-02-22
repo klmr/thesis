@@ -46,7 +46,13 @@
 % General formatting
 
 \setmainfont[Ligatures=TeX, Numbers=OldStyle]{TeX Gyre Pagella}
-\setsansfont[Ligatures=TeX, Numbers=OldStyle]{Linux Biolinum}
+\setsansfont[
+    Ligatures=TeX,
+    Numbers=OldStyle,
+    UprightFont={* Light},
+    BoldFont={*},
+    ItalicFont={* Light Italic},
+    BoldItalicFont={* Italic}]{Gill Sans}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
 \DefineBibliographyStrings{english}{andothers = {\&~al\adddot}}
