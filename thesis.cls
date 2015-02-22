@@ -52,7 +52,8 @@
     UprightFont={* Light},
     BoldFont={*},
     ItalicFont={* Light Italic},
-    BoldItalicFont={* Italic}]{Gill Sans}
+    BoldItalicFont={* Italic},
+    Scale=MatchLowercase]{Gill Sans}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
 \let\old@amp\&
