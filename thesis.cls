@@ -54,6 +54,7 @@
     ItalicFont={* Light Italic},
     BoldItalicFont={* Italic},
     Scale=MatchLowercase]{Gill Sans}
+\setmonofont[Scale=MatchLowercase]{WenQuanYi Zen Hei Mono}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
 \let\old@amp\&
