@@ -1,13 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{thesis}
 
-\LoadClass[twoside, titlepage]{scrreprt}
+\LoadClass[twoside, titlepage, DIV=8, BCOR=8.5mm]{scrreprt}
 
 \RequirePackage{fixltx2e}
 \RequirePackage{etoolbox}
 \RequirePackage{fontspec}
 \RequirePackage{pifont}
 \RequirePackage{amsmath}
+\RequirePackage{setspace}
 \RequirePackage{xcolor}
 \RequirePackage{marginnote}
 \RequirePackage[inline]{enumitem}
@@ -59,6 +60,8 @@
     justification=justified}
 
 \renewcommand*\thefootnote{\fnsymbol{footnote}}
+
+\setstretch{1.1}
 
 % General programming tools
 
