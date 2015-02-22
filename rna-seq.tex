@@ -35,19 +35,20 @@ different probes can be generated and queried in parallel. Due to their
 miniaturisation, these arrays are known as \define{microarrays}.
 
 While microarrays are still playing an important role in transcriptome analysis,
-they have recently been superseded by another technology due to two
-disadvantages:
+they have recently been superseded by another technology due, mainly, to two
+disadvantages \citep{Casneuf:2007,Marioni:2008}:
 \begin{enumerate*}
     \item Each probe is sequence specific, and only recognises its target \mrna.
         As a consequence, quantification is inherently biased and requires that
         each target is known beforehand. Microarrays thus cannot discover new
         target transcripts, and the design of a new microarray design is
-        technically challenging and expensive.\todo{reference}
-    \item The signal from microarrays, which is a measure of each \mrna[’s]
-        abundance in the sample, is sample-specific. This means that while we
-        can compare the relative expression strength of two \mrna genes on the
-        same microarray, comparing expression of genes between different
-        microarrays is impossible.\todo{reference}
+        technically challenging and expensive.
+    \item Cross-hybridisation causes low-level, non-specific binding of
+        transcripts to non-targeted probes, skewing their reported expression
+        strength. Since this effect is probe dependent, this means that
+        while identical transcripts’ relative abundances can be compared across
+        arrays, abundance of different transcripts \emph{on the same array}
+        cannot be compared.
 \end{enumerate*}
 
 \subsection{\abbr{rnaseq}}
