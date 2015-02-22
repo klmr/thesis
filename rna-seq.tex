@@ -24,15 +24,13 @@ studies\todo{citations}.
 
 %\section{Regulation of protein-coding genes}
 
-\section{Quantifying expression of \abbr{mrna} genes}
-
-\subsection{Microarrays}
+\section{Microarrays}
 
 Historically, the abundance of \mrna has been determined using specific probes,
 which hybridise to complementary target \mrna sequences. In order to determine
 the abundance of many different \mrna[s] simultaneously, large arrays of
 different probes can be generated and queried in parallel. Due to their
-miniaturisation, these arrays are known as \define{microarrays}.
+miniaturisation, these arrays are known as \define{expression microarrays}.
 
 While microarrays are still playing an important role in transcriptome analysis,
 they have recently been superseded by another technology due, mainly, to two
@@ -51,11 +49,41 @@ disadvantages \citep{Casneuf:2007,Marioni:2008}:
         cannot be compared.
 \end{enumerate*}
 
-\subsection{\abbr{rnaseq}}
+\section{\abbr{rnaseq}}
 
-\section{Biological background of \abbr{rnaseq}}
+In 2008, focus shifted from microarrays to whole-transcriptome shotgun
+sequencing for \rna quantification \citep{Mortazavi:2008,Marioni:2008}. In
+contrast to other \rna quantification approaches, whole-transcriptome shotgun
+sequencing (now typically known as \rnaseq) is entirely unbiased in that it does
+not rely on a pre-selected set of transcripts to assay. The approach has been
+shown to yield high-quality results, is highly replicable, has very low noise,
+and is sensitive to transcripts present at low concentration (with a typical
+protocol, even single transcripts are often picked up).
 
-\section{Computational methods to analyse \abbr{rnaseq} data}
+\subsection{Biological background of \abbr{rnaseq}}
+
+\rnaseq analysis starts with the enrichment of relevant transcripts from a
+sample’s total \rna pool. This is important since the \rna fraction that we are
+usually interested in is dwarfed in abundance by the fraction of \rrna (more
+than \num{80} per cent of the cell’s \rna is \rrna), and would thus dilute the
+signal. This enrichment can be done in either of two ways:
+\begin{enumerate*}
+    \item Polyadenylated \rna can be targeted due to their affinity to oligo(dT)
+        primers, short strings of thymine; this will efficiently capture \mrna,
+        which is post-transcriptionally \threep tagged with poly(A) tails.
+    \item The \rna can be \rrna depleted using a RiboMinus protocol, which
+        specifically targets \rrna molecules for removal.
+\end{enumerate*}
+Thus, if one wants to profile non-\mrna molecules, \rrna depletion rather than
+poly(A) selection is the method of choice.
+
+The enriched \rna is subsequently fragmented to a uniform length of about
+\SI{200}{nt}, and reverse transcribed into \cdna. The order of these two steps
+may vary, as both variants have advantages and disadvantages. Ultimately,
+though, the result is a \cdna library of fragments which are then sequenced on a
+high-throughput sequencing machine.\todo{Figure of protocol}
+
+\subsection{Computational methods to analyse \abbr{rnaseq} data}
 
 \subsection{Expression normalisation}
 
