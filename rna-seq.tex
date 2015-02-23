@@ -123,15 +123,18 @@ abundance, the \rpkm, defined as
 \end{equation}
 
 where \(x^*_i\) is the \rpkm of transcript \(i\), \(x_i\) is the read count on
-the transcript, \(\tilde l_i\) is the effective length of the transcript (i.e.\ 
+the transcript, \(\tilde l_i\) is the effective length of the transcript (i.e.\
 its length minus the fragment length plus \num{1}) and \(n\) is the library size
-(in number of reads). With the advent of paired-end sequencing this measure has
-been supplanted by the \fpkm, simply replacing the number of reads in the
-equation with the number of fragments (i.e.\ the read pairs rather than single
-reads in the case of paired-end data).
+(in number of reads). The constant multiplier \num{1e9} merely serves to make
+otherwise very small values more manageable. As a consequence, a single
+transcript in the sample yields in the order of \SI{1}{\rpkm} (but this is
+sample dependent). With the advent of paired-end sequencing the \rpkm has been
+supplanted by the \fpkm, simply replacing the number of reads in the equation
+with the number of fragments (i.e.\ the read pairs rather than single reads in
+the case of paired-end data).
 
-A related measure is the \tpm, which additionally normalise by the total
-transcript abundance \citep{Li:2010}. In other words,
+A related measure is \tpm, which additionally normalise by the total transcript
+abundance \citep{Li:2010}. In other words,
 
 \begin{equation}
     x^*_i = \frac{x_i}{\tilde l_i} \cdot \left(\sum_j{\frac{x_j}{\tilde
