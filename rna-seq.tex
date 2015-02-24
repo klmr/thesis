@@ -157,7 +157,31 @@ has to be taken instead.
 
 \subsection{Differential expression}
 
+One of the main uses of \rnaseq data is to compare and contrast gene expression
+between different conditions, such a between tissues, between different species,
+between healthy and tumour tissues, \etc. By doing so, we hope to find out which
+genes characterise differences and may thus be \emph{causal} of the phenotypic
+change.
+
+\todo[inline]{Explain statistical test}
+
+To find statistically significant differences in gene expressions between two
+samples …,
+
+\todo[inline]{Define test statistic (first Poisson, then NB)}
+
+Reads are assumed to be sampled independently from a population, thus
+read counts on a given feature can be approximated by a Poisson distribution
+\citep{Mortazavi:2008, Marioni:2008}.
+
+However, actual expression data has been shown to be over-dispersed compared to
+the model\citep{Robinson:2007}. In order to accurately model this greater
+dispersion, a negative binomial distribution can be used instead.
+
+\todo[inline]{Briefly describe overdispersion problem}
+
 \section{Using \abbr{rnaseq} to assay gene expression during mouse development}
+\todo{move this section into the tRNA chapter.}
 
 \todo{This describes the specific method used in the \abbr{trna} paper}
 In order to investigate protein-coding gene expression, we quantified the \mrna
