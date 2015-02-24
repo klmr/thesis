@@ -222,7 +222,7 @@ across all genes. Relative codon and usage (excluding selenocysteine) were
 calculated using
 
 \begin{equation}
-    x_{ij}^* = x_{ij}\left(\sum_{k=1}^n x_{kj}\right)^{-1},
+    x_{ij}^* = x_{ij}\left(\sum_{k=1}^n x_{kj}\right)^{-1} \text{\ ,}
 \end{equation}
 
 where \(x_{ij}\) is the triplet codon usage for triplet codon \(i\) in stage
@@ -494,7 +494,8 @@ Spearman’s rank correlation (across developmental stages) between the expressi
 values of each pair of its corresponding \trna genes, i.e.\ we calculate
 
 \begin{equation}
-    c_{ij} = \operatorname{cor}(x_i, x_j) \text{\ for \(i, j \in T, i < j\)},
+    c_{ij} = \operatorname{cor}(x_i, x_j) \text{\ for \(i, j \in T\),
+        \(i < j\),}
 \end{equation}
 
 where \(T\) is the set of \trna genes in the isoacceptor family, and \(x_i\) is
@@ -504,7 +505,7 @@ as follows:
 
 \begin{equation}
     b_{ijk} = \operatorname{cor}(\operatorname{perm}_k(x_i), x_j)
-        \text{\ for \(i, j \in T, i < j; k \in 1\dots\lvert x_i\rvert!\)}.
+        \text{\ for \(i, j \in T, i < j; k \in 1\dots\lvert x_i\rvert!\).}
 \end{equation}
 
 Here, \(\operatorname{perm}_k(x_i)\) is the \(k\)th permutation of the vector
