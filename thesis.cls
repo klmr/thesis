@@ -4,6 +4,7 @@
 \LoadClass[twoside, titlepage, DIV=8, BCOR=8.5mm]{scrreprt}
 
 \RequirePackage{fixltx2e}
+\RequirePackage{xltxtra}
 \RequirePackage{etoolbox}
 \RequirePackage{fontspec}
 \RequirePackage{pifont}
