@@ -98,14 +98,14 @@
 \preto\@floatboxreset{\booltrue{detect@float}}
 \newrobustcmd\IfFloat[2]{\ifbool{detect@float}{#1}{#2}}
 
-\definecolor{todocolor@box}{named}{pink}
+\definecolor{todocolor@box}{HTML}{FFCCCC}
 \definecolor{todocolor@text}{HTML}{A00000}
-\definecolor{refcolor@box}{HTML}{CCFF66}
+\definecolor{refcolor@box}{HTML}{DDFFBB}
 \definecolor{refcolor@text}{HTML}{00A000}
 
 \newcommand\todo@inline[1]{%
     \colorbox{todocolor@box}{\textcolor{todocolor@text}{%
-        \textsf{\textbf{To do:}\\#1}}}}
+        \textsf{\textbf{To do:} #1}}}}
 
 \newcommand\todo@side[1]{\todo@side@do{#1}{todocolor}}
 
