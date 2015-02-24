@@ -113,7 +113,7 @@ a way as to be strand-specific. This allows identification of the strand from
 which fragments originate, and aids in the unambiguous reassembly of the
 sequenced reads, as well as the identification of antisense information within
 (intronic regions in) a gene body, which would otherwise confound the expression
-estimate.\todo[ref]{Add dUTP paper once I’ve read it}
+estimate \citep{Parkhomchuk:2009}.
 
 \subsection{Expression normalisation}
 
@@ -176,18 +176,13 @@ between healthy and tumour tissues, \etc. By doing so, we hope to find out which
 genes characterise differences and may thus be \emph{causal} of the phenotypic
 change.
 
-\todo[inline]{Explain statistical test}
-
 To find statistically significant differences in gene expressions between two
 samples we test the null hypothesis that the gene count in both samples comes
-from the same distribution with the same mean.
-
-\todo[inline]{Define test statistic (first Poisson, then NB)}
+from the same distribution with the same mean.\todo{More detail?}
 
 Reads are assumed to be sampled independently from a population, thus read
 counts on a given feature can be approximated by a Poisson distribution
-\citep{Mortazavi:2008, Marioni:2008}\todo{how does size factor normalisation fit
-.in?} However, actual expression data has been
+\citep{Mortazavi:2008, Marioni:2008}. However, actual expression data has been
 shown to be over-dispersed compared to the model \citep{Robinson:2007}. In order
 to accurately model this greater dispersion, a negative binomial distribution
 can be used instead.
@@ -199,8 +194,28 @@ can be used instead.
 for each gene \(i\) in library \(j\), with mean \(\mu_{ij}\) and variance
 \(\sigma^2_{ij}\).
 
-\todo[inline]{Briefly describe overdispersion problem, and dispersion
-estimation}
+To account for different sampling depth across libraries, it is furthermore
+assumed that most genes do not drastically change expression between biological
+samples. But the few that are highly expressed in some but not all samples have
+a large influence on the total count. Thus, rather than normalising by the
+ratios between total library sizes, each library \(j\) is normalised by a
+summary of the ratios between read counts for all \(n\) genes across libraries.
+Generalised to more than two libraries, gene expression ratios are calculated as
+the ratio of each gene’s read count to the geometric mean across samples:
+
+\begin{equation}
+    s_j = \operatorname{median}_{i = 1}^n
+        \frac{x_{ij}}{\sqrt[\uproot{2}n]{\prod_{\nu = 1}^n x_{\nu j}}}
+        \text{\ .}
+\end{equation}
+
+The parameters of the negative binomial distribution can in principle be
+estimated from the data. However, this is complicated by the typically very
+small number of samples. Different solutions for this problem exist.
+\name{edgeR} \citep{Robinson:2010} fixes one parameter per sample and only
+estimates the other for each gene, while \name{DESeq} by \citet{Anders:2010}
+pools data across genes of similar expression strength, and performs local
+regression to find the dispersion.
 
 \section{Using \abbr{rnaseq} to assay gene expression during mouse development}
 \todo{move this section into the tRNA chapter.}
