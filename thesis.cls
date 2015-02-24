@@ -98,7 +98,10 @@
 \preto\@floatboxreset{\booltrue{detect@float}}
 \newrobustcmd\IfFloat[2]{\ifbool{detect@float}{#1}{#2}}
 
-\newcommand\todo[1]{%
+\newcommand\todo@inline[1]{%
+    \colorbox{pink}{\textcolor[HTML]{A00000}{\textsf{\textbf{To do:}\\#1}}}}
+
+\newcommand\todo@side[1]{%
     \textcolor[HTML]{A00000}{\kern-0.2em\textbf{|}\kern-0.2em}%
     \ifinner%
         \let\mp\marginnote%
@@ -116,6 +119,8 @@
             \leftskip2pt\rightskip2pt
             \textcolor[HTML]{A00000}{\textsf{\textbf{To do:}\\#1}}
             \vskip2pt}}}}
+
+\newcommand\todo[2][side]{\@nameuse{todo@#1}{#2}}
 
 \let\labelfont\textbf
 
