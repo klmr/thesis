@@ -60,7 +60,7 @@ shown to yield high-quality results, is highly replicable, has very low noise,
 and is sensitive to transcripts present at low concentration (with a typical
 protocol, even single transcripts are often picked up).
 
-\subsection{Biological background of \abbr{rnaseq}}
+\subsection{\abbr{rnaseq} sample preparation}
 
 \rnaseq analysis starts with the enrichment of relevant transcripts from a
 sample’s total \rna pool. This is important since the \rna fraction that we are
@@ -84,10 +84,15 @@ though, the result is a \cdna library of fragments which are then sequenced on a
 high-throughput sequencing machine (\cref{fig:rna-seq-procedure}).
 
 \textfig{rna-seq-procedure}{spill}{\textwidth}
-    {\rnaseq procedure.}
-    {Adapted from \citet{Mortazavi:2008}.\todo{Figure draft}}
+    {Possible \rnaseq procedure.}
+    {Starting from a total \rna sample, the \rna of interest is enriched either
+    via poly(A) selection or \rrna depletion. The enriched fraction is
+    fragmented and size-selected. The fragments are reverse transcribed into
+    \cdna and sequenced. The resulting sequencing reads are aligned back to a
+    reference and counted on features of interest. (Adapted from
+    \citet{Mortazavi:2008}).\todo{Figure draft}}
 
-\subsection{Computational methods to analyse \abbr{rnaseq} data}
+\subsection{Computational processing of the sequencing information}
 
 Sequencing the \rnaseq samples yields short-read libraries several tens of
 millions of reads in size, with reads of uniform length from \SI{25}{bp} up to
@@ -102,6 +107,13 @@ per fragment we end up with paired-end reads, which are separated by a known
 distance. Mapping and assembling paired-end reads creates further algorithmic
 challenges but increases the amount of information contained in a read (pair),
 which increases the amount of unambiguously mappable data.
+
+Another distinction is made for fragments which are tagged and selected in such
+a way as to be strand-specific. This allows identification of the strand from
+which fragments originate, and aids in the unambiguous reassembly of the
+sequenced reads, as well as the identification of antisense information within
+(intronic regions in) a gene body, which would otherwise confound the expression
+estimate.\todo[ref]{Add dUTP paper once I’ve read it}
 
 \subsection{Expression normalisation}
 
