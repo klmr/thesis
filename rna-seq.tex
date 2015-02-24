@@ -179,19 +179,28 @@ change.
 \todo[inline]{Explain statistical test}
 
 To find statistically significant differences in gene expressions between two
-samples …,
+samples we test the null hypothesis that the gene count in both samples comes
+from the same distribution with the same mean.
 
 \todo[inline]{Define test statistic (first Poisson, then NB)}
 
-Reads are assumed to be sampled independently from a population, thus
-read counts on a given feature can be approximated by a Poisson distribution
-\citep{Mortazavi:2008, Marioni:2008}.
+Reads are assumed to be sampled independently from a population, thus read
+counts on a given feature can be approximated by a Poisson distribution
+\citep{Mortazavi:2008, Marioni:2008}\todo{how does size factor normalisation fit
+.in?} However, actual expression data has been
+shown to be over-dispersed compared to the model \citep{Robinson:2007}. In order
+to accurately model this greater dispersion, a negative binomial distribution
+can be used instead.
 
-However, actual expression data has been shown to be over-dispersed compared to
-the model\citep{Robinson:2007}. In order to accurately model this greater
-dispersion, a negative binomial distribution can be used instead.
+\begin{equation}
+    X_{ij} \sim \operatorname{NB}(\mu_{ij}, \sigma^2_{ij}) \text{\ ,}
+\end{equation}
 
-\todo[inline]{Briefly describe overdispersion problem}
+for each gene \(i\) in library \(j\), with mean \(\mu_{ij}\) and variance
+\(\sigma^2_{ij}\).
+
+\todo[inline]{Briefly describe overdispersion problem, and dispersion
+estimation}
 
 \section{Using \abbr{rnaseq} to assay gene expression during mouse development}
 \todo{move this section into the tRNA chapter.}
