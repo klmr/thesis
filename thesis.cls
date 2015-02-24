@@ -98,11 +98,23 @@
 \preto\@floatboxreset{\booltrue{detect@float}}
 \newrobustcmd\IfFloat[2]{\ifbool{detect@float}{#1}{#2}}
 
-\newcommand\todo@inline[1]{%
-    \colorbox{pink}{\textcolor[HTML]{A00000}{\textsf{\textbf{To do:}\\#1}}}}
+\definecolor{todocolor@box}{named}{pink}
+\definecolor{todocolor@text}{HTML}{A00000}
+\definecolor{refcolor@box}{HTML}{CCFF66}
+\definecolor{refcolor@text}{HTML}{00A000}
 
-\newcommand\todo@side[1]{%
-    \textcolor[HTML]{A00000}{\kern-0.2em\textbf{|}\kern-0.2em}%
+\newcommand\todo@inline[1]{%
+    \colorbox{todocolor@box}{\textcolor{todocolor@text}{%
+        \textsf{\textbf{To do:}\\#1}}}}
+
+\newcommand\todo@side[1]{\todo@side@do{#1}{todocolor}}
+
+\newcommand\todo@ref[1]{%
+    \ifstrequal{#1}{}{\def\ref@text{reference}}{\def\ref@text{#1}}%
+    \todo@side@do{\ref@text}{refcolor}}
+
+\newcommand\todo@side@do[2]{%
+    \textcolor{#2@text}{\kern-0.2em\textbf{|}\kern-0.2em}%
     \ifinner%
         \let\mp\marginnote%
     \else
@@ -113,11 +125,11 @@
         \fi
     \fi
     \mp{
-        \colorbox{pink}{\parbox{\marginparwidth}{%
+        \colorbox{#2@box}{\parbox{\marginparwidth}{%
             \RaggedRight%
             \vskip2pt
             \leftskip2pt\rightskip2pt
-            \textcolor[HTML]{A00000}{\textsf{\textbf{To do:}\\#1}}
+            \textcolor{#2@text}{\textsf{\textbf{To do:}\\#1}}
             \vskip2pt}}}}
 
 \newcommand\todo[2][side]{\@nameuse{todo@#1}{#2}}
