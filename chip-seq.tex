@@ -20,12 +20,18 @@ genes share the exact same sequence.
 
 In order to identify individual \trna genes and quantify their expression, we
 therefore cannot resort to conventional \rnaseq: the \rna reads covering only
-the transcribed gene region are indistinguishable.
+the transcribed gene region are indistinguishable. Common strategies for
+counting ambiguously mapping reads, as used in \name{ERANGE} by
+\citet{Mortazavi:2008}, still require at least \emph{some} unambiguous
+information, to distinguish different genes which share reads.
 \todo{Biological background of pol3 ChIP}
 
-With the \pol3 \chipseq data, we do not have this problem: reads cover both the
-transcribed sequence and the flanking regions of each gene
-(\cref{fig:trna-pol3-binding-profile}).
+We solve this problem by extending the \trna gene body into the flanking
+regions, which are not under purifying selection, and therefore not conserved.
+As \pol3 \chipseq fragments cover the flanking regions as well as the actual
+gene body (\cref{fig:trna-pol3-binding-profile}), we can use reads uniquely
+mapping to the flanking regions in order to extrapolate coverage of the gene
+bodies for ambiguous reads (\cref{fig:trna-pol3-map-ambiguous-reads}).
 
 \textfig{trna-pol3-binding-profile}{spill}{\textwidth}
     {\trna \pol3 \chip binding profile.}
@@ -34,17 +40,17 @@ transcribed sequence and the flanking regions of each gene
     its flanking regions upstream and downstream of the gene body. This overlap
     plays a role in identifying the individual gene.}
 
-When mapping the reads, we therefore do not discard all non-uniquely mapping
-reads.\footnote{We still discard reads which are likely \pcr duplicates, i.e.\
-map to many locations; we more or less arbitrarily used the threshold of
-\num{20} non-unique mapping locations} We thus end up with reads which have not
-been assigned to a given \trna gene (\cref{fig:trna-pol3-map-ambiguous-reads}).
-In order to assign these reads to \trna genes, we \emph{reallocated} reads after
-mapping, using the number of uniquely mapping reads in \trna genes’ flanking
-regions to determine the most likely origin
-(\cref{fig:trna-pol3-map-ambiguous-reads}) \citep{Kutter:2011}.
+When mapping the reads, we therefore do not discard all ambiguously mapping
+reads. However, we still discard reads which are likely \pcr duplicates, i.e.\
+map to more locations than there are possible \trna genes sharing a common
+sequence (we more or less arbitrarily used the threshold of \num{20} non-unique
+mapping locations). We thus end up with reads which have not been assigned to a
+given \trna gene (\cref{fig:trna-pol3-map-a}). In order to assign
+these reads to \trna genes, we reassign reads after mapping, using the number of
+uniquely mapping reads in \trna genes’ flanking regions to determine the most
+likely origin (\cref{fig:trna-pol3-map-b}) \citep{Kutter:2011}.
 
-Formally, let \(i\) be the \(i\)th \trna gene locus, and \(c_i\) be the count of
+Let \(i\) be the \(i\)th \trna gene locus, and \(c_i\) be the count of
 uniquely mapped reads in its flanking region (we used \SI{\pm100}{bp}). A
 multi-mapping read \(r\), which maps to a set \(T\) of candidate \trna[s], can
 be allocated to a target \trna gene \(i\) randomly with probability
@@ -61,12 +67,14 @@ be allocated to a target \trna gene \(i\) randomly with probability
     \centering
     \begingroup
         \includegraphics[width=\textwidth]{trna-pol3-map-ambiguous-reads-1}
-        \subcaption{Two potential match candidate \trna genes for a read.}
+        \subcaption{\label{fig:trna-pol3-map-a}Two potential match candidate
+            \trna genes for a read.}
     \endgroup
     \begingroup
         \includegraphics[width=\textwidth]{trna-pol3-map-ambiguous-reads-2}
-        \subcaption{Using the count data from the flanking regions to
-            extrapolate most likely mapping positions for ambiguous reads.}
+        \subcaption{\label{fig:trna-pol3-map-b}Using the count data from the
+            flanking regions to extrapolate most likely mapping positions for
+            ambiguous reads.}
     \endgroup}
     {Mapping ambiguous \chip reads.}
     {\chip reads originating from \trna genes can often not be mapped
