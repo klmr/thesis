@@ -2,13 +2,36 @@
 expression}
 \label{sec:chip}
 
+\section{\abbr{chipseq} is a \dna binding assay}
+
+\chipseq is a family of assays based on high-throughput sequencing, like
+\rnaseq, but predating the latter \citet{Johnson:2007}. There are several
+distinct applications to \chipseq but they all rely on the identification and
+quantification of binding sites of specific proteins to \dna. The most common
+use of \chipseq is the identification of novel \tf binding
+sites\todo[ref]{ENCODE}.
+
+The sample is prepared by cross-linking proteins to the \dna in solution using
+formaldehyde. Next, sonication or MNase treatment is used to shear \dna into
+smaller fragments. Some of these fragments will have the protein of interest
+bound. Using an antibody which recognises the protein of interest as
+specifically and sensitively as possible, these fragments are purified. The
+protein is then unlinked and the \dna fraction is again purified, size selected,
+ligated to sequencing adapters, amplified and sequenced
+(\cref{fig:chip-seq-workflow}).
+
+\textfig{chip-seq-workflow}{body}{0.7\textwidth}
+    {Possible \chipseq workflow.}
+    {\todo{Add correct image, explanation}}
+
 \section{Quantifying expression of \abbr{trna} genes}
 
-We quantified \trna gene expression via \pol3 \chipseq. The reason for using
-this, on the first glance indirect, measure is caused by the fact that \trna
-genes are unfortunately not identifiable by their sequence alone: performing a
-multiple sequence alignment of \trna genes in \mmu reveals that several \trna
-genes share the exact same sequence.
+We quantified \trna gene expression via \pol3 \chipseq, using an antibody which
+recognises the \pol3 subunit RPC1/155, which is involved in active \trna gene
+transcription. The reason for using this, on the first glance, indirect measure
+is caused by the fact that \trna genes are not identifiable by their sequence
+alone: performing a multiple sequence alignment of \trna genes in \mmu reveals
+that several \trna genes share the exact same sequence.
 
 \textfloat{trna-alignment}{spill}
     {\footnotesize\input{data/mm10-trna-cove-asn.tex}
@@ -24,7 +47,6 @@ the transcribed gene region are indistinguishable. Common strategies for
 counting ambiguously mapping reads, as used in \name{ERANGE} by
 \citet{Mortazavi:2008}, still require at least \emph{some} unambiguous
 information, to distinguish different genes which share reads.
-\todo{Biological background of pol3 ChIP}
 
 We solve this problem by extending the \trna gene body into the flanking
 regions, which are not under purifying selection, and therefore not conserved.
