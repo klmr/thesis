@@ -1,0 +1,66 @@
+```{r echo=FALSE}
+library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
+options(stringsAsFactors = FALSE)
+
+transform_counts = function (counts, ...)
+    mutate_each_(counts, funs_(lazyeval::lazy_dots(...)), col_data$Sample)
+
+summarize_each = summarise_each
+```
+
+We are going to use a small toy data set.
+
+```{r}
+experiment = data.frame(
+    Gene = LETTERS[1 : 5],
+    Length = c(1000, 1000 * (1 : 4)),
+    lib1 = c(1000, 1000 * (1 : 4)),
+    lib2 = c(1000, 1000 * (1 : 4)),
+    lib3 = c(1000, 1000 * (1 : 4)),
+    lib4 = c(2000, 1000 * (1 : 4))
+)
+
+col_data = data.frame(
+    Sample = paste0('lib', 1 : 4),
+    Condition = rep(c('control', 'treatment'), each = 2)
+)
+```
+
+The `col_data` describes the *column data* of our experiment — in other words,
+the experimental setup.
+
+---
+
+Here is how the data is transformed into FPKM. All calculations are performed in
+log domain to avoid loss of precision in floating point calculations.
+
+```{r}
+fpkm = function (counts, transcript_lengths)
+    exp(log(counts) - log(transcript_lengths) - log(sum(counts)) + log(1e9))
+
+(fpkm_counts = transform_counts(experiment, fpkm(., Length)))
+```
+
+Here are TPM:
+
+```{r}
+tpm = function (counts, transcript_lengths) {
+    log_by_size = log(counts) - log(transcript_lengths)
+    exp(log_by_size - log(sum(exp(log_by_size))) + log(1E6))
+}
+
+(tpm_counts = transform_counts(experiment, tpm(., Length)))
+```
+
+And finally, library size factors. Unlike the previous methods, this uses data
+across samples, and calculates per-sample normalisation factors.
+
+```{r}
+size_factors = function (samples) {
+    log_samples = log(samples)
+    log_means = rowMeans(log_samples)
+    summarize_each(log_samples, funs(exp(median(. - log_means))))
+}
+
+(sf = size_factors(select(experiment, one_of(col_data$Sample))))
+```
