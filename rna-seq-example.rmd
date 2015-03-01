@@ -1,11 +1,57 @@
 ```{r echo=FALSE}
 library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
+library(pander, quietly = TRUE, warn.conflicts = FALSE)
+library(knitr, quietly = TRUE, warn.conflicts = FALSE)
+
 options(stringsAsFactors = FALSE)
 
 transform_counts = function (counts, ...)
     mutate_each_(counts, funs_(lazyeval::lazy_dots(...)), col_data$Sample)
 
 summarize_each = summarise_each
+
+panderOptions('table.split.table', Inf)
+panderOptions('table.alignment.default',
+              function (df) ifelse(sapply(df, is.numeric), 'right', 'left'))
+panderOptions('table.alignment.rownames', 'left')
+
+# Enable automatic table reformatting.
+opts_chunk$set(render = function (object, ...) {
+    if (is.data.frame(object) ||
+        is.matrix(object) ||
+        is.table(object) ||
+        is.tbl_df(object))
+        pander(object, style = 'rmarkdown')
+    else if (isS4(object))
+        show(object)
+    else
+        print(object)
+})
+
+pander.table = function (x, ...)
+    pander(`rownames<-`(rbind(x), NULL), ...)
+
+# Helpers for dplyr tables
+
+is.tbl_df = function (x)
+    'tbl_df' %in% class(x)
+
+pander.tbl_df = function (x, ...)
+    pander(trunc_mat(x), ...)
+
+# Copied from dplyr:::print.trunc_mat
+pander.trunc_mat = function (x, ...) {
+    if (! is.null(x$table))
+        pander(x$table, ...)
+
+    if (length(x$extra) > 0) {
+        var_types = paste0(names(x$extra), ' (', x$extra, ')', collapse = ', ')
+        pander(dplyr:::wrap('Variables not shown: ', var_types))
+    }
+}
+
+# Disable code re-formatting.
+opts_chunk$set(tidy = FALSE)
 ```
 
 We are going to use a small toy data set.
