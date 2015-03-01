@@ -17,10 +17,7 @@ panderOptions('table.alignment.rownames', 'left')
 
 # Enable automatic table reformatting.
 opts_chunk$set(render = function (object, ...) {
-    if (is.data.frame(object) ||
-        is.matrix(object) ||
-        is.table(object) ||
-        is.tbl_df(object))
+    if (pander_supported(object))
         pander(object, style = 'rmarkdown')
     else if (isS4(object))
         show(object)
@@ -28,13 +25,19 @@ opts_chunk$set(render = function (object, ...) {
         print(object)
 })
 
+pander_supported = function (object)
+    UseMethod('pander_supported')
+
+pander_supported.default = function (object)
+    any(class(object) %in% sub('^pander\\.', '', methods('pander')))
+
 pander.table = function (x, ...)
     pander(`rownames<-`(rbind(x), NULL), ...)
 
 # Helpers for dplyr tables
 
 is.tbl_df = function (x)
-    'tbl_df' %in% class(x)
+    inherits(x, 'tbl_df')
 
 pander.tbl_df = function (x, ...)
     pander(trunc_mat(x), ...)
