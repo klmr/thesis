@@ -54,7 +54,8 @@ pander.trunc_mat = function (x, ...) {
 opts_chunk$set(tidy = FALSE)
 ```
 
-We are going to use a small toy data set.
+We are going to use a small toy data set, containing expression measures of
+five genes `A`–`E` for four libraries.
 
 ```{r}
 experiment = data.frame(
@@ -66,14 +67,18 @@ experiment = data.frame(
     lib4 = c(2000, 1000 * (1 : 4))
 )
 
+experiment
+
 col_data = data.frame(
     Sample = paste0('lib', 1 : 4),
     Condition = rep(c('control', 'treatment'), each = 2)
 )
+
+col_data
 ```
 
 The `col_data` describes the *column data* of our experiment — in other words,
-the experimental setup.
+the experimental set-up.
 
 ---
 
