@@ -1,7 +1,11 @@
 ```{r echo=FALSE}
-library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
-library(pander, quietly = TRUE, warn.conflicts = FALSE)
-library(knitr, quietly = TRUE, warn.conflicts = FALSE)
+library = function (name)
+    suppressMessages(base::library(as.character(substitute(name)),
+                                   character.only = TRUE,
+                                   quietly = TRUE, warn.conflicts = FALSE))
+library(dplyr)
+library(pander)
+library(knitr)
 
 options(stringsAsFactors = FALSE)
 
@@ -123,4 +127,13 @@ To obtain the normalised values, we scale each sample by its size factor:
 
 ```{r}
 (sf_counts = transform_counts(experiment, . / sf$.))
+```
+
+---
+
+The last step is to test for differential expression between the two conditions,
+using DESeq2.
+
+```{r}
+library(DESeq2)
 ```
