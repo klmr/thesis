@@ -16,3 +16,5 @@ figures.make
 *.figlist
 *.makefile
 cache
+rna-seq-example.html
+rna-seq-example.md

@@ -1,10 +1,13 @@
 fullpath := $(shell pwd -P)
 LATEXMK := latexmk -xelatex -r ${fullpath}/.latexmkrc
+BIN := ./scripts
 
 target := thesis
 references := references.bib
 includes := $(shell ls *.{tex,cls}) ${references}
 bib_sources := $(shell cat bib_sources.conf)
+
+# The thesis itself.
 
 .PHONY: ${target}
 ${target}: ${target}.pdf
@@ -13,6 +16,8 @@ ${target}.pdf: ${includes}
 
 %.pdf: %.tex
 	cd $$(dirname $@); ${LATEXMK} $$(basename $<)
+
+# PGF figures
 
 # FIXME: This isn’t perfect, because it needs to be triggered manually.
 .PHONY: figures
@@ -25,12 +30,26 @@ figures.make: ${target}.makefile
 cache:
 	mkdir -p cache
 
+# Interactive preview rule; not really a target per se, and builds the thesis.
+
 .PHONY: preview
 preview:
 	${LATEXMK} -pvc ${target}
 
+# Reference
+
 ${references}: ${bib_sources}
 	./scripts/import-paperpile ${bib_sources} > $@
+
+# Targets generated from R markdown (knitr) documents
+
+%.md: %.rmd
+	${BIN}/knit $< $@
+
+%.html: %.rmd
+	${BIN}/knit $< $@
+
+# Cleanup
 
 .PHONY: clean
 clean:
@@ -41,8 +60,10 @@ clean:
 	${RM} -r $(shell biber --cache)
 	${RM} cache/*
 	${RM} figures.make
+	${RM} $(patsubst %.rmd,%.md,$(wildcard *.rmd))
 
 .PHONY: cleanall
 cleanall: clean
 	${RM} ${target}.pdf
 	${RM} ${references}
+	${RM} $(patsubst %.rmd,%.html,$(wildcard *.rmd))
