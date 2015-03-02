@@ -118,3 +118,9 @@ size_factors = function (samples) {
 
 (sf = size_factors(select(experiment, one_of(col_data$Sample))))
 ```
+
+To obtain the normalised values, we scale each sample by its size factor:
+
+```{r}
+(sf_counts = transform_counts(experiment, . / sf$.))
+```
