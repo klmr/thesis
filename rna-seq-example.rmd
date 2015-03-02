@@ -71,7 +71,7 @@ experiment = data.frame(
     lib1 = c(1000, 1000, 2000, 3000, 4000),
     lib2 = c(2000, 2000, 4000, 6000, 8000),
     lib3 = c(1000, 4000, 2000, 3000, 4000),
-    lib4 = c(2000, 1000, 1000, 3000, 4000)
+    lib4 = c(1500, 3500, 1500, 3000, 4000)
 )
 
 experiment
@@ -86,6 +86,14 @@ col_data
 
 The `col_data` describes the *column data* of our experiment — in other words,
 the experimental set-up.
+
+The toy data set contains two conditions with two biological replicates each.
+Only one gene — `B` — is significantly changed between conditions:
+
+```{r}
+heatmap(as.matrix(select(experiment, one_of(col_data$Sample))),
+        scale = 'column', Rowv = NA, Colv = NA)
+```
 
 ---
 
@@ -136,4 +144,11 @@ using DESeq2.
 
 ```{r}
 library(DESeq2)
+
+dds_exp = select(experiment, one_of(col_data$Sample))
+rownames(dds_exp) = experiment$Gene
+dds = DESeqDataSetFromMatrix(dds_exp, col_data, design =  ~Condition)
+
+dds = DESeq(dds, fitType = 'mean', quiet = TRUE)
+results(dds)
 ```
