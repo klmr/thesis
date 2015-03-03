@@ -76,6 +76,9 @@
 
 \setstretch{1.1}
 
+\renewcommand*\dictumwidth{0.75\textwidth}
+\renewcommand*\dictumauthorformat[1]{---~#1}
+
 % General programming tools
 
 \def\gobbleuntil#1\relax{}
