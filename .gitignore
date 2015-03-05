@@ -8,6 +8,7 @@
 *.bbl
 *.blg
 *.bcf
+*.toc
 *.run.xml
 thesis-blx.bib
 bib_sources.conf
