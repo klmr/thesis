@@ -15,6 +15,7 @@
 \RequirePackage[inline]{enumitem}
 \RequirePackage{wrapfig}
 \RequirePackage{microtype}
+\RequirePackage{tocstyle}
 \RequirePackage{polyglossia}
 \RequirePackage[natbib, style=authoryear, maxnames=2]{biblatex}
 \RequirePackage{booktabs}
@@ -57,6 +58,9 @@
     Scale=MatchLowercase]{Gill Sans}
 \setmonofont[Scale=MatchLowercase]{WenQuanYi Zen Hei Mono}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
+
+\usetocstyle{nopagecolumn}
+\settocstylefeature[0]{pagenumberbox}{\@gobble}
 
 \let\old@amp\&
 \def\&{\textit{\old@amp}}
