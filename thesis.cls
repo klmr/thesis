@@ -305,7 +305,7 @@
 
 % Titles
 
-\newcommand*\second[1]{{\initials{#1}}}
+\newcommand*\second[1]{#1}
 
 % vim:ft=tex
 \endinput
