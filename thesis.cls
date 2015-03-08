@@ -113,11 +113,9 @@
 \definecolor{refcolor@text}{HTML}{00A000}
 
 \newcommand\todo@inline[1]{%
+    \noindent\kern-0.5ex
     \colorbox{todocolor@box}{\parbox{\textwidth}{%
-        \color{todocolor@text}%
-        \sffamily%
-        \noindent%
-        \textbf{To do:} #1}}}
+        \color{todocolor@text}\sffamily\textbf{To do:} #1}}}
 
 \newcommand\todo@side[1]{\todo@side@do{#1}{todocolor}}
 
