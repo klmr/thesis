@@ -18,20 +18,48 @@ between healthy tissue and tumour cell lines in \mmu and \hsa.
 
 \todo[inline]{Summarise \citet{Gingold:2014} here}
 
-\todo[inline]{\begin{enumerate}[noitemsep,nolistsep,leftmargin=*]
-    \item tRNA anticodon abundance changes in cancer compared to healthy tissue
-        (fig 1B) --- not too surprising, we already knew this (Canella?); also
-        mention Met-initiator in cancer studies to show cause--effect question
-    \item two GO terms show different codon usage bias preference (Fig 2A)
-    \item Extending this, PCA shows variance in codon usage bias largest between
-        two groups of GO terms, which Gingold etc claim to be related to
-        proliferation vs differentiation (but this in itself is a judgement
-        call, and not entirely clear) (Fig 2B)
-    \item When looking at different conditions (cancer, induced differentiation)
-        we see that (a) codon usage weighted by expression and (b) tAI seem to
-        follow variance of PCA (Fig 3) … but in reality, this trend is far from
-        clear for the case of tAI (muddied by colour scheme used)
-\end{enumerate}}
+\citet{Gingold:2014} investigated the abundance of \trna anticodons and the
+codon usage of different groups of protein-coding genes in human-derived cell
+lines in different cellular conditions --- N\todo{find number} tumour tissues,
+induced differentiation, release from serum starvation and senescence.
+
+Using microarray expression data, they show that there are specific anticodon
+isoacceptors whose abundance changes reproducibly in specific tumours
+(lymphomas), mirroring results reported previously\todo[ref]{Canella? White?}.
+They then looked at genes of \go terms which they associated with healthy, adult
+tissue (“pattern specification process”) and tumour tissue (“M phase of mitotic
+cell cycle”). They show that the codon usage bias in these two \go terms
+(averaged over all containing genes) clearly differs\todo{fig 2A?}.
+
+They expand their analysis by calculating the mean codon usage bias across many
+categories of \go terms and performing \pca on them. This reveals that the
+largest contributor to the variation stems from the split of the \go terms into
+two distinct sets, one encompassing multi-cellular \go terms and the other cell
+autonomous \go terms. They argue that these two sets of \go terms correspond to
+\go terms functionally responsible for maintaining cell homoeostasis on the one
+hand, and rapid cellular division, such as as found in tumours, on the other
+hand. In other words, different sets of codons are preferentially used in
+rapidly dividing cells than in healthy cells.
+
+\todo[inline]{Include table of two sets of GO terms referred to above}
+
+Finally, \citet{Gingold:2014} use \rnaseq data of the previously mentioned cell
+types to argue that gene expression changes do indeed correlate with the first
+principal component of the \pca, with tumour samples showing more increased
+expression towards the more we go towards the cell autonomous end of the axis,
+and more decreased expression towards the multi-cellular end, and that this
+trend is reversed for samples taken after induced differentiation using retinoic
+acid. A similar analysis is then done for the expected translational efficiency,
+by using \trna anticodon abundance to calculate the fold change of the \tai,
+matched against the codon usage bias in the different \go terms. However, the
+authors neglected to actually calculate correlations between the first principal
+component and either the codon usage bias or the \tai fold change. Instead, they
+merely visualised the presumed correspondence using an inadequate and
+(particularly in this case) misleading colour map \citep{Borland:2007}.
+Furthermore, the absolute range of changes are minute (range of \tai fold change
+\numrange{0.86}{0.905} in one case), and lack of statistical analysis makes it
+impossible to say whether these changes are in fact significant, assuming they
+correlate at all.
 
 \section{Challenges in the interpretation of codon–anticodon interaction}
 
