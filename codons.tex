@@ -5,19 +5,33 @@ with \trna anticodons remains remarkably stable across the variability of the
 transcriptome during mammalian development.
 
 Shortly after the publication of our research on \trna gene regulation during
-mouse development, \citet{Gingold:2014} published a paper titled \texttitle{A
-Dual Program for Translation Regulation in Cellular Proliferation and
-Differentiation}. They report that different programmes of cellular function
-preferentially use different sets of codons, and that the pool of active
-\trna[s] adapts dynamically to decode this set of codons with high efficiency.
-\citet{Gingold:2014} demonstrated this in several different tumour cell lines.
+mouse development, \citet{Gingold:2014} published \texttitle{A Dual Program for
+Translation Regulation in Cellular Proliferation and Differentiation}. They
+report that different programmes of cellular function preferentially use
+different sets of codons, and that the pool of active \trna[s] adapts
+dynamically to decode this set of codons with high efficiency.
 
 In order to bring in line these two findings — the stability of the anticodon
 pool on the one hand, and the malleability of the anticodon pool to match demand
 of highly expressed on the other hand — we turned our attention to differences
 between healthy tissue and tumour cell lines in \mmu and \hsa.
 
-\todo{Summarise \citet{Gingold:2014} here}
+\todo[inline]{Summarise \citet{Gingold:2014} here}
+
+\todo[inline]{\begin{enumerate}[noitemsep,nolistsep,leftmargin=*]
+    \item tRNA anticodon abundance changes in cancer compared to healthy tissue
+        (fig 1B) --- not too surprising, we already knew this (Canella?); also
+        mention Met-initiator in cancer studies to show cause--effect question
+    \item two GO terms show different codon usage bias preference (Fig 2A)
+    \item Extending this, PCA shows variance in codon usage bias largest between
+        two groups of GO terms, which Gingold etc claim to be related to
+        proliferation vs differentiation (but this in itself is a judgement
+        call, and not entirely clear) (Fig 2B)
+    \item When looking at different conditions (cancer, induced differentiation)
+        we see that (a) codon usage weighted by expression and (b) tAI seem to
+        follow variance of PCA (Fig 3) … but in reality, this trend is far from
+        clear for the case of tAI (muddied by colour scheme used)
+\end{enumerate}}
 
 \section{Challenges in the interpretation of codon–anticodon interaction}
 
@@ -39,7 +53,7 @@ reasons:
 
 Summarise our objections:
 
-\begin{enumerate}
+\todo[inline]{\begin{enumerate}
     \item We find a stable codon and \trna pool, no adaptation to specific cellular
 conditions
 
@@ -60,7 +74,9 @@ conditions
             \item failing adaptation of \emph{anti}codon pool poses big problem
                 for theory that subsets of \mrna may be adapted to
         \end{enumerate}
-\end{enumerate}
+
+    \item Using histone marks as proxy for tRNA expression is extremely noisy
+\end{enumerate}}
 
 \section{Specific \abbr{trna} transcriptomes are not specifically adapted to the
 codon usage of highly expressed \abbr{mrna} transcripts}
