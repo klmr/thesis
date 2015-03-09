@@ -79,7 +79,7 @@ effects of random sampling of the genes become. When analysing a particular
 feature, such as the codon usage bias, random sampling will thus contribute a
 larger part to the variation between two small sets than between two large sets.
 If one wants to assert that deviations are nonrandom, one thus has to account
-for this effect\ref{sample-size-dependent-cub}.
+for this effect (\ref{fig:sample-size-dependent-cub}).
 
 \textfig{sample-size-dependent-cub}{spill}{\textwidth}
     {Dependence of codon usage variability on sample size}
@@ -87,6 +87,17 @@ for this effect\ref{sample-size-dependent-cub}.
     given by \(x\) (in grey). The mean codon usage of the sets was calculated,
     and their Pearson correlation to the genomic background is shown on the
     \(y\) axis. Overlaid are actual gene sets given by human \go categories.}
+
+The plot illustrates that few \go categories, if any, can confidently be said to
+have a codon usage varying more than just randomly. In addition, the allocation
+of individual \go categories to either set can certainly also be criticised: It
+is certainly not clear why “translation” should be more active during cellular
+division than in stable cells. The authors rather describe the relevant set as
+“cell autonomous” \go terms, but the paper’s argument implicitly assumes that
+this corresponds to cell division. Furthermore, the allocation of genes to \go
+terms was performed via simple textual matching, such that \go sub-categories
+whose description contains the text “differentiation and proliferation” would be
+counted as belonging to the \go super-category “differentiation”.
 
 \section{Challenges in the interpretation of codon–anticodon interaction}
 
