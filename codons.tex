@@ -1,5 +1,7 @@
 \chapter{Implications of codon–anticodon interaction on the regulation of translation}
 
+\todo[inline]{Insert section titles}
+
 In the previous chapter I have shown that the codon usage and its interaction
 with \trna anticodons remains remarkably stable across the variability of the
 transcriptome during mammalian development.
@@ -31,7 +33,8 @@ tissue (“pattern specification process”) and tumour tissue (“M phase of mi
 cell cycle”). They show that the codon usage bias in these two \go terms
 (averaged over all containing genes) clearly differs\todo{fig 2A?}.
 
-They expand their analysis by calculating the mean codon usage bias across many
+They expand their analysis by calculating the mean codon usage bias\todo{codon
+usage or CUB?} across many
 categories of \go terms and performing \pca on them. This reveals that the
 largest contributor to the variation stems from the split of the \go terms into
 two distinct sets, one encompassing multi-cellular \go terms and the other cell
@@ -42,7 +45,7 @@ hand. In other words, different sets of codons are preferentially used in
 rapidly dividing cells than in healthy cells.
 
 \textfig{go-cub-pca}{body}{0.8\textwidth}
-    {\pca of mean \go term codon usage bias}
+    {\pca of mean \go term codon usage bias.}
     {\todo{Add description}. Created using methods of \citet{Gingold:2014}}
 
 \todo[inline]{Include table of two sets of GO terms referred to above}
@@ -63,7 +66,7 @@ merely visualised the presumed correspondence using an inadequate and
 Furthermore, the absolute range of changes are minute (range of \tai fold change
 \numrange{0.86}{0.905} in one case), and lack of statistical analysis makes it
 impossible to say whether these changes are in fact significant, assuming they
-correlate at all.
+correlate at all\todo{fig 3?}.
 
 Since we were already in possession of relevant \trna data we decided to use our
 own data to recapitulate these findings, rather than merely using the data from
@@ -79,10 +82,10 @@ effects of random sampling of the genes become. When analysing a particular
 feature, such as the codon usage bias, random sampling will thus contribute a
 larger part to the variation between two small sets than between two large sets.
 If one wants to assert that deviations are nonrandom, one thus has to account
-for this effect (\ref{fig:sample-size-dependent-cub}).
+for this effect (\cref{fig:sample-size-dependent-cub}).
 
 \textfig{sample-size-dependent-cub}{spill}{\textwidth}
-    {Dependence of codon usage variability on sample size}
+    {Dependence of codon usage variability on sample size.}
     {Genes were randomly sample from the human genome to create sets of sizes
     given by \(x\) (in grey). The mean codon usage of the sets was calculated,
     and their Pearson correlation to the genomic background is shown on the
@@ -99,52 +102,49 @@ terms was performed via simple textual matching, such that \go sub-categories
 whose description contains the text “differentiation and proliferation” would be
 counted as belonging to the \go super-category “differentiation”.
 
-\section{Challenges in the interpretation of codon–anticodon interaction}
+In order to test whether the anticodon pool does indeed adapt to specific
+cellular conditions, we tested whether the matching codon--anticodon adaptation
+(estimated via the translation efficiency index \tai) is higher between matching
+\mrna and \trna transcriptomes than between mismatching ones. In other words, we
+looked at \mrna specific to cellular conditions, and calculated the \tai[s] for
+\begin{enumerate*}
+    \item matching \trna pools, and
+    \item mismatching \trna pools
+\end{enumerate*}
+(\cref{fig:tai-matching-mismatching}).
 
-The \pca of the codon usage across \go terms struck me as questionable for two
-reasons:
+\textfig{tai-matching-mismatching}{spill}{0.8\textwidth}
+    {\tai between matching and mismatching codon--anticodon pools.}
+    {}
 
-\begin{enumerate}
-    \item The selection of the \go terms for the two categories
-        \emph{multi-cellular} and \emph{cell autonomous}, while not entirely
-        arbitrary, is very open to non-objective criteria. For instance, genes
-        with functionally opposite influences on a given biological process may
-        occur in the same \go term. Furthermore, it is not clear how the two
-        categories relate to the phenotypes \emph{proliferation} and
-        \emph{differentiation}.
-    \item The size of the \go-associated gene sets (starting at \num{40} genes)
-        is small enough so that random variation in the codon usage on the gene
-        level will have a noticeable influence on the distribution.
-\end{enumerate}
+\todo[inline]{What is the result?}
 
-Summarise our objections:
+Furthermore, the trend seen in \cref{fig:go-cub-pca} does in fact exist to the
+same degree when plotting amino acid usage rather than codon usage
+(\cref{fig:go-aa-pca}). This suggests that rather than being driven by \go term
+function, both codon usage and amino acid usage changes are driven by some other
+genomic feature. In fact, the first principal component in \cref{fig:go-cub-pca}
+correlates almost perfectly with \gc bias (\cref{fig:cub-pc1-vs-gc}). The nature
+of this relationship is still unclear, and needs to be explored in more detail.
 
-\todo[inline]{\begin{enumerate}
-    \item We find a stable codon and \trna pool, no adaptation to specific cellular
-conditions
+\textfig{go-aa-pca}{body}{0.8\textwidth}
+    {\pca of mean \go term amino acid usage.}
+    {\todo{Add description}}
 
-    \item Their analysis does not exclude alternative explanations (which I partially
-(?) list here)
+\textfig{cub-pc1-vs-gc}{body}{0.8\textwidth}
+    {\gc bias against PC1 of the mean \go term codon usage bias \pca.}
+    {\todo{Add description}}
 
-        \begin{enumerate}
-            \item size of \mrna subsets is a strong covariant, with small subsets
-                showing larger variation on codon usage bias, purely due to
-                sampling variation
-            \item correlation is not just with codon usage but also amino acid
-                usage. How is that possible if the codons control translation?
-            \item evolutionarily, codon bias does not seem conserved, which
-                makes it hard to think of it as a conserved driver of regulation
-            \item perfect correlation of codon usage and GC bias, may hint at
-                the existence of a more fundamental relationship on the
-                transcriptional level
-            \item failing adaptation of \emph{anti}codon pool poses big problem
-                for theory that subsets of \mrna may be adapted to
-        \end{enumerate}
+Furthermore, if a mechanism leading to the adaptation of the cellular \trna pool
+to different cellular conditions existed, we would expect this to be well
+conserved across mammalian evolution. Indeed, such an effect should show a
+\emph{stronger} conservation of the codon usage bias across different functional
+gene categories than conservation of other genomic features, such as the \gc
+bias. Using genome data from different mammalian species and homology
+information for the annotated \go categories in humans, we can calculate the
+respective conservation of codon usage on the one hand, and \gc bias on the
+other hand. The result is summarised in \cref{fig:cub-conservation}.
 
-    \item Using histone marks as proxy for tRNA expression is extremely noisy
-\end{enumerate}}
-
-\section{Specific \abbr{trna} transcriptomes are not specifically adapted to the
-codon usage of highly expressed \abbr{mrna} transcripts}
-
-\section{There is no evolutionary conservation of codon selection in mammals}
+\textfig{cub-conservation}{body}{0.8\textwidth}
+    {Conservation of \go term specific codon bias}
+    {}
