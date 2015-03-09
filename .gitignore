@@ -17,3 +17,4 @@ figures.make
 *.figlist
 *.makefile
 cache
+summary
