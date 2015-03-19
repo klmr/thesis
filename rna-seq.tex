@@ -1,4 +1,5 @@
 \chapter{\abbr{rna} sequencing quantifies protein-coding gene expression}
+\todo{Move to intro}
 
 \section{The transcriptome reflects the state of the cell}
 
@@ -12,30 +13,33 @@ abstracted by the Central Dogma of molecular biology, with the \dna at one end
 encoding the hereditary identity of the cell, and the proteins at the other end
 as the effectors of this information.
 
-It is therefore proteins which determine how a cell behaves, and the change of
-proteins ultimately determines changes in cellular function. The entirety of
-protein abundance in the cell at a given instance is called the
+It is therefore proteins that determine how a cell behaves, and changes in
+proteins abundance ultimately determine changes in cellular function. The
+entirety of protein abundance in the cell at a given instance is called the
 \define{proteome}. Unfortunately, quantifying the proteome in an unbiased
 fashion is hard and expensive\todo[ref]{}. Instead, modern biology uses the
 abundance of \mrna molecules, which code for individual proteins (the
 \define{transcriptome}), as an accurate proxy of the proteome. The
 appropriateness of this approach has been verified in numerous
-studies\todo[ref]{}.
+studies\todo[ref]{}.\todo{Post-translational modifications? Mention in the intro?}
 
-%\section{Regulation of protein-coding genes}
+\section{Measuring \abbr{mrna} expression levels}
 
-\section{Microarrays}
+\todo{Add more, older historical context: blotting, rt-PCR, qrt-PCR}
 
-\todo{add more, older historical context}
+\subsection{Microarrays}
+
+\todo{In ~2000}
 Historically, the abundance of \mrna has been determined using specific probes,
 which hybridise to complementary target \mrna sequences. In order to determine
 the abundance of many different \mrna[s] simultaneously, large arrays of
 different probes can be generated and queried in parallel. Due to their
-miniaturisation, these arrays are known as \define{expression microarrays}.
+miniaturisation, these arrays are known as \define{expression
+microarrays}\citep{Schena:1995}.\todo{Talk about variety of arrays? cDNA arrays, Affy, Illumina}
 
 While microarrays are still playing an important role in transcriptome analysis,
-they have recently been superseded by another technology due, mainly, to two
-disadvantages \citep{Casneuf:2007,Marioni:2008}:
+they have recently been superseded by another technology due, mainly, to the
+following disadvantages \citep{Casneuf:2007,Marioni:2008}:
 \begin{enumerate*}
     \item Each probe is sequence specific, and only recognises its target \mrna.
         As a consequence, quantification is inherently biased and requires that
@@ -48,39 +52,52 @@ disadvantages \citep{Casneuf:2007,Marioni:2008}:
         while identical transcripts’ relative abundances can be compared across
         arrays, abundance of different transcripts \emph{on the same array}
         cannot be compared.
+    \item \todo[inline]{Splicing (mention Burge:2008 here?)}
+    \item \todo[inline]{Allele-specific expression}
 \end{enumerate*}
 
-\section{\abbr{rnaseq}}
+\subsection{\abbr{rnaseq}}
 
 In 2008, focus shifted from microarrays to whole-transcriptome shotgun
-sequencing for \rna quantification \citep{Mortazavi:2008,Marioni:2008}. In
-contrast to other \rna quantification approaches, whole-transcriptome shotgun
-sequencing (now typically known as \rnaseq) is entirely unbiased in that it does
-not rely on a pre-selected set of transcripts to assay. The approach has been
-shown to yield high-quality results, is highly replicable, has very low noise,
-and is sensitive to transcripts present at low concentration (with a typical
-protocol, even single transcripts are often picked up).
+sequencing for \rna quantification
+\citep{Nagalakshmi:2008,Mortazavi:2008,Marioni:2008}. In contrast to other \rna
+quantification approaches, whole-transcriptome shotgun sequencing (now typically
+known as \rnaseq) is entirely unbiased in that it does not rely on a
+pre-selected set of transcripts to assay.
+\todo{Mention splicing (\citet{Katz:2010}) and allele-specific
+expression (\citet{Pickrell:2010})}
+The approach has been shown to yield
+high-quality results, is highly replicable, has very low noise, and is sensitive
+to transcripts present at low concentration (with a typical protocol, even
+single transcripts are often picked up).
 
-\subsection{\abbr{rnaseq} sample preparation}
+\subsubsection{\abbr{rnaseq} sample preparation}
 
 \rnaseq analysis starts with the enrichment of relevant transcripts from a
 sample’s total \rna pool. This is important since the \rna fraction that we are
 usually interested in is dwarfed in abundance by the fraction of \rrna (more
-than \num{80} per cent of the cell’s \rna is \rrna), and would thus dilute the
-signal. This enrichment can be done in either of two ways:
+than \num{80} per cent of the cell’s \rna is \rrna\todo[ref]{}), and would thus
+dilute the signal. In practice, this enrichment can be done in one of two ways:
 \begin{enumerate*}
     \item Polyadenylated \rna can be targeted due to their affinity to oligo(dT)
         primers, short strings of thymine; this will efficiently capture \mrna,
-        which is post-transcriptionally \threep tagged with poly(A) tails.
+        which is post-transcriptionally \threep tagged with poly(A)
+        tails.\todo[ref]{}
     \item The \rna can be \rrna depleted using a RiboMinus protocol, which
-        specifically targets \rrna molecules for removal.
+        specifically targets \rrna molecules for removal \citep{Cui:2010}.
 \end{enumerate*}
 Thus, if one wants to profile non-\mrna molecules, \rrna depletion rather than
-poly(A) selection is the method of choice.
+poly(A) selection is the method of choice. However, neither method is
+\emph{sufficient} to reliably select only a particular type of \rna. For one
+thing, neither method is \num{100} per cent specific; in addition, \mrna[s] are
+not the only type of \rna that is polyadenylated. \citet{Cheng:2005} found that
+a large fraction of non-coding \rna is equally polyadenylated and exported from
+the nucleus into the cytoplasm.
 
 The enriched \rna is subsequently fragmented to a uniform length of about
 \SI{200}{nt}, and reverse transcribed into \cdna. The order of these two steps
-may vary, as both variants have advantages and disadvantages. Ultimately,
+may vary, as both variants have advantages and disadvantages.\todo{Mention
+amplification?} Ultimately,
 though, the result is a \cdna library of fragments which are then sequenced on a
 high-throughput sequencing machine (\cref{fig:rna-seq-workflow}).
 
@@ -93,40 +110,40 @@ high-throughput sequencing machine (\cref{fig:rna-seq-workflow}).
     reference and counted on features of interest. (Adapted from
     \citet{Mortazavi:2008}).\todo{Figure draft}}
 
-\subsection{Computational processing of the sequencing information}
+\subsubsection{Computational processing of the sequencing information}
 
-Sequencing the \rnaseq samples yields short-read libraries several tens of
-millions of reads in size, with reads of uniform length from \SI{25}{bp} up to
-(currently) about \SI{125}{bp}. These are then mapped to a reference --- either
-the whole genome or the transcriptome --- or assembled \emph{de novo} (usually
-in absence of a suitable reference). This assigns reads to genomic locations,
-which can be queried and matched to features (usually genes or exons).
-\todo{Add code example}
+Sequencing the \rnaseq samples yields short-read libraries, typically several
+tens of millions of reads in size, with reads of uniform length from \SI{25}{bp}
+up to (currently) about \SI{125}{bp}. These are then mapped to a reference ---
+either the whole genome or the transcriptome --- or assembled \emph{de novo}
+(usually in absence of a suitable reference). This assigns reads to genomic
+locations, which can be queried and matched to features (usually genes or
+exons).\todo[ref]{Cox:2006?}\todo{Add code examplea}
 
 One important distinction depends on whether the \cdna fragments were sequenced
 from both ends or from one end only. In the first case, instead of a single read
 per fragment we end up with paired-end reads, which are separated by a known
 distance. Mapping and assembling paired-end reads creates further algorithmic
 challenges but increases the amount of information contained in a read (pair),
-which increases the amount of unambiguously mappable data.
+which increases the amount of unambiguously mappable data.\todo[ref]{}\todo{Figure}
 
 Another distinction is made for fragments which are tagged and selected in such
 a way as to be strand-specific. This allows identification of the strand from
 which fragments originate, and aids in the unambiguous reassembly of the
 sequenced reads, as well as the identification of antisense information within
 (intronic regions in) a gene body, which would otherwise confound the expression
-estimate \citep{Parkhomchuk:2009}.
+estimate \citep{Parkhomchuk:2009}.\todo{Figure}
 
-\subsection{Expression normalisation}
+\subsubsection{Expression normalisation}
 
-Since the end goal of \rnaseq is to quantify transcript abundance, the next step
-is to quantify the number of reads mapping to genomic features. In the simplest
-case, one can count the number of reads overlapping with a feature’s genomic
-range. This is what e.g.\ \name{HTSeq} \citep{Anders:2014} does. However, read
-counts obtained in this manner vary with the length of the mappable region ---
-longer features originate more sequenced fragments, and hence more reads, with
-equal coverage, compared to shorter features --- and with the total size of the
-sequenced library.
+Since the ultimate goal of \rnaseq is to quantify transcript abundance, the next
+step is to quantify the number of reads mapping to genomic features. In the
+simplest case, one can count the number of reads overlapping with a feature’s
+genomic range. This is what e.g.\ \name{HTSeq} \citep{Anders:2014} does.
+However, read counts obtained in this manner vary with the length of the
+mappable region --- longer features originate more sequenced fragments, and
+hence more reads, with equal coverage, compared to shorter features --- and with
+the total size of the sequenced library.
 
 \cite{Mortazavi:2008} therefore introduced a relative measure of transcript
 abundance, the \rpkm, defined as
@@ -136,16 +153,16 @@ abundance, the \rpkm, defined as
         \text{\ ,}
 \end{equation}
 
-where \(x^*_i\) is the \rpkm of transcript \(i\), \(x_i\) is the read count on
-the transcript, \(\tilde l_i\) is the effective length of the transcript (i.e.\
-its length minus the fragment length plus \num{1}) and \(n\) is the library size
-(in number of reads). The constant multiplier \num{1e9} merely serves to make
-otherwise very small values more manageable. As a consequence, a single
-transcript in the sample yields in the order of \SI{1}{\rpkm} (but this is
-sample dependent). With the advent of paired-end sequencing the \rpkm has been
-supplanted by the \fpkm, simply replacing the number of reads in the equation
-with the number of fragments (i.e.\ the read pairs rather than single reads in
-the case of paired-end data).
+where \(x^*_i\) is the \rpkm of transcript \(i\), \(x_i\) is the raw tread count
+on the transcript, \(\tilde l_i\) is the effective length of the transcript
+(i.e.\ its length minus the fragment length plus \num{1}) and \(n\) is the
+library size (in number of reads). The constant multiplier \num{1e9} merely
+serves to make otherwise very small values more manageable. As a consequence, a
+single transcript in the sample yields in the order of \SI{1}{\rpkm} (but this
+is sample dependent). With the advent of paired-end sequencing the \rpkm has
+been supplanted by the \fpkm, simply replacing the number of reads in the
+equation with the number of fragments (i.e.\ the read pairs rather than single
+reads in the case of paired-end data).
 
 A related measure is \tpm, which additionally normalise by the total transcript
 abundance \citep{Li:2010}. In other words,
@@ -170,7 +187,7 @@ their absolute abundance in the original sample was the same.
 To compare transcript abundance across biological samples, a different approach
 has to be taken instead.
 
-\subsection{Differential expression}
+\subsubsection{Differential expression}
 
 One of the main uses of \rnaseq data is to compare and contrast gene expression
 between different conditions, such a between tissues, between different species,
