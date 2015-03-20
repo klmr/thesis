@@ -236,20 +236,3 @@ small number of samples. Different solutions for this problem exist.
 estimates the other for each gene, while \name{DESeq} by \citet{Anders:2010}
 pools data across genes of similar expression strength, and performs local
 regression to find the dispersion.\todo{need to mention estimation of dispersion parameter}
-
-\section{Using \abbr{rnaseq} to assay gene expression during mouse development}
-\todo{move this section into the tRNA chapter.}
-
-\todo{This describes the specific method used in the \abbr{trna} paper}
-In order to investigate protein-coding gene expression, we quantified the \mrna
-abundance from \rrna-depleted \rnaseq data (strand-specific \SI{75}{bp}
-paired-end reads from \name{Illumina} \name{HiSeq~2000}). Reads were mapped to
-the \mmu reference genome (\abbr{ncbim37}) using \name{iRAP}
-\citep{Fonseca:2014} and \name{TopHat2} \citep{Kim:2013}. Read counts were
-quantified using \name{HTSeq} \citep{Anders:2014}, and assigned to
-protein-coding genes from the \name{Ensembl} release \num{67}
-\citep{Flicek:2014}.\todo{add \chipseq and \rnaseq pipeline flowcharts}
-
-We excluded mitochondrial chromosomes from the analysis, because mitochondrial
-genes use a slightly distinct genetic code\todo[ref]{}. Furthermore, we excluded
-sex chromosomes.
