@@ -101,37 +101,3 @@ target \trna gene \(i\) randomly with probability
     {\chip reads originating from \trna genes can often not be mapped
     unambiguously to any given \trna. Instead, information form the gene’s
     flanking regions is used to determine the more likely provenance.}
-
-Quantification of \trna genes was performed by first mapping the \pol3 \chipseq
-data (non-strand-specific \SI{36}{bp} single-end reads sequenced by
-\name{Illumina} \name{Genome Analyzer~IIx} or \name{HiSeq~2000}) using
-\name{BWA} version 0.5.9-r16 \citep{Li:2009a} using default parameters. Next,
-non-uniquely mapping reads were reallocated probabilistically according to the
-description given above, using the \trna gene annotation from the \name{Genomic
-\trna Database}, described in \citet{Chan:2009}. For each \trna gene (excluding
-mitochondrial \trna genes, for the same reason for which we also excluded
-mitochondrial \mrna genes), reads were summed within each \trna gene locus and
-in the \SI{\pm100}{bp} flanking regions.
-
-\trna genes that were unexpressed in all experimental conditions were excluded
-from the further analysis, to reduce the effect of multiple testing
-\citep{Bourgon:2010}, and to exclude potential pseudogenes in the annotation. To
-be called expressed, a \trna gene had to be present in all replicates of at
-least one condition with a count of at least \num{10}, after size-factor
-normalisation. The threshold \num{10} was chosen so that small variations in
-either direction would have a minimal impact on the thresholding.
-
-%\section{Normalisation of \trna gene expression}
-%
-%Raw \trna gene expression counts show strong differences between sequencing
-%libraries. For \mrna count data, it is customary to use \name{DESeq}’s
-%\dfn{library size normalisation} \citep{Anders:2010}. However, as shown in
-%\cref{fig:trna-libraries-example}, library size normalised data still follows
-%distinct distributions, which we deem biologically implausible, and probably due
-%to technical bias.
-%
-%As a consequence, we opted to \dfn{quantile normalise} the count data\todo{find
-%reference for quantile normalisation}.
-%
-%\textfloat{trna-libraries-example}{body}
-%    {\centering\Huge Placeholder}{Placeholder}{Placeholder}

@@ -75,15 +75,17 @@ sex chromosomes.
 Changes in the expression of protein-coding genes, leading to changes in
 abundance of proteins, are known to drive cellular behaviour\todo[ref]{}. Our
 data confirms that tissue development in mice is accompanied by large-scale
-changes to the \mrna transcriptome. This is nicely illustrated by looking at
+changes in the \mrna transcriptome. This is nicely illustrated by looking at
 individual gene expression counts, plotted against their genomic location
-(\cref{fig:mrna-expression-change}). For example, we can confirm the functional
-relevance of apolipoprotein B (\protein{APOB}) as the primary carrier of
-lipoproteins, which becomes increasingly relevant as the organ shifts to
-metabolism \citep{Knott:1986}. Similarly, \mrna gene expression changes
+(\cref{fig:mrna-expression-change}). For example, in the liver we can confirm
+the functional relevance of apolipoprotein B (\protein{APOB}) as the primary
+carrier of lipoproteins, which becomes increasingly relevant as the organ shifts
+to metabolism \citep{Knott:1986}. Similarly, \mrna gene expression changes
 highlight the role of α-fetoproteine (\protein{AFP}) as the fetal version of
-serum albumin (\cref{fig:apob-afp}) \citep{Chen:1997}.\todo{Explain brain
-examples as well?}
+serum albumin (\cref{fig:apob-afp}) \citep{Chen:1997}. In the brain, shifts can
+be seen in the activity of the neural \tf \protein{FOXP2}, the expression of
+which continuously decreases, and in calmodulin (\protein{CALM1}), where
+transcription increases after birth \citep{Tsui:2013,Huang:2011}.
 
 \textfloat{mrna-expression-change}{spill}{%
     \centering
@@ -104,16 +106,18 @@ examples as well?}
 
 For a more systematic analysis, I took the matrix of normalised count data of
 all library replicates and all \mrna[s], \(m_{ij}\), for each \mrna gene \(i\)
-and each library replicate \(j\), and calculated pairwise Spearman rank
-correlations between all replicates,
+and each library replicate \(j\), and calculated the pairwise Spearman rank
+correlation between all replicates,
 
 \begin{equation}
-    c_{ij} = \operatorname{cor}(m_{\dots i}, m_{\dots j}) \text{\ for all
-        libraries \(i\), \(j\).}\todo{check typography}
+    c_{ij} = \operatorname{cor}(m_{\cdot i}, m_{\cdot j}) \text{\ for all
+        libraries \(i\), \(j\),}
 \end{equation}
 
-I then performed \pca on the correlation matrix, which allows to project the
-variation in the data onto uncorrelated axes, so that the first axis represents
+where \(m_{\cdot i}\) is the \(i\)th column of the matrix \(m\).
+
+I then performed \pca on the correlation matrix, which allows variation in the
+data to be projected onto uncorrelated axes, so that the first axis represents
 the greatest variance of the data, and the second axis represents the second
 greatest variance.
 
@@ -121,16 +125,20 @@ The resulting \pca in \cref{fig:mrna-pca} shows that the biggest source of
 variance in the correlation structure of the expression data is tissue identity,
 which explains \num{97} per cent of the total variance. However, of the
 remaining variance, \num{60} per cent is explained by progression of tissue
-development in a way which nicely mirrors biology: the plot’s \(y\) axis shows
-the linear progression of development from early stages at the bottom to late
-stages at the top.
+development in a way that nicely mirrors the known biology: the plot’s \(y\)
+axis shows the linear progression of development from early stages at the bottom
+to late stages at the top. We observe a much stronger variation on the \(y\)
+axis for liver data: the cause of this could be due to the fact that the tissue
+is more homogeneous, and changes in gene expression are therefore more
+coordinated; it might also reflect the change in liver function from a
+haematopoietic to a metabolic organ around birth.
 
-Next, I used \name{DESeq2} \citep{Love:2014} to call differentially expressed
-genes between stages and tissues. Genes are counted as differentially expressed
-here if their Benjamini–Hochberg \fdr-corrected \(p\)-value is below
+Next, I used \name{DESeq2} \citep{Love:2014} to identify differentially
+expressed genes between stages and tissues. Genes are counted as differentially
+expressed if their Benjamini–Hochberg \fdr-corrected \(p\)-value is below
 \num{0.001}. The number of differentially expressed genes between all pairwise
 developmental stages unsurprisingly shows that more distinct developmental
-stages having higher numbers of differentially expressed genes
+stages have higher numbers of differentially expressed genes
 (\cref{fig:mrna-de-matrix}). Furthermore, there is a clear gap between pre- and
 post-weaning stages, with a large jump in the number of differentially expressed
 genes across the weaning boundary, in both liver and brain.
@@ -148,19 +156,34 @@ genes across the weaning boundary, in both liver and brain.
 
 These patterns are noteworthy because they recapitulate tissue identity and
 linear progression through the stages of tissue development. But they are not
-particularly surprising: after all, cell function is dictated by specific
-protein abundance and thus protein-coding gene transcription --- the patterns of
-gene expression similarity shown in the \pca and in the number of differentially
-expressed genes therefore recapitulate the expected changes in cell function
-between tissues, and over the course of development.
+particularly surprising: cell function is dictated by the abundance of specific
+proteins and thus protein-coding gene transcription. The patterns of gene
+expression similarity shown in the \pca and in the number of differentially
+expressed genes hence recapitulate the expected changes in cell function between
+tissues and through development.
 
 \section{Dynamic changes of \abbr{trna} gene expression during mouse
 development}
 
-I treated \trna gene expression count data in the same way as the \mrna gene
-expression data, with one exceptions: as described in \cref{sec:chip}, I
-filtered unexpressed \trna genes using a fixed threshold. The following analysis
-is thus using only the \num{311} expressed out of \num{433} total genes
+Quantification of \trna genes was performed by first mapping the \pol3 \chipseq
+data (non-strand-specific \SI{36}{bp} single-end reads sequenced by
+\name{Illumina} \name{Genome Analyzer~IIx} or \name{HiSeq~2000}) using
+\name{BWA} version 0.5.9-r16 \citep{Li:2009a} using default parameters. Next,
+non-uniquely mapping reads were reallocated probabilistically according to the
+description given above, using the \trna gene annotation from the \name{Genomic
+\trna Database}, described in \citet{Chan:2009}. For each \trna gene (again
+excluding mitochondrial \trna genes because the genetic code of the
+mitochondrial \mrna genes differs from the nuclear genetic code), reads were
+summed within each \trna gene locus and in the \SI{\pm100}{bp} flanking regions.
+
+\trna genes that were unexpressed in all experimental conditions were excluded
+from the further analysis, to reduce the effect of multiple testing
+\citep{Bourgon:2010}, and to exclude potential pseudogenes in the annotation. To
+be called expressed, a \trna gene had to be present in all replicates of at
+least one condition with a count of at least \num{10}, after size-factor
+normalisation. The threshold \num{10} was chosen so that small variations in
+either direction would have a minimal impact on the thresholding. The following
+analysis is thus using only the \num{311} expressed out of \num{433} total genes
 (\num{72} per cent).
 
 Unlike protein-coding genes, \trna genes are not directly implicated in changes
