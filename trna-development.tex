@@ -1,15 +1,16 @@
 \chapter{Developmental stability of the \abbr{mrna}--\abbr{trna} interface}
 
-In order to study how changes in \mrna gene expression relate to changes in
-\trna gene expression, we collected tissue samples from six time points in mouse
-(\mmu) development: two before birth (E15.5 and E18.5, which stands for
-\num{15.5} and \num{18.5} days after gestation of the oocyte, respectively); two
-shortly after birth, happening around E20 (P0.5 and P4 --- \num{0.5} and \num{4}
-days after birth, respectively) and two after weaning the juvenile mice (P22 and
-P29).
+To study how changes in \mrna gene expression relate to changes in \trna gene
+expression, we collected tissue samples from six time points in mouse (\mmu)
+development: two before birth (E15.5 and E18.5, which stands for \num{15.5} and
+\num{18.5} days after gestation of the oocyte, respectively); two shortly after
+birth, happening around E20 (P0.5 and P4 --- \num{0.5} and \num{4} days after
+birth, respectively) and two after weaning the juvenile mice (P22 and P29).
 
 For each of these time points, tissue was collected from whole liver and whole
-brain (homogenised) and prepared for \rnaseq and \pol3 \chipseq in order to
+brain (\define[\defineword{homogenise} breaking apart and mixing the tissue in
+such a way that all the cell types will be evenly distributed throughout the
+sample]{homogenised}) and prepared for \rnaseq and \pol3 \chipseq in order to
 assay \mrna and \trna gene expression. The tissues were chosen for their
 interesting shifts in physiology during development: the liver is a homogeneous
 organ predominantly made up of a single cell type --- around \num{70} per cent
@@ -20,14 +21,26 @@ is a highly heterogeneous organ made up of many different cell types, with
 dynamic changes all through development.\todo[ref]{}
 
 Each experiment was performed in two biological replicates, which were highly
-correlated. \Cref{fig:trna-project-outline} summarises the experimental
+correlated (\cref{fig:trna-replicate-variability}).
+\Cref{fig:trna-project-outline} summarises the experimental
 procedure.\footnote{The wet-lab work of this project was performed by Bianca
 Schmitt.}
 
 \textfig[\todo{Remove background gradients from graphics}]
     {trna-project-outline}{body}{0.8\textwidth}
-    {Sample analysis outline}
-    {Samples were collected in eight distinct time points …}
+    {Sample analysis outline.}
+    {Samples were collected in eight distinct time points. Of these, E9.5 and
+    E12.5 were excluded from most of the subsequent analysis, except where
+    noted. For each time point, tissue was collected from liver and brain, and
+    on the one hand prepared for \rnaseq, and on the other hand cross-linked to
+    the \pol3 antibody and prepared for \chipseq. The resulting data was used to
+    quantify \mrna and \trna gene expression, codon usage and \trna anticodon
+    abundance.}
+
+\textfig{trna-replicate-variability}{body}{0.5\textwidth}
+    {Replicate variability.}
+    {Shown are the Spearman correlation coefficients between pairwise biological
+    replicates for the \trna count data (left) and the \mrna count data (right).}
 
 In addition to the six time points described above, tissue was also collected at
 two earlier stages, E9.5 and E12.5. Unfortunately, the embryo at such early
