@@ -247,7 +247,10 @@
 
 \input{abbreviations.tex}
 
-\newcommand*\define[1]{\emph{\hashtag{#1}}}
+\newcommand*\define[2][]{\emph{\hashtag{#2}}\showdefinition{#1}}
+\newcommand*\defineword[1]{\textbf{#1}\quad}
+\newcommand\showdefinition[1]{%
+    \ifstrequal{#1}{}{}{{\marginpar{\RaggedRight\footnotesize\itshape #1}}}}
 
 % From <http://tex.stackexchange.com/a/74469/42>
 \newcommand*\reducedstrut{%
