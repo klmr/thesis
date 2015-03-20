@@ -90,9 +90,9 @@ Thus, if one wants to profile non-\mrna molecules, \rrna depletion rather than
 poly(A) selection is the method of choice. However, neither method is
 \emph{sufficient} to reliably select only a particular type of \rna. For one
 thing, neither method is \num{100} per cent specific; in addition, \mrna[s] are
-not the only type of \rna that is polyadenylated. \citet{Cheng:2005} found that
-a large fraction of non-coding \rna is equally polyadenylated and exported from
-the nucleus into the cytoplasm.
+not the only type of \rna that is polyadenylated: a large fraction of \ncrna is
+equally polyadenylated and exported from the nucleus into the cytoplasm
+\citep{Cheng:2005}.
 
 The enriched \rna is subsequently fragmented to a uniform length of about
 \SI{200}{nt}, and reverse transcribed into \cdna. The order of these two steps
@@ -191,13 +191,13 @@ has to be taken instead.
 
 One of the main uses of \rnaseq data is to compare and contrast gene expression
 between different conditions, such a between tissues, between different species,
-between healthy and tumour tissues, \etc. By doing so, we hope to find out which
-genes characterise differences and may thus be \emph{causal} of the phenotypic
-change.
+between healthy and tumour tissues, \etc. By doing so, we hope to establish
+which genes characterise differences and may thus be \emph{causal} of the
+phenotypic change.
 
 To find statistically significant differences in gene expressions between two
-samples we test the null hypothesis that the gene count in both samples comes
-from the same distribution with the same mean.\todo{More detail?}
+samples, we want to test the null hypothesis that the gene count in both samples
+comes from the same distribution with the same mean.\todo{More detail?}
 
 Reads are assumed to be sampled independently from a population, thus read
 counts on a given feature can be approximated by a Poisson distribution
@@ -211,7 +211,7 @@ can be used instead.
 \end{equation}
 
 for each gene \(i\) in library \(j\), with mean \(\mu_{ij}\) and variance
-\(\sigma^2_{ij}\).
+\(\sigma^2_{ij}\).\todo{Formula for \(\sigma^2\)}
 
 To account for different sampling depth across libraries, it is furthermore
 assumed that most genes do not drastically change expression between biological
@@ -229,13 +229,13 @@ samples:
         \text{\ .}
 \end{equation}
 
-The parameters of the negative binomial distribution can in principle be
+The parameters of the negative binomial distribution can, in principle, be
 estimated from the data. However, this is complicated by the typically very
 small number of samples. Different solutions for this problem exist.
 \name{edgeR} \citep{Robinson:2010} fixes one parameter per sample and only
 estimates the other for each gene, while \name{DESeq} by \citet{Anders:2010}
 pools data across genes of similar expression strength, and performs local
-regression to find the dispersion.
+regression to find the dispersion.\todo{need to mention estimation of dispersion parameter}
 
 \section{Using \abbr{rnaseq} to assay gene expression during mouse development}
 \todo{move this section into the tRNA chapter.}
