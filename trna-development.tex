@@ -187,14 +187,15 @@ analysis is thus using only the \num{311} expressed out of \num{433} total genes
 (\num{72} per cent).
 
 Unlike protein-coding genes, \trna genes are not directly implicated in changes
-of cellular function. We therefore did not expect many changes of the levels of
+of cellular function\todo{reformulate}. We therefore did not expect many changes of the levels of
 \trna gene expression over the course of development, and we do in fact observe
 that many \trna gene expression levels remain stable (\cref{fig:trna-counts}).
 Nevertheless, we also observe that around \num{50} per cent of all \trna genes
 \emph{are} differentially expressed. \Cref{fig:liver-trna-expression-change}
-shows a genomic location containing \trna genes which display these different
+shows a genomic locus containing \trna genes that displays these different
 dynamics.
 
+\todo{Vertically align plots}
 \textfigtwo{trna-counts}
     {Overview over \trna gene expression change.}
     {Bar plots show different types of \trna gene expression dynamics: \trna
@@ -209,11 +210,12 @@ dynamics.
     \cref{fig:trna-counts}}
 
 Surprisingly, the \trna gene expression differences follow similar patterns to
-those observed in \mrna genes when plotting the first two principal components
-of the \pca of the rank correlated replicates (\cref{fig:trna-pca}). The
-observed patterns are incompatible with mere \emph{random} expression changes
-(which would result in an unordered cloud of points). Something must account for
-these concerted changes in \trna gene expression.
+those observed in \mrna genes, with the first two principal components resulting
+from the application of \pca to the rank correlation matrix again corresponding
+to the tissue an developmental stage (\cref{fig:trna-pca}). The observed
+patterns are incompatible with mere \emph{random} expression changes (which
+would result in an unordered cloud of points). Something must account for these
+concerted changes in \trna gene expression.
 
 \textfig{trna-pca}{body}{0.5\textwidth}
     {\pca of \trna gene expression per developmental stage.}
@@ -237,7 +239,7 @@ anticodon supply in the form of differential \trna gene expression. This would
 meet the need for efficient translation: mismatching codon and anticodon pools
 would either lead to a wasteful over-production of \trna[s] of a given
 anticodon, or to a bottleneck in such an anticodon supply, causing efficiency
-loss in translation. Both scenarios present a non-optimal scenario for the
+loss in translation. Both scenarios present a sub-optimal scenario for the
 fitness of the cell and should reasonably be selected against.
 
 We therefore went on to quantify the codon pool corresponding to each given
