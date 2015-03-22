@@ -20,11 +20,28 @@ post-natal mice is primarily a metabolic organ.\todo[ref]{} Brain, by contrast,
 is a highly heterogeneous organ made up of many different cell types, with
 dynamic changes all through development.\todo[ref]{}
 
+\alignwrap[0.35\textwidth]{%
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        & \abbr{mrna} & \abbr{trna} \\
+        \midrule
+        Raw counts per replicate & \(m_{ij}\) & \(t_{ij}\) \\
+        Normalised counts per replicate & \(m_{ij}^*\) & \(t_{ij}^*\) \\
+        Counts of merged replicates & \(m_{iy}'\) & \(t_{iy}'\) \\
+        (Anti-)codon level counts & \(c_{iy}\) & \(a_{iy}\) \\
+        \bottomrule
+    \end{tabular}
+    \tabcap{variables}
+        {Summary of the matrix and subscript names.}
+        {\(i\) is always the index of a feature (gene); \(j\) is the index of a
+        library replicate; \(y\) is the index of a developmental stage.}}
+
 Each experiment was performed in two biological replicates, which were highly
 correlated (\cref{fig:trna-replicate-variability}).
 \Cref{fig:trna-project-outline} summarises the experimental
 procedure.\footnote{The wet-lab work of this project was performed by Bianca
-Schmitt.}
+Schmitt.} \Cref{tab:variables} summarises the names used to refer to data
+throughout this chapter.
 
 \textfig[\todo{Remove background gradients from graphics}]
     {trna-project-outline}{body}{0.8\textwidth}
@@ -105,16 +122,16 @@ transcription increases after birth \citep{Tsui:2013,Huang:2011}.
     downregulation.}
 
 For a more systematic analysis, I took the matrix of normalised count data of
-all library replicates and all \mrna[s], \(m_{ij}\), for each \mrna gene \(i\)
+all library replicates and all \mrna[s], \(m_{ij}^*\), for each \mrna gene \(i\)
 and each library replicate \(j\), and calculated the pairwise Spearman rank
 correlation between all replicates,
 
 \begin{equation}
-    c_{ij} = \operatorname{cor}(m_{\cdot i}, m_{\cdot j}) \text{\ for all
+    c_{ij} = \operatorname{cor}(m_{\cdot i}^*, m_{\cdot j}^*) \text{\ for all
         libraries \(i\), \(j\),}
 \end{equation}
 
-where \(m_{\cdot i}\) is the \(i\)th column of the matrix \(m\).
+where \(m_{\cdot i}^*\) is the \(i\)th column of the matrix \(M^*\).
 
 I then performed \pca on the correlation matrix, which allows variation in the
 data to be projected onto uncorrelated axes, so that the first axis represents
