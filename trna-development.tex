@@ -28,13 +28,14 @@ dynamic changes all through development.\todo[ref]{}
         Raw counts per replicate & \(m_{ij}\) & \(t_{ij}\) \\
         Normalised counts per replicate & \(m_{ij}^*\) & \(t_{ij}^*\) \\
         Counts of merged replicates & \(m_{iy}'\) & \(t_{iy}'\) \\
-        (Anti-)codon level counts & \(c_{iy}\) & \(a_{iy}\) \\
+        (Anti-)codon level counts & \(c_{xy}\) & \(a_{xy}\) \\
         \bottomrule
     \end{tabular}
     \tabcap{variables}
         {Summary of the matrix and subscript names.}
-        {\(i\) is always the index of a feature (gene); \(j\) is the index of a
-        library replicate; \(y\) is the index of a developmental stage.}}
+        {\(i\) is the index of a gene; \(j\) is the index of a
+        library replicate; \(x\) is an (anti-)codon;  \(y\) is the index of a
+        developmental stage.}}
 
 Each experiment was performed in two biological replicates, which were highly
 correlated (\cref{fig:trna-replicate-variability}).
@@ -69,9 +70,6 @@ mentioned again} However, the earlier stages were able confirm the general
 patterns found by analysing the remaining data.\todo{add supplementary PCA}
 
 The results presented in this chapter are published as \citet{Schmitt:2014}.
-
-%\section{Mouse tissue development as a model system to study mRNA and tRNA gene
-%regulation}
 
 \section{Protein-coding gene expression changes dynamically during mouse
 development}
@@ -127,7 +125,7 @@ and each library replicate \(j\), and calculated the pairwise Spearman rank
 correlation between all replicates,
 
 \begin{equation}
-    c_{ij} = \operatorname{cor}(m_{\cdot i}^*, m_{\cdot j}^*) \text{\ for all
+    cor_{ij} = \operatorname{cor}(m_{\cdot i}^*, m_{\cdot j}^*) \text{\ for all
         libraries \(i\), \(j\),}
 \end{equation}
 
@@ -270,29 +268,42 @@ their anticodon isoacceptor identity.
 triplet codons and amino acids}
 
 The codon pool of a given \mrna transcript is given by the distribution of
-triplet codons in its sequence. There are 64 possible triplet codons, of which
-61 encode 20 different amino acids, and three encode the stop codon, marking the
-end of translation.\footnote{My analysis ignores selenocysteine, which is a
-\num{21}st possible amino acid, and which can be encoded by the stop codons
-\codon{UGA} under rare circumstances.} Using this information and the transcript
-abundance, quantified by our \rnaseq data, I calculated the abundance of each
-triplet codon as well as each amino acid in the transcriptome of each
-developmental stage. I then compared these across stages to find out how they
-varied.
+triplet codons in its sequence. There are \num{64} possible triplet codons, of
+which \num{61} encode \num{20} different amino acids, and three encode the stop
+codon, marking the end of translation.\footnote{My analysis ignores
+selenocysteine, which is a \num{21}st possible amino acid, and which can be
+encoded by the stop codons \codon{UGA} under rare circumstances.} Using this
+information and the transcript abundance quantified by our \rnaseq data, I
+calculated the abundance of each triplet codon as well as each amino acid in the
+transcriptome of each developmental stage. I then compared these across stages
+to find out how they varied.
 
 First, for every gene, the number of occurrences of each codon in the longest
 annotated transcript (which is often called the “canonical” transcript) was
 determined and this value was multiplied by the gene’s expression (normalised
-for transcript length). Next, the overall usage of each codon was obtained by
-summing these values across all genes. Relative codon usages (excluding
-selenocysteine) were calculated using
+for transcript length):
 
 \begin{equation}
-    x_{ij}^* = x_{ij}\left(\sum_{k=1}^n x_{kj}\right)^{-1} \text{\ ,}
+    c_{xiy} = \text{codon}_{xiy} \cdot \frac{m_{iy}'}{l_{i}} \text{\ ,}
 \end{equation}
 
-where \(x_{ij}\) is the triplet codon usage for triplet codon \(i\) in stage
-\(j\), and \(x_{ij}^*\) is the relative usage.
+where \(\text{codon}_{xiy}\) is the number of occurrences of codon \(x\) in gene
+\(i\) at stage \(y\), and \(l_i\) is the length of the canonical transcript of
+gene \(i\).
+
+Next, the overall usage of each codon was obtained by summing these values
+across all genes:
+
+\begin{equation}
+    c_{xy} = \sum_i c_{xiy} \text{\ .}
+\end{equation}
+
+Relative codon usages \(c_{xy}^*\) were then calculated by subtracting each
+codon usage by the sum of the codon usages of a given stage:
+
+\begin{equation}
+    c_{xy}^* = c_{xy}\left(\sum_k c_{ky}\right)^{-1} \text{\ .}
+\end{equation}
 
 We find that on the transcriptome level, codon abundance is highly stable across
 development in both tissues (Spearman’s \(\rho > 0.97\)) ---
@@ -316,7 +327,7 @@ observed and simulated transcriptomes seem to simply reflect the codon abundance
 found in the coding part of the genome, regardless of the sometimes strong
 variations in gene expression between different transcriptomes.
 
-\textfig{codon-anticodon-abundance}{spill}{0.8\textwidth}
+\textfig{codon-anticodon-abundance}{spill}{\textwidth}
     {Codon and anticodon abundance across stages of development.}
     {The figure consists of three panels (right, middle, left) with three
     subfigures (top, centre, bottom) each. The left panel shows observed data
@@ -572,7 +583,7 @@ as follows:
 
 \begin{equation}
     b_{ijk} = \operatorname{cor}(\operatorname{perm}_k(x_i), x_j)
-        \text{\ for \(i, j \in T, i < j; k \in 1\dots\lvert x_i\rvert!\).}
+        \text{\ for \(i, j \in T, i < j; k \in 1\dots\lvert x_i\rvert!\)\ .}
 \end{equation}
 
 Here, \(\operatorname{perm}_k(x_i)\) is the \(k\)th permutation of the vector
