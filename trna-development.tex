@@ -434,38 +434,37 @@ codon demand of the corresponding \mrna transcriptome.
 \section{Variable chromatin accessibility may influence \abbr{trna} gene
 transcription}
 
-Having established that \trna gene expression varies in a controlled fashion, we
-were interested in finding out more about the mechanism driving this variation.
-From what we know about the regulation of protein-coding genes, it seemed likely
-that local genomic features around each \trna gene would be implicated in its
-transcriptional regulation.
+Having established that \trna gene expression varies in a controlled fashion
+through development, we were next interested in uncovering the mechanism driving
+this variation. From what we know about the regulation of protein-coding genes,
+it seemed likely that local genomic features around each \trna gene would be
+implicated in its transcriptional regulation.
 
 Previously published results indicate that there is no clear relationship
-between sequence variation of the internal promoters of \trna gene and their
+between sequence variation of the internal promoters of a \trna gene and their
 expression levels \citep{Oler:2010,Canella:2012}. We therefore focussed on the
 sequence upstream of the \tss of \trna genes to search for \emph{cis}-regulatory
 regions.
 
-In order to find enriched motifs in the vicinity of differentially expressed
-\trna genes between different developmental stages I collected the sequence on
-the forward and reverse strand of the \SI{500}{bp} upstream regions of
-differentially expressed \trna genes. These sequences were cleaned of
-low-complexity regions using the \name{dust} application. A first-order Markov
-model built from the upstream regions of all nondifferentially expressed
-\trna[s] in the appropriate stage–stage contrast was used as background. Motif
-enrichment analysis in the sequences was conducted with \name{MEME}
+To this end, I collected the sequence on the forward and reverse strand of the
+\SI{500}{bp} upstream regions of \trna genes that were differentially expressed
+between each pair of developmental stages. These sequences were cleaned of
+low-complexity regions using the \name{dust} application \citep{Bailey:2009}.
+Motif enrichment analysis in the sequences was conducted with \name{MEME}
 \citep{Bailey:2009}, configured to search for zero or one occurrences of one
 motif per sequence, up to a maximum of three distinct motifs, with a minimum
-motif size of \SI{6}{bp}.
+motif size of \SI{6}{bp}. A first-order Markov model built from the upstream
+regions of all nondifferentially expressed \trna[s] in the appropriate
+stage–stage contrast was used as background.
 
-Subsequently, \name{TOMTOM} \citep{Gupta:2007} was used to search for the
-enriched motifs in the \name{MEME} output in databases of known \tf binding
+Subsequently, \name{TOMTOM} \citep{Gupta:2007} was used to search for
+motifs enriched in the \name{MEME} output by exploiting databases of known \tf binding
 sites. I used the databases \identifier{JASPAR\_CORE\_2009\_vertebrates} and
 \identifier{uniprobe\_mouse}. A minimum overlap of \SI{5}{bp} with an
-\(E\)-value threshold of \num{10} was required. The analysis failed to turn up
+\(E\)-value threshold of \num{10} was required. The analysis failed to reveal
 strongly enriched, annotated motifs, which may suggest that the upstream region
 of \trna genes does not contain regulatory sequences explaining the observed
-differences in \trna gene expression.\todo{extend?}
+differences in \trna gene expression.\todo{extend?, insert result table}
 
 In the absence of clear evidence for nearby \tf binding sites, we hypothesised
 that the transcription regulation of nearby protein-coding genes might influence
