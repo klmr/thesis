@@ -305,12 +305,12 @@ codon usage by the sum of the codon usages of a given stage:
     c_{xy}^* = c_{xy}\left(\sum_k c_{ky}\right)^{-1} \text{\ .}
 \end{equation}
 
-We find that on the transcriptome level, codon abundance is highly stable across
+We find that at the transcriptome level, codon abundance is highly stable across
 development in both tissues (Spearman’s \(\rho > 0.97\)) ---
 \cref{fig:codon-anticodon-abundance} top left shows this by way of example using
 the codons for arginine in the different stages in liver.
 
-Given this stability, we wondered how much variation should be expected, by
+Given this stability, we next explored how much variation should be expected, by
 simulating random transcriptomes, and computing their codon usage.
 
 I used our library-size normalised \rnaseq data to simulate background
@@ -327,7 +327,7 @@ observed and simulated transcriptomes seem to simply reflect the codon abundance
 found in the coding part of the genome, regardless of the sometimes strong
 variations in gene expression between different transcriptomes.
 
-\textfig{codon-anticodon-abundance}{spill}{\textwidth}
+\textfig{codon-anticodon-abundance}{spill}{1.1\textwidth}
     {Codon and anticodon abundance across stages of development.}
     {The figure consists of three panels (right, middle, left) with three
     subfigures (top, centre, bottom) each. The left panel shows observed data
@@ -360,19 +360,19 @@ abundance stays stable across development in both tissues (Spearman’s \(\rho >
 0.96\)).
 
 In the same way as for the \mrna transcriptome, I then simulated \num{100}
-random \trna transcriptomes per developmenta stage and calculated the relative
-abundance of all isoacceptor families. Unlike for the observed \trna data, we
-find that simulated \trna transcriptomes create highly variable pools of
-anticodon isoacceptors (\cref{fig:codon-anticodon-abundance} centre middle and
-right). The variability observed here is explained by the fact that there are
-only \num{433} \trna genes in \mmu (of which only \num{311} were expressed in
-our samples), compared to the approximately \num{20000} protein-coding genes,
-which leads to a bigger relative influence of random sampling on the
-distribution. In contrast to \mrna gene expression, the stable anticodon
-isoacceptor abundance distribution we observe across development is therefore
-not compatible with random variation in the \trna gene expression: instead, it
-demonstrates the necessity of a mechanism actively stabilising \trna gene
-expression variation at the anticodon isoacceptor level.
+random \trna transcriptomes per developmental stage and calculated the relative
+abundance of all isoacceptor families. Unlike the observed \trna data, we find
+that simulated \trna transcriptomes create highly variable pools of anticodon
+isoacceptors (\cref{fig:codon-anticodon-abundance} centre middle and right). The
+variability observed here is explained by the fact that there are only \num{433}
+\trna genes in \mmu (of which only \num{311} were expressed in our samples),
+compared to the approximately \num{20000} protein-coding genes, which leads to a
+bigger relative influence of random sampling on the distribution. In contrast to
+\mrna gene expression, the stable anticodon isoacceptor abundance distribution
+we observe across development is therefore not compatible with random variation
+in the \trna gene expression: instead, it demonstrates the necessity of a
+mechanism actively stabilising \trna gene expression variation at the anticodon
+isoacceptor level.
 
 \section{\abbr{mrna} triplet codon usage is highly correlated with \abbr{trna}
 anticodon isoacceptor abundance during development}
@@ -380,23 +380,23 @@ anticodon isoacceptor abundance during development}
 Codons and anticodon-carrying \trna[s] form the biochemical interface between
 the genetic code and the amino acid sequence of proteins during \mrna
 translation. I investigated this correspondence between \mrna-driven codon
-demand and \trna anticodon supply by looking at the correlation of codons’ usage
-in an \mrna transcriptome and its matching \trna anticodon isoacceptor
-abundances in matching stages of development
+demand and \trna anticodon supply by looking at the correlation between a
+codons’ usage in the \mrna transcriptome and its matching \trna anticodon
+isoacceptor abundance at the same developmental stage
 (\cref{fig:codon-anticodon-abundance} bottom left).
 
-In order to compare how well the anticodon supply of a given transcriptome was
-adapted to its codon demand, I initially calculated the Spearman rank
-correlation between the codon usage and the anticodon isoacceptor abundance.
-Since not all codons have a corresponding anticodon-carrying \trna, unmatched
-“orphan” triplet codons were discarded from the calculation.
+To compare how well the anticodon supply of a given transcriptome was adapted to
+its codon demand, I initially calculated the Spearman rank correlation between
+the codon usage and the anticodon isoacceptor abundance. However, since not all
+codons have a corresponding anticodon-carrying \trna, unmatched “orphan” triplet
+codons were discarded from the calculation. Consequently, the correlation
+coefficients I calculated ignore the possibility of wobble base pairing.
 
-The correlation coefficients I calculated thus ignores the possibility of
-wobble base pairing. In order to account for it, one could use an alternative
-metric for how well adapted the \trna pool is to the codon pool
-\citep{Gingold:2011}. In particular, \citet{Dos_Reis:2004} describe the \tai,
-which takes into account all possible wobble base pairings when calculating the
-fit between codon usage and anticodon abundance.\todo{Expand on tAI}
+To account for this, one could use an alternative metric for how well adapted
+the \trna pool is to the codon pool \citep{Gingold:2011}. In particular,
+\citet{Dos_Reis:2004} describe the \tai, which takes into account all possible
+wobble base pairings when calculating the fit between codon usage and anticodon
+abundance.\todo{Expand on tAI}
 
 Rather than accounting for all possible base pairings, I opted for a simplified
 version, in which non-orphan codons are matched with their directly
@@ -426,10 +426,10 @@ distribution of significantly lower rank correlation coefficients
 (\cref{fig:codon-anticodon-abundance} bottom middle and right).
 
 This result provides further evidence that random variation of \trna gene
-expression cannot account for the observed patterns of expression, and that
-\trna gene expression must be actively regulated to stabilise the steady
-abundance of the of \trna anticodon isoacceptors, matching the triplet codon
-demand of the \mrna transcriptome.
+expression cannot account for the observed patterns of \trna gene expression,
+and that \trna gene expression must be actively regulated to stabilise the
+steady abundance of the of \trna anticodon isoacceptors, matching the triplet
+codon demand of the corresponding \mrna transcriptome.
 
 \section{Variable chromatin accessibility may influence \abbr{trna} gene
 transcription}
@@ -489,8 +489,8 @@ protein-coding genes was significantly different in the vicinity of up-regulated
 expressed \trna genes with varying significance thresholds
 (\numlist{0.1;0.05;0.01}).
 
-As for the case of \tf binding sites, we were
-unable to demonstrate such an association.\todo{figure}
+As for the case of \tf binding sites, we were unable to demonstrate such an
+association.\todo{figure}
 
 Besides \emph{cis}-regulatory \emph{sequence} features, another possibility is
 chromatin modifications regulate \trna gene expression in such a way as to show
