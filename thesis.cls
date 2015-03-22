@@ -148,7 +148,11 @@
 
 \newcommand*\figcap[3]{\caption{\label{fig:#1}\labelfont{#2} #3}}
 
-\newcommand*\tabcap[3]{\caption{\label{tab:#1}\labelfont{#2} #3}}
+\newcommand*\tabcap[3]{%
+    \begingroup%
+    \def\@captype{table}
+    \caption{\label{tab:#1}\labelfont{#2} #3}
+    \endgroup}
 
 \newcommand\align@body[1]{%
     \begin{figure}[h!]
@@ -166,10 +170,21 @@
             \end{minipage}}
     \end{figure}}
 
-\newcommand\align@wrap[1]{%
-    \begin{wrapfigure}{o}{0.5\textwidth}
-        #1
+\newcommand\align@wrap[2][0.5\textwidth]{%
+    \begin{wrapfigure}{o}{#1}
+        \newlength\wrapwidth
+        \setlength\wrapwidth{#1}
+        \addtolength\wrapwidth{\marginparwidth}
+        \addtolength\wrapwidth{\marginparsep}
+        \begin{minipage}{\wrapwidth}
+            #2
+        \end{minipage}
     \end{wrapfigure}}
+
+% Thin wrapper around align@wrap, for use in the document instead of
+% textfloat(bare), when the width needs to be set explicitly.
+
+\let\alignwrap\align@wrap
 
 \newcommand\textfloat[5]{
     % #1: label
