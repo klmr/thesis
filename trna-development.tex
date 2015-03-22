@@ -256,8 +256,10 @@ anticodon supply in the form of differential \trna gene expression. This would
 meet the need for efficient translation: mismatching codon and anticodon pools
 would either lead to a wasteful over-production of \trna[s] of a given
 anticodon, or to a bottleneck in such an anticodon supply, causing efficiency
-loss in translation. Both scenarios present a sub-optimal scenario for the
-fitness of the cell and should reasonably be selected against.
+loss in translation. Both scenarios present a suboptimal scenario for the
+fitness of the cell and should reasonably be selected against. In fact, there is
+some evidence that such a selection takes place
+\citep{Ikemura:1981,Ikemura:1985,Yang:2008}.
 
 We therefore went on to quantify the codon pool corresponding to each given
 transcriptome\footnote{I shall refrain from using the term “codome” to refer to
@@ -279,11 +281,11 @@ developmental stage. I then compared these across stages to find out how they
 varied.
 
 First, for every gene, the number of occurrences of each codon in the longest
-annotated transcript (the “canonical” transcript) was determined and this value
-was multiplied by the gene’s expression (normalised for transcript length).
-Next, the overall usage of each codon was obtained by summing these values
-across all genes. Relative codon and usage (excluding selenocysteine) were
-calculated using
+annotated transcript (which is often called the “canonical” transcript) was
+determined and this value was multiplied by the gene’s expression (normalised
+for transcript length). Next, the overall usage of each codon was obtained by
+summing these values across all genes. Relative codon usages (excluding
+selenocysteine) were calculated using
 
 \begin{equation}
     x_{ij}^* = x_{ij}\left(\sum_{k=1}^n x_{kj}\right)^{-1} \text{\ ,}
