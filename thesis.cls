@@ -65,7 +65,6 @@
 \let\old@amp\&
 \def\&{\textit{\old@amp}}
 
-\DefineBibliographyStrings{english}{and = {\&}}
 \DefineBibliographyStrings{english}{andothers = {\&~al\adddot}}
 
 \captionsetup{%
