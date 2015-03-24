@@ -457,12 +457,12 @@ motif size of \SI{6}{bp}. A first-order Markov model built from the upstream
 regions of all nondifferentially expressed \trna[s] in the appropriate
 stage–stage contrast was used as background.
 
-Subsequently, \name{TOMTOM} \citep{Gupta:2007} was used to search for
-motifs enriched in the \name{MEME} output by exploiting databases of known \tf binding
+Subsequently, \name{TOMTOM} \citep{Gupta:2007} was used to search for motifs
+enriched in the \name{MEME} output by exploiting databases of known \tf binding
 sites. I used the databases \identifier{JASPAR\_CORE\_2009\_vertebrates} and
 \identifier{uniprobe\_mouse}. A minimum overlap of \SI{5}{bp} with an
 \(E\)-value threshold of \num{10} was required. The analysis failed to reveal
-strongly enriched, annotated motifs, which may suggest that the upstream region
+strongly enriched, annotated motifs\todo{ANY? This is a bit vague}, suggesting that the upstream region
 of \trna genes does not contain regulatory sequences explaining the observed
 differences in \trna gene expression.\todo{extend?, insert result table}
 
@@ -478,65 +478,84 @@ differentially expressed \mrna genes was performed between developmental stages
 the largest number of differentially expressed \trna genes). For each
 up-regulated \trna gene \(i\) we counted the number of up-regulated
 protein-coding genes, \(n_i\), and the total number of protein-coding genes,
-\(b_i\), in the same genomic region of varying window sizes
-(\SIlist{10;50;100}{kb}), which allowed us to compute the ratio \(r_i =
-{n_i}/{b_i}\). We repeated this analysis for each non-differentially expressed
-\trna gene \(j\) to obtain the ratio \(r_j^*\). A Kolmogorov–Smirnov test was
-performed to assess whether the distribution \(r\) of ratios of up-regulated
-protein-coding genes was significantly different in the vicinity of up-regulated
-\trna genes from the distribution \(r^*\) in the vicinity of nondifferentially
-expressed \trna genes with varying significance thresholds
+\(b_i\), in a genomic region centred on the \trna gene of interest. The analysis
+was performed for different window sizes (\SIlist{10;50;100}{kb}). This allowed
+us to compute the ratio \(r_i = {n_i}/{b_i}\), which represents \todo{… xyz}. We
+repeated this analysis for each non-differentially expressed \trna gene \(j\) to
+obtain the ratio \(r_j^*\). A Kolmogorov–Smirnov test was performed to assess
+whether the distribution of \(r\), corresponding to the ratios of up-regulated
+protein-coding genes in the vicinity of up-regulated \trna genes, was
+significantly different from the distribution \(r^*\) in the vicinity of
+nondifferentially expressed \trna genes with varying significance thresholds
 (\numlist{0.1;0.05;0.01}).
 
 As for the case of \tf binding sites, we were unable to demonstrate such an
 association.\todo{figure}
 
 Besides \emph{cis}-regulatory \emph{sequence} features, another possibility is
-chromatin modifications regulate \trna gene expression in such a way as to show
-the patterns we observed. Previous studies by \citet{Barski:2010,Oler:2010}
+that chromatin modifications are associated with the changes in \trna gene
+expression that we observed. Previous studies by \citet{Barski:2010,Oler:2010}
 indicate that several chromatin modifications have an influence on \pol3-driven
 transcription. Using publicly available, previously published data
 \citep{Shen:2012} (\geo accession \identifier{GSE29184}), I investigated three
-histone modifications associated with genomic regions of promoters and enhancers
-(H3K4me3, H3K4me1, H3K27ac) as well as \pol2 and an insulator, \ctcf. For each
-of these factors, I assayed their association with
+histone modifications associated with genomic regions containing promoters and
+enhancers (H3K4me3, H3K4me1, H3K27ac) as well as \pol2 and an insulator, \ctcf.
+For each of these factors, I assayed their association with
 
 \begin{shortenumerate}
     \item active versus inactive \trna genes in embryonic (E15.5) and adult
         (P29) tissues; and
-    \item differentially expressed \trna genes between E15.5 and P29,
+    \item differentially expressed \trna genes between E15.5 and P29
 \end{shortenumerate}
 
-using Fisher’s exact test in mouse liver and brain tissues. Occurrence of these
-chromatin marks was measured \SIlist{0.1;0.5;1}{kb} upstream of and downstream
-from \trna genes. Our embryonic (E15.5) and adult (P29) \pol3 data was
-complemented with embryonic (E14.5) and adult (P56) \chipseq data, as different
-time points were selected in our and in the \citet{Shen:2012} study. Likewise,
-our brain P29 data was compared with P56 data by merging “cortex” and
-“cerebellum” \chipseq data from \citet{Shen:2012}.
+in both liver and brain.
 
-Between E15.5 and P29 in liver, we did indeed find significant association
+To test for association of a factor with \trna gene expression, I investigated
+whether a given factor was present in the vicinity of a \trna locus. I then
+performed Fisher’s exact test on the number expressed versus unexpressed \trna
+genes with at least one mark in its vicinity. Occurrence of these chromatin
+marks was measured \SIlist{0.1;0.5;1}{kb} upstream of and downstream from \trna
+genes. Our embryonic (E15.5) and adult (P29) \pol3 data was complemented with
+embryonic (E14.5) and adult (P56) \chipseq data, as different time points were
+selected in our and in the \citet{Shen:2012} study. Likewise, our brain P29 data
+was compared with P56 data by using the union of “cortex” and “cerebellum”
+\chipseq binding locations from \citet{Shen:2012}.
+
+In liver, between E15.5 and P29, we did indeed find a significant association
 between differentially expressed \trna genes and levels of H3K27ac (\(p <
-10^{-4}\), Fisher’s exact test; \cref{tab:histone-results}). H3K4me3 and \pol2
-showed a less strong association, whereas we were unable to show significant
-association with H3K4me1 and \ctcf.
+10^{-4}\), Fisher’s exact test; \cref{tab:histone-results}\todo{Wrong table.
+Mention others? Which?}). H3K4me3 and \pol2
+showed a less strong association, and no significant association with H3K4me1 or
+\ctcf was found.
 
 \begin{table}[h!]
     \centering
-    \begin{tabular}{@{}lr@{}}
+    \sisetup{
+        table-figures-integer=1,
+        table-figures-decimal=2,
+        table-figures-exponent=2,
+        table-sign-exponent=true,
+        table-number-alignment=right
+    }
+    \begin{tabular}{@{}lSS@{}}
         \toprule
-        \multicolumn{1}{c}{\textbf{(This is a placeholder)}} \\
+        & \multicolumn{2}{@{}c@{}}{{Developmental stage}} \\
+        \cmidrule(l){2-3}
+        Factor & \multicolumn{1}{r}{{Embryo}} & \multicolumn{1}{r@{}}{{Adult}} \\
         \midrule
-        GTG &   1.01E-25 \\
-        AGC &   2.26E-12 \\
-        TGG &   3.68E-07 \\
+        H3K4me3 & 1.85e-32 & 1.27e-29 \\
+        Enhancer & 1 & 1.46e-2 \\
+        H3K27ac & 9.00e-33 & 1.99e-21 \\
+        \abbr{pol2} & 9.38e-5 & 1.85e-4 \\
+        \abbr{ctcf} & 2.24e-3 & 2.09e-4 \\
         \bottomrule
     \end{tabular}
 
-    \todo{Input supp table 11 from paper}
     \tabcap{histone-results}
-    {Differentially expressed \trna genes near enriched histone modifications}
-    {…}
+    {Evidence for enrichment of different factors near expressed \trna genes.}
+    {Shown are \(p\)-values for the hypothesis of no difference in presence of
+    the specified factor between expressed and unexpressed \trna genes in
+    embryonic and adult tissue liver, using a window size of \SI{\pm 0.5}{kb}.}
 \end{table}
 
 Though limited, this association of differentially expressed \trna genes histone
@@ -667,6 +686,13 @@ needs to be identified.
 
 \begin{table}[h!]
     \centering
+    \sisetup{
+        table-figures-integer=1,
+        table-figures-decimal=2,
+        table-figures-exponent=2,
+        table-sign-exponent=true,
+        table-number-alignment=right
+    }
     \begin{tabular}{@{}lS@{}}
         \toprule
         Isoacceptor & \multicolumn{1}{r@{}}{{\(p\)-value}}\\
