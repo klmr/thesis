@@ -1,7 +1,5 @@
 \chapter{Implications of codon–anticodon interaction on the regulation of translation}
 
-\todo[inline]{Insert section titles}
-
 In the previous chapter I have shown that the codon usage and its interaction
 with \trna anticodons remains remarkably stable across the variability of the
 transcriptome during mammalian development.
@@ -13,23 +11,34 @@ report that different programmes of cellular function preferentially use
 different sets of codons, and that the pool of active \trna[s] adapts
 dynamically to decode this set of codons with high efficiency.
 
-\todo[inline]{Summarise \citet{Gingold:2014} here}
+Because its conclusions are highly relevant to our own research we evaluated the
+paper carefully. In the following, I will first describe the paper’s main
+findings, to the extent that they are relevant to our own research. I will then
+outline our concerns with the analysis, and the subsequent experiments we
+performed in an effort to explain how our previous results relate to this paper.
 
-To bring in line these two findings — the stability of the anticodon pool on the
-one hand, and the malleability of the anticodon pool to match demand of highly
-expressed on the other hand — we turned our attention to differences between
-healthy tissue and tumour cell lines in \mmu and \hsa.
+\section{“A dual program for translation regulation in cellular proliferation
+and differentiation”}
 
 \citet{Gingold:2014} investigated the abundance of \trna anticodons and the
 codon usage of different groups of protein-coding genes in patient tissue
-samples and human-derived cell lines in different cellular conditions ---
-\num{5} primary cancers, induced differentiation, release from serum starvation,
-senescence, and \gene{MYC} and \gene{RAS} overexpression.
+samples and human-derived cell lines in different cellular conditions --- five
+primary cancers, induced differentiation, release from serum starvation,
+senescence, and \gene{MYC} and \gene{RAS} overexpression --- with the aim of
+characterising the differences in \trna gene expression and \trna anticodon
+abundance. They hypothesise that the balance between \trna anticodon supply and
+codon demand might influence the rate of production of proteins from \mrna
+\citep{Gingold:2011}.
+
+\subsection{\abbr{trna} anticodons change in abundance in tumour tissues}
 
 Using microarray expression data for \trna genes, they show that there are
 specific anticodon isoacceptors whose abundance changes reproducibly in specific
 tumours (lymphomas), mirroring results reported previously
 \citep{Pavon-Eternod:2009}.
+
+\subsection{Codon usage differs between genes involved in cell proliferation and
+genes involved in differentiation}
 
 They then looked at protein coding genes within \go terms that they associated
 with healthy, adult tissue (“pattern specification process”) and tumour tissue
@@ -47,11 +56,6 @@ hand, and rapid cellular division, such as found in tumours, on the other hand.
 In other words, different sets of codons are preferentially used in rapidly
 dividing cells than in healthy cells.
 
-    % #1: label
-    % #2: alignment command
-    % #3: content
-    % #4: figure caption
-    % #5: figure description
 \textfloat{go-cub-pca}{body}
     {%
         \centering
@@ -79,7 +83,8 @@ dividing cells than in healthy cells.
     numbers differ slightly due to the use of different implementations to
     perform the analysis but this does not impact the interpretation).}
 
-\todo[inline]{Include table of two sets of GO terms referred to above}
+\subsection{Differential codon usage in cell-condition specific gene sets
+matches \abbr{trna} anticodon abundance in corresponding cells}
 
 Finally, \citet{Gingold:2014} use \rnaseq data of the previously mentioned cell
 types to argue that gene expression changes do indeed correlate with the first
@@ -107,6 +112,14 @@ fact significant, assuming they correlate at all (\cref{fig:gingold-fig-3c}).
     cellular abundance of \trna anticodons compared to normal cells. The bottom
     panel shows the mean fold change in \mrna levels per \go term compared to
     normal cells. Figure from \citet{Gingold:2014}.}
+
+\section{Are \abbr{trna} anticodon abundance and codon usage highly adapted to
+different cellular conditions?}
+
+To bring in line these two findings — the stability of the anticodon pool on the
+one hand, and the malleability of the anticodon pool to match demand of highly
+expressed on the other hand — we turned our attention to differences between
+healthy tissue and tumour cell lines in \mmu and \hsa.
 
 Since we were already in possession of relevant \trna data we decided to use our
 own data to recapitulate these findings. A first observation was that while our
