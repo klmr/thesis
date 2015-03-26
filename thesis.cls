@@ -9,6 +9,7 @@
 \RequirePackage{fontspec}
 \RequirePackage{pifont}
 \RequirePackage{amsmath}
+\RequirePackage{unicode-math}
 \RequirePackage{setspace}
 \RequirePackage{xcolor}
 \RequirePackage{marginnote}
@@ -50,13 +51,16 @@
 \setmainfont[Ligatures=TeX, Numbers=OldStyle]{TeX Gyre Pagella}
 \setsansfont[
     Ligatures=TeX,
-    Numbers=OldStyle,
     UprightFont={* Light},
     BoldFont={*},
     ItalicFont={* Light Italic},
     BoldItalicFont={* Italic},
     Scale=MatchLowercase]{Gill Sans}
 \setmonofont[Scale=MatchLowercase]{WenQuanYi Zen Hei Mono}
+\setmathfont[
+    Extension=.otf,
+    BoldFont=*bold,
+]{xits-math}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
 \usetocstyle{nopagecolumn}
@@ -201,11 +205,12 @@
     \csuse{align@#1}{#2}}
 
 \newcommand\textfig[6][]{%
-    % #1: label
-    % #2: alignment command
-    % #3: width
-    % #4: figure caption
-    % #5: figure description
+    % #1: content inside figure (optional)
+    % #2: label
+    % #3: alignment command
+    % #4: width
+    % #5: figure caption
+    % #6: figure description
     \textfloat{#2}{#3}{\centering\includegraphics[width=#4]{#2}#1}{#5}{#6}}
 
 \newcommand*\textfigtwo[6]{%
