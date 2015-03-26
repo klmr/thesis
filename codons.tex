@@ -21,28 +21,31 @@ expressed on the other hand — we turned our attention to differences between
 healthy tissue and tumour cell lines in \mmu and \hsa.
 
 \citet{Gingold:2014} investigated the abundance of \trna anticodons and the
-codon usage of different groups of protein-coding genes in human-derived cell
-lines in different cellular conditions --- N\todo{find number} tumour tissues,
-induced differentiation, release from serum starvation and senescence.
+codon usage of different groups of protein-coding genes in patient tissue
+samples and human-derived cell lines in different cellular conditions ---
+\num{5} primary cancers, induced differentiation, release from serum starvation,
+senescence, and \gene{MYC} and \gene{RAS} overexpression.
 
-Using microarray expression data, they show that there are specific anticodon
-isoacceptors whose abundance changes reproducibly in specific tumours
-(lymphomas), mirroring results reported previously\todo[ref]{Canella? White?}.
+Using microarray expression data for \trna genes, they show that there are
+specific anticodon isoacceptors whose abundance changes reproducibly in specific
+tumours (lymphomas), mirroring results reported previously
+\citep{Pavon-Eternod:2009}.
+
 They then looked at protein coding genes within \go terms that they associated
 with healthy, adult tissue (“pattern specification process”) and tumour tissue
 (“M phase of mitotic cell cycle”). They show that the codon usage bias in these
-two \go terms (averaged over all containing genes) clearly differs\todo{fig 2A?}.
+two \go terms (averaged over all containing genes) clearly differs\todo{fig
+2A?}.
 
-They expand their analysis by calculating the mean codon usage bias\todo{codon
-usage or CUB?} across many \go categories and perform \pca on the resulting
-matrix. This reveals that the largest contributor to the variation stems from
-the split of the \go terms into two distinct sets, one encompassing
-multi-cellular \go terms and the other cell autonomous \go terms. They argue
-that these two sets of \go terms correspond to \go terms functionally
-responsible for maintaining cell homoeostasis on the one hand, and rapid
-cellular division, such as found in tumours, on the other hand. In other words,
-different sets of codons are preferentially used in rapidly dividing cells than
-in healthy cells.
+They expand their analysis by calculating the mean codon usage across many \go
+categories and perform \pca on the resulting matrix. This reveals that the
+largest contributor to the variation stems from the split of the \go terms into
+two distinct sets, one encompassing multi-cellular \go terms and the other cell
+autonomous \go terms. They argue that these two sets of \go terms correspond to
+\go terms functionally responsible for maintaining cell homoeostasis on the one
+hand, and rapid cellular division, such as found in tumours, on the other hand.
+In other words, different sets of codons are preferentially used in rapidly
+dividing cells than in healthy cells.
 
 \textfig{go-cub-pca}{body}{0.8\textwidth}
     {\pca of mean \go term codon usage bias.}
@@ -57,32 +60,32 @@ expression towards the more we go towards the cell autonomous end of the axis,
 and more decreased expression towards the multi-cellular end, and that this
 trend is reversed for samples taken after induced differentiation using retinoic
 acid. A similar analysis is then done for the expected translational efficiency,
-by using \trna anticodon abundance to calculate the fold change of the \tai\todo{explain tAI},
+by using \trna anticodon abundance to calculate the fold change of the \tai,
 matched against the codon usage bias in the different \go terms. However, the
-authors neglected to actually calculate correlations between the first principal
-component and either the codon usage bias or the \tai fold change. Instead, they
-merely visualised the presumed correspondence using an inadequate and
-(particularly in this case) misleading colour map \citep{Borland:2007}.
-Furthermore, the absolute range of changes are minute (range of \tai fold change
-\numrange{0.86}{0.905} in one case), and lack of statistical analysis makes it
-impossible to say whether these changes are in fact significant, assuming they
-correlate at all\todo{fig 3?}.
+authors did not calculate correlations between the first principal component and
+either the codon usage bias or the \tai fold change. Instead, they merely
+visualised the presumed correspondence using a potentially misleading colour map
+\citep{Borland:2007}. Furthermore, the absolute range of changes are minute
+(range of \tai fold change \numrange{0.86}{0.905} in one case), and the lack of
+statistical analysis makes it impossible to say whether these changes are in
+fact significant, assuming they correlate at all (\cref{fig:gingold-fig-3c}).
+
+\textfig{gingold-fig-3c}{body}{\textwidth}
+    {Projection of the \trna and \mrna expression changes on the codon usage
+    map.}
+    {}
 
 Since we were already in possession of relevant \trna data we decided to use our
-own data to recapitulate these findings, rather than merely using the data from
-\citet{Gingold:2014}. In addition, since we were not convinced by the
-statistical analysis presented in their paper, we decided to address this as
-well.
-
-A first observation was that while our own research so far had looked at the
-whole transcriptome, \citet{Gingold:2014} had looked at specific subsets. While
-both approaches are valid in their own right, some caution is necessary when
-comparing the results: the smaller the set of genes one looks at, the larger the
-effects of random sampling of the genes become. When analysing a particular
-feature, such as the codon usage bias, random sampling will thus contribute a
-larger part to the variation between two small sets than between two large sets.
-If one wants to assert that deviations are nonrandom, one thus has to account
-for this effect (\cref{fig:sample-size-dependent-cub}).
+own data to recapitulate these findings. A first observation was that while our
+own research so far had looked at the whole transcriptome, \citet{Gingold:2014}
+had looked at specific subsets. While both approaches are valid in their own
+right, some caution is necessary when comparing the results: the smaller the set
+of genes one looks at, the larger the effects of random sampling of the genes
+become. When analysing a particular feature, such as the codon usage bias,
+random sampling will thus contribute a larger part to the variation between two
+small sets than between two large sets. If one wants to assert that deviations
+are nonrandom, one thus has to account for this effect
+(\cref{fig:sample-size-dependent-cub}).
 
 \textfig{sample-size-dependent-cub}{spill}{\textwidth}
     {Dependence of codon usage variability on sample size.}
@@ -103,10 +106,11 @@ whose description contains the text “differentiation and proliferation” woul
 counted as belonging to the \go super-category “differentiation”.
 
 In order to test whether the anticodon pool does indeed adapt to specific
-cellular conditions, we tested whether the matching codon--anticodon adaptation
-(estimated via the translation efficiency index \tai) is higher between matching
-\mrna and \trna transcriptomes than between mismatching ones. In other words, we
-looked at \mrna specific to cellular conditions, and calculated the \tai[s] for
+cellular conditions, we examined whether the matching codon--anticodon
+adaptation (estimated via the translation efficiency index \tai) is higher
+between matching \mrna and \trna transcriptomes than between mismatching ones.
+In other words, we looked at the \mrna pool specific to cellular conditions, and
+calculated the \tai[s] for
 \begin{enumerate*}
     \item matching \trna pools, and
     \item mismatching \trna pools
