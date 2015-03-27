@@ -54,11 +54,13 @@ or cell line was derived.
 \subsection{Codon usage differs between genes involved in cell proliferation and
 genes involved in differentiation}
 
-They then looked at protein coding genes within \go terms that they associated
-with healthy, adult tissue (“pattern specification process”) and tumour tissue
-(“M phase of mitotic cell cycle”). They show that the codon usage bias in these
-two \go terms (averaged over all containing genes) clearly differs
-(\cref{fig:go-term-codon-usage}).
+Next, \citet{Gingold:2014} looked at protein coding genes within \go terms that
+they functionally associated with healthy, adult tissue (“pattern specification
+process”) on the one hand, and tumour tissue (“M phase of mitotic cell cycle”)
+on the other hand. They show that the codon usage bias in these two \go terms
+(averaged over all containing genes) clearly differs
+(\cref{fig:go-term-codon-usage}): the genes in both \go terms preferentially use
+different synonymous codons.
 
 \textfig{go-term-codon-usage}{body}{0.8\textwidth}
     {Codon usage bias in two \abbr{go} terms.}
@@ -74,8 +76,8 @@ two distinct sets, one encompassing multi-cellular \go terms and the other cell
 autonomous \go terms. They argue that these two sets of \go terms correspond to
 \go terms functionally responsible for maintaining cell homoeostasis on the one
 hand, and rapid cellular division, such as found in tumours, on the other hand.
-In other words, different gene families that are specific to rapidly dividing as
-opposed to healthy, mature cells have a distinct codon composition.
+In other words, different gene families specific to rapidly dividing as opposed
+to healthy, mature cells have a distinct codon composition.
 
 \textfloat{go-cub-pca}{spill}
     {%
@@ -84,7 +86,7 @@ opposed to healthy, mature cells have a distinct codon composition.
         \end{minipage}%
         \begin{minipage}{0.4\textwidth}
             \begingroup
-            \small\sffamily
+            \footnotesize\sffamily
             \begin{tabu} to \textwidth {@{}>{\color{blue}\(}c<{\)}X@{}}
                 \toprule
                 \multicolumn{2}{@{}l}{Multi-cellular} \\
@@ -121,26 +123,39 @@ opposed to healthy, mature cells have a distinct codon composition.
 \subsection{Differential codon usage in cell-condition specific gene sets
 matches \abbr{trna} anticodon abundance in corresponding cells}
 
-Finally, \citet{Gingold:2014} use \rnaseq data of the previously mentioned cell
-types to argue that gene expression changes do indeed correlate with the first
-principal component of the \pca, with tumour samples showing more increased
-expression towards the more we go towards the cell autonomous end of the axis,
-and more decreased expression towards the multi-cellular end, and that this
-trend is reversed for samples taken after induced differentiation using retinoic
-acid. A similar analysis is then done for the expected translational efficiency,
-by using \trna anticodon abundance to calculate the fold change of the \tai,
-matched against the codon usage bias in the different \go terms. However, the
-authors did not calculate correlations between the first principal component and
-either the codon usage bias or the \tai fold change. Instead, they merely
-visualised the presumed correspondence using a potentially misleading colour map
-\citep{Borland:2007}. Furthermore, the absolute range of changes are minute
-(range of \tai fold change \numrange{0.86}{0.905} in one case), and the lack of
-statistical analysis makes it impossible to say whether these changes are in
-fact significant, assuming they correlate at all (\cref{fig:gingold-fig-3c}).
+Finally, \citet{Gingold:2014} compared the \pca of the per-\go codon usage to
+the actual gene expression of \mrna[s] and \trna[s]. The analysis was done in
+two parts. Firstly, protein-coding gene expression between normal tissue and
+either a tumour sample or a induced differentiation sample was compared, and the
+fold change calculated for each gene. The mean fold change of each \go term,
+mapped to a colour map, was plotted on top of the \go terms in the \pca
+(\cref{fig:gingold-fig-3c} bottom). There seems to be a marked gradient of \mrna
+expression enrichment from left to right. This illustrates that the first
+principal component of the \pca does indeed separate \go terms by their
+specificity to either proliferating or differentiating cellular programmes.
+
+Secondly, as an estimate of translation efficiency, the \trna availability was
+assessed for each \go term gene set via the \tai of the \trna anticodons that
+decode the genes of a given \go term, weighted by the \trna gene expression. The
+fold change in translation efficiency between healthy tissue and the sample
+under consideration was again mapped to a colour map, which was overlaid over
+the \pca (\cref{fig:gingold-fig-3c} top). Again there appears to be a gradient
+of how well different \go terms are adapted to the \trna anticodon pool of a
+given condition, following the first principal component of the \pca.
+
+However, the authors did not calculate correlations between the first principal
+component and either the codon usage bias or the \tai fold change. Instead, they
+merely visualised the presumed correspondence using the potentially misleading
+rainbow colour map \citep{Borland:2007}. Furthermore, the absolute range of
+changes is minute compared to the overall fold change (range of \tai fold change
+\numrange{0.86}{0.905} in one case, corresponding to less than \num{5} per cent
+of the maximum fold change), and the lack of statistical analysis makes it
+impossible to tell whether these changes are in fact significant, assuming they
+correlate at all (\cref{fig:gingold-fig-3c}).
 
 \textfig{gingold-fig-3c}{body}{\textwidth}
     {Projection of the \trna and \mrna expression changes on the codon usage
-    map.}
+    map for cells after induced differentiation via retinoic acid.}
     {Both panels show the same \pca as in \cref{fig:go-cub-pca}. In the top
     panel, the colours correspond to the fold change in predicted translation
     efficiency of the genes constituting each \go term, given the change in
