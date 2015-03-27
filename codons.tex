@@ -56,25 +56,39 @@ hand, and rapid cellular division, such as found in tumours, on the other hand.
 In other words, different sets of codons are preferentially used in rapidly
 dividing cells than in healthy cells.
 
-\textfloat{go-cub-pca}{body}
+\textfloat{go-cub-pca}{spill}
     {%
-        \centering
-        \begingroup
-        \small\sffamily
-        \begin{tabular}{@{}>{\color{blue}\(}c<{\)}l>{\color{red}\(}c<{\)}l@{}}
-            \toprule
-            \multicolumn{2}{@{}l}{Multi-cellular} & \multicolumn{2}{l}{Cell autonomous} \\
-            \midrule
-            ▲ & Development & ▲ & Mitotic cell cycle \\
-            ⬤ & Differentiation & ⬤ & Nucleosome assembly \\
-            ⬛ & Cell adhesion & ⬛ & Chromatin remodelling/modification \\
-            ◆ & Pattern specification & ◆ & Translation \\
-            ◇ & Multicellular organism growth & ◇ & \mrna metabolic process \\
-            ▽ & Angiogenesis & ▽ & Negative regulation of cell cycle \\
-            \bottomrule
-        \end{tabular}
-        \endgroup
-        \includegraphics[width=0.8\textwidth]{go-cub-pca}
+        \begin{minipage}{0.6\textwidth}
+            \includegraphics[width=\textwidth]{go-cub-pca}
+        \end{minipage}%
+        \begin{minipage}{0.4\textwidth}
+            \begingroup
+            \small\sffamily
+            \begin{tabu} to \textwidth {@{}>{\color{blue}\(}c<{\)}X@{}}
+                \toprule
+                \multicolumn{2}{@{}l}{Multi-cellular} \\
+                \midrule
+                ▲ & Development \\
+                ⬤ & Differentiation \\
+                ⬛ & Cell adhesion \\
+                ◆ & Pattern specification \\
+                ◇ & Multicellular organism growth \\
+                ▽ & Angiogenesis \\
+                \midrule
+            \end{tabu}
+            \begin{tabu} to \textwidth {@{}>{\color{red}\(}c<{\)}X@{}}
+                \multicolumn{2}{@{}l}{Cell autonomous} \\
+                \midrule
+                ▲ & Mitotic cell cycle \\
+                ⬤ & Nucleosome assembly \\
+                ⬛ & Chromatin remodelling/modification \\
+                ◆ & Translation \\
+                ◇ & \mrna metabolic process \\
+                ▽ & Negative regulation of cell cycle \\
+                \bottomrule
+            \end{tabu}
+            \endgroup
+        \end{minipage}
     }
     {\pca of mean \go term codon usage.}
     {Each dot corresponds to one \go term. The position of the dots is derived
