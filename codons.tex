@@ -85,32 +85,28 @@ to healthy, mature cells have a distinct codon composition.
             \includegraphics[width=\textwidth]{go-cub-pca}
         \end{minipage}%
         \begin{minipage}{0.4\textwidth}
-            \begingroup
             \footnotesize\sffamily
             \begin{tabu} to \textwidth {@{}>{\color{blue}\(}c<{\)}X@{}}
                 \toprule
                 \multicolumn{2}{@{}l}{Multi-cellular} \\
-                \midrule
-                ▲ & Development \\
-                ⬤ & Differentiation \\
-                ⬛ & Cell adhesion \\
-                ◆ & Pattern specification \\
-                ◇ & Multicellular organism growth \\
-                ▽ & Angiogenesis \\
-                \midrule
+                \quad ▲ & Development \\
+                \quad ⬤ & Differentiation \\
+                \quad ⬛ & Cell adhesion \\
+                \quad ◆ & Pattern specification \\
+                \quad ◇ & Multicellular organism growth \\
+                \quad ▽ & Angiogenesis \\
+                \addlinespace
             \end{tabu}
             \begin{tabu} to \textwidth {@{}>{\color{red}\(}c<{\)}X@{}}
                 \multicolumn{2}{@{}l}{Cell autonomous} \\
-                \midrule
-                ▲ & Mitotic cell cycle \\
-                ⬤ & Nucleosome assembly \\
-                ⬛ & Chromatin remodelling/modification \\
-                ◆ & Translation \\
-                ◇ & \mrna metabolic process \\
-                ▽ & Negative regulation of cell cycle \\
+                \quad ▲ & Mitotic cell cycle \\
+                \quad ⬤ & Nucleosome assembly \\
+                \quad ⬛ & Chromatin remodelling/modification \\
+                \quad ◆ & Translation \\
+                \quad ◇ & \mrna metabolic process \\
+                \quad ▽ & Negative regulation of cell cycle \\
                 \bottomrule
             \end{tabu}
-            \endgroup
         \end{minipage}
     }
     {\pca of mean \go term codon usage.}
@@ -230,9 +226,48 @@ only \num{3} genes annotated for “M phase of mitotic cell cycle”). As a
 consequence, we did not use the existing \go term annotations for mouse, and
 rather used the orthologous gene sets from the human \go term annotation.
 
-\textfig{cub-aab-mouse}{spill}{0.8\textwidth}
-    {\tai between matching and mismatching codon--anticodon pools.}
-    {}
+\textfloat{cub-aab-mouse}{spill}
+    {%
+        \begin{minipage}{0.6\textwidth}
+            \includegraphics[width=\textwidth]{cub-aab-mouse}
+        \end{minipage}%
+        \begin{minipage}{0.4\textwidth}
+            \footnotesize\sffamily
+            \begin{tabu} to \textwidth {@{}ll@{\ --\ }l@{}}
+                \toprule
+                    & \multicolumn{2}{c}{Contrast} \\
+                \midrule
+                Matching \\
+                \quad\mmu & healthy liver & healthy liver \\
+                     & Hepa1-6 & Hepa1-6 \\
+                     & Hepa1c1c7 & Hepa1c1c7 \\
+                \quad\hsa & healthy liver & healthy liver \\
+                     & HepG2 & HepG2 \\
+                     & Huh7 & Huh7 \\
+                \addlinespace
+                Mismatching \\
+                \quad\mmu & healthy liver & Hepa1-6 \\
+                     & healthy liver & Hepa1c1c7 \\
+                \quad\hsa & healthy liver & HepG2 \\
+                     & healthy liver & Huh7 \\
+                \bottomrule
+            \end{tabu}
+        \end{minipage}
+    }
+    {Codon--anticodon correlations.}
+    {Each box shows a distribution of codon--anticodon Spearman correlations.
+    A codon--anticodon correlation is computed from relative contributions to
+    the respective amino acid (i.e.\ \abbr{cub} versus \abbr{aab}), ignoring
+    wobble base pairing. “Matching” shows correlations of the codon and
+    anticodon pool of the same condition. “Mismatching” shows correlations of
+    the codon and anticodon pool of mismatching conditions (e.g. Hepa1-6 codons
+    versus healthy liver anticodons); the two cancer replicates are \emph{not}
+    counted as mismatching conditions. “DE” shows correlations of the codon
+    pool of highly, differentially expressed \mrna genes, and the anticodon pool
+    of the same condition. “GO” shows correlations of the codon pool of
+    condition-specific \go term gene sets, and the anticodon pool of the same
+    condition. For all distributions, correlations were calculated between all
+    pairwise combinations of replicates.}
 
 \todo[inline]{What is the result?}
 
