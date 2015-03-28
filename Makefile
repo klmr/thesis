@@ -32,14 +32,17 @@ preview:
 ${references}: ${bib_sources}
 	./scripts/import-paperpile ${bib_sources} > $@
 
+.PHONY: cleancache
+cleancache:
+	${RM} -r $(shell biber --cache)
+	${RM} cache/*
+
 .PHONY: clean
-clean:
+clean: cleancache
 	${RM} $(filter-out %.tex %.cls %.pdf,$(shell ls ${target}.*))
 	${RM} ${target}-blx.bib
 	${RM} texput.log
 	${RM} xelatex*.fls
-	${RM} -r $(shell biber --cache)
-	${RM} cache/*
 	${RM} figures.make
 
 .PHONY: cleanall
