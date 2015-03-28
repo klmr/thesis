@@ -62,6 +62,9 @@
     Extension=.otf,
     BoldFont=*bold,
 ]{xits-math}
+
+\setkomafont{title}{\rmfamily\Huge}
+\setkomafont{subject}{\normalfont\normalcolor\Large}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
 \usetocstyle{nopagecolumn}
