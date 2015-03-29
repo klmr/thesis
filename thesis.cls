@@ -85,6 +85,8 @@
 
 \renewcommand*\thefootnote{\fnsymbol{footnote}}
 
+\sisetup{detect-all}
+
 \setstretch{1.1}
 
 \renewcommand*\dictumwidth{0.75\textwidth}
