@@ -199,20 +199,22 @@
             \end{minipage}}
     \end{figure}}
 
-\newcommand\align@wrap[2][0.5\textwidth]{%
+\newcommand\alignwrap@impl[3][]{
     \setlength\wrapoverhang{\marginparwidth}
     \addtolength\wrapoverhang\marginparsep
     \newlength\wrapwidth
     \setlength\wrapwidth{\wrapoverhang}
-    \addtolength\wrapwidth{#1}
-    \begin{wrapfigure}{o}{\wrapwidth}
-        #2
+    \addtolength\wrapwidth{#2}
+    \begin{wrapfigure}[#1]{o}{\wrapwidth}
+        #3
     \end{wrapfigure}}
+
+\newcommand\align@wrap[1]{\alignwrap@impl{0.5\textwidth}{#1}}
 
 % Thin wrapper around align@wrap, for use in the document instead of
 % textfloat(bare), when the width needs to be set explicitly.
 
-\let\alignwrap\align@wrap
+\let\alignwrap\alignwrap@impl
 
 \newcommand\textfloat[5]{
     % #1: label
