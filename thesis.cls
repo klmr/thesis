@@ -87,6 +87,21 @@
 \setkomafont{subject}{\normalfont\normalcolor\Large}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
+\definecolor{cambridgeblue}{cmyk}{0.45, 0.13, 0.39, 0}
+\definecolor{cambridgebluedark}{cmyk}{0.89, 0.47, 0.46, 0.18}
+\colorlet{thesis@toccolor}{black}
+\colorlet{thesis@linkcolor}{black!70}
+
+\hypersetup{
+    hypertexnames=false,
+    linktoc=all,
+    colorlinks,
+    citecolor=thesis@linkcolor,
+    linkcolor=thesis@linkcolor,
+    filecolor=thesis@linkcolor,
+    urlcolor=thesis@linkcolor
+}
+
 \usetocstyle{nopagecolumn}
 \settocstylefeature[0]{pagenumberbox}{\@gobble}
 
