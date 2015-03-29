@@ -330,11 +330,11 @@ when plotting amino acid usage rather than codon usage (\cref{fig:go-aa-pca}).
 This suggests that rather than being driven by \go term function, both codon
 usage and amino acid usage changes are driven by some other genomic feature. In
 fact, the first principal component in \cref{fig:go-cub-pca} correlates almost
-perfectly with \gc bias (\cref{fig:cub-pc1-vs-gc}). This has been observed
-before in other species, for instance in \species{dmel} and \species{cel}
-\citep{Duret:2002}. The nature of this relationship is still unclear and needs
-to be explored in more detail. In particular, it is unknown whether \gc bias
-drives codon bias, or the other way round.
+perfectly with \gc bias (Pearson’s \(\rho < -0.96\); \cref{fig:cub-pc1-vs-gc}).
+This has been observed before in other species, for instance in \species{dmel}
+and \species{cel} \citep{Duret:2002}. The nature of this relationship is still
+unclear and needs to be explored in more detail. In particular, it is unknown
+whether \gc bias drives codon bias, or the other way round.
 
 \textfig{go-aa-pca}{body}{0.8\textwidth}
     {\pca of mean \go term amino acid usage.}
