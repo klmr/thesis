@@ -174,6 +174,8 @@ of highly expressed protein-coding genes on the other hand — we turned our
 attention to differences between healthy tissue and tumour cell lines in \mmu
 and \hsa.
 
+\subsection{The effect of gene set size on codon usage bias}
+
 Since we were already in possession of relevant \trna data we decided to use our
 own data to recapitulate these findings. A first observation was that while our
 own research so far had looked at the whole transcriptome, \citet{Gingold:2014}
@@ -204,18 +206,23 @@ terms was performed via simple textual matching, such that \go sub-categories
 whose description contains the text “differentiation and proliferation” would be
 counted as belonging to the \go super-category “differentiation”.
 
+\subsection{The extent of anticodon adaptation to distinct cellular conditions}
+
 In order to test whether the anticodon pool does indeed adapt to specific
-cellular conditions, I examined whether the matching codon--anticodon
-adaptation (estimated via the translation efficiency index \tai) is higher
-between matching \mrna and \trna transcriptomes than between mismatching ones.
-In other words, I looked at the \mrna pool specific to cellular conditions, and
-calculated the \tai[s] for
+cellular conditions as suggested by \cref{fig:gingold-fig-3c}, I examined
+whether the codon--anticodon adaptation (estimated via the correlation between
+matching codons and anticodons, each as a proportion of the contribution to
+their corresponding amino acid, i.e.\ the \cub and \aab) is higher between
+matching \mrna and \trna transcriptomes than between mismatching ones. In other
+words, I looked at the \mrna pool of each cellular condition, and calculated the
+codon--anticodon correlations for
 \begin{enumerate*}
-    \item matching \trna pools,
-    \item mismatching \trna pools
-    \item just the differentially, highly expressed \mrna genes and their
-        matching \trna pools, and
-    \item cell condition specific \go terms and their matching \trna pools.
+    \item the matching \trna pool,
+    \item the mismatching \trna pools,
+    \item the matching \trna pool, but using just the differentially, highly
+        expressed \mrna genes, and
+    \item the matching \trna pool, using just genes from the cell condition
+        specific \go terms.
 \end{enumerate*}
 
 I performed the analysis in \mmu and \hsa. However, \go term annotations vastly
@@ -261,37 +268,94 @@ rather used the orthologous gene sets from the human \go term annotation.
     anticodon pool of the same condition. “Mismatching” shows correlations of
     the codon and anticodon pool of mismatching conditions (e.g. Hepa1-6 codons
     versus healthy liver anticodons); the two cancer replicates are \emph{not}
-    counted as mismatching conditions. “DE” shows correlations of the codon
-    pool of highly, differentially expressed \mrna genes, and the anticodon pool
-    of the same condition. “GO” shows correlations of the codon pool of
-    condition-specific \go term gene sets, and the anticodon pool of the same
-    condition. For all distributions, correlations were calculated between all
-    pairwise combinations of replicates.}
+    counted as mismatching conditions. “\abbr{de}” shows correlations of the
+    codon pool of highly, differentially expressed \mrna genes, and the
+    anticodon pool of the same condition. “\abbr{go}” shows correlations of the
+    codon pool of condition-specific \abbr{go} term gene sets, and the anticodon
+    pool of the same condition. For all distributions, correlations were
+    calculated between all pairwise combinations of replicates.}
 
-\todo[inline]{What is the result?}
+\Cref{fig:cub-aab-mouse} shows the analysis for \mmu. It compares different
+scenarios that should, according to \cite{Gingold:2014}, show markedly different
+distributions: codon and anticodon pools of the same cellular conditions should
+be highly coordinated (correlation type “matching”). Codons and anticodons of
+\emph{mismatching} conditions (i.e.\ the codon pool of a healthy cell and the
+anticodon pool of a tumour cell, or vice versa) should be less well coordinated
+(correlation type “mismatching”). Furthermore, the codon usage of just a subsets
+of the overall transcriptome corresponding to genes specific to the cellular
+condition should be even better coordinated with their anticodon pool.
+Conversely, if we did not expect a \trna anticodon pool adapted to specific
+subsets of the transcriptome, we might expect that the correlation between the
+codon usage of such subsets and the anticodon abundance was \emph{less} than
+that of the overall transcriptome, due to higher stochastic variation in smaller
+gene sets.
 
-Furthermore, the trend seen in \cref{fig:go-cub-pca} does in fact exist to the
-same degree when plotting amino acid usage rather than codon usage
-(\cref{fig:go-aa-pca}). This suggests that rather than being driven by \go term
-function, both codon usage and amino acid usage changes are driven by some other
-genomic feature. In fact, the first principal component in \cref{fig:go-cub-pca}
-correlates almost perfectly with \gc bias (\cref{fig:cub-pc1-vs-gc}). The nature
-of this relationship is still unclear, and needs to be explored in more detail.
+Cell specific subsets of the transcriptome can be defined in several ways. My
+analysis used two possible definitions: Firstly, I looked at differentially
+expressed genes between healthy and tumour cells, and called genes
+condition-specific if they were significantly differentially expressed (adjusted
+\(p < 0.001\)), their expression was high (mean expression of the samples in the
+upper quartile of all mean expressions), and their fold change between the
+conditions was also high (taking the \num{200} genes with the highest fold
+change; correlation type “\abbr{de}”). Secondly, I took the gene sets of the two
+most extreme \go terms found by \citet{Gingold:2014} according to the variance
+in codon usage, which they describe as highly specific for proliferating cells
+(\go term “M phase of mitotic cell cycle”) and differentiating/differentiated
+cells (\go term “pattern specification process”; correlation type “\abbr{go}”).
+
+We want to test whether the “mismatching” correlations are lower than the
+“matching” ones, but whether the “\abbr{de}” and “\abbr{go}” correlations are
+higher, respectively, than the “matching” ones. I therefore used one-tailed
+tests for significant difference. In all cases, I failed to reject the null
+hypothesis of no difference. In fact, the “\abbr{go}” correlations are
+significantly \emph{lower} than the “matching” correlations. This contradicts
+the findings reported by \citet{Gingold:2014}.\todo{Add results for human}
+
+It is worth nothing that the “\abbr{de}” codon--anticodon correlations vary
+non-negligibly, depending on how exactly the top \num{200} condition-specific
+genes are chosen; alternative strategies to the one outlined never change the
+overall result, however: none of the strategies yielded correlations that were
+significantly higher than the transcriptome-wide “matching” correlations.
+
+The current analysis measured \trna anticodon adaptation using the
+codon--anticodon correlation, ignoring wobble base pairing. A potentially better
+measure of \trna adaptation is the \tai, which accounts for wobble base pairing
+in a species-specific manner. Extending the analysis to use the \tai is ongoing
+work.
+
+\subsection{Other genomic features may drive the perceived codon usage bias}
+
+The trend seen in \cref{fig:go-cub-pca} does in fact exist to the same degree
+when plotting amino acid usage rather than codon usage (\cref{fig:go-aa-pca}).
+This suggests that rather than being driven by \go term function, both codon
+usage and amino acid usage changes are driven by some other genomic feature. In
+fact, the first principal component in \cref{fig:go-cub-pca} correlates almost
+perfectly with \gc bias (\cref{fig:cub-pc1-vs-gc}). This has been observed
+before in other species, for instance in \species{dmel} and \species{cel}
+\citep{Duret:2002}. The nature of this relationship is still unclear and needs
+to be explored in more detail. In particular, it is unknown whether \gc bias
+drives codon bias, or the other way round.
 
 \textfig{go-aa-pca}{body}{0.8\textwidth}
     {\pca of mean \go term amino acid usage.}
-    {\todo{Add description}}
+    {This figure is analogous to \cref{fig:go-cub-pca}. Each dot corresponds to
+    one \go term. The position of the dots is derived by rotating the matrix of
+    the mean amino acid usage of the genes belonging to each \go term.}
 
 \textfig{cub-pc1-vs-gc}{body}{0.8\textwidth}
-    {\gc bias against PC1 of the mean \go term codon usage bias \pca.}
-    {\todo{Add description}}
+    {\gc bias against PC1 of the mean \go term codon usage \pca.}
+    {Each point represents one \go term. The \(x\) coordinate corresponds to
+    that of the first principal component of the \pca in \cref{fig:go-cub-pca}.
+    The \(y\) coordinate corresponds to the mean \gc bias of the \go gene set.}
 
-Furthermore, if a mechanism leading to the adaptation of the cellular \trna pool
-to different cellular conditions existed, we would expect this to be well
-conserved across mammalian evolution. Indeed, such an effect should show a
-\emph{stronger} conservation of the codon usage bias across different functional
-gene categories than conservation of other genomic features, such as the \gc
-bias. Using genome data from different mammalian species and homology
-information for the annotated \go categories in humans, we can calculate the
-respective conservation of codon usage on the one hand, and \gc bias on the
-other hand. This analysis has not been performed yet, however.
+\subsection{Evolutionary conservation of \abbr{trna}--codon adaptation}
+
+If a mechanism leading to the adaptation of the cellular \trna pool to different
+cellular conditions existed, we would expect this to be well conserved across
+mammalian evolution. Indeed, such an effect should show a \emph{stronger}
+conservation of the codon usage bias across different functional gene categories
+than conservation of other genomic features, such as the \gc bias. Using genome
+data from different mammalian species and homology information for the annotated
+\go categories in humans, we can calculate the respective conservation of codon
+usage on the one hand, and \gc bias on the other hand. This analysis has not yet
+been performed, however.

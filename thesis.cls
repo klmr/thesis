@@ -252,6 +252,8 @@
 
 \newspecies{mmu}{Mus musculus}
 \newspecies{hsa}{Homo sapiens}
+\newspecies{dmel}{Drosophila melanogaster}
+\newspecies{cel}{Caenorhabditis elegans}
 
 \newcommand*\abbr[1]{\csuse{abbr@#1}}
 
