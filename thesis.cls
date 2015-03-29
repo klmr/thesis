@@ -56,12 +56,32 @@
     BoldFont={*},
     ItalicFont={* Light Italic},
     BoldItalicFont={* Italic},
-    Scale=MatchLowercase]{Gill Sans}
+    Scale=MatchLowercase
+]{Gill Sans}
 \setmonofont[Scale=MatchLowercase]{WenQuanYi Zen Hei Mono}
 \setmathfont[
     Extension=.otf,
     BoldFont=*bold,
 ]{xits-math}
+
+% Fake small caps for Gill Sans:
+
+% Code from <http://tex.stackexchange.com/a/225078/42>
+\newcommand\fauxsc[1]{\fauxschelper#1 \relax\relax}
+\def\fauxschelper#1 #2\relax{%
+  \fauxschelphelp#1\relax\relax%
+  \if\relax#2\relax\else\ \fauxschelper#2\relax\fi%
+}
+\def\Hscale{.83}\def\Vscale{.72}\def\Cscale{1.00}
+\def\fauxschelphelp#1#2\relax{%
+  \ifnum`#1>``\ifnum`#1<`\{\scalebox{\Hscale}[\Vscale]{\uppercase{#1}}\else%
+    \scalebox{\Cscale}[1]{#1}\fi\else\scalebox{\Cscale}[1]{#1}\fi%
+  \ifx\relax#2\relax\else\fauxschelphelp#2\relax\fi}
+
+\let\thesis@old@sf\sffamily
+\renewcommand*\sffamily{%
+  \thesis@old@sf%
+  \let\textsc\fauxsc}
 
 \setkomafont{title}{\rmfamily\Huge}
 \setkomafont{subject}{\normalfont\normalcolor\Large}
