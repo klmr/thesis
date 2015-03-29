@@ -205,9 +205,12 @@
         \setlength\wrapwidth{#1}
         \addtolength\wrapwidth{\marginparwidth}
         \addtolength\wrapwidth{\marginparsep}
-        \begin{minipage}{\wrapwidth}
-            #2
-        \end{minipage}
+        \checkoddpage%
+        \edef\side{\ifoddpage l\else r\fi}%
+        \makebox[#1][\side]{%
+            \begin{minipage}{\wrapwidth}
+                #2
+            \end{minipage}}
     \end{wrapfigure}}
 
 % Thin wrapper around align@wrap, for use in the document instead of
