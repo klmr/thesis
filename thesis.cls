@@ -200,17 +200,13 @@
     \end{figure}}
 
 \newcommand\align@wrap[2][0.5\textwidth]{%
-    \begin{wrapfigure}{o}{#1}
-        \newlength\wrapwidth
-        \setlength\wrapwidth{#1}
-        \addtolength\wrapwidth{\marginparwidth}
-        \addtolength\wrapwidth{\marginparsep}
-        \checkoddpage%
-        \edef\side{\ifoddpage l\else r\fi}%
-        \makebox[#1][\side]{%
-            \begin{minipage}{\wrapwidth}
-                #2
-            \end{minipage}}
+    \setlength\wrapoverhang{\marginparwidth}
+    \addtolength\wrapoverhang\marginparsep
+    \newlength\wrapwidth
+    \setlength\wrapwidth{\wrapoverhang}
+    \addtolength\wrapwidth{#1}
+    \begin{wrapfigure}{o}{\wrapwidth}
+        #2
     \end{wrapfigure}}
 
 % Thin wrapper around align@wrap, for use in the document instead of
