@@ -81,7 +81,7 @@
 \let\thesis@old@sf\sffamily
 \renewcommand*\sffamily{%
   \thesis@old@sf%
-  \let\textsc\fauxsc}
+  \let\textsc\uppercase}
 
 \setkomafont{title}{\rmfamily\Huge}
 \setkomafont{subject}{\normalfont\normalcolor\Large}
