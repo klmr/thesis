@@ -203,13 +203,18 @@
         #1
     \end{figure}}
 
+\newlength\fig@align@width
+
 \newcommand\align@spill[1]{%
     % Use <http://tex.stackexchange.com/a/10507/42> to align properly.
     \begin{figure}[h!]
         \checkoddpage%
         \edef\side{\ifoddpage l\else r\fi}%
+        \setlength\fig@align@width{\textwidth}
+        \addtolength\fig@align@width{\marginparwidth}
+        \addtolength\fig@align@width{\marginparsep}
         \makebox[\textwidth][\side]{%
-            \begin{minipage}{1.2\textwidth}
+            \begin{minipage}{\fig@align@width}
                 #1
             \end{minipage}}
     \end{figure}}
@@ -217,10 +222,9 @@
 \newcommand\alignwrap@impl[3][]{
     \setlength\wrapoverhang{\marginparwidth}
     \addtolength\wrapoverhang\marginparsep
-    \newlength\wrapwidth
-    \setlength\wrapwidth{\wrapoverhang}
-    \addtolength\wrapwidth{#2}
-    \begin{wrapfigure}[#1]{o}{\wrapwidth}
+    \setlength\fig@align@width{\wrapoverhang}
+    \addtolength\fig@align@width{#2}
+    \begin{wrapfigure}[#1]{o}{\fig@align@width}
         #3
     \end{wrapfigure}}
 
