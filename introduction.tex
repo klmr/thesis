@@ -42,7 +42,7 @@ easily polymerase into long, relatively stable chains. \dna is made up of four
 different types of nucleotides: adenine (\nA), cytosine (\nC), guanine (\nG) and
 thymine (\nT). Thus, \dna can be thought of as a long string of four letters,
 and that is indeed how it is often represented. Text is read from left to right
-in Western culture. \dna is read from \fivep to \threep.\footnote{Referring to
+in Western cultures. \dna is read from \fivep to \threep.\footnote{Referring to
 the number of the phosphate atom in each nucleotide, which is exposed at either
 end of the chain.}
 
@@ -79,6 +79,48 @@ newly formed \dna molecules, of which each contains one strand of the parent
 \end{enumerate}}
 
 \todo{Take intro from paper}
+
+\section{The genetic code}
+
+\todo{Include a figure/table of the genetic code}
+
+\subsection{Condon usage and anticodon abundance}
+
+Throughout this thesis I am going to use several related measures:
+
+\begin{enumerate}
+    \item codon usage,
+    \item \rcu,
+    \item anticodon abundance and
+    \item \raa.
+\end{enumerate}
+
+The \define{codon usage} of a codon is the frequency with which this codon
+occurs in a given transcriptome. This is either the raw number of occurrences in
+the transcripts under consideration, or the number of occurrences, weighted by
+the expression of each transcript.
+
+The \define{anticodon abundance} of an anticodon is the amount of \trna
+decoding a given anticodon, present in the cell at a given instance. Other
+publications define the anticodon abundance in terms of \trna gene copy number;
+however, in the context of this thesis, the anticodon abundance is usually
+quantified by \trna gene expression, and is thus proportional to the number of
+\trna molecules of each anticodon isoacceptor present in the cell.
+
+The \define{\rcu} of a codon is that codon’s contribution to the amino acid it
+codes for, relative to all other synonymous codons. The \rcu of all synonymous
+codons sums to \num{1}.
+
+The \define{\raa} of an anticodon is definied equivalently to the \rcu based on
+the anticodon abundance. That is, the contribution of an anticodon to its amino
+acid isotype, relative to the other anticodons in the same isotype.
+
+In all of the above, I exclude the stop codons.
+
+Several publications use the term \cub to describe divergence in codon usage
+between different sets of genes within a genome, or differences between genomes.
+The \cub is then equivalent either to the codon usage as defined in this thesis,
+or the \rcu.
 
 \subsection{Aside: modern modifications to the central dogma and evolution}
 
