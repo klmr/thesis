@@ -341,7 +341,8 @@
 
 \newcommand*\codon[1]{\seq{#1}}
 
-\newcommand*\anticodon[1]{\MakeTextLowercase{\seq{#1}}}
+\newcommand*\anticodon[1]{\ensuremath{\overline{\text{\MakeTextLowercase{%
+    \seq{#1}}}}}}
 
 \newcommand*\mismatch[1]{%
     % Fix for spacing from <http://tex.stackexchange.com/a/74469/42>
