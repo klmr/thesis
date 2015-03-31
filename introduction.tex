@@ -40,11 +40,11 @@ fulfilled by different molecules. \dna consists of a long chain of
 \define{nucleotides}. The chemical nature of nucleotides means that these will
 easily polymerase into long, relatively stable chains. \dna is made up of four
 different types of nucleotides: adenine (\nA), cytosine (\nC), guanine (\nG) and
-thymine (\nT). Thus, \dna can be thought of as a long string of four letters,
-and that is indeed how it is often represented. Text is read from left to right
-in Western cultures. \dna is read from \fivep to \threep.\footnote{Referring to
-the number of the phosphate atom in each nucleotide, which is exposed at either
-end of the chain.}
+thymine (\nT). Thus, \dna can be thought of as a long string of four different
+letters, and that is indeed how it is often represented. Text is read from left
+to right in Western cultures. \dna is read from \fivep to
+\threep.\footnote{Referring to the number of the phosphate atom in each
+nucleotide, which is exposed at either end of the chain.}
 
 \dna is present in the cell in the form of double-stranded helices: each \dna
 molecule consists of two paired chains, wound rightly around each other, with
@@ -72,7 +72,6 @@ newly formed \dna molecules, of which each contains one strand of the parent
         this; but why can we do this?
     \item Genetic code, anticodon isoacceptors, tRNA genes, wobble base pairing
     \item tAI, codon usage, codon usage bias, anticodon abundance bias
-    \item typgraphic convention for codons and anticodons
     \item Tiny bit about mouse embryonology
     \item Prior research/literature review of tRNA and codon usage, also outside
         mammals!
@@ -82,9 +81,58 @@ newly formed \dna molecules, of which each contains one strand of the parent
 
 \section{The genetic code}
 
-\todo{Include a figure/table of the genetic code}
+\Cref{tab:genetic-code} contains a tabular representation of the genetic code,
+which is nearly universal across all three kingdoms of life.
 
-\subsection{Condon usage and anticodon abundance}
+To avoid confusion, codons in this thesis will always be typeset like this:
+\fivep--\codon{CAU}--\threep; anticodons will always be typeset like this:
+\threep--\anticodon{ATG}--\fivep (directions given here only, not in the
+remainder of the text).
+
+\begin{table}
+    \centering
+    \begin{tabu} to \textwidth {@{}
+            >{\collectcell\codon}l<{\endcollectcell}
+            >{\collectcell\anticodon}l<{\endcollectcell}
+            l @{\qquad}
+            >{\collectcell\codon}l<{\endcollectcell}
+            >{\collectcell\anticodon}l<{\endcollectcell}
+            l @{\qquad}
+            >{\collectcell\codon}l<{\endcollectcell}
+            >{\collectcell\anticodon}l<{\endcollectcell}
+            l @{\qquad}
+            >{\collectcell\codon}l<{\endcollectcell}
+            >{\collectcell\anticodon}l<{\endcollectcell}
+            l @{}}
+        \toprule
+        UUU & AAA & Phe & UCU & AGA & Ser & UAU & ATA & Tyr & UGU & ACA & Cys \\
+        UUC & GAA & Phe & UCC & GGA & Ser & UAC & GTA & Tyr & UGC & GCA & Cys \\
+        UUA & TAA & Leu & UCA & TGA & Ser & UAA & TTA & Stop& UGA & TCA & Stop\\
+        UUG & CAA & Leu & UCG & CGA & Ser & UAG & CTA & Stop& UGG & CTA & Trp \\
+        \addlinespace
+        CUU & AAG & Leu & CCU & AGG & Pro & CAU & ATG & His & CGU & ACG & Arg \\
+        CUC & GAG & Leu & CCC & GGG & Pro & CAC & GTG & His & CGC & GCG & Arg \\
+        CUA & TAG & Leu & CCA & TGG & Pro & CAA & TTG & Gln & CGA & TCG & Arg \\
+        CUG & CAG & Leu & CCG & CGG & Pro & CAG & CTG & Gln & CGG & CTG & Arg \\
+        \addlinespace
+        AUU & AAT & Ile & ACU & AGT & Thr & AAU & ATT & Asn & AGU & ACT & Ser \\
+        AUC & GAT & Ile & ACC & GGT & Thr & AAC & GTT & Asn & AGC & GCT & Ser \\
+        AUA & TAT & Ile & ACA & TGT & Thr & AAA & TTT & Lys & AGA & TCT & Arg \\
+        AUG & CAT & Met & ACG & CGT & Thr & AAG & CTT & Lys & AGG & CTT & Arg \\
+        \addlinespace
+        GUU & AAC & Val & GCU & AGC & Ala & GAU & ATC & Asp & GGU & ACC & Gly \\
+        GUC & GAC & Val & GCC & GGC & Ala & GAC & GTC & Asp & GGC & GCC & Gly \\
+        GUA & TAC & Val & GCA & TGC & Ala & GAA & TTC & Glu & GGA & TCC & Gly \\
+        GUG & CAC & Val & GCG & CGC & Ala & GAG & CTC & Glu & GGG & CTC & Gly \\
+        \bottomrule
+    \end{tabu}
+    \tabcap{genetic-code}{The genetic code.}
+        {Shown is each codon, its potential corresponding anticodon and the
+        corresponding amino acid. Not all anticodons actually exist in all
+        species. Adapted from \citet{Alberts:2002}.}
+\end{table}
+
+\subsection{Codon usage and anticodon abundance}
 
 Throughout this thesis I am going to use several related measures:
 

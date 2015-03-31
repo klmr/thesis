@@ -21,6 +21,7 @@
 \RequirePackage[natbib, style=authoryear, maxnames=2]{biblatex}
 \RequirePackage{booktabs}
 \RequirePackage{tabu}
+\RequirePackage{collcell}
 \RequirePackage[all]{onlyamsmath}
 \RequirePackage{siunitx}
 \RequirePackage{textcase}
