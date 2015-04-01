@@ -18,3 +18,4 @@ figures.make
 *.makefile
 cache
 summary
+figures
