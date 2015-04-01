@@ -28,6 +28,7 @@
 \RequirePackage[english,iso]{isodate}
 \RequirePackage{xspace}
 \RequirePackage{tikz}
+\RequirePackage[version=3]{mhchem}
 \RequirePackage{scalefnt}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
