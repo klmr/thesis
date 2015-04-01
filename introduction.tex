@@ -91,6 +91,7 @@ remainder of the text).
 
 \begin{table}
     \centering
+    \def\s{\footnotesize{stop}}
     \begin{tabu} to \textwidth {@{}
             >{\collectcell\codon}l<{\endcollectcell}
             >{\collectcell\anticodon}l<{\endcollectcell}
@@ -107,8 +108,8 @@ remainder of the text).
         \toprule
         UUU & AAA & Phe & UCU & AGA & Ser & UAU & ATA & Tyr & UGU & ACA & Cys \\
         UUC & GAA & Phe & UCC & GGA & Ser & UAC & GTA & Tyr & UGC & GCA & Cys \\
-        UUA & TAA & Leu & UCA & TGA & Ser & UAA & TTA & Stop& UGA & TCA & Stop\\
-        UUG & CAA & Leu & UCG & CGA & Ser & UAG & CTA & Stop& UGG & CCA & Trp \\
+        UUA & TAA & Leu & UCA & TGA & Ser & UAA & TTA & \s  & UGA & TCA & \s \\
+        UUG & CAA & Leu & UCG & CGA & Ser & UAG & CTA & \s  & UGG & CCA & Trp \\
         \addlinespace
         CUU & AAG & Leu & CCU & AGG & Pro & CAU & ATG & His & CGU & ACG & Arg \\
         CUC & GAG & Leu & CCC & GGG & Pro & CAC & GTG & His & CGC & GCG & Arg \\
@@ -128,8 +129,9 @@ remainder of the text).
     \end{tabu}
     \tabcap{genetic-code}{The genetic code.}
         {Shown is each codon, its potential corresponding anticodon and the
-        corresponding amino acid. Not all anticodons actually exist in all
-        species. Adapted from \citet{Alberts:2002}.}
+        corresponding amino acid. \codon{AUG} additionally signals the start of
+        translation. Not all anticodons actually exist in all species. Adapted
+        from \citet{Alberts:2002}.}
 \end{table}
 
 \subsection{Codon usage and anticodon abundance}
