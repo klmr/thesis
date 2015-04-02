@@ -1,5 +1,5 @@
 fullpath := $(shell pwd -P)
-LATEXMK := latexmk -xelatex -r ${fullpath}/.latexmkrc
+LATEXMK := latexmk -pdf -dvi- -ps- -r ${fullpath}/.latexmkrc
 
 target := thesis
 references := references.bib
