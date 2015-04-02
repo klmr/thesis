@@ -128,7 +128,8 @@ remainder of the text).
 
 \begin{table}
     \centering
-    \def\s{\footnotesize{stop}}
+    \def\s{\footnotesize stop}
+    \def\h#1#2{\multicolumn{1}{#1}{\textsc{\lowercase{#2}}}}
     \begin{tabu} to \textwidth {@{}
             >{\collectcell\codon}l<{\endcollectcell}
             >{\collectcell\anticodon}l<{\endcollectcell}
@@ -143,6 +144,13 @@ remainder of the text).
             >{\collectcell\anticodon}l<{\endcollectcell}
             l @{}}
         \toprule
+        % Nasty, hand-coded length values.
+        \noalign{\vskip-4pt}
+        \h{@{}l}{C} & \h{l}{A} & \h{l}{AA} &
+        \h{@{}l}{C} & \h{l}{A} & \h{l}{AA} &
+        \h{@{}l}{C} & \h{l}{A} & \h{l}{AA} &
+        \h{@{}l}{C} & \h{l}{A} & \h{l@{}}{AA} \\[-2pt]
+        \midrule
         UUU & AAA & Phe & UCU & AGA & Ser & UAU & ATA & Tyr & UGU & ACA & Cys \\
         UUC & GAA & Phe & UCC & GGA & Ser & UAC & GTA & Tyr & UGC & GCA & Cys \\
         UUA & TAA & Leu & UCA & TGA & Ser & UAA & TTA & \s  & UGA & TCA & \s \\
@@ -165,10 +173,11 @@ remainder of the text).
         \bottomrule
     \end{tabu}
     \tabcap{genetic-code}{The genetic code.}
-        {Shown is each codon, its potential corresponding anticodon and the
-        corresponding amino acid. \codon{AUG} additionally signals the start of
-        translation. Not all anticodons actually exist in all species (adapted
-        from \citet{Alberts:2002}).}
+        {Shown is each codon (“\textsc{c}”), its potential corresponding
+        anticodon (“\textsc{a}”) and the thee-letter abbreviation of the
+        corresponding amino acid (“\textsc{aa}”). \codon{AUG} additionally
+        signals the start of translation. Not all anticodons actually exist in
+        all species (adapted from \citet{Dos_Reis:2004}).}
 \end{table}
 
 \subsection{Codon usage and anticodon abundance}
