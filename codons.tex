@@ -240,13 +240,54 @@ cellular condition, and calculated the codon--anticodon correlations for
         pool (“\abbr{go}”).
 \end{enumerate}
 
+The analysis compares different scenarios that should, according to the
+hypothesis proposed by \citet{Gingold:2014}, show markedly different
+distributions: codon and anticodon pools of the same cellular conditions should
+be highly coordinated (correlation type “matching”). Codons and anticodons of
+\emph{mismatching} conditions (i.e.\ the codon pool of a healthy cell and the
+anticodon pool of a tumour cell, or vice versa) should be less well coordinated
+(correlation type “mismatching”). Furthermore, the codon usage of just a subset
+of the overall transcriptome corresponding to genes specific to the cellular
+condition should be coordinated with their anticodon pool to an even greater
+extent. Conversely, if we did not expect a \trna anticodon pool adapted to
+specific subsets of the transcriptome, we might expect that the correlation
+between the codon usage of such subsets and the anticodon abundance was
+\emph{less} than that of the overall transcriptome, due to higher stochastic
+variability in smaller gene sets.
+
+Cell specific subsets of the transcriptome can be defined in several ways. My
+analysis used two possible definitions: Firstly, I looked at differentially
+expressed genes between healthy and tumour cells, and called genes
+condition-specific if they were significantly differentially expressed (adjusted
+\(p < 0.001\)), their expression was high (mean expression between the
+conditions in the upper quartile of all mean expressions), and their fold change
+between the conditions was also high (taking the \num{200} genes with the
+highest fold change; correlation type “\abbr{de}”). Secondly, I took the gene
+sets of the two most extreme \go terms found by \citet{Gingold:2014} according
+to the variance in codon usage, which they describe as highly specific for
+proliferating cells (\go term “M phase of mitotic cell cycle”) and
+differentiating/differentiated cells (\go term “pattern specification process”;
+correlation type “\abbr{go}”).
+
 I performed the analysis in \mmu and \hsa. However, \go term annotations vastly
-differ between these two species and, in particular, the two condition specific
-\go terms (according to the \pca analysis, \cref{fig:go-cub-pca}) are badly
-annotated in \mmu (with only \num{3} genes annotated for “M phase of mitotic
-cell cycle”). As a consequence, I did not use the existing \go term annotations
-for mouse, and rather used the orthologous gene sets from the human \go term
-annotation.
+differ between these two species and, in particular, one of the two condition
+specific \go terms (according to the \pca analysis, \cref{fig:go-cub-pca}) is
+badly annotated in \mmu (with only \num{3} genes annotated for “M phase of
+mitotic cell cycle”). As a consequence, I did not use the existing \go term
+annotations for mouse but rather used the orthologous gene sets from the human
+\go term annotation.
+
+We want to test whether the “mismatching” correlations are lower than the
+“matching” ones, but whether the “\abbr{de}” and “\abbr{go}” correlations are
+higher, respectively, than the “matching” ones. I therefore used one-tailed
+tests for significant difference. In all but one cases, I failed to reject the
+null hypothesis of no difference. The only case where we find some support for
+rejecting \(H_0\) is the comparison of “matching”--“mismatching” in \hsa (\(p =
+0.048\), one-tailed Mann–Whitney–Wilcoxon test). On the other hand, the
+“\abbr{go}” correlations are significantly \emph{lower} than the “matching”
+correlations in both species (\(p < \num{4.4e-5}\) in \mmu; \(p < \num{2.5e-8}\)
+in \hsa). This offers evidence against the hypothesis put forward by
+\citet{Gingold:2014} (\cref{fig:cub-aab}).
 
 \textfloat{cub-aab}{spill}
     {%
@@ -295,44 +336,6 @@ annotation.
     codon pool of condition-specific \abbr{go} term gene sets, and the anticodon
     pool of the same condition. For all distributions, correlations were
     calculated between all pairwise combinations of replicates.}
-
-\Cref{fig:cub-aab} shows the results of the analysis. It compares different
-scenarios that should, according to the hypothesis proposed by
-\citet{Gingold:2014}, show markedly different distributions: codon and anticodon
-pools of the same cellular conditions should be highly coordinated (correlation
-type “matching”). Codons and anticodons of \emph{mismatching} conditions (i.e.\
-the codon pool of a healthy cell and the anticodon pool of a tumour cell, or
-vice versa) should be less well coordinated (correlation type “mismatching”).
-Furthermore, the codon usage of just a subsets of the overall transcriptome
-corresponding to genes specific to the cellular condition should be coordinated
-with their anticodon pool to an even greater extent. Conversely, if we did not
-expect a \trna anticodon pool adapted to specific subsets of the transcriptome,
-we might expect that the correlation between the codon usage of such subsets and
-the anticodon abundance was \emph{less} than that of the overall transcriptome,
-due to higher stochastic variation in smaller gene sets.
-
-Cell specific subsets of the transcriptome can be defined in several ways. My
-analysis used two possible definitions: Firstly, I looked at differentially
-expressed genes between healthy and tumour cells, and called genes
-condition-specific if they were significantly differentially expressed (adjusted
-\(p < 0.001\)), their expression was high (mean expression of the samples in the
-upper quartile of all mean expressions), and their fold change between the
-conditions was also high (taking the \num{200} genes with the highest fold
-change; correlation type “\abbr{de}”). Secondly, I took the gene sets of the two
-most extreme \go terms found by \citet{Gingold:2014} according to the variance
-in codon usage, which they describe as highly specific for proliferating cells
-(\go term “M phase of mitotic cell cycle”) and differentiating/differentiated
-cells (\go term “pattern specification process”; correlation type “\abbr{go}”).
-
-We want to test whether the “mismatching” correlations are lower than the
-“matching” ones, but whether the “\abbr{de}” and “\abbr{go}” correlations are
-higher, respectively, than the “matching” ones. I therefore used one-tailed
-tests for significant difference. In all but one cases, I failed to reject the
-null hypothesis of no difference. The only case where we find some support for
-rejecting \(H_0\) is the comparison of “matching”--“mismatching” in \hsa (\(p =
-0.048\)). On the other hand, the “\abbr{go}” correlations are significantly
-\emph{lower} than the “matching” correlations in both species. This offers
-evidence against the hypothesis put forward by \citet{Gingold:2014}.
 
 It is worth nothing that the “\abbr{de}” codon--anticodon correlations vary
 non-negligibly, depending on how exactly the top \num{200} condition-specific
