@@ -187,8 +187,16 @@ of genes one looks at, the larger the effects of random sampling of the genes
 become. When analysing a particular feature, such as the codon usage bias,
 random sampling will thus contribute a larger part to the variation between two
 small sets than between two large sets. If one wants to assert that deviations
-are nonrandom, one thus has to account for this effect
-(\cref{fig:sample-size-dependent-cub}).
+are nonrandom, one thus has to account for this effect.
+
+To assess how much of the variation in \go term codon usage is explainable by
+random variation, I created random sets of different numbers of genes, covering
+the whole range of \go term gene set sizes. For each size, I repeatedly sampled
+random genes and calculated the mean \rcu of the resulting set. This was done
+\num{10000} times for each size. To compare the \rcu variability, each \rcu was
+compared to the genome-wide \rcu (i.e.\ using the set of all genes) using
+Pearson correlation. \Cref{fig:sample-size-dependent-cub} plots the distribution
+of the correlations against the gene set sizes.
 
 \textfig{sample-size-dependent-cub}{spill}{\textwidth}
     {Dependence of codon usage variability on sample size.}
@@ -210,29 +218,34 @@ counted as belonging to the \go super-category “differentiation”.
 
 \subsection{The extent of anticodon adaptation to distinct cellular conditions}
 
-In order to test whether the anticodon pool does indeed adapt to specific
-cellular conditions as suggested by \cref{fig:gingold-fig-3c}, I examined
-whether the codon--anticodon adaptation (estimated via the correlation between
-matching codons and anticodons, each as a proportion of the contribution to
-their corresponding amino acid, i.e.\ the \cub and \aab) is higher between
-matching \mrna and \trna transcriptomes than between mismatching ones. In other
+To test whether the anticodon pool does indeed adapt to specific cellular
+conditions as suggested by \cref{fig:gingold-fig-3c}, I examined whether the
+codon--anticodon adaptation (estimated via the correlation between matching
+codons and anticodons, each as a proportion of the contribution to their
+corresponding amino acid, i.e.\ the \rcu and \raa) is higher between matching
+\mrna and \trna transcriptomes than between mismatching ones, and whether it is
+highest in genes that are specific to a given cellular programme. In other
 words, I looked at the \mrna pool of each cellular condition, and calculated the
 codon--anticodon correlations for
-\begin{enumerate*}
-    \item the matching \trna pool,
-    \item the mismatching \trna pools,
-    \item the matching \trna pool, but using just the differentially, highly
-        expressed \mrna genes, and
-    \item the matching \trna pool, using just genes from the cell condition
-        specific \go terms.
-\end{enumerate*}
+
+\begin{enumerate}
+    \item the whole transcriptome and their matching \trna pool (“matching”),
+    \item the whole transcriptome and all mismatching \trna pools
+        (“mismatching”),
+    \item the differentially, highly expressed \mrna genes and their matching
+        \trna pool (“\abbr{de}”), and
+    \item condition specific gene sets (for the \go terms “M phase of mitotic
+        cell cycle” \& “pattern specification process”) and their matching \trna
+        pool (“\abbr{go}”).
+\end{enumerate}
 
 I performed the analysis in \mmu and \hsa. However, \go term annotations vastly
-differ between these two species and, in particular, the two extremely specific
-\go terms (according to the \pca analysis) are badly annotated in \mmu (with
-only \num{3} genes annotated for “M phase of mitotic cell cycle”). As a
-consequence, I did not use the existing \go term annotations for mouse, and
-rather used the orthologous gene sets from the human \go term annotation.
+differ between these two species and, in particular, the two condition specific
+\go terms (according to the \pca analysis, \cref{fig:go-cub-pca}) are badly
+annotated in \mmu (with only \num{3} genes annotated for “M phase of mitotic
+cell cycle”). As a consequence, I did not use the existing \go term annotations
+for mouse, and rather used the orthologous gene sets from the human \go term
+annotation.
 
 \textfloat{cub-aab}{spill}
     {%
@@ -270,7 +283,7 @@ rather used the orthologous gene sets from the human \go term annotation.
     {Codon--anticodon correlations.}
     {Each box shows a distribution of codon--anticodon Spearman correlations.
     A codon--anticodon correlation is computed from relative contributions to
-    the respective amino acid (i.e.\ \abbr{cub} versus \abbr{aab}), ignoring
+    the respective amino acid (i.e.\ \abbr{rcu} versus \abbr{raa}), ignoring
     wobble base pairing. “Matching” shows correlations of the codon and
     anticodon pool of the same condition. “Mismatching” shows correlations of
     the codon and anticodon pool of mismatching conditions (e.g. Hepa1-6 codons
@@ -283,19 +296,19 @@ rather used the orthologous gene sets from the human \go term annotation.
     calculated between all pairwise combinations of replicates.}
 
 \Cref{fig:cub-aab} shows the results of the analysis. It compares different
-scenarios that should, according to \cite{Gingold:2014}, show markedly different
-distributions: codon and anticodon pools of the same cellular conditions should
-be highly coordinated (correlation type “matching”). Codons and anticodons of
-\emph{mismatching} conditions (i.e.\ the codon pool of a healthy cell and the
-anticodon pool of a tumour cell, or vice versa) should be less well coordinated
-(correlation type “mismatching”). Furthermore, the codon usage of just a subsets
-of the overall transcriptome corresponding to genes specific to the cellular
-condition should be even better coordinated with their anticodon pool.
-Conversely, if we did not expect a \trna anticodon pool adapted to specific
-subsets of the transcriptome, we might expect that the correlation between the
-codon usage of such subsets and the anticodon abundance was \emph{less} than
-that of the overall transcriptome, due to higher stochastic variation in smaller
-gene sets.
+scenarios that should, according to the hypothesis proposed by
+\citet{Gingold:2014}, show markedly different distributions: codon and anticodon
+pools of the same cellular conditions should be highly coordinated (correlation
+type “matching”). Codons and anticodons of \emph{mismatching} conditions (i.e.\
+the codon pool of a healthy cell and the anticodon pool of a tumour cell, or
+vice versa) should be less well coordinated (correlation type “mismatching”).
+Furthermore, the codon usage of just a subsets of the overall transcriptome
+corresponding to genes specific to the cellular condition should be coordinated
+with their anticodon pool to an even greater extent. Conversely, if we did not
+expect a \trna anticodon pool adapted to specific subsets of the transcriptome,
+we might expect that the correlation between the codon usage of such subsets and
+the anticodon abundance was \emph{less} than that of the overall transcriptome,
+due to higher stochastic variation in smaller gene sets.
 
 Cell specific subsets of the transcriptome can be defined in several ways. My
 analysis used two possible definitions: Firstly, I looked at differentially
