@@ -352,7 +352,7 @@ when plotting amino acid usage rather than codon usage (\cref{fig:go-aa-pca}).
 This suggests that rather than being driven by \go term function, both codon
 usage and amino acid usage changes are driven by some other genomic feature. In
 fact, the first principal component in \cref{fig:go-cub-pca} correlates almost
-perfectly with \gc bias (Pearson’s \(\rho < -0.96\); \cref{fig:cub-pc1-vs-gc}).
+perfectly with \gc bias (Pearson’s \(\rho < -0.96\); \cref{fig:cub-vs-gc}).
 This has been observed before in other species, for instance in \species{dmel}
 and \species{cel} \citep{Duret:2002}. The nature of this relationship is still
 unclear and needs to be explored in more detail. In particular, it is unknown
@@ -364,11 +364,23 @@ whether \gc bias drives codon bias, or the other way round.
     one \go term. The position of the dots is derived by rotating the matrix of
     the mean amino acid usage of the genes belonging to each \go term.}
 
-\textfig{cub-pc1-vs-gc}{body}{0.6\textwidth}
-    {\gc bias against PC1 of the mean \go term codon usage \pca.}
+\textfloat{cub-vs-gc}{spill}
+    {%
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{cub-pc1-vs-gc}%
+            \subcaption{\gc bias against codon usage}
+        \end{minipage}%
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{aa-pc2-vs-gc}%
+            \subcaption{\gc bias against amino acid usage}
+        \end{minipage}%
+    }
+    {\gc bias against a principal component of the \go term codon \& amino acid
+    usage \pca.}
     {Each point represents one \go term. The \(x\) coordinate corresponds to
-    that of the first principal component of the \pca in \cref{fig:go-cub-pca}.
-    The \(y\) coordinate corresponds to the mean \gc bias of the \go gene set.}
+    that of the named principal component of the \pca in
+    \cref{fig:go-cub-pca,fig:go-aa-pca}. The \(y\) coordinate corresponds to
+    the mean \gc bias of the \go gene set.}
 
 \subsection{Evolutionary conservation of \abbr{trna}--codon adaptation}
 
