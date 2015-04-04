@@ -340,9 +340,27 @@ in \hsa). This offers evidence against the hypothesis put forward by
 
 It is worth nothing that the “\abbr{de}” codon--anticodon correlations vary
 non-negligibly, depending on how exactly the top \num{200} condition-specific
-genes are chosen; alternative strategies to the one outlined never change the
-overall result, however: none of the strategies yielded correlations that were
-significantly higher than the transcriptome-wide “matching” correlations.
+genes are chosen; alternative strategies to the one outlined were not found to
+change the overall result, however: none of the strategies yielded correlations
+that were significantly higher than the transcriptome-wide “matching”
+correlations.
+
+One caveat of the analysis is the treatment of replicates. In
+\cref{fig:cub-aab}, biological replicates of each sample were treated
+independently, rather than pooled: correlations were calculated between all
+pairwise combinations of \rnaseq and \pol3 \chipseq data of the samples under
+consideration. Each data point thus corresponds to a pairwise combination of two
+replicates; this implies that data points within one distribution are \emph{not}
+independent of each other. The alternative would have been to average over
+biological replicates, and correlate the averaged data. However, this has two
+important drawbacks:\todo{John: what are the consequences of this?}
+\begin{enumerate*}
+    \item It does not account for variance in the expression data and thus
+        underestimates the variance in the distributions of the correlations.
+    \item If \mrna and \trna gene expression values are dispersed around the
+        same mean, averaging across replicates would yield to a higher
+        correlation than actually present \textit{in vivo}.
+\end{enumerate*}
 
 The current analysis measured \trna anticodon adaptation using the
 codon--anticodon correlation, ignoring wobble base pairing. A potentially better
