@@ -31,3 +31,34 @@ blocks of proteins has remained virtually unchanged.
 interaction is physical manifestation of said code. Great evidence for
 evolution, and its stability underlies the viability of cells (ergo disruptions
 lead to defects which are clinically relevant, cf. cancer}
+
+\section{Future directions}
+
+The question of what causes codon usage bias variability across functional
+subsets of the transcriptome remains wide open. \gc bias, in particular, is
+worth exploring further. On the one hand, I observed a robust correlation
+between \gc bias and codon usage, and we know that prokaryotic codon usage can
+sometimes be predicted from intergenic \gc bias \citep{Chen:2004}. On the other
+hand, \citet{Duret:2002} show that, at least in \species{dmel} and
+\species{cel}, \gc bias is uncorrelated with codon usage bias.
+
+To explore this further, two avenues seem obvious:
+
+\begin{enumerate}
+    \item \citet{Chen:2004} show that intergenic \gc predicts codon usage. Since
+        intergenic regions are non-coding, this suggests that differential codon
+        usage between genes has, at best, a minor functional relevance. So far,
+        I have only looked at \gc bias in coding sequences. To make similar
+        conclusions, I will have to instead compare codon usage to the \gc bias
+        in the flanking regions of protein-coding genes.
+    \item \gc bias can vary between synonymous and non-synonymous codons. If \gc
+        bias is indeed causal for codon usage, we would expect that \gc bias
+        correlates highly between the first two nucleotide positions of the
+        codon and its wobble position. However, if the wobble position’s \gc
+        bias is uncorrelated to the \gc bias of the other codon positions in a
+        gene set, this would require a different explanation.
+\end{enumerate}
+
+Another feature known to constrain codon deployment is the presence of other
+sequence features in the coding region of genes. This includes binding sites for
+enhancers \citep{Blencowe:2000}.\todo{what to do about it?}

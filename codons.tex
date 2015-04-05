@@ -380,15 +380,22 @@ work.
 \subsection{Other genomic features may drive the perceived codon usage bias}
 
 The trend seen in \cref{fig:go-cub-pca} exists to the same degree when plotting
-amino acid usage rather than codon usage (\cref{fig:go-aa-pca}). This suggests
-that rather than being driven by \go term function, both codon usage and amino
-acid usage changes are driven by some other genomic feature. In fact, the first
-principal component in \cref{fig:go-cub-pca} correlates almost perfectly with
-\gc bias (Pearson’s \(\rho < -0.96\); \cref{fig:cub-vs-gc}). This has been
-observed before in other species, for instance in \species{dmel} and
-\species{cel} \citep{Duret:2002}. The nature of this relationship is still
-unclear and needs to be explored in more detail. In particular, it is unknown
-whether \gc bias drives codon bias, or the other way round.
+amino acid usage rather than codon usage (\cref{fig:go-aa-pca}).\todo{Include?
+The first principal component separates the \go term “keratinisation” from the
+rest. This is due to the fact that the proteins in this \go term are uniquely
+highly enriched in the amino acid proline, which forms more rigid peptide bonds
+than all other amino acids, with implications for the robustness of, amongst
+other things, the cellular skeleton. The proteins in this \go term are thus
+implicated in the structural formation of the epithelium [Hohl:1995].}
+The second principal component on the other hand shows the same separation of
+\go categories as the first principal component of \cref{fig:go-cub-pca}, and
+these are highly correlated (Pearson’s \(\rho = 0.95\)). Clearly, this
+correlation cannot be explained by \emph{codon} identity, since amino acids, not
+codons, conventionally determine protein function. However, amino acid usage
+alone does not explain the pattern either: After removing amino acid identity as
+a confounding factor (by computing \rcu instead of codon usage), the \go term
+\pca still displays the previously observed separation of \go categories
+(\cref{fig:go-rcu-pca}).
 
 \textfigtwo{go-aa-pca}
     {\pca of mean \go term amino acid usage.}
@@ -401,17 +408,39 @@ whether \gc bias drives codon bias, or the other way round.
     by rotating the matrix of the mean \rcu of the genes belonging to each \go
     term.}
 
+We thus conclude that both changes in codon usage and changes in amino acid
+usage independently correlate with the separation of \go terms into two
+functional categories. Furthermore, given the results presented in the previous
+chapter, we note that we have no evidence for a functional adaptation of the
+\trna pool to specific gene sets. I therefore looked for other factors that
+could explain the observed patterns in codon usage. It has previously been
+reported that gene codon usage can be predicted by the intergenic sequence \gc
+bias in prokaryotes \citep{Chen:2004}. They remark that the finding cannot be
+directly translated into mammals due to the variability in \gc bias between
+distinct, large regions across the genome. However, despite these large-scale
+variations of the \gc bias, local regions exhibit a stable \gc bias in mammalian
+genomes. Consequently, \gc bias could still play a role in codon deployment.
+
+In fact, the first principal component of the codon usage spread
+(\cref{fig:go-cub-pca}) as well as the second principal component of amino acid
+spread (\cref{fig:go-aa-pca}) correlate highly with \gc bias (Pearson’s \(\rho =
+-0.96\), \(\rho = -0.58\); \cref{fig:cu-vs-gc,fig:aa-vs-gc}). This suggests that
+genomic features other than gene function might influence gene codon usage.
+Despite not constituting conclusive evidence for a causal relationship of \gc
+bias on codon usage, this suggests that the relationship is worth investigating
+in greater detail.
+
 \textfloat{cub-vs-gc}{spill}
     {%
         \begin{minipage}{0.5\textwidth}
             \includegraphics[width=\textwidth]{cub-pc1-vs-gc}%
-            \subcaption{\gc bias against codon usage (Pearson’s \(\rho =
-            -0.96\)).}
+            \subcaption{\label{fig:cu-vs-gc}\gc bias against codon usage
+            (Pearson’s \(\rho = -0.96\)).}
         \end{minipage}%
         \begin{minipage}{0.5\textwidth}
             \includegraphics[width=\textwidth]{aa-pc2-vs-gc}%
-            \subcaption{\gc bias against amino acid usage (Pearson’s \(\rho =
-            -0.58\)).}
+            \subcaption{\label{fig:aa-vs-gc}\gc bias against amino acid usage
+            (Pearson’s \(\rho = -0.58\)).}
         \end{minipage}%
     }
     {\gc bias against a principal component of the \go term codon \& amino acid
