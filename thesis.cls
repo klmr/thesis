@@ -273,15 +273,20 @@
     % #5 figure caption 2
     % #6 figure description 2
     \textfloatbare{spill}{%
-        \begin{minipage}{0.45\textwidth}
+        \begin{minipage}[b]{0.48\textwidth}
             \centering
             \includegraphics[width=\textwidth]{#1}
-            \figcap{#1}{#2}{#3}
         \end{minipage}
-        \hspace{0.1\textwidth}%
-        \begin{minipage}{0.45\textwidth}
+        \hspace{0.04\textwidth}%
+        \begin{minipage}[b]{0.48\textwidth}
             \centering
             \includegraphics[width=\textwidth]{#4}
+        \end{minipage}\\[-\baselineskip]
+        \begin{minipage}[t]{0.48\textwidth}
+            \figcap{#1}{#2}{#3}
+        \end{minipage}
+        \hspace{0.04\textwidth}%
+        \begin{minipage}[t]{0.48\textwidth}
             \figcap{#4}{#5}{#6}
         \end{minipage}}}
 
