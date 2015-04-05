@@ -350,6 +350,9 @@
 \newcommand*\anticodon[1]{\ensuremath{\overline{\text{\MakeTextLowercase{%
     \seq{#1}}}}}}
 
+\newcommand*\fwdstrand[1]{\fivep-#1-\threep}
+\newcommand*\revstrand[1]{\threep-#1-\fivep}
+
 \newcommand*\mismatch[1]{%
     % Fix for spacing from <http://tex.stackexchange.com/a/74469/42>
     \begingroup
