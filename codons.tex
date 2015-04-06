@@ -222,6 +222,24 @@ against the gene set sizes.
     the third quartile; the mean is indicated as a black dot. The second and
     ninety eighth percentile are hinted at with smaller dots.}
 
+I used these distributions to calculate empirical \(p\)-values for each \go term
+for the hypothesis \(H_0\): the divergence in codon usage from a background
+distribution is indistinguishable from random variation for this \go term.
+\Cref{fig:significant-go-term-cub-var} plots the codon usage variation of each
+\go term, along with an indication of whether the observed variation is
+explained by random variation alone.
+
+\textfig{significant-go-term-cub-var}{spill}{\textwidth}
+    {\go term codon usage variation.}
+    {Each point corresponds to a \go term whose Pearson correlation of codon
+    usage with the genomic background is plotted against its gene set size.
+    \go terms with an \fdr-adjusted \(p < 0.05\) are coloured in red.}
+
+The plot illustrates that the variation of many \go terms is expected by chance;
+however, more than half (\num{421} out of \num{791}: \num{53} per cent) show
+significantly higher variation. Thus, despite an influence of random sampling
+especially for small gene set sizes, this is probably insufficient to explain
+the variation observed in \cref{fig:go-cub-pca}.
 
 \subsection{The extent of anticodon adaptation to distinct cellular conditions}
 
