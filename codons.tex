@@ -192,18 +192,25 @@ are nonrandom, one thus has to account for this effect.
 To assess how much of the variation in \go term codon usage is explainable by
 random variation, I created random sets of different numbers of genes, covering
 the whole range of \go term gene set sizes. For each size, I repeatedly sampled
-random genes and calculated the mean \rcu of the resulting set. This was done
-\num{10000} times for each size. To compare the \rcu variability, each \rcu was
-compared to the genome-wide \rcu (i.e.\ using the set of all genes) using
-Pearson correlation. \Cref{fig:sample-size-dependent-cub} plots the distribution
-of the correlations against the gene set sizes.
+random genes and calculated the mean codon usage of the resulting set. This was
+done \num{10000} times for each \go term gene set size. To make the codon usage
+of different gene sets comparable, all codon frequencies of a sample were
+normalised by the total codon frequency in the sample, to obtain codon
+proportions. (such that all codon proportions sum in a sample to \(1\)). Next, I
+calculated the Pearson correlation between the codon proportions of a sample
+with the genome-wide codon proportions (across all annotated coding sequences).
+\Cref{fig:sample-size-dependent-cub} plots the distribution of the correlations
+against the gene set sizes.
 
 \textfig{sample-size-dependent-cub}{spill}{\textwidth}
     {Dependence of codon usage variability on sample size.}
     {Genes were randomly sample from the human genome to create sets of sizes
     given by \(x\) (in grey). The mean codon usage of the sets was calculated,
     and their Pearson correlation to the genomic background is shown on the
-    \(y\) axis. Overlaid are actual gene sets given by human \go categories.}
+    \(y\) axis. For each size, the distribution of \num{10000} repeated samples
+    is summarised in the figure by a vertical segment connecting the first with
+    the third quartile; the mean is indicated as a black dot. The second and
+    ninety eighth percentile are hinted at with smaller dots.}
 
 The plot illustrates that few \go categories, if any, can confidently be said to
 have a codon usage varying more than just randomly. In addition, the allocation
