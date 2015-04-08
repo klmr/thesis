@@ -18,7 +18,7 @@
 \RequirePackage{microtype}
 \RequirePackage{tocstyle}
 \RequirePackage{polyglossia}
-\RequirePackage[natbib, style=authoryear, maxnames=2]{biblatex}
+\RequirePackage[natbib, style=authoryear, maxnames=2, useprefix]{biblatex}
 \RequirePackage{booktabs}
 \RequirePackage{tabu}
 \RequirePackage{collcell}
