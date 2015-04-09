@@ -315,10 +315,10 @@
     % #2 macro name
     % #3 expanded abbreviation
     \csdef{abbr@#2}{#3}
-    \csdef{abbrev@#2}##1{%
+    \expandafter\newcommand\csname abbrev@#2\endcsname[1]{%
         % FIXME Why does the following command definition only require two
         % `#`s to define its arguments, and not three?
-        \global\csdef{abbrev@#2}##1{\abbr{#2}##1}%
+        \expandafter\renewcommand\csname abbrev@#2\endcsname[1]{\abbr{#2}##1}
         \ifblank{#1}{\define{\abbr{#2}}##1}{#1##1 (\define{\abbr{#2}})}}%
     \expandafter\newrobustcmd\expandafter*\csname #2\endcsname[1][]{%
         \csuse{abbrev@#2}{##1}\xspace}}
