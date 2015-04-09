@@ -43,8 +43,8 @@ fulfilled by different molecules. \dna consists of a long chain of
 easily polymerase into long, relatively stable chains. \dna is made up of four
 different types of nucleotides: adenine (\nA), cytosine (\nC), guanine (\nG) and
 thymine (\nT). Thus, \dna can be thought of as a long string of four different
-letters, and that is indeed how it is often represented. Text is read from left
-to right in Western cultures. \dna is read from \fivep to
+letters, and that is indeed how it is often represented. Text is written from
+left to right in Western cultures. \dna is written from \fivep to
 \threep.\footnote{Referring to the number of the phosphate atom in each
 nucleotide, which is exposed at either end of the chain.}
 
@@ -75,25 +75,59 @@ to be transcribed into a catalytically active form, the \rna.
 \rna is created as a single strand. This has two consequences: First, \rna is
 much less stable than \dna, and slowly degrades. \rna thus has a finite
 life-time, and the pool of \rna must be replenished by continuous transcription.
-Second, single-stranded ribonucleic acid spontaneously changes its conformation
-by forming Watson--Crick base pairs between nucleotides in its own sequence,
-where this is \define[\defineword{steric effect} atoms occupy discrete space and
-cannot overlap]{sterically} possible (i.e.\ where forming such a bond does not
-require bending the chain too much to “snap” it). The resulting structure can
-have functional consequences for the \rna. Because the structure is determined
-by, and exists on a higher level than the sequence identity of the \rna, it is
-called \define{secondary structure}.
+Second, single-stranded ribonucleic acid spontaneously changes its spatial
+conformation by forming Watson--Crick base pairs between nucleotides in its own
+sequence, where this is \define[\defineword{steric effect} atoms occupy discrete
+space and cannot overlap]{sterically} possible (i.e.\ where forming such a bond
+does not require bending the chain too much to “snap” it). The resulting
+structure can have functional consequences for the \rna. Because the structure
+is determined by, and exists on a higher level than the sequence identity of the
+\rna, it is called \define{secondary structure}.
+
+Another difference between \dna and \rna is the use of slightly different
+nucleotides: instead of \nT, \rna uses \nU (uracil), which, like \nT, base-pairs
+with \nA. Despite the fact that the genetic information is encoded in virtually
+the same way in \dna and \rna, transcription of \dna into \rna requires a
+complex machinery. The core of this machinery is a complex enzyme called an
+\define{\rna polymerase}. In eukaryotes, three different, evolutionarily related
+\rna polymerases (\pol1, \pol2 and \pol3) are responsible for transcribing
+different types of \rna.
+
+The precise ways in which the different polymerases transcribe genes into their
+\rna products differ but the fundamental aspects of transcription are similar.
+In all cases, a \define[\defineword{motif} pattern describing a family of short
+sequences which, though variable, have some degree of similarity]{motif} in the
+\dna sequence initiates binding of a number of \tf proteins to the \dna. Such a
+motif is called a \define{promoter}. Once the \tf[s] have bound close to the
+target gene, a polymerase attaches to the \dna and is held in place by the
+\tf[s]. Subsequently, the polymerase starts prying the double strand apart and
+starts synthesising a new strand of \rna, which pairs complementary with one of
+the strands on the \dna (the \define{template strand}). The new \rna[’s]
+sequence is thus identical to the other \dna strand (the \define{coding
+strand}). The \rna is produced \fivep--\threep, implying that the template
+strand is read \threep--\fivep during transcription. Once the first few
+nucleotides of the \rna have been synthesised, the polymerase disassociates from
+the \tf proteins, and the polymerase starts moving along the gene body,
+transcribing it as it goes (this may require the presence of another \tf called
+an \define{activator}, which is recruited by an \define{enhancer} motif
+elsewhere on the \dna).
 
 \rna performs numerous different functions, but a very important subcategory of
 \rna does not perform any function on its own; rather, it is an intermediary
 between the genetic information on the \dna and the final protein product, which
-in turn performs cellular functions. This class of \rna is called \mrna.
+in turn performs cellular functions. This class of \rna is called \mrna. They
+are the product of the transcription of protein-coding genes by \pol2.
+Transcription of \mrna requires an exquisite control, and many different \tf[s]
+are known to regulate different genes in different cellular conditions. This
+results in different \mrna genes being transcribed at highly different levels,
+leading to several orders of magnitude of difference in \mrna abundance. Even
+more strikingly, the same \mrna can be transcribed at such different levels
+under different conditions. Taken together, this leads to very differentiated
+\mrna transcription profiles under different conditions, which imbue the cells
+with a unique phenotype. This forms the basis of cellular differentiation into
+different cell types and tissues in multicellular eukaryotes.
 
 \subsection{Proteins}
-
-\subsection{\abbr{trna}}
-
-Another important category of \rna[s] are \trna[s].
 
 \todo[inline]{\begin{enumerate}[noitemsep,nolistsep,leftmargin=*]
     \item Molecular structure of DNA (bases, 5'--3', phosphoribose)
