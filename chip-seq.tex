@@ -46,7 +46,9 @@ expression, we cannot use conventional \rnaseq, since the \rna reads covering
 only the transcribed gene region are not uniquely mappable. Common strategies
 for counting ambiguously mapping reads, as used in \name{ERANGE} by
 \citet{Mortazavi:2008}, still require at least \emph{some} unambiguous
-information, to distinguish different genes that share reads.
+information, to distinguish different genes that share reads (and the problem of
+multi-mapping reads continues to pose challenges, as recent publications
+highlight \citep{Kahles:2015}).
 
 We solve this problem by extending the \trna gene body into the flanking
 regions, which are not under purifying selection, and therefore not conserved.
