@@ -99,8 +99,18 @@
 \setkomafont{subject}{\normalfont\normalcolor\Large}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
-\definecolor{cambridgeblue}{cmyk}{0.45, 0.13, 0.39, 0}
-\definecolor{cambridgebluedark}{cmyk}{0.89, 0.47, 0.46, 0.18}
+\definecolor{cambridgeblue}{RGB}{163, 193, 173}
+\definecolor{cambridgebluedark}{RGB}{17, 94, 103}
+% rgb(66,158,182)
+% rgb(222,137,80)
+% rgb(77,185,102)
+% rgb(243,181,251)
+%rgb(231,190,5)
+\definecolor{primary}{HTML}{429EB6}
+\definecolor{secondary}{HTML}{DE8950}
+\definecolor{tertiary}{HTML}{4DB966}
+\definecolor{quarternary}{HTML}{F3B5FB}
+\definecolor{quinary}{HTML}{E7BE05}
 \colorlet{thesis@toccolor}{black}
 \colorlet{thesis@linkcolor}{black!70}
 
