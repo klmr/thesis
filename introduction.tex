@@ -27,18 +27,14 @@ but never from proteins back to \rna or \dna (\cref{fig:central-dogma})
 summarised the available evidence at the time. Now, more than half a century
 later, this still largely holds true.
 
-\begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}
-        [every node={circle, draw, inner sep=1em}, node distance=3em]
-        \node (dna) {DNA};
-        \node (rna) [right of=dna] {RNA};
-        \node (protein) [right of=rna] {protein};
-        \draw [->] (dna) -- (rna);
-        \draw [->] (rna) -- (protein);
-    \end{tikzpicture}
-    \figcap{dogma}{The central dogma of molecular biology.}{}
-\end{figure}
+\textfig{central-dogma}{body}{0.75\textwidth}
+    {The central dogma of molecular biology.}{The solid arrows represent
+    observed transfers of information; the dashed arrows represent what
+    \citet{Crick:1970} referred to as “potential” transfers; today we know that
+    the transfer \(\text{\rna}\rightarrow\text{\dna}\) does in fact occur under
+    certain circumstances; the transfer \(\text{\dna}\rightarrow\text{protein}\)
+    has still not been observed. Notably, the \emph{absent} transfers in the
+    original publication are still considered non-existent.}
 
 \subsection{\abbr{dna}}
 
