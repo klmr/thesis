@@ -306,6 +306,8 @@
             \figcap{#4}{#5}{#6}
         \end{minipage}}}
 
+\newcommand*\marginfig[1]{\includegraphics[width=\marginparwidth]{#1}}
+
 %\newcommand*\hashtag[1]{%
 %    {\mbox{\scalefont{0.75}\textcolor[HTML]{808080}{\#}\kern0.1em}#1}}
 \newcommand*\hashtag[1]{#1}
@@ -339,7 +341,7 @@
 
 \input{abbreviations.tex}
 
-\newcommand*\define[2][]{\emph{\hashtag{#2}}\showdefinition{#1}}
+\newcommand\define[2][]{\emph{\hashtag{#2}}\showdefinition{#1}}
 \newcommand*\defineword[1]{\textbf{#1}\quad}
 \newcommand\showdefinition[1]{%
     \ifstrequal{#1}{}{}{{\marginpar{\RaggedRight\footnotesize\itshape #1}}}}
