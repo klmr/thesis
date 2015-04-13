@@ -62,6 +62,8 @@ ${references}: ${bib_sources}
 .PHONY: pygments_stylesheet
 pygments_stylesheet: $(shell find ./style_klmrthesis -print)
 	(cd ./style_klmrthesis; python setup.py install --force)
+	# Invalidate cached minted stylesheet
+	${RM} _minted*/klmrthesis.pygstyle
 
 # Cleanup
 
