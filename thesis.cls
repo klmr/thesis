@@ -24,6 +24,7 @@
 \RequirePackage[english,iso]{isodate}
 \RequirePackage{xspace}
 \RequirePackage{tikz}
+\RequirePackage{minted}
 \RequirePackage{scalefnt}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
@@ -303,6 +304,11 @@
 % Titles
 
 \newcommand*\second[1]{{\initials{#1}}}
+
+% Fixes
+
+% Pandoc output produces `\endhead` in longtables, which we don’t use.
+\let\endhead\relax
 
 % vim:ft=tex
 \endinput
