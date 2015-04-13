@@ -13,7 +13,7 @@ class KlmrThesisStyle(Style):
         Operator: '#404040',
         Punctuation: '#404040',
         Comment: '#808080',
-        Keyword: '#FF0000',
+        Keyword: '#000000',
         Number: '#429EB6',
         String: '#DE8950'
     }
