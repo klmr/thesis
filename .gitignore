@@ -21,3 +21,6 @@ rna-seq-example.md
 figure
 summary
 figures
+style_klmrthesis/build/
+style_klmrthesis/dist/
+style_klmrthesis/klmrthesis.egg-info/
