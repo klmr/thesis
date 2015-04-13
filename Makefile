@@ -6,11 +6,12 @@ target := thesis
 references := references.bib
 includes := $(shell ls *.{tex,cls}) ${references}
 bib_sources := $(shell cat bib_sources.conf)
+prerequisites := pygments_stylesheet
 
 # The thesis itself.
 
 .PHONY: ${target}
-${target}: ${target}.pdf
+${target}: ${target}.pdf ${prerequisites}
 
 ${target}.pdf: ${includes}
 
@@ -56,6 +57,12 @@ ${references}: ${bib_sources}
 
 .SECONDARY: rna-seq-example.md
 
+# Install the Pygments stylesheet. This is a lot of complication!
+
+.PHONY: pygments_stylesheet
+pygments_stylesheet: $(shell find ./style_klmrthesis -print)
+	(cd ./style_klmrthesis; python setup.py install)
+
 # Cleanup
 
 .PHONY: clean
@@ -68,6 +75,7 @@ clean:
 	${RM} cache/*
 	${RM} figures.make
 	${RM} $(patsubst %.rmd,%.md,$(wildcard *.rmd))
+	${RM} style_klmrthesis/{build,dist,klmrthesis.egg-info}
 
 .PHONY: cleanall
 cleanall: clean
