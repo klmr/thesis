@@ -1,5 +1,5 @@
 fullpath := $(shell pwd -P)
-LATEXMK := latexmk -xelatex -r ${fullpath}/.latexmkrc
+LATEXMK := latexmk -pdf -r ${fullpath}/.latexmkrc
 BIN := ./scripts
 
 target := thesis
@@ -13,6 +13,8 @@ bib_sources := $(shell cat bib_sources.conf)
 ${target}: ${target}.pdf
 
 ${target}.pdf: ${includes}
+
+rna-seq-standalone.pdf: rna-seq-example.tex
 
 %.pdf: %.tex
 	cd $$(dirname $@); ${LATEXMK} $$(basename $<)
@@ -48,6 +50,11 @@ ${references}: ${bib_sources}
 
 %.html: %.rmd
 	${BIN}/knit $< $@
+
+%.tex: %.md
+	pandoc --no-highlight --to latex $< | ./scripts/fix-pandoc > $@
+
+.SECONDARY: rna-seq-example.md
 
 # Cleanup
 
