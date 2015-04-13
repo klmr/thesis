@@ -61,7 +61,7 @@ ${references}: ${bib_sources}
 
 .PHONY: pygments_stylesheet
 pygments_stylesheet: $(shell find ./style_klmrthesis -print)
-	(cd ./style_klmrthesis; python setup.py install)
+	(cd ./style_klmrthesis; python setup.py install --force)
 
 # Cleanup
 
@@ -76,6 +76,7 @@ clean:
 	${RM} figures.make
 	${RM} $(patsubst %.rmd,%.md,$(wildcard *.rmd))
 	${RM} style_klmrthesis/{build,dist,klmrthesis.egg-info}
+	${RM} _minted*
 
 .PHONY: cleanall
 cleanall: clean
