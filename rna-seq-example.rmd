@@ -57,8 +57,12 @@ pander.trunc_mat = function (x, ...) {
     }
 }
 
-# Disable code re-formatting.
-opts_chunk$set(tidy = FALSE)
+# Disable code re-formatting, set caching and adjust figure output
+opts_chunk$set(tidy = FALSE,
+               cache = TRUE,
+               dev = c('png', 'pdf'),
+               fig.path = 'knitr/figure/',
+               cache.path = 'knitr/cache/')
 ```
 
 We are going to use a small toy data set, containing expression measures of
