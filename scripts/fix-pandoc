@@ -4,5 +4,5 @@
 
 sed -e 's/\\begin{verbatim}/\\begin{minted}{r}/' \
     -e 's/\\end{verbatim}/\\end{minted}/' \
-    -e 's/\\begin{longtable}\[c\]/\\begin{tabular}/' \
-    -e 's/\\end{longtable}/\\end{tabular}/'
+    -e 's/\\begin{longtable}\[c\]/\\begin{center}\\begin{tabular}/' \
+    -e 's/\\end{longtable}/\\end{tabular}\\end{center}/'
