@@ -59,6 +59,10 @@
 \setmonofont[Scale=MatchLowercase]{WenQuanYi Zen Hei Mono}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
+\definecolor{codenormal}{HTML}{404040}
+\AtBeginEnvironment{minted}{\color{codenormal}}
+\usemintedstyle{klmrthesis}
+
 \let\old@amp\&
 \def\&{\textit{\old@amp}}
 
