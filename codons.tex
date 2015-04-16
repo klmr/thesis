@@ -1,21 +1,22 @@
-\chapter{Implications of codon–anticodon interaction on the regulation of translation}
+\chapter{Implications of codon–anticodon interaction on the regulation of
+translation}
 
-In the previous chapter I have shown that the codon usage and its interaction
-with \trna anticodons remains remarkably stable across the variability of the
-transcriptome during mammalian development.
+In the previous chapter I have shown that codon usage and its interaction with
+\trna anticodons remains remarkably stable despite substantial variability of
+the transcriptome during mammalian development.
 
 Shortly after the publication of our research on \trna gene regulation during
 mouse development, \citet{Gingold:2014} published \texttitle{A Dual Program for
 Translation Regulation in Cellular Proliferation and Differentiation}. They
-report that different programmes of cellular function preferentially use
+report that cells with different functional characteristics preferentially use
 different sets of codons, and that the pool of active \trna[s] adapts
 dynamically to decode this set of codons with high efficiency.
 
 Because its conclusions are highly relevant to our own research we evaluated the
 paper carefully. In the following, I will first describe the paper’s main
 findings, to the extent that they are relevant to our own research. I will then
-outline our concerns with the analysis, and the subsequent experiments we
-performed in an effort to explain how our previous results relate to this paper.
+discuss new experimental data and computational analyses we performed to explore
+how our previous results relate to this paper.
 
 \section{“A dual program for translation regulation in cellular proliferation
 and differentiation”}
@@ -24,32 +25,32 @@ and differentiation”}
 codon usage of different groups of protein-coding genes in patient tissue
 samples and human-derived cell lines in different cellular conditions --- five
 primary cancers, induced differentiation, release from serum starvation,
-senescence, and \gene{MYC} and \gene{RAS} overexpression --- with the aim of
-characterising the differences in \trna gene expression and \trna anticodon
-abundance. They hypothesise that the balance between \trna anticodon supply and
-codon demand might influence the rate of production of proteins from \mrna
-\citep{Gingold:2011}.
+senescence, and \gene{hsa}{MYC} and \gene{hsa}{RAS} overexpression --- with the
+aim of characterising the differences in \trna gene expression and \trna
+anticodon abundance. They hypothesise that the balance between \trna anticodon
+supply and codon demand might influence the rate of production of proteins from
+\mrna \citep{Gingold:2011}.
 
 \subsection{\abbr{trna} anticodons change in abundance in tumour tissues}
 
-\citet{Gingold:2014} designed custom microarrays for the \trna[s] of most
-anticodons present in human, excluding those prone to cross-hybridi\-sation, or
-where a low in silico screening score predicts that they may be pseudogenes.
-Using these microarrays, they assayed the abundance of anticodon isoacceptors in
-healthy B cells and in B-cell derived lymphomas, and show that there are
-specific anticodon isoacceptors whose abundance changes reproducibly in tumours
-compared to healthy tissue, while other anticodon isoacceptors do not change
-their abundance. This mirrors results reported previously
-\citep{Pavon-Eternod:2009}.
+\citet{Gingold:2014} designed custom microarrays to probe the expression levels
+of the \trna[s] of most anticodons present in human, excluding those prone to
+cross-hybridi\-sation, or where a low in silico screening score predicts that
+they may be pseudogenes. Using these microarrays, they assayed the abundance of
+anticodon isoacceptors in healthy B cells and in B-cell derived lymphomas. They
+showed that there are specific anticodon isoacceptors whose abundance changes
+reproducibly in tumours compared to healthy tissue, while other anticodon
+isoacceptors do not change their abundance. This mirrors results reported
+previously \citep{Pavon-Eternod:2009}.
 
-In addition, they performed the same \trna anticodon abundance analysis on all
-samples and applied a hierarchical clustering to the resulting matrix of \trna
-expression profiles of all samples. They observe that this clusters samples by
-whether they are derived from tumour tissues or from differentiating tissues.
-When performing an equivalent clustering on \mrna gene expression values for the
-same samples, they observe that samples cluster not by whether they are tumours,
-but rather by their tissue of origin, i.e.\ by the tissue from which the tumour
-or cell line was derived.
+In addition, they determined \trna anticodon abundance analysis levels for all
+samples and applied hierarchical clustering to the resulting matrix of \trna
+expression profiles. They observed that samples were clustered into two groups,
+corresponding to tumour cell types and differentiating cell types. When
+performing an equivalent clustering on \mrna gene expression values for the same
+samples, they observe that samples cluster not by whether they are tumours, but
+rather by their tissue of origin, i.e.\ by the tissue from which the tumour or
+cell line was derived.
 
 \subsection{Codon usage differs between genes involved in cell proliferation and
 genes involved in differentiation}
