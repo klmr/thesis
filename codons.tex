@@ -76,10 +76,11 @@ This reveals that the largest contributor to the variation stems from the split
 of the \go terms into two distinct sets, one encompassing multi-cellular \go
 terms and the other cell autonomous \go terms. They argue that these two sets of
 \go terms correspond to \go terms functionally responsible for maintaining cell
-homoeostasis on the one hand, and rapid cellular division, such as found in
+homoeostasis on the one hand, and rapid cellular division, such as that found in
 tumours, on the other hand. In other words, different gene families specific to
 rapidly dividing as opposed to healthy, mature cells have a distinct codon
-composition.\todo{GO hierarchy? Term selection? Slice through GO tree --- remove gene redundancy in sets. Not independent data points}
+composition.\todo{GO hierarchy? Term selection? Slice through GO tree --- remove
+gene redundancy in sets. Not independent data points [John: “would be very helpful”]}
 
 It is however worth noting that the choice of \go terms highlighted in the \pca
 is somewhat arbitrary: It is for instance not clear why “translation” should be
@@ -132,14 +133,16 @@ super-category “differentiation”.
 matches \abbr{trna} anticodon abundance in corresponding cells}
 
 Finally, \citet{Gingold:2014} compared the \pca of the per-\go codon usage to
-the actual gene expression of \mrna[s] and \trna[s]. The analysis was done in
-two parts. Firstly, protein-coding gene expression between normal tissue and
-either a tumour sample or a induced differentiation sample was compared, and the
-fold change calculated for each gene. The mean fold change of each \go term,
-mapped to a colour map, was plotted on top of the \go terms in the \pca
-(\cref{fig:gingold-fig-3c} bottom). There seems to be a marked gradient of \mrna
-expression enrichment from left to right. This illustrates that the first
-principal component of the \pca does indeed separate \go terms by their
+the actual gene expression of \mrna[s] and \trna[s] in different cellular
+conditions. The analysis was done in two parts. Firstly, the fold change of gene
+expression between normal tissue and a given condition was calculated for each
+protein-coding gene. The mean expression fold change of each \go term, mapped to
+a colour map, was plotted on top of the \go terms in the \pca
+(\cref{fig:gingold-fig-3c} bottom). This was done separately for various
+conditions, including several tumour samples and cell lines with induced
+differentiation. In all examined conditions, there seems to be a marked gradient
+of \mrna expression enrichment from left to right. This illustrates that the
+first principal component of the \pca does indeed separate \go terms by their
 specificity to either proliferating or differentiating cellular programmes.
 
 Secondly, to estimate translation efficiency they calculated the change in
