@@ -354,7 +354,10 @@
 
 \newcommand*\dfn[1]{\emph{#1}}
 
-\newcommand*\gene[1]{\textit{#1}}
+\newcommand*\gene@hsa[1]{\textsc{\MakeTextLowercase{\textit{#1}}}}
+\newcommand*\gene@mmu[1]{\textit{#1}}
+
+\newcommand*\gene[2]{\csuse{gene@#1}{#2}}
 
 \newcommand*\protein[1]{\textrm{#1}}
 
