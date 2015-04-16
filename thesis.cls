@@ -118,7 +118,10 @@
 }
 
 \usetocstyle{nopagecolumn}
-\settocstylefeature[0]{pagenumberbox}{\@gobble}
+%\settocstylefeature[0]{pagenumberbox}{\@gobble}
+\setkomafont{partentry}{\bfseries\addfontfeature{LetterSpace=10}}
+\setkomafont{chapterentry}{\bfseries}
+\settocstylefeature[-1]{pagenumberbox}{\@gobble}
 
 \let\old@amp\&
 \def\&{\textit{\old@amp}}
