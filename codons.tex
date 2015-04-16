@@ -143,33 +143,35 @@ conditions, including several tumour samples and cell lines with induced
 differentiation. In all examined conditions, there seems to be a marked gradient
 of \mrna expression enrichment from left to right. This illustrates that the
 first principal component of the \pca does indeed separate \go terms by their
-specificity to either proliferating or differentiating cellular programmes.
+specificity to either proliferating or differentiating cellular
+programmes.\todo{John: Does it? Assuming “normal” cells are proliferating? Does
+this not beg the question of comparing tumour/differentiating directly?}
 
 Secondly, to estimate translation efficiency they calculated the change in
 abundance of the \trna genes whose isoacceptors decode the codons of the genes
-in each \go term, and averaged across them. The fold change in translation
+in each \go term, and averaged across them.\todo{Unclear, add equations} The fold change in translation
 efficiency between healthy tissue and the sample under consideration was again
 mapped to a colour gradient, which was overlaid over the \pca
 (\cref{fig:gingold-fig-3c} top). Again there appears to be a gradient of how
 well different \go terms are adapted to the \trna anticodon pool of a given
 condition, following the first principal component of the \pca.
 
-However, the authors did not calculate correlations between the first principal
-component and either the codon usage bias or the translation efficiency fold
-change. Instead, they merely visualised the presumed correspondence using the
-potentially misleading rainbow colour map \citep{Borland:2007}. Furthermore, the
-absolute range of changes is minute compared to the overall fold change (range
-of fold change \numrange{0.86}{0.905} in one case, corresponding to less than
-\num{5} per cent of the maximum fold change), and the lack of statistical
-analysis makes it impossible to tell whether these changes are in fact
-significant, assuming they correlate at all. It is also worth noting that the
-whole fold change range is positive: Even \go categories that are unspecific for
-a given condition according to \cref{fig:go-cub-pca} (they fall on the wrong
-side of the first principal component), and should thus be less adapted to the
-\trna anticodon abundance, are in fact better adapted according to this analysis
-(\cref{fig:gingold-fig-3c}). This is a recurring feature for all conditions
-tested in this way, and is at odds with the claim that the \trna anticodon pool
-is specially adapted to cell condition specific gene sets.
+Although interesting, the authors did not calculate correlations between the
+first principal component and either the codon usage bias or the translation
+efficiency fold change. Instead, they visualised the presumed correspondence
+using a potentially misleading rainbow colour map \citep{Borland:2007}.
+Furthermore, the absolute range of changes is extremely small compared to the
+overall fold change (range of fold change \numrange{0.86}{0.905} in one case,
+corresponding to less than \num{5} per cent of the maximum fold change), and the
+lack of statistical analysis makes it impossible to tell whether these changes
+are in fact significant. It is also important to note that the fold change range
+in predicted translation efficiency is positive: Consequently, \go categories
+that are unspecific for a given condition according to \cref{fig:go-cub-pca},
+and should thus be less adapted to the \trna anticodon abundance, are in fact
+better adapted according to this analysis (\cref{fig:gingold-fig-3c}). This is a
+recurring feature for all conditions tested in this way, and is potentially
+inconsistent with the claim that the \trna anticodon pool is specially adapted
+to cell condition specific gene sets.
 
 \textfig{gingold-fig-3c}{body}{\textwidth}
     {Projection of the \trna and \mrna expression changes on the codon usage
