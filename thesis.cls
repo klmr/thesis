@@ -324,13 +324,28 @@
 
 \newcommand*\abbr[1]{\csuse{abbr@#1}}
 
+% The following needs global versions of (re)newcommand.
+% This implementation is form http://tex.stackexchange.com/a/51750/42.
+\def\gnewcommand{\g@star@or@long\gnew@command}
+\def\grenewcommand{\g@star@or@long\grenew@command}
+\def\g@star@or@long#1{%
+  \@ifstar{\let\l@ngrel@x\global#1}{\def\l@ngrel@x{\long\global}#1}}
+\def\gnew@command#1{\@testopt{\@gnewcommand#1}0}
+\def\@gnewcommand#1[#2]{%
+  \kernel@ifnextchar [{\@gxargdef#1[#2]}%
+                {\@argdef#1[#2]}}
+\let\@gxargdef\@xargdef
+\patchcmd{\@gxargdef}{\def}{\gdef}{}{}
+\let\grenew@command\renew@command
+\patchcmd{\grenew@command}{\new@command}{\gnew@command}{}{}
+
 \newcommand*\abbrev[3][]{%
     % #1 [optional] long description
     % #2 macro name
     % #3 expanded abbreviation
     \csdef{abbr@#2}{#3}
-    \expandafter\newcommand\csname abbrev@#2\endcsname[1]{%
-        \expandafter\renewcommand\csname abbrev@#2\endcsname[1]{\abbr{#2}####1}%
+    \expandafter\gnewcommand\csname abbrev@#2\endcsname[1]{%
+        \expandafter\grenewcommand\csname abbrev@#2\endcsname[1]{\abbr{#2}####1}%
         \ifblank{#1}{\define{\abbr{#2}}##1}{#1##1 (\define{\abbr{#2}})}}%
     \expandafter\newrobustcmd\expandafter*\csname #2\endcsname[1][]{%
         \csuse{abbrev@#2}{##1}\xspace}}
