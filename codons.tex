@@ -222,7 +222,12 @@ gene set, I calculated the mean codon usage of the resulting set. This was done
 \num{10000} times for each \go term gene set size. To ensure that the codon
 usage of different gene sets was comparable, all codon frequencies within a
 sample were normalised by the total codon frequency in the sample, to obtain
-codon proportions (such that all codon proportions sum in a sample to \(1\)).
+codon proportions (such that all codon proportions sum in a sample to \(1\)):
+
+\begin{equation}
+    x_i' = x_i \left(\sum_j x_j\right)^{-1}
+\end{equation}
+
 Next, I calculated the Pearson correlation between the codon proportions of each
 sample with the genome-wide codon proportions (across all annotated coding
 sequences). \Cref{fig:sample-size-dependent-cub} plots the distribution of the
