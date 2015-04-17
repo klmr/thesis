@@ -138,7 +138,7 @@ conditions. The analysis was done in two parts. Firstly, the fold change of gene
 expression between normal tissue and a given condition was calculated for each
 protein-coding gene. The mean expression fold change of each \go term, mapped to
 a colour map, was plotted on top of the \go terms in the \pca
-(\cref{fig:gingold-fig-3c} bottom). This was done separately for various
+(\cref{fig:gingold-3c} bottom). This was done separately for various
 conditions, including several tumour samples and cell lines with induced
 differentiation. In all examined conditions, there seems to be a marked gradient
 of \mrna expression enrichment from left to right. This illustrates that the
@@ -152,7 +152,7 @@ abundance of the \trna genes whose isoacceptors decode the codons of the genes
 in each \go term, and averaged across them.\todo{Unclear, add equations} The fold change in translation
 efficiency between healthy tissue and the sample under consideration was again
 mapped to a colour gradient, which was overlaid over the \pca
-(\cref{fig:gingold-fig-3c} top). Again there appears to be a gradient of how
+(\cref{fig:gingold-3c} top). Again there appears to be a gradient of how
 well different \go terms are adapted to the \trna anticodon pool of a given
 condition, following the first principal component of the \pca.
 
@@ -168,20 +168,30 @@ are in fact significant. It is also important to note that the fold change range
 in predicted translation efficiency is positive: Consequently, \go categories
 that are unspecific for a given condition according to \cref{fig:go-cub-pca},
 and should thus be less adapted to the \trna anticodon abundance, are in fact
-better adapted according to this analysis (\cref{fig:gingold-fig-3c}). This is a
+better adapted according to this analysis (\cref{fig:gingold-3c}). This is a
 recurring feature for all conditions tested in this way, and is potentially
 inconsistent with the claim that the \trna anticodon pool is specially adapted
 to cell condition specific gene sets.
 
-\textfig{gingold-fig-3c}{body}{\textwidth}
+\textfloat{gingold-3c}{body}{%
+    \centering
+    \begingroup
+        \includegraphics[width=\textwidth]{gingold-3c-trna}\\[-0.3\baselineskip]
+        \subcaption{\label{fig:gingold-3c-a}Fold change in predicted translation
+            efficiency}\leavevmode\\
+    \endgroup
+    \begingroup
+        \includegraphics[width=\textwidth]{gingold-3c-mrna}\\[-0.3\baselineskip]
+        \subcaption{\label{fig:gingold-3c-b}Fold change in \abbr{mrna} level}
+    \endgroup}
     {Projection of the \trna and \mrna expression changes on the codon usage
     map for cells after induced differentiation via retinoic acid.}
-    {Both panels show the same \pca as in \cref{fig:go-cub-pca}. In the top
-    panel, the colours correspond to the fold change in predicted translation
-    efficiency of the genes constituting each \go term, given the change in
-    cellular abundance of \trna anticodons compared to normal cells. The bottom
-    panel shows the mean fold change in \mrna levels per \go term compared to
-    normal cells. Figure from \citet{Gingold:2014}.}
+    {Both panels show the same \pca that I reproduced in \cref{fig:go-cub-pca}.
+    In the top panel, the colours correspond to the fold change in predicted
+    translation efficiency of the genes constituting each \go term, given the
+    change in cellular abundance of \trna anticodons compared to normal cells.
+    The bottom panel shows the mean fold change in \mrna levels per \go term
+    compared to normal cells. Figure modified from \citet{Gingold:2014}.}
 
 \section{Are \abbr{trna} anticodon abundance and codon usage highly adapted to
 different cellular conditions?}
@@ -195,15 +205,15 @@ healthy tissue and tumour cell lines in \mmu and \hsa.
 \subsection{The effect of gene set size on codon usage bias}
 
 Since we were already in possession of relevant \trna data we decided to use our
-own data to recapitulate these findings. A first observation was that while our
-own research so far had looked at the whole transcriptome, \citet{Gingold:2014}
-had looked at specific subsets. While both approaches are valid in their own
-right, some caution is necessary when comparing the results: the smaller the set
-of genes one looks at, the larger the effects of random sampling of the genes
-become. When analysing a particular feature, such as the codon usage bias,
-random sampling will thus contribute a larger part to the variation between two
-small sets than between two large sets. If one wants to assert that deviations
-are nonrandom, one thus has to account for this effect.
+own data to recapitulate these findings. A first observation was that we had
+looked at the whole transcriptome, \citet{Gingold:2014} had looked at specific
+subsets. While both approaches are valid, some caution is necessary when
+comparing the results: the smaller the set of genes, the larger the effects of
+random sampling of the genes become. Subsequently, when analysing a particular
+feature, such as codon usage bias, random sampling will contribute
+proportionally more to the variation between two small sets than between two
+large sets. If one wants to assert that deviations are nonrandom, one thus has
+to account for this effect.
 
 To assess how much of the variation in \go term codon usage is explainable by
 random variation, I created random sets of different numbers of genes, covering
@@ -250,7 +260,7 @@ the variation observed in \cref{fig:go-cub-pca}.
 \subsection{The extent of anticodon adaptation to distinct cellular conditions}
 
 To test whether the anticodon pool does indeed adapt to specific cellular
-conditions as suggested by \cref{fig:gingold-fig-3c}, I examined whether the
+conditions as suggested by \cref{fig:gingold-3c}, I examined whether the
 codon--anticodon adaptation (estimated via the correlation between matching
 codons and anticodons, each as a proportion of the contribution to their
 corresponding amino acid, i.e.\ the \rcu and \raa) is higher between matching
