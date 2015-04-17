@@ -211,22 +211,22 @@ subsets. While both approaches are valid, some caution is necessary when
 comparing the results: the smaller the set of genes, the larger the effects of
 random sampling of the genes become. Subsequently, when analysing a particular
 feature, such as codon usage bias, random sampling will contribute
-proportionally more to the variation between two small sets than between two
-large sets. If one wants to assert that deviations are nonrandom, one thus has
-to account for this effect.
+proportionally more to the variation between two small sets than to differences
+between two larger sets. Consequently, if one wants to assert that deviations
+are nonrandom, one thus has to account for this effect.
 
 To assess how much of the variation in \go term codon usage is explainable by
-random variation, I created random sets of different numbers of genes, covering
-the whole range of \go term gene set sizes. For each size, I repeatedly sampled
-random genes and calculated the mean codon usage of the resulting set. This was
-done \num{10000} times for each \go term gene set size. To make the codon usage
-of different gene sets comparable, all codon frequencies of a sample were
-normalised by the total codon frequency in the sample, to obtain codon
-proportions. (such that all codon proportions sum in a sample to \(1\)). Next, I
-calculated the Pearson correlation between the codon proportions of a sample
-with the genome-wide codon proportions (across all annotated coding sequences).
-\Cref{fig:sample-size-dependent-cub} plots the distribution of the correlations
-against the gene set sizes.
+such effects, I generated random sets of different numbers of genes,
+corresponding to the whole range of \go term gene set sizes. For each simulated
+gene set, I calculated the mean codon usage of the resulting set. This was done
+\num{10000} times for each \go term gene set size. To ensure that the codon
+usage of different gene sets was comparable, all codon frequencies within a
+sample were normalised by the total codon frequency in the sample, to obtain
+codon proportions (such that all codon proportions sum in a sample to \(1\)).
+Next, I calculated the Pearson correlation between the codon proportions of each
+sample with the genome-wide codon proportions (across all annotated coding
+sequences). \Cref{fig:sample-size-dependent-cub} plots the distribution of the
+correlations against the gene set sizes.
 
 \textfig{sample-size-dependent-cub}{spill}{\textwidth}
     {Dependence of codon usage variability on sample size.}
@@ -239,10 +239,10 @@ against the gene set sizes.
     ninety eighth percentile are hinted at with smaller dots.}
 
 I used these distributions to calculate empirical \(p\)-values for each \go term
-for the hypothesis \(H_0\): the divergence in codon usage from a background
-distribution is indistinguishable from random variation for this \go term.
-\Cref{fig:significant-go-term-cub-var} plots the codon usage variation of each
-\go term, along with an indication of whether the observed variation is
+in order to test the null hypothesis \(H_0\): the divergence in codon usage from
+a background distribution is indistinguishable from random variation for this
+\go term. \Cref{fig:significant-go-term-cub-var} plots the codon usage variation
+of each \go term, along with an indication of whether the observed variation is
 explained by random variation alone.
 
 \textfig{significant-go-term-cub-var}{spill}{\textwidth}
@@ -254,8 +254,8 @@ explained by random variation alone.
 The plot illustrates that the variation of many \go terms is expected by chance;
 however, more than half (\num{421} out of \num{791}, \num{53} per cent) show
 significantly higher variation. Thus, despite an influence of random sampling
-especially for small gene set sizes, this is probably insufficient to explain
-the variation observed in \cref{fig:go-cub-pca}.
+especially for small gene set sizes, this observation is unlikely to explain the
+variation seen in \cref{fig:go-cub-pca}.
 
 \subsection{The extent of anticodon adaptation to distinct cellular conditions}
 
