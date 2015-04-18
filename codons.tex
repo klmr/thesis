@@ -264,34 +264,35 @@ variation seen in \cref{fig:go-cub-pca}.
 
 \subsection{The extent of anticodon adaptation to distinct cellular conditions}
 
-To test whether the anticodon pool does indeed adapt to specific cellular
+Next, in order to test whether the anticodon pool adapts to specific cellular
 conditions as suggested by \cref{fig:gingold-3c}, I examined whether the
-codon--anticodon adaptation (estimated via the correlation between matching
-codons and anticodons, each as a proportion of the contribution to their
-corresponding amino acid, i.e.\ the \rcu and \raa) is higher between matching
-\mrna and \trna transcriptomes (measured via \rnaseq and \pol3 \chipseq; using
-the same method of quantification as in \cref{sec:trna}) than between
-mismatching ones, and whether it is highest in genes that are specific to a
-given cellular programme. In other words, I looked at the \mrna pool of each
-cellular condition, and calculated the codon--anticodon correlations for
+codon--anticodon adaptation is better between matching than between mismatching
+\mrna and \trna transcriptomes. For this purpose, I calculated codon--anticodon
+adaptation as the correlation between matching codons and anticodons, each as a
+proportion of the contribution to their corresponding amino acid -- in other
+words, the correlation between \rcu and \raa. I similarly tested whether the
+codon--anticodon adaptation was better for genes that are specific to a cellular
+condition, compared to the overall transcriptome. In other words, I looked at
+the \mrna pool of each cellular condition, and calculated the codon--anticodon
+correlations for
 
 \begin{enumerate}
     \item the whole transcriptome and its matching \trna pool (“matching”),
     \item the whole transcriptome and all mismatching \trna pools
         (“mismatching”),
-    \item the set of differentially, highly expressed \mrna genes and its
-        matching \trna pool (“\abbr{de}”), and
-    \item condition specific gene sets (for the \go terms “M phase of mitotic
-        cell cycle” \& “pattern specification process”) and their matching \trna
-        pool (“\abbr{go}”).
+    \item the set of differentially, highly expressed \mrna genes and the
+        \trna pool of the same cellular condition (“\abbr{de}”), and
+    \item a condition specific gene set (for the \go terms “M phase of mitotic
+        cell cycle” \& “pattern specification process”) and the \trna pool of
+        the same cellular condition (“\abbr{go}”).
 \end{enumerate}
 
-I performed the analysis in \mmu and \hsa. For both species, I compared healthy
-tissue (adult whole-liver tissue, homogenised) to two different hepatocyte
-derived cancer cell lines: HepG2 and Huh7 in \hsa, and Hepa1-6 and Hepa1c1c7 in
-\mmu. At least two biological replicates were present for each
-sample.\footnote{The tissue collection and sequence library preparation was
-performed by Bianca Schmitt and Diego Villar.} Distinct tumours were used
+I performed the analysis using data generated from \mmu and \hsa. For both
+species, I compared healthy tissue (adult whole-liver tissue, homogenised) to
+two different hepatocyte derived cancer cell lines: HepG2 and Huh7 in \hsa, and
+Hepa1-6 and Hepa1c1c7 in \mmu. At least two biological replicates were present
+for each sample.\footnote{The tissue collection and sequence library preparation
+was performed by Bianca Schmitt and Diego Villar.} Distinct tumours were used
 because we wanted to test the hypothesis that there exists a \trna abundance
 adaptation specific to the cellular programme in proliferating cells, which
 would be present across different tumour types.
@@ -315,15 +316,14 @@ Cell specific subsets of the transcriptome can be defined in several ways. My
 analysis used two possible definitions: Firstly, I looked at differentially
 expressed genes between healthy and tumour cells, and called genes
 condition-specific if they were significantly differentially expressed (adjusted
-\(p < 0.001\)), their expression was high (mean expression between the
-conditions in the upper quartile of all mean expressions), and their fold change
-between the conditions was also high (taking the \num{200} genes with the
-highest fold change; correlation type “\abbr{de}”). Secondly, I took the gene
-sets of the two most extreme \go terms found by \citet{Gingold:2014} according
-to the variance in codon usage, which they describe as highly specific for
-proliferating cells (\go term “M phase of mitotic cell cycle”) and
-differentiating/differentiated cells (\go term “pattern specification process”;
-correlation type “\abbr{go}”).
+\(p < 0.001\)), their expression was high (mean expression across conditions in
+the upper quartile of all mean expression levels), and their fold change between
+the conditions was also high (taking the \num{200} genes with the highest fold
+change; correlation type “\abbr{de}”). Secondly, I took the gene sets of the two
+most extreme \go terms found by \citet{Gingold:2014} according to the variance
+in codon usage, which they describe as highly specific for proliferating cells
+(\go term “M phase of mitotic cell cycle”) and differentiating/differentiated
+cells (\go term “pattern specification process”; correlation type “\abbr{go}”).
 
 Unfortunately, \go term annotations differ vastly between \hsa and \mmu and, in
 particular, one of the two condition specific \go terms (according to the \pca
