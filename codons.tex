@@ -334,13 +334,13 @@ orthologous gene sets from the human \go term annotation (determined from the
 gene name, which is identical in \mmu and \hsa \citep{Wain:2002}).
 
 We want to test whether the “mismatching” correlations are lower than the
-“matching” ones, but whether the “\abbr{de}” and “\abbr{go}” correlations are
+“matching” ones and whether the “\abbr{de}” and “\abbr{go}” correlations are
 higher, respectively, than the “matching” ones. I therefore used one-tailed
-tests for significant difference. In all but one cases, I failed to reject the
-null hypothesis of no difference. The only case where we find some support for
-rejecting \(H_0\) is the comparison of “matching”--“mismatching” in \hsa (\(p =
-0.048\), one-tailed Mann–Whitney–Wilcoxon test). On the other hand, the
-“\abbr{go}” correlations are significantly \emph{lower} than the “matching”
+tests for significant deviations from the null. In all but one cases, I failed
+to reject the null hypothesis of no difference. The only case where we find some
+support for rejecting \(H_0\) is the comparison of “matching”--“mismatching” in
+\hsa (\(p = 0.048\), one-tailed Mann–Whitney–Wilcoxon test). On the other hand,
+the “\abbr{go}” correlations are significantly \emph{lower} than the “matching”
 correlations in both species (\(p < \num{4.4e-5}\) in \mmu; \(p < \num{2.5e-8}\)
 in \hsa). This offers evidence against the hypothesis put forward by
 \citet{Gingold:2014} (\cref{fig:cub-aab}).
@@ -409,13 +409,13 @@ consideration. Each data point thus corresponds to a pairwise combination of two
 replicates; this implies that data points within one distribution are \emph{not}
 independent of each other. The alternative would have been to average over
 biological replicates, and correlate the averaged data. However, this has two
-important drawbacks:\todo{John: what are the consequences of this?}
+important drawbacks:
 \begin{enumerate*}
     \item It does not account for variance in the expression data and thus
         underestimates the variance in the distributions of the correlations.
     \item If \mrna and \trna gene expression values are dispersed around the
-        same mean, averaging across replicates would yield to a higher
-        correlation than actually present \textit{in vivo}.
+        same mean, averaging across replicates would yield a higher correlation
+        than actually present in vivo.
 \end{enumerate*}
 
 The current analysis measured \trna anticodon adaptation using the
