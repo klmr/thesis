@@ -401,29 +401,6 @@ change the overall result, however: none of the strategies yielded correlations
 that were significantly higher than the transcriptome-wide “matching”
 correlations.
 
-One caveat of the analysis is the treatment of replicates. In
-\cref{fig:cub-aab}, biological replicates of each sample were treated
-independently, rather than pooled: correlations were calculated between all
-pairwise combinations of \rnaseq and \pol3 \chipseq data of the samples under
-consideration. Each data point thus corresponds to a pairwise combination of two
-replicates; this implies that data points within one distribution are \emph{not}
-independent of each other. The alternative would have been to average over
-biological replicates, and correlate the averaged data. However, this has two
-important drawbacks:
-\begin{enumerate*}
-    \item It does not account for variance in the expression data and thus
-        underestimates the variance in the distributions of the correlations.
-    \item If \mrna and \trna gene expression values are dispersed around the
-        same mean, averaging across replicates would yield a higher correlation
-        than actually present in vivo.
-\end{enumerate*}
-
-The current analysis measured \trna anticodon adaptation using the
-codon--anticodon correlation, ignoring wobble base pairing. A potentially better
-measure of \trna adaptation is the \tai, which accounts for wobble base pairing
-in a species-specific manner. Extending the analysis to use the \tai is ongoing
-work.\todo{Mention improving handing of replicates in comparison}
-
 \subsection{Other genomic features may drive the perceived codon usage bias}
 
 The trend seen in \cref{fig:go-cub-pca} exists to the same degree when plotting
@@ -513,3 +490,28 @@ different mammalian species and homology information for the annotated \go
 categories in humans, we can calculate the respective conservation of codon
 usage on the one hand, and \gc bias on the other hand. This analysis has not yet
 been performed, however.\todo{Is GC bias under neutral selection?}
+
+\subsection{Discussion}
+
+One caveat of the analysis of the codon--anticodon correlation between subset of
+the transcriptome is the treatment of replicates. In \cref{fig:cub-aab},
+biological replicates of each sample were treated independently, rather than
+pooled: correlations were calculated between all pairwise combinations of
+\rnaseq and \pol3 \chipseq data of the samples under consideration. Each data
+point thus corresponds to a pairwise combination of two replicates; this implies
+that data points within one distribution are \emph{not} independent of each
+other. The alternative would have been to average over biological replicates,
+and correlate the averaged data. However, this has two important drawbacks:
+\begin{enumerate*}
+    \item It does not account for variance in the expression data and thus
+        underestimates the variance in the distributions of the correlations.
+    \item If \mrna and \trna gene expression values are dispersed around the
+        same mean, averaging across replicates would yield a higher correlation
+        than actually present in vivo.
+\end{enumerate*}
+
+The current analysis measured \trna anticodon adaptation using the
+codon--anticodon correlation, ignoring wobble base pairing. A potentially better
+measure of \trna adaptation is the \tai, which accounts for wobble base pairing
+in a species-specific manner. Extending the analysis to use the \tai is ongoing
+work.\todo{Mention improving handing of replicates in comparison}
