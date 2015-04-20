@@ -62,7 +62,7 @@
 % Small caps used in abbreviations – should only be enabled for Roman family.
 \newcommand*\abbrsc[1]{\texorpdfstring{\textsc{\MakeTextLowercase{#1}}}{#1}}
 % Lower-case letters in small caps abbreviations.
-\newcommand*\lowsc[1]{\protect\scalebox{0.8}{#1}}
+\newcommand*\lowsc[1]{\texorpdfstring{\protect\scalebox{0.8}{#1}}{#1}}
 
 % Adjust font settings.
 
@@ -71,7 +71,7 @@
     \thesis@old@rm%
     \renewcommand*\abbrsc[1]{%
         \texorpdfstring{\textsc{\MakeTextLowercase{##1}}}{##1}}%
-    \renewcommand*\lowsc[1]{\protect\scalebox{0.8}{##1}}}
+    \renewcommand*\lowsc[1]{\texorpdfstring{\protect\scalebox{0.8}{##1}}{##1}}}
 
 \let\thesis@old@sf\sffamily
 \renewcommand*\sffamily{%
@@ -206,6 +206,7 @@
 \let\labelfont\textbf
 
 \newcommand*\figcap[3]{\caption{\label{fig:#1}\labelfont{#2} #3}}
+\newcommand*\figcapof[3]{\captionof{figure}{\label{fig:#1}\labelfont{#2} #3}}
 
 \newcommand*\tabcap[3]{%
     \begingroup%
@@ -371,7 +372,7 @@
 
 \newcommand*\gene[2]{\csuse{gene@#1}{#2}}
 
-\newcommand*\protein[1]{\textrm{#1}}
+\newcommand*\protein[1]{\textrm{\textsc{\MakeTextLowercase{#1}}}}
 
 % Formatting of biological sequences
 
