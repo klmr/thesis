@@ -93,16 +93,22 @@
 
 \definecolor{cambridgeblue}{RGB}{163, 193, 173}
 \definecolor{cambridgebluedark}{RGB}{17, 94, 103}
+
 % rgb(66,158,182)
 % rgb(222,137,80)
 % rgb(77,185,102)
 % rgb(243,181,251)
-%rgb(231,190,5)
+% rgb(231,190,5)
 \definecolor{primary}{HTML}{429EB6}
 \definecolor{secondary}{HTML}{DE8950}
 \definecolor{tertiary}{HTML}{4DB966}
 \definecolor{quarternary}{HTML}{F3B5FB}
 \definecolor{quinary}{HTML}{E7BE05}
+\newcommand*\primaryname{blue}
+\newcommand*\secondaryname{orange}
+\newcommand*\tertiaryname{green}
+\newcommand*\quarternaryname{purple}
+
 \colorlet{thesis@toccolor}{black}
 \colorlet{thesis@linkcolor}{black!70}
 
