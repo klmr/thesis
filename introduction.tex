@@ -6,6 +6,7 @@ Dobzhansky)\footnotemark]{Nothing in biology makes sense […]}
 
 \section{The central dogma}
 
+% <<<
 At the core of every living being is its genetic inheritance. The genetic
 inheritance is what is being passed down from parents to their offspring, and
 contains a blueprint detailing how to construct a new individual from a single
@@ -43,9 +44,11 @@ into proteins. To better explain how it fits into the general picture of the
 central dogma, we first need to understand its leading actors and their
 interplay. The three main roles are fulfilled by \dna, \rna and proteins,
 respectively, and we are now going to take a look at all of them in turn.
+% >>>
 
 \subsection{\abbr{dna}}
 
+% <<<
 \dna consists of a long chain of \define[{\defineword{nucleotide} molecule
 consisting of a ribose, one or more phosphate groups and a nucleobase (example:
 cytidine monophosphate, a nucleotide of cytosine)\footnotemark\\%
@@ -82,9 +85,11 @@ proteins. Such self-contained, functional stretches are called
 \define[\defineword{gene} self-contained stretch of \abbr{dna} that is
 transcribed to perform a function]{genes}. To perform its function, a gene has
 to be transcribed into a catalytically active form, the \rna.\todo[ref]{Human Genome Project}
+% >>>
 
 \subsection{\abbr{rna}}
 
+% <<<
 \rna is the product of transcription of a gene from \dna. Unlike the latter,
 \rna is created as a single strand. This has two consequences: First, \rna is
 much less stable than \dna, and slowly degrades. \rna thus has a finite
@@ -107,25 +112,6 @@ complex machinery. The core of this machinery is a complex enzyme called an
 \rna polymerases (\pol1, \pol2 and \pol3) are responsible for transcribing
 different types of \rna.
 
-The precise ways in which the different polymerases transcribe genes into their
-\rna products differ but the fundamental aspects of transcription are similar.
-In all cases, a \define[\defineword{motif} pattern describing a family of short
-sequences which, though variable, have some degree of similarity]{motif} in the
-\dna sequence initiates binding of a number of \tf proteins to the \dna. Such a
-motif is called a \define{promoter}. Once the \tf[s] have bound close to the
-target gene, a polymerase attaches to the \dna and is held in place by the
-\tf[s]. Subsequently, the polymerase starts prying the double strand apart and
-starts synthesising a new strand of \rna, which pairs complementary with one of
-the strands on the \dna (the \define{template strand}). The new \rna[’s]
-sequence is thus identical to the other \dna strand (the \define{coding
-strand}). The \rna is produced \fivep--\threep, implying that the template
-strand is read \threep--\fivep during transcription. Once the first few
-nucleotides of the \rna have been synthesised, the polymerase disassociates from
-the \tf proteins, and the polymerase starts moving along the gene body,
-transcribing it as it goes (this may require the presence of another \tf called
-an \define{activator}, which is recruited by an \define{enhancer} motif
-elsewhere on the \dna).
-
 \rna performs numerous different functions, but one very important subcategory
 of \rna does not perform any function on its own; rather, it is an intermediary
 between the genetic information on the \dna and the final protein product, which
@@ -144,9 +130,11 @@ very differentiated \mrna profiles under different conditions, which imbue the
 cells with a unique phenotype. This forms the basis of cellular differentiation
 into different cell types and tissues in multicellular eukaryotes.\todo{Introns?
 Alternative splicing?}\todo[ref]{Berthelot, Ule}
+% >>>
 
 \subsection{Proteins}
 
+% <<<
 Proteins, finally, are the main effectors of cell function. Like \dna and \rna,
 they consist of chains of smaller molecules, so-called
 \define[{\defineword{amino acid} molecule consisting of an amino–carboxyl
@@ -175,33 +163,51 @@ times, and simultaneously, before being degraded. The path
 \(\text{\dna}\rightarrow\text{\rna}\rightarrow\text{protein}\) thus facilitates
 an amplification from a single gene copy to many orders of magnitudes more
 copies of the resulting protein. Despite the fact that multiple protein copies
-can be created from a single \mrna molecule, their abundance is predominantly
-determined by the abundance of \mrna[s]
-\citep{Li:2014,Jovanovic:2015,Csardi:2014}.
+can be created from a single \mrna molecule, and that the number varies from
+transcript to transcript, protein abundance is predominantly determined by the
+abundance of \mrna[s] \citep{Li:2014,Jovanovic:2015,Csardi:2014}.
+% >>>
 
-\todo[inline]{\begin{enumerate}[noitemsep,nolistsep,leftmargin=*]
-    \item Template, coding strand, mRNA, proteins, genetic code
-    \item Different polymerases, ncRNA
-    \item Molecular and functional structure description of pol2 and pol3
-    \item Structure of a tRNA gene (internal promoters etc.)
-    \item tRNA modification, (re)loading and degradation: life-cycle has impact
-        on abundance, and thus on translation efficiency. We completely ignore
-        this; but why can we do this?
-    \item Genetic code, anticodon isoacceptors, tRNA genes, wobble base pairing
-    \item tAI, codon usage, codon usage bias, anticodon abundance bias
-    \item Tiny bit about mouse embryonology
-    \item Prior research/literature review of tRNA and codon usage, also outside
-        mammals!
-\end{enumerate}}
+\section{Transcription \& translation}
 
-\todo{Take intro from paper}
+\subsection{Transcription}
 
-\section{Translation and the genetic code}
+% <<<
+The precise ways in which the different polymerases transcribe genes into their
+\rna products differ but the fundamental aspects of transcription are similar.
+In all cases, a \define[\defineword{motif} pattern describing a family of short
+sequences which, though variable, have some degree of similarity]{motif} in the
+\dna sequence initiates binding of a number of \tf proteins to the \dna. Such a
+motif is called a \define{promoter}. Once the \tf[s] have bound close to the
+target gene, a polymerase attaches to the \dna and is held in place by the
+\tf[s]. Subsequently, the polymerase starts prying the double strand apart and
+starts synthesising a new strand of \rna, which pairs complementary with one of
+the strands on the \dna (the \define{template strand}). The new \rna[’s]
+sequence is thus identical to the other \dna strand (the \define{coding
+strand}). The \rna is produced \fivep--\threep, implying that the template
+strand is read \threep--\fivep during transcription. Once the first few
+nucleotides of the \rna have been synthesised, the polymerase disassociates from
+the \tf proteins, and the polymerase starts moving along the gene body,
+transcribing it as it goes (this may require the presence of another \tf called
+an \define{activator}, which is recruited by an \define{enhancer} motif
+elsewhere on the \dna).
+% >>>
 
-The \mrna formed during transcription is subsequently \define{translated} into a
+\subsection{Translation}
+
+The process by which proteins are created from \mrna transcripts is more complex
+than the 1:1 transcription of \dna into \rna, which after all use a common
+alphabet to encode the information they carry. By contrast, the
+\define{translation} of nucleobases into amino acids requires a mechanism of
+decoding the genetic information.
+
+The \mrna formed during transcription is subsequently translated into a
 protein. This requires the conversion of the information represented on the
 \mrna using \num{4} nucleotides  into a different code, that of the protein.
 
+\subsubsection{The genetic code}
+
+% <<<
 There are \num{20} different amino acids that are coded for by just \num{4}
 different nucleotides. To enable this, several nucleotides must be combined to
 form a larger unit coding for an amino acid. In the universal genetic code,
@@ -292,7 +298,21 @@ the text).
         anticodons exist in all species (adapted from \citet{Dos_Reis:2004}).}
 \end{table}
 
-\subsection{Codon usage and anticodon abundance}
+% >>>
+
+\subsubsection{\abbr{trna}}
+
+\section{\abbr{rnaseq} for the study of gene expression}
+
+\section{\abbr{chipseq}}
+
+\subsection{\abbr{chipseq} quantifies \abbr{trna} gene expression}
+
+\section{Mouse development as a model system}
+
+\section{Codon usage and anticodon abundance}
+
+\todo[inline]{Description of the goals of the thesis}
 
 Throughout this thesis I am going to use several related measures:
 
@@ -330,25 +350,29 @@ between different sets of genes within a genome, or differences between genomes.
 The \cub is then equivalent either to the codon usage as defined in this thesis,
 or the \rcu.
 
-\subsection{Aside: modern modifications to the central dogma and evolution}
+\section{Structure of this thesis}
 
-\subsection{Transcription}
+\section{TO DOs}
+
+\todo[inline]{\begin{enumerate}[noitemsep,nolistsep,leftmargin=*]
+    \item Template, coding strand, mRNA, proteins, genetic code
+    \item Different polymerases, ncRNA
+    \item Molecular and functional structure description of pol2 and pol3
+    \item Structure of a tRNA gene (internal promoters etc.)
+    \item tRNA modification, (re)loading and degradation: life-cycle has impact
+        on abundance, and thus on translation efficiency. We completely ignore
+        this; but why can we do this?
+    \item Genetic code, anticodon isoacceptors, tRNA genes, wobble base pairing
+    \item tAI, codon usage, codon usage bias, anticodon abundance bias
+    \item Tiny bit about mouse embryonology
+    \item Prior research/literature review of tRNA and codon usage, also outside
+        mammals!
+\end{enumerate}}
+
+\todo{Take intro from paper}
 
 \subsection{Posttranscriptional modification}
 
 In particular A-to-I conversion (deamination), which is relevant in tRNA gene
 wobble base pairing!
-
-\subsection{Translation}
-
-\subsection{The role of \abbr{trna}s in translation}
-
-\section{Gene expression and its regulation}
-
-\section{Using high-throughput sequencing for whole-genome analysis}
-
-\subsection{Explain history and technology of \abbr{hts}}
-
-\section{Types of non-coding \abbr{rna}, their function and expression}
-
-\section{Structure of this thesis}
+% vim: fmr=<<<,>>>
