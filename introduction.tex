@@ -204,51 +204,31 @@ on the \dna).
 The process by which proteins are created from \mrna transcripts is more complex
 than the 1:1 transcription of \dna into \rna, which after all use a common
 alphabet to encode the information they carry. By contrast, the
-\define{translation} of nucleobases into amino acids requires a mechanism of
-decoding the genetic information.
-
-The \mrna formed during transcription is subsequently translated into a
-protein. This requires the conversion of the information represented on the
-\mrna using \num{4} nucleotides  into a different code, that of the protein.
+\define{translation} of \mrna transcripts into proteins requires a code to
+interpret the genetic information. This code is known as the \define{genetic
+code}.
 
 \subsubsection{The genetic code}
 
 % <<<
-There are \num{20} different amino acids that are coded for by just \num{4}
-different nucleotides. To enable this, several nucleotides must be combined to
+There are \num{20} different amino acids that are encoded by just \num{4}
+different nucleotides. To allow this, several nucleotides must be combined to
 form a larger unit coding for an amino acid. In the universal genetic code,
 shared by all known species, this is accomplished by grouping three consecutive
-nucleotides together to form \define{codons} along the \mrna. This results in
-\(4^3 = 64\) possible codons, vastly more than there are amino acids. As a
-consequence, the genetic code is \define{degenerate}: several codons code for
-the same amino acid. In addition to encoding the amino acid methionine, one
-codon, \codon{AUG} marks the site of translation initiation; three codons do not
-encode any amino acid, and instead signal the stop of translation (\codon{UAA},
-\codon{UAG}, \codon{UGA}).
+nucleotides together to form non-overlapping \define{codons} along the \mrna.
+This results in \(4^3 = 64\) possible codons, vastly more than there are amino
+acids. As a consequence, the genetic code is \define{degenerate}: most amino
+acids can be encoded by more than a single codon.
 
-The translation of \mrna into proteins is assisted by a special apparatus called
-the \define{ribosome}. Ribosomes are large complexes of proteins and \rrna,
-forming two subunits. In eukaryotes, these subunits are the 40S and 60S subunit,
-respectively. During translation initiation, the two subunits assemble on the
-\mrna molecule at the site of the translation initiation codon. The ribosome
-then pulls the \mrna through a channel in its structure and progressively
-translates the \mrna into amino acids, which are chained together to form a
-nascent polypeptide chain.
-
-Individual codons are translated into their corresponding amino acid by aid of
-specific adapter molecules carrying a specific amino acid, and which recognise
-the matching codon. This codon recognition is possible because the adapter
-molecules are themselves \abbr{rna}s, and the codon is matched via complementary
-base pairing of a part of the \rna sequence termed the \define{anticodon}. These
-adapter molecules are called \define{\trna}.
-
-\Cref{tab:genetic-code} contains a tabular representation of the genetic code,
-which is nearly universal across all three domains of life. To avoid confusion,
-codons in this thesis will always be typeset like this: \fwdstrand{\codon{CAU}};
-anticodons will always be typeset like this: \revstrand{\anticodon{ATG}} (the
-directionality is indicated here to clarify the differences in reading direction
-between codons and anticodons; it will generally be omitted in the remainder of
-the text).
+Codons furthermore serve as control points by defining where the translated
+sequence on the \mrna starts and ends. The codon \codon{AUG}, in addition to
+encoding the amino acid methionine, also marks the start of the coding sequence.
+Three codons do not encode any amino acid, and instead signal the stop of
+translation (\codon{UAA}, \codon{UAG}, \codon{UGA}). As a consequence, every
+coding sequence starts with \codon{AUG}, ends with one of the stop codons, and
+has a length divisible by \num{3}. \Cref{tab:genetic-code} contains a tabular
+representation of the genetic code, which is valid, with only minor variations,
+for all three domains of life.
 
 \begin{table}
     \centering
@@ -297,16 +277,41 @@ the text).
         \bottomrule
     \end{tabu}
     \tabcap{genetic-code}{The genetic code.}
-        {Shown is each codon (“\textsc{c}”), its potential corresponding
-        anticodon (“\textsc{a}”) and the three-letter abbreviation of the
-        corresponding amino acid (“\textsc{aa}”). \codon{AUG}, in addition to
-        coding for methionine, also signals the start of translation. Not all
+        {Shown is each codon (“\abbrsc{c}”), its potential corresponding
+        anticodon (“\abbrsc{a}”) and the three-letter abbreviation of the
+        corresponding amino acid (“\abbrsc{aa}”). \codon{AUG}, in addition to
+        encoding methionine, also signals the start of translation. Not all
         anticodons exist in all species (adapted from \citet{Dos_Reis:2004}).}
 \end{table}
 
+The translation of \mrna into proteins is assisted by a special apparatus called
+the \define{ribosome}. Ribosomes are large complexes of proteins and \rrna,
+forming two subunits. In eukaryotes, these subunits are the 40S and 60S subunit,
+respectively. During translation initiation, the 40S subunit scans along an
+\mrna transcript until it finds a signal sequence surrounding a start codon
+\citep{Kozak:2002}. There it is joined by the 60S subunit. The assembled
+ribosome then pulls the \mrna through a channel in its structure and
+progressively translates the codons on the \mrna into amino acids, which are
+chained together to form a nascent polypeptide chain.
 % >>>
 
 \subsubsection{\abbr{trna}}
+
+% <<<
+Individual codons are translated into their corresponding amino acid by aid of
+specific adapter molecules carrying a specific amino acid, and which recognise
+the matching codon. This codon recognition is possible because the adapter
+molecules are themselves \abbr{rna}s, and the codon is matched via complementary
+base pairing of a part of the \rna sequence termed the \define{anticodon}. These
+adapter molecules are called \define{\trna}.
+
+To avoid confusion,
+codons in this thesis will always be typeset like this: \fwdstrand{\codon{CAU}};
+anticodons will always be typeset like this: \revstrand{\anticodon{ATG}} (the
+directionality is indicated here to clarify the differences in reading direction
+between codons and anticodons; it will generally be omitted in the remainder of
+the text).
+% >>>
 
 \section{\abbr{rnaseq} for the study of gene expression}
 
@@ -361,14 +366,12 @@ or the \rcu.
 \section{TO DOs}
 
 \todo[inline]{\begin{enumerate}[noitemsep,nolistsep,leftmargin=*]
-    \item Template, coding strand, mRNA, proteins, genetic code
-    \item Different polymerases, ncRNA
     \item Molecular and functional structure description of pol2 and pol3
     \item Structure of a tRNA gene (internal promoters etc.)
     \item tRNA modification, (re)loading and degradation: life-cycle has impact
         on abundance, and thus on translation efficiency. We completely ignore
         this; but why can we do this?
-    \item Genetic code, anticodon isoacceptors, tRNA genes, wobble base pairing
+    \item Anticodon isoacceptors, tRNA genes, wobble base pairing
     \item tAI, codon usage, codon usage bias, anticodon abundance bias
     \item Tiny bit about mouse embryonology
     \item Prior research/literature review of tRNA and codon usage, also outside
