@@ -60,9 +60,9 @@
 ]{xits-math}
 
 % Small caps used in abbreviations – should only be enabled for Roman family.
-\newcommand\abbrsc[1]{#1}
+\newcommand*\abbrsc[1]{\texorpdfstring{\textsc{\MakeTextLowercase{#1}}}{#1}}
 % Lower-case letters in small caps abbreviations.
-\newcommand\lowsc[1]{#1}
+\newcommand*\lowsc[1]{\protect\scalebox{0.8}{#1}}
 
 % Adjust font settings.
 
@@ -76,7 +76,8 @@
 \let\thesis@old@sf\sffamily
 \renewcommand*\sffamily{%
     \thesis@old@sf%
-    \let\textsc\MakeTextUppercase}
+    \renewcommand*\abbrsc[1]{##1}
+    \renewcommand*\lowsc[1]{##1}}
 
 % Adjust bibliography styling.
 
