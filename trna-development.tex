@@ -79,11 +79,12 @@ development}
 To investigate protein-coding gene expression changes during development, we
 quantified the \mrna abundance from \rrna-depleted \rnaseq data (strand-specific
 \SI{75}{bp} paired-end reads from \name{Illumina} \name{HiSeq~2000}). Reads were
-mapped to the \mmu reference genome (\abbr{ncbim37}) using \name{i\textsc{rap}}
-\citep{Fonseca:2014} and \name{TopHat2} \citep{Kim:2013}. Read counts were
-quantified using \name{HTSeq} \citep{Anders:2014}, and assigned to
-protein-coding genes from the \name{Ensembl} release \num{67}
-\citep{Flicek:2014}.\todo{add \chipseq and \rnaseq pipeline flowcharts}
+mapped to the \mmu reference genome (\abbr{ncbim37}) using
+\name{\lowsc{i}\abbrsc{RAP}} \citep{Fonseca:2014} and \name{TopHat2}
+\citep{Kim:2013}. Read counts were quantified using \name{HTSeq}
+\citep{Anders:2014}, and assigned to protein-coding genes from the
+\name{Ensembl} release \num{67} \citep{Flicek:2014}.\todo{add \chipseq and
+\rnaseq pipeline flowcharts}
 
 We excluded mitochondrial chromosomes from the analysis, because mitochondrial
 genes use a slightly distinct genetic code\todo[ref]{}. Furthermore, we excluded
@@ -188,7 +189,7 @@ development}
 Quantification of \trna genes was performed by first mapping the \pol3 \chipseq
 data (non-strand-specific \SI{36}{bp} single-end reads sequenced by
 \name{Illumina} \name{Genome Analyzer~IIx} or \name{HiSeq~2000}) using
-\name{\textsc{bwa}} version 0.5.9-r16 \citep{Li:2009a} using default parameters.
+\name{\abbrsc{BWA}} version 0.5.9-r16 \citep{Li:2009a} using default parameters.
 Next, non-uniquely mapping reads were reallocated probabilistically according to
 the description given above, using the \trna gene annotation from the
 \name{Genomic \trna Database}, described in \citet{Chan:2009}. For each \trna
