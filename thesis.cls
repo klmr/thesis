@@ -70,13 +70,13 @@
 \renewcommand*\rmfamily{%
     \thesis@old@rm%
     \renewcommand*\abbrsc[1]{%
-        \texorpdfstring{\textsc{\MakeTextLowercase{##1}}}{##1}}
+        \texorpdfstring{\textsc{\MakeTextLowercase{##1}}}{##1}}%
     \renewcommand*\lowsc[1]{\protect\scalebox{0.8}{##1}}}
 
 \let\thesis@old@sf\sffamily
 \renewcommand*\sffamily{%
     \thesis@old@sf%
-    \renewcommand*\abbrsc[1]{##1}
+    \renewcommand*\abbrsc[1]{##1}%
     \renewcommand*\lowsc[1]{##1}}
 
 % Adjust bibliography styling.
