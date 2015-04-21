@@ -255,25 +255,25 @@ for all three domains of life.
         \h{@{}l}{C} & \h{l}{A} & \h{l}{AA} &
         \h{@{}l}{C} & \h{l}{A} & \h{l@{}}{AA} \\[-2pt]
         \midrule
-        UUU & AAA & Phe & UCU & AGA & Ser & UAU & ATA & Tyr & UGU & ACA & Cys \\
-        UUC & GAA & Phe & UCC & GGA & Ser & UAC & GTA & Tyr & UGC & GCA & Cys \\
-        UUA & TAA & Leu & UCA & TGA & Ser & UAA & TTA & \s  & UGA & TCA & \s \\
-        UUG & CAA & Leu & UCG & CGA & Ser & UAG & CTA & \s  & UGG & CCA & Trp \\
+        UUU & AAA & Phe & UCU & AGA & Ser & UAU & AUA & Tyr & UGU & ACA & Cys \\
+        UUC & GAA & Phe & UCC & GGA & Ser & UAC & GUA & Tyr & UGC & GCA & Cys \\
+        UUA & UAA & Leu & UCA & UGA & Ser & UAA & UUA & \s  & UGA & UCA & \s \\
+        UUG & CAA & Leu & UCG & CGA & Ser & UAG & CUA & \s  & UGG & CCA & Trp \\
         \addlinespace
-        CUU & AAG & Leu & CCU & AGG & Pro & CAU & ATG & His & CGU & ACG & Arg \\
-        CUC & GAG & Leu & CCC & GGG & Pro & CAC & GTG & His & CGC & GCG & Arg \\
-        CUA & TAG & Leu & CCA & TGG & Pro & CAA & TTG & Gln & CGA & TCG & Arg \\
-        CUG & CAG & Leu & CCG & CGG & Pro & CAG & CTG & Gln & CGG & CCG & Arg \\
+        CUU & AAG & Leu & CCU & AGG & Pro & CAU & AUG & His & CGU & ACG & Arg \\
+        CUC & GAG & Leu & CCC & GGG & Pro & CAC & GUG & His & CGC & GCG & Arg \\
+        CUA & UAG & Leu & CCA & UGG & Pro & CAA & UUG & Gln & CGA & UCG & Arg \\
+        CUG & CAG & Leu & CCG & CGG & Pro & CAG & CUG & Gln & CGG & CCG & Arg \\
         \addlinespace
-        AUU & AAT & Ile & ACU & AGT & Thr & AAU & ATT & Asn & AGU & ACT & Ser \\
-        AUC & GAT & Ile & ACC & GGT & Thr & AAC & GTT & Asn & AGC & GCT & Ser \\
-        AUA & TAT & Ile & ACA & TGT & Thr & AAA & TTT & Lys & AGA & TCT & Arg \\
-        AUG & CAT & Met & ACG & CGT & Thr & AAG & CTT & Lys & AGG & CCT & Arg \\
+        AUU & AAU & Ile & ACU & AGU & Thr & AAU & AUU & Asn & AGU & ACU & Ser \\
+        AUC & GAU & Ile & ACC & GGU & Thr & AAC & GUU & Asn & AGC & GCU & Ser \\
+        AUA & UAU & Ile & ACA & UGU & Thr & AAA & UUU & Lys & AGA & UCU & Arg \\
+        AUG & CAU & Met & ACG & CGU & Thr & AAG & CUU & Lys & AGG & CCU & Arg \\
         \addlinespace
-        GUU & AAC & Val & GCU & AGC & Ala & GAU & ATC & Asp & GGU & ACC & Gly \\
-        GUC & GAC & Val & GCC & GGC & Ala & GAC & GTC & Asp & GGC & GCC & Gly \\
-        GUA & TAC & Val & GCA & TGC & Ala & GAA & TTC & Glu & GGA & TCC & Gly \\
-        GUG & CAC & Val & GCG & CGC & Ala & GAG & CTC & Glu & GGG & CCC & Gly \\
+        GUU & AAC & Val & GCU & AGC & Ala & GAU & AUC & Asp & GGU & ACC & Gly \\
+        GUC & GAC & Val & GCC & GGC & Ala & GAC & GUC & Asp & GGC & GCC & Gly \\
+        GUA & UAC & Val & GCA & UGC & Ala & GAA & UUC & Glu & GGA & UCC & Gly \\
+        GUG & CAC & Val & GCG & CGC & Ala & GAG & CUC & Glu & GGG & CCC & Gly \\
         \bottomrule
     \end{tabu}
     \tabcap{genetic-code}{The genetic code.}
@@ -306,7 +306,7 @@ pairing of a part of the \rna sequence termed the \define{anticodon}. These
 adapter molecules are called \define[{
     \includegraphics[width=\marginparwidth]{trna-asn}
     \figcapof{trna-asn}{\abbr{trna} secondary structure}{of a \trna coding
-    for asparagine (Asn). The \abbr{trna} carries the anticodon \anticodon{guu}
+    for asparagine (Asn). The \abbr{trna} carries the anticodon \anticodon{GUU}
     which sits in the middle of the \define{anticodon loop}, highlighted in
     \tertiaryname{}. Annotated in \primaryname{} and \secondaryname{} are two
     structures called the \define{D arm} and \define{T arm}. After
@@ -352,11 +352,11 @@ is very small \citep{Reeves:2009}. \trna genes carrying the same anticodon form
 an \define{anticodon isoacceptor family}. \trna genes for the same amino acid
 form an \define{amino acid isotype}.
 
-To avoid confusion, codons in this thesis will always be typeset like this:
-\fwdstrand{\codon{CAU}}; anticodons will always be typeset like this:
-\revstrand{\anticodon{ATG}} (the directionality is indicated here to clarify the
+To avoid confusion between the two, codons in this thesis will always be typeset
+like this: \fwdstrand{\codon{CAU}}; anticodons will always be typeset like this:
+\revstrand{\anticodon{AUG}}. The directionality is indicated here to clarify the
 differences in reading direction between codons and anticodons; it will
-generally be omitted in the remainder of the text).
+generally be omitted in the remainder of the text.
 % >>>
 
 \section{\abbr{rnaseq} for the study of gene expression}
