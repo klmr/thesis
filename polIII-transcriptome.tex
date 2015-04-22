@@ -5,7 +5,33 @@ is protein coding. Much less than \num{1} per cent codes for \trna[s]. Indeed,
 most of the genome as we know it is untranscribed\todo[ref]{}. Nevertheless,
 \pol3 transcription can occur at a wide range, and \trna genes form only a part
 of the overall \pol3 transcriptome. In this chapter we are going to take a look
-at the other parts of the \pol3 transcriptome.
+at other members of the \pol3 transcriptome.
+
+For this analysis, I re-examined the \chipseq data in the developing liver of
+\mmu from \cref{sec:trna}. I was interested in generating a profile of how much
+binding of \pol3 occurs to different functionally annotated regions of the
+genome. \Cref{sec:trna} examined just one such region, the \trna genes. To
+compare this with the amount of binding in other genomic features, I quantified
+the \chipseq reads that mapped to annotated features from the \abbr{grcm38}
+mouse genome annotation curated by \name{Ensembl} (release \num{75})
+\citep{Flicek:2014}. Furthermore, I used data from annotated repeats because it
+is known that \pol3 binds to, and potentially drives transcription of several
+types of retrotransposons \citep{Carriere:2012}, which are screened and
+annotated by \name{RepeatMasker} \citep{Smit:2014}.
+
+As explained in \cref{sec:chip}, many \trna[s] are results of gene duplications
+and we thus expect many reads to map to multiple locations. This problem also
+exists for the other annotation types we are interested in. However, the
+strategy also explained in \cref{sec:chip} cannot be applied to non-\trna
+annotations since we cannot make the same assumptions about the binding
+profiles in the flanking regions of the genomic features.
+
+I avoided this problem by only reporting a single match per read, even if
+multiple matches were possible. This assigns the read to an arbitrary locus
+amongst its possible match hits. As long as all potential match positions for a
+read fall into the same type of annotation, this does not pose a problem for the
+analysis: all we are interested in is to say which annotation type a read falls
+into, not where on the genome.
 
 \todo[inline]{Show distribution of features binding pol3}
 
