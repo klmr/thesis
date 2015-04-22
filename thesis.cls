@@ -61,25 +61,35 @@
 ]{xits-math}
 
 % Small caps used in abbreviations – should only be enabled for Roman family.
-\newcommand*\abbrsc[1]{\texorpdfstring{\textsc{\MakeTextLowercase{#1}}}{#1}}
+
+\newif\ifthesis@roman
+\thesis@romantrue
+% Needs to be robust, see http://tex.stackexchange.com/q/239940/42
+\DeclareRobustCommand*\abbrsc[1]{%
+    \ifthesis@roman%
+        \texorpdfstring{\textsc{\MakeTextLowercase{#1}}}{#1}%
+    \else
+        #1%
+    \fi}
 % Lower-case letters in small caps abbreviations.
-\newcommand*\lowsc[1]{\texorpdfstring{%
-    \ifthesis@inheading#1\else\protect\scalebox{0.8}{#1}\fi}{#1}}
+\DeclareRobustCommand*\lowsc[1]{%
+    \ifthesis@roman%
+        \texorpdfstring{\protect\scalebox{0.8}{#1}}{#1}%
+    \else
+        #1%
+    \fi}
 
 % Adjust font settings.
 
 \let\thesis@old@rm\rmfamily
 \renewcommand*\rmfamily{%
     \thesis@old@rm%
-    \renewcommand*\abbrsc[1]{%
-        \texorpdfstring{\textsc{\MakeTextLowercase{##1}}}{##1}}%
-    \renewcommand*\lowsc[1]{\texorpdfstring{\protect\scalebox{0.8}{##1}}{##1}}}
+    \thesis@romantrue}
 
 \let\thesis@old@sf\sffamily
 \renewcommand*\sffamily{%
     \thesis@old@sf%
-    \renewcommand*\abbrsc[1]{##1}%
-    \renewcommand*\lowsc[1]{##1}}
+    \thesis@romanfalse}
 
 % Adjust bibliography styling.
 
@@ -145,11 +155,10 @@
 
 \pagestyle{scrheadings}
 \automark[chapter]{chapter}
-\newif\ifthesis@inheading
 \renewcommand*\headfont{%
     \small%
     \scshape%
-    \thesis@inheadingtrue%
+    \thesis@romanfalse%
     \addfontfeature{LetterSpace=10}}
 
 \newcommand\thesis@heading[1]{%
