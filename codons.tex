@@ -409,23 +409,23 @@ correlations.
 
 \subsection{Other genomic features may drive the perceived codon usage bias}
 
-The trend seen in \cref{fig:go-cub-pca} exists to the same degree when plotting
-amino acid usage rather than codon usage (\cref{fig:go-aa-pca}).\todo{Include?
-The first principal component separates the \go term “keratinisation” from the
-rest. This is due to the fact that the proteins in this \go term are uniquely
-highly enriched in the amino acid proline, which forms more rigid peptide bonds
-than all other amino acids, with implications for the robustness of, amongst
-other things, the cellular skeleton. The proteins in this \go term are thus
-implicated in the structural formation of the epithelium [Hohl:1995].}
-The second principal component on the other hand shows the same separation of
-\go categories as the first principal component of \cref{fig:go-cub-pca}, and
-these are highly correlated (Pearson’s \(\rho = 0.95\)). Clearly, this
-correlation cannot be explained by \emph{codon} identity, since amino acids, not
-codons, conventionally determine protein function. However, amino acid usage
-alone does not explain the pattern either: After removing amino acid identity as
-a confounding factor (by computing \rcu instead of codon usage), the \go term
-\pca still displays the previously observed separation of \go categories
-(\cref{fig:go-rcu-pca}).
+The trend seen in \cref{fig:go-cub-pca} exists, albeit to a lesser degree, when
+plotting amino acid usage rather than codon usage (\cref{fig:go-aa-pca}). The
+first principal component separates the \go term “keratinisation” from the rest.
+This is due to the fact that the proteins in this \go term are uniquely highly
+enriched in the amino acid proline, which forms more rigid peptide bonds than
+all other amino acids, with implications for the robustness of, amongst other
+things, the cellular skeleton. The proteins in this \go term are thus implicated
+in the structural formation of the epithelium \citep{Hohl:1995}. The second
+principal component, by contrast, shows the same separation of \go categories as
+the first principal component of \cref{fig:go-cub-pca}. Moreover, these two
+principal components are highly correlated (Pearson’s \(\rho = 0.95\)). Clearly,
+this correlation cannot be explained by \emph{codon} identity, since amino
+acids, not codons, conventionally determine protein function. However, amino
+acid usage alone does not explain the pattern either: After removing amino acid
+identity as a confounding factor (by computing \rcu instead of codon usage), the
+\go term \pca still displays the previously observed separation of \go
+categories (\cref{fig:go-rcu-pca}).
 
 \textfigtwo{go-aa-pca}
     {\pca of mean \go term amino acid usage.}
