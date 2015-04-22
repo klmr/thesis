@@ -219,20 +219,25 @@ are nonrandom, one thus has to account for this effect.
 To assess how much of the variation in \go term codon usage is explainable by
 such effects, I generated random sets of different numbers of genes,
 corresponding to the whole range of \go term gene set sizes. For each simulated
-gene set, I calculated the mean codon usage of the resulting set. This was done
-\num{10000} times for each \go term gene set size. To ensure that the codon
-usage of different gene sets was comparable, all codon frequencies within a
-sample were normalised by the total codon frequency in the sample, to obtain
-codon proportions (such that all codon proportions sum in a sample to \(1\)):
+gene set, I calculated the total codon usage of the genes in the resulting set.
+To ensure that the codon usage of different gene sets was comparable, all codon
+frequencies within a sample were normalised by the total codon frequency in the
+sample, to obtain codon proportions:
 
 \begin{equation}
-    x_i' = x_i \left(\sum_j x_j\right)^{-1}
+    x_i^* = \sum_{g\in G} x_{ig} \left(\sum_j \sum_{g\in G} x_{jg}\right)^{-1}
 \end{equation}
 
-Next, I calculated the Pearson correlation between the codon proportions of each
-sample with the genome-wide codon proportions (across all annotated coding
-sequences). \Cref{fig:sample-size-dependent-cub} plots the distribution of the
-correlations against the gene set sizes.
+Where \(i, j \in \codon{AAA},\dots,\codon{TTT}\) are the codons (excluding stop
+codons), \(g\in G\) are the genes in the sample, \(x_{ig}\) is the codon
+frequency of codon \(i\) in gene \(g\), and \(x_i^*\) is the relative codon
+frequency of codon \(i\) in the sample. We have \(\sum_i x_i^*=1\).
+
+This was done \num{10000} times for each \go term gene set size. Next, I
+calculated the Pearson correlation between the codon proportions of each sample
+with the genome-wide codon proportions (across all annotated coding sequences).
+\Cref{fig:sample-size-dependent-cub} plots the distribution of the correlations
+against the gene set sizes.
 
 \textfig{sample-size-dependent-cub}{spill}{\textwidth}
     {Dependence of codon usage variability on sample size.}
