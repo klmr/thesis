@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{thesis}
 
-\LoadClass[twoside, titlepage, DIV=8, BCOR=8.5mm]{scrreprt}
+\LoadClass[twoside, titlepage, DIV=8, BCOR=8.5mm, open=right]{scrreprt}
 
 \RequirePackage{fixltx2e}
 \RequirePackage{xltxtra}
