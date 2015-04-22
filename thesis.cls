@@ -11,6 +11,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{unicode-math}
 \RequirePackage{setspace}
+\RequirePackage[markcase=lower]{scrlayer-scrpage}
 \RequirePackage{xcolor}
 \RequirePackage{marginnote}
 \RequirePackage[inline]{enumitem}
@@ -62,7 +63,8 @@
 % Small caps used in abbreviations – should only be enabled for Roman family.
 \newcommand*\abbrsc[1]{\texorpdfstring{\textsc{\MakeTextLowercase{#1}}}{#1}}
 % Lower-case letters in small caps abbreviations.
-\newcommand*\lowsc[1]{\texorpdfstring{\protect\scalebox{0.8}{#1}}{#1}}
+\newcommand*\lowsc[1]{\texorpdfstring{%
+    \ifthesis@inheading#1\else\protect\scalebox{0.8}{#1}\fi}{#1}}
 
 % Adjust font settings.
 
@@ -140,6 +142,19 @@
     justification=justified}
 
 \renewcommand*\thefootnote{\fnsymbol{footnote}}
+
+\pagestyle{scrheadings}
+\automark[chapter]{chapter}
+\newif\ifthesis@inheading
+\renewcommand*\headfont{%
+    \small%
+    \scshape%
+    \thesis@inheadingtrue%
+    \addfontfeature{LetterSpace=10}}
+
+\newcommand\thesis@heading[1]{%
+    \MakeTextLowercase{#1}}
+\renewcommand\chaptermark[1]{\markboth{\thesis@heading{#1}}{\thesis@heading{#1}}}
 
 \sisetup{detect-all}
 
