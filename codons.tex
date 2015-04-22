@@ -453,12 +453,25 @@ genomes. Consequently, \gc bias could still play a role in codon deployment.
 
 In fact, the first principal component of the codon usage spread
 (\cref{fig:go-cub-pca}) as well as the second principal component of amino acid
-spread (\cref{fig:go-aa-pca}) correlate highly with \gc bias (Pearson’s \(\rho =
--0.96\), \(\rho = -0.58\); \cref{fig:cu-vs-gc,fig:aa-vs-gc}). This suggests that
-genomic features other than gene function might influence gene codon usage.
-Despite not constituting conclusive evidence for a causal relationship of \gc
-bias on codon usage, this suggests that the relationship is worth investigating
-in greater detail.
+spread (\cref{fig:go-aa-pca}) correlate highly with the \gc bias in the \go term
+gene sets (Pearson’s \(\rho = -0.96\), \(\rho = -0.58\);
+\cref{fig:cu-vs-gc,fig:aa-vs-gc}). This suggests that genomic features other
+than gene function might influence gene codon usage. However, it is entirely
+conceivable that the differences in \gc bias of the \go terms are caused by the
+changes in either amino acid or codon usage, rather than the other way round:
+any genetic point mutation from \nA or \nT to \nC or \nG (or vice versa) by
+definition changes the \gc content of that region. We thus do not expect
+changing codon composition to be \gc neutral.
+
+To establish whether the driver of this correlation is large-scale \gc bias
+adaptation, changes in protein function and thus amino acid usage or subtle
+changes in codon usage to regulate translation, we therefore need to examine the
+\gc bias of the intergenic regions surrounding each \go term’s genes: not being
+part of any \mrna transcript, the \gc bias of the intergenic regions cannot be
+driven by codon-level selection. It can thus serve as a background for the
+expected variation in \gc to compare against the \gc variation that we see
+between \go terms. An outline of the necessary investigation to answer this
+question can be found in the conclusion in \cref{sec:conclusion}.
 
 \textfloat{cub-vs-gc}{spill}
     {%
@@ -480,7 +493,45 @@ in greater detail.
     \cref{fig:go-cub-pca,fig:go-aa-pca}. The \(y\) coordinate corresponds to
     the mean \gc bias of the \go gene set.}
 
-\subsection{Evolutionary conservation of \abbr{trna}--codon adaptation}
+\subsection{Discussion}
+
+In this chapter I extended the analysis from \cref{sec:trna}, and contrasted it
+with the findings by \citet{Gingold:2014}. We have moved beyond the variation of
+\trna gene expression and have questioned the apparent stability of the codon
+usage and anticodon isoacceptor abundance in the transcriptome in the face of
+major changes in cell function. However, contrary to previous reports I was
+unable to find evidence for a selective adaptation of the \trna pool to
+cell-specific subsets of genes. The work presented in this chapter constitutes
+just the start of our investigation into the codon usage variability of subsets
+of the transcriptome. Many questions are still open.
+
+\subsubsection{Codon--anticodon adaptation to distinct cellular conditions}
+
+One caveat of the analysis of the codon--anticodon correlation between subset of
+the transcriptome is the treatment of replicates. In \cref{fig:cub-aab},
+biological replicates of each sample were treated independently, rather than
+pooled: correlations were calculated between all pairwise combinations of
+\rnaseq and \pol3 \chipseq data of the samples under consideration. Each data
+point thus corresponds to a pairwise combination of two replicates; this implies
+that data points within one distribution are \emph{not} independent of each
+other. The alternative would have been to average over biological replicates,
+and correlate the averaged data. However, this has two important drawbacks:
+
+\begin{enumerate}
+    \item It does not account for variance in the expression data and thus
+        underestimates the variance in the distributions of the correlations.
+    \item If \mrna and \trna gene expression values are dispersed around the
+        same mean, averaging across replicates would yield a higher correlation
+        than actually present in vivo.
+\end{enumerate}
+
+The current analysis measured \trna anticodon adaptation using the
+codon--anticodon correlation, ignoring wobble base pairing. A potentially better
+measure of \trna adaptation is the \tai, which accounts for wobble base pairing
+in a species-specific manner. Extending the analysis to use the \tai is ongoing
+work.
+
+\subsubsection{Evolutionary conservation of \abbr{trna}--codon adaptation}
 
 If a mechanism leading to the adaptation of the cellular \trna pool to different
 cellular conditions existed, we would expect this to be well conserved across
@@ -496,28 +547,3 @@ different mammalian species and homology information for the annotated \go
 categories in humans, we can calculate the respective conservation of codon
 usage on the one hand, and \gc bias on the other hand. This analysis has not yet
 been performed, however.\todo{Is GC bias under neutral selection?}
-
-\subsection{Discussion}
-
-One caveat of the analysis of the codon--anticodon correlation between subset of
-the transcriptome is the treatment of replicates. In \cref{fig:cub-aab},
-biological replicates of each sample were treated independently, rather than
-pooled: correlations were calculated between all pairwise combinations of
-\rnaseq and \pol3 \chipseq data of the samples under consideration. Each data
-point thus corresponds to a pairwise combination of two replicates; this implies
-that data points within one distribution are \emph{not} independent of each
-other. The alternative would have been to average over biological replicates,
-and correlate the averaged data. However, this has two important drawbacks:
-\begin{enumerate*}
-    \item It does not account for variance in the expression data and thus
-        underestimates the variance in the distributions of the correlations.
-    \item If \mrna and \trna gene expression values are dispersed around the
-        same mean, averaging across replicates would yield a higher correlation
-        than actually present in vivo.
-\end{enumerate*}
-
-The current analysis measured \trna anticodon adaptation using the
-codon--anticodon correlation, ignoring wobble base pairing. A potentially better
-measure of \trna adaptation is the \tai, which accounts for wobble base pairing
-in a species-specific manner. Extending the analysis to use the \tai is ongoing
-work.
