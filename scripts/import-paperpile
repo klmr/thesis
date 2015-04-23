@@ -35,6 +35,10 @@ def main():
         all_keys.add(key)
         entry['id'] = key
 
+    # Reformat titles
+    for entry in database.entries:
+        entry['title'] = reformat(entry['title'])
+
     out = codecs.getwriter('UTF-8')(sys.stdout)
     bibtexparser.dump(database, out)
 
@@ -92,6 +96,24 @@ def ensure_unique_key(key, all_keys):
         suffix = chr(ord(suffix) + 1)
 
     return key
+
+
+def reformat(str):
+    # By rights this should apply a pluggable rule system. But … YAGNI.
+    formatters = [reformat_trna]
+    return reduce(lambda x, f: f(x), formatters, str)
+
+
+def reformat_trna(str):
+    def callback(match):
+        value = r'\(\text{\abbr{trna}}'
+        if match.group(1) is not None:
+            value += r'_\text{' + match.group(2) + '}'
+        if match.group(3) is not None:
+            value += r'^\text{' + match.group(4) + '}'
+        return value + '\)'
+
+    return re.sub(r'\{?tRNA\}?(\\?_\{?(\w+)\}?)?(\^\{?(\w+)\}?)?', callback, str)
 
 
 if __name__ == '__main__':
