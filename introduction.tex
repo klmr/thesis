@@ -35,7 +35,7 @@ later, this still largely holds true.
     the transfer \(\text{\rna}\rightarrow\text{\dna}\) does in fact occur under
     certain circumstances; the transfer \(\text{\dna}\rightarrow\text{protein}\)
     has still not been observed. Notably, the \emph{absent} transfers in the
-    original publication are still considered non-existent.}
+    original publication are still considered largely non-existent.}
 
 The very high-level view of the central dogma was complemented by a detailed
 mechanistic description over the years, and these efforts are still ongoing.
@@ -197,28 +197,26 @@ transcribing it as it goes (this may require the presence of other \tf[s] called
 on the \dna).
 
 \todo[inline]{Figure: Transcription}
+\todo[inline]{Histone marks and regulation}
 % >>>
 
-\subsection{Translation}
+\subsection{The genetic code}
 
+% <<<
 The process by which proteins are created from \mrna transcripts is more complex
 than the 1:1 transcription of \dna into \rna, which after all use a common
 alphabet to encode the information they carry. By contrast, the
 \define{translation} of \mrna transcripts into proteins requires a code to
-interpret the genetic information. This code is known as the \define{genetic
-code}.
+interpret the genetic information.
 
-\subsubsection{The genetic code}
-
-% <<<
 There are \num{20} different amino acids that are encoded by just \num{4}
 different nucleotides. To allow this, several nucleotides must be combined to
-form a larger unit coding for an amino acid. In the universal genetic code,
-shared by all known species, this is accomplished by grouping three consecutive
-nucleotides together to form non-overlapping \define{codons} along the \mrna.
-This results in \(4^3 = 64\) possible codons, vastly more than there are amino
-acids. As a consequence, the genetic code is \define{degenerate}: most amino
-acids can be encoded by more than a single codon.
+form a larger unit coding for an amino acid. In the universal \define{genetic
+code}, shared by all known species, this is accomplished by grouping three
+consecutive nucleotides together to form non-overlapping \define{codons} along
+the \mrna. This results in \(4^3 = 64\) possible codons, vastly more than there
+are amino acids. As a consequence, the genetic code is \define{degenerate}: most
+amino acids can be encoded by more than a single codon.
 
 Codons furthermore serve as control points by defining where the translated
 sequence on the \mrna starts and ends. The codon \codon{AUG}, in addition to
@@ -281,18 +279,15 @@ for all three domains of life.
         anticodon (“\abbrsc{A}”) and the three-letter abbreviation of the
         corresponding amino acid (“\abbrsc{AA}”). \codon{AUG}, in addition to
         encoding methionine, also signals the start of translation. Not all
-        anticodons exist in all species (adapted from \citet{Dos_Reis:2004}).}
+        anticodons exist in all species. Each anticodon is the reverse
+        complement of its corresponding codon (adapted from
+        \citet{Dos_Reis:2004}).}
 \end{table}
 
-The translation of \mrna into proteins is assisted by a special apparatus called
-the \define{ribosome}. Ribosomes are large complexes of proteins and \rrna,
-forming two subunits. In eukaryotes, these subunits are the 40S and 60S subunit,
-respectively. During translation initiation, the 40S subunit scans along an
-\mrna transcript until it finds a signal sequence surrounding a start codon
-\citep{Kozak:2002}. There it is joined by the 60S subunit. The assembled
-ribosome then pulls the \mrna through a channel in its structure and
-progressively translates the codons on the \mrna into amino acids, which are
-chained together to form a nascent polypeptide chain.
+During translation, individual codons on the \mrna transcript are successively
+paired up with their matching amino acid. However, unlike in translation, this
+pairing does not happen automatically. It requires an intermediate adapter
+molecule acting as an interface between the codon and the amino acid.
 % >>>
 
 \subsection{Transfer \abbr{rna}}
@@ -317,28 +312,33 @@ adapter molecules are called \define[{
 }]{\trna}.
 
 \trna[s] are encoded by small genes, around \SIrange{70}{90}{bp} in length.
-Their transcription is driven by \pol3. Unlike for protein-coding genes, whose
-promoters lie upstream of the actual gene body, the promoter is found
-\emph{inside} a \trna gene, in two disjoint, strongly conserved regions called
-the \define{A box} and \define{B box}, respectively. The A box starts about
-\SI{10}{bp} downstream from the \tss, whereas the B box can be found at a
+Their transcription is driven by \pol3. Transcription initiation for \pol3 can
+take various forms for different types of genes. \trna genes perform so-called
+\define{class II} \pol3 transcription initiation. Unlike for protein-coding
+genes, whose promoters lie upstream of the actual gene body, the promoter is
+found \emph{inside} a \trna gene, in two disjoint, strongly conserved regions
+called the \define{A box} and \define{B box}, respectively. The A box starts
+about \SI{10}{bp} downstream from the \tss, whereas the B box can be found at a
 variable distance of about \SIrange{30}{60}{bp} downstream from the A box. \trna
-transcription is initiated when the transcription factor \tfiiic binds to the B
-box motif. \tfiiic leads to the binding of the \pol3 recruitment factor \tfiiib
-upstream of the \trna gene. A subunit of \tfiiib, the \tbp, binds to an upstream
-\seq{TATA} motif, if present. Although the presence of this motif is not
-essential for \trna gene transcription, it is in fact well conserved upstream of
-mammalian \trna genes, suggesting a non-negligible effect on transcription.
-Bindin of \tfiiib in turn leads to the association of \pol3 with the gene body,
-and the initiation of transcription. Transcription stops when \pol3 encounters a
-short \nT repeat downstream of the \trna gene (see \cref{fig:trna-gene})
+transcription is initiated when the transcription factor \tfiiic binds to both
+motifs. This leads to the binding of the \pol3 recruitment factor \tfiiib
+immediately upstream of the \trna gene. Subunits of \tfiiib, in particular as
+the \tbp, bind to upstream motifs of the \trna, which vary strongly across
+evolution, but whose presence is nevertheless crucial for the initiation of
+transcription \citep{Palida:1993,White:1992}. Binding of \tfiiib in turn leads
+to the association of \pol3 with the gene body, and the initiation of
+transcription. \tfiiic is now no longer required and disassociates from the gene
+locus. \tfiiib remains bound and can lead to repeated transcription
+re-initialisation. Transcription stops when \pol3 encounters a short \nT repeat
+downstream of the \trna gene (see \cref{fig:trna-gene})
 \citep{White:1998,Dieci:2007}.
 
 \textfig{trna-gene}{body}{\textwidth}{\abbr{trna} gene transcription}
     {immediately before \pol3 is recruited. The A and B box are highlighted in
     \primaryname{} and \secondaryname{}, respectively. The colours show the
     correspondence of these regions with the loops shown in \cref{fig:trna-asn}.
-    Diagram is not to scale.}
+    The \seq{TATA} motif is a non-representative example of upstream motifs
+    which are recognised by \abbr{tfiiib}. Diagram is not to scale.}
 
 \trna genes exist in abundant gene copies. In the latest reference genome of
 \mmu (\abbr{grcm38}\todo[ref]{John: how do I cite this?!}), \num{432} different
@@ -346,8 +346,9 @@ short \nT repeat downstream of the \trna gene (see \cref{fig:trna-gene})
 carrying the same anticodon form an \define{anticodon isoacceptor family}. \trna
 genes for the same amino acid form an \define{amino acid isotype}.
 
-To avoid confusion between the two, codons in this thesis will always be typeset
-like this: \fwdstrand{\codon{CAU}}; anticodons will always be typeset like this:
+To avoid confusion between codons and anticodons, codons in this thesis will
+always be typeset like this: \fwdstrand{\codon{CAU}}; anticodons (which are the
+reverse complements of codons) will always be typeset like this:
 \revstrand{\anticodon{AUG}}. The directionality is indicated here to clarify the
 differences in reading direction between codons and anticodons; it will
 generally be omitted in the remainder of the text.
@@ -362,6 +363,22 @@ proteins incorporating selenocysteine is very small \citep{Reeves:2009}.
 Although this does not mean that selenocysteine is biologically irrelevant, it
 means that we can safely ignore its effect for transcriptome-wide studies of
 codons and anticodon abundance.
+
+\todo[inline]{tRNA base modification, maturation, cytosolic export, Aminoacyl transferase}
+% >>>
+
+\subsection{Translation}
+
+% <<<
+The translation of \mrna into proteins is assisted by a special apparatus called
+the \define{ribosome}. Ribosomes are large complexes of proteins and \rrna,
+forming two subunits. In eukaryotes, these subunits are the 40S and 60S subunit,
+respectively. During translation initiation, the 40S subunit scans along an
+\mrna transcript until it finds a signal sequence surrounding a start codon
+\citep{Kozak:2002}. There it is joined by the 60S subunit. The assembled
+ribosome then pulls the \mrna through a channel in its structure and
+progressively translates the codons on the \mrna into amino acids, which are
+chained together to form a nascent polypeptide chain.
 % >>>
 
 \section{\abbr{rnaseq} for the study of gene expression}
