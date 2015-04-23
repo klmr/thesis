@@ -107,16 +107,16 @@ def reformat(str):
 def reformat_trna(str):
     def callback(match):
         value = r'\(\text{\abbr{trna}'
-        if match.group(1):
-            value += match.group(1)
+        if match.group(2):
+            value += match.group(2)
         value += '}'
-        if match.group(2) is not None:
-            value += r'_\text{' + match.group(3) + '}'
-        if match.group(4) is not None:
-            value += r'^\text{' + match.group(5) + '}'
+        if match.group(3) is not None:
+            value += r'_\text{' + match.group(4) + '}'
+        if match.group(5) is not None:
+            value += r'^\text{' + match.group(6) + '}'
         return value + '\)'
 
-    return re.sub(r'\{?tRNA([’\']?s)?\}?(\\?_\{?(\w+)\}?)?(\^\{?(\w+)\}?)?', callback, str)
+    return re.sub(r'(\{)?tRNA([’\']?s)?(?(1)\})(\\?_\{?(\w+)\}?)?(\^\{?(\w+)\}?)?', callback, str)
 
 
 if __name__ == '__main__':
