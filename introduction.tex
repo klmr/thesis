@@ -218,17 +218,7 @@ the \mrna. This results in \(4^3 = 64\) possible codons, vastly more than there
 are amino acids. As a consequence, the genetic code is \define{degenerate}: most
 amino acids can be encoded by more than a single codon.
 
-Codons furthermore serve as control points by defining where the translated
-sequence on the \mrna starts and ends. The codon \codon{AUG}, in addition to
-encoding the amino acid methionine, also marks the start of the coding sequence.
-Three codons do not encode any amino acid, and instead signal the stop of
-translation (\codon{UAA}, \codon{UAG}, \codon{UGA}). As a consequence, every
-coding sequence starts with \codon{AUG}, ends with one of the stop codons, and
-has a length divisible by \num{3}. \Cref{tab:genetic-code} contains a tabular
-representation of the genetic code, which is valid, with only minor variations,
-for all three domains of life.
-
-\begin{table}
+\begin{table}[!ht]
     \centering
     \def\s{\footnotesize stop}
     \def\h#1#2{\multicolumn{1}{#1}{\abbrsc{#2}}}
@@ -283,6 +273,16 @@ for all three domains of life.
         complement of its corresponding codon (adapted from
         \citet{Dos_Reis:2004}).}
 \end{table}
+
+Codons furthermore serve as control points by defining where the translated
+sequence on the \mrna starts and ends. The codon \codon{AUG}, in addition to
+encoding the amino acid methionine, also marks the start of the coding sequence.
+Three codons do not encode any amino acid, and instead signal the stop of
+translation (\codon{UAA}, \codon{UAG}, \codon{UGA}). As a consequence, every
+coding sequence starts with \codon{AUG}, ends with one of the stop codons, and
+has a length divisible by \num{3}. \Cref{tab:genetic-code} contains a tabular
+representation of the genetic code, which is valid, with only minor variations,
+for all three domains of life.
 
 During translation, individual codons on the \mrna transcript are successively
 paired up with their matching amino acid. However, unlike in translation, this
