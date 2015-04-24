@@ -430,7 +430,26 @@ in the wobble position, and the modified \anticodon{IAG} is thus able to decode
 of these base modifications to the anticodon, I will continue using the
 genomically encoded anticodon notation rather than the anticodon after base
 modification -- in other words, I will generally write \anticodon{AAG}, not
-\anticodon{IAG}, by general convention.
+\anticodon{IAG}, by general convention. \Cref{tab:wobble} lists the possible
+wobble base pairings.
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{@{}ll@{}}
+        \toprule
+        Codon & Anticodon \\
+        \midrule
+        \nC & \nG \\
+        \nG & \nC, \nU \\
+        \nU & \nA, \nG \\
+        \nI & \nA, \nC, \nU \\
+        \bottomrule
+    \end{tabular}
+    \tabcap{wobble}{Simplified wobble base pairing rules.}{This table is based
+    on a prediction by \citet{Crick:1966}. In practice, more pairings are
+    possible (though most are uncommon), and there exist several other modified
+    bases with unique pairing properties.}
+\end{table}
 
 \subsubsection{Amino acid activation}
 
