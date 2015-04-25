@@ -22,9 +22,14 @@ figures
 thesis.synctex.gz
 rna-seq-example.html
 rna-seq-example.md
+rna-seq-example.tex
+codon-example.html
+codon-example.md
+codon-example.tex
 figure
 summary
 figures
 style_klmrthesis/build/
 style_klmrthesis/dist/
 style_klmrthesis/klmrthesis.egg-info/
+_minted*

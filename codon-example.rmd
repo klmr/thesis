@@ -1,0 +1,112 @@
+```{r echo=FALSE, results='hide', warning=FALSE}
+library = function (name)
+    suppressMessages(base::library(as.character(substitute(name)),
+                                   character.only = TRUE,
+                                   quietly = TRUE, warn.conflicts = FALSE))
+library(dplyr)
+library(pander)
+library(knitr)
+
+options(stringsAsFactors = FALSE)
+
+transform_counts = function (counts, ...)
+    mutate_each_(counts, funs_(lazyeval::lazy_dots(...)), col_data$Sample)
+
+summarize_each = summarise_each
+
+panderOptions('table.split.table', Inf)
+panderOptions('table.alignment.default',
+              function (df) ifelse(sapply(df, is.numeric), 'right', 'left'))
+panderOptions('table.alignment.rownames', 'left')
+
+# Enable automatic table reformatting.
+opts_chunk$set(render = function (object, ...) {
+    if (pander_supported(object))
+        pander(object, style = 'rmarkdown')
+    else if (isS4(object))
+        show(object)
+    else
+        print(object)
+})
+
+pander_supported = function (object)
+    UseMethod('pander_supported')
+
+pander_supported.default = function (object)
+    any(class(object) %in% sub('^pander\\.', '', methods('pander')))
+
+pander.table = function (x, ...)
+    pander(`rownames<-`(rbind(x), NULL), ...)
+
+# Helpers for dplyr tables
+
+is.tbl_df = function (x)
+    inherits(x, 'tbl_df')
+
+pander.tbl_df = function (x, ...)
+    pander(trunc_mat(x), ...)
+
+# Copied from dplyr:::print.trunc_mat
+pander.trunc_mat = function (x, ...) {
+    if (! is.null(x$table))
+        pander(x$table, ...)
+
+    if (length(x$extra) > 0) {
+        var_types = paste0(names(x$extra), ' (', x$extra, ')', collapse = ', ')
+        pander(dplyr:::wrap('Variables not shown: ', var_types))
+    }
+}
+
+# Disable code re-formatting, set caching and adjust figure output
+opts_chunk$set(tidy = FALSE,
+               cache = TRUE,
+               dev = c('png', 'pdf'),
+               fig.path = 'knitr/codon/figure/',
+               cache.path = 'knitr/codon/cache/')
+```
+
+The data.
+
+```{r}
+data = c(𝐴 = 'AUG GAU UAC AAA GAC AAA GAC GAC AAA UAC AUG AAG GAC UGA',
+         𝐵 = 'AUG AAA UAC GAU AUG AAG GAU UAC AUG AAG UAC UAC UAC AAG UAC GAU UAC UGA')
+
+data = strsplit(data, ' ')
+# No stop codon!
+levels = sort(setdiff(unique(unlist(data)), 'UGA'))
+```
+
+Codon usage.
+
+```{r}
+x = as.data.frame(sapply(sapply(data, factor, levels), table)) %>%
+    add_rownames('Codon') %>%
+    tbl_df()
+(x = mutate(x, `𝐴 + 𝐵` = 𝐴 + 𝐵))
+```
+
+Codon usage with gene expression counts.
+
+```{r}
+(counts = list(𝐴 = 10, 𝐵 = 20))
+
+m = x %>% mutate_each(funs(. * counts$.), 2, 3) %>%
+    mutate(`𝐴 + 𝐵` = 𝐴 + 𝐵)
+
+m
+```
+
+Relative codon usage.
+
+```{r}
+genetic_code = data.frame(Codon = levels,
+                          Aminoacid = c('Lys', 'Lys', 'Met', 'Asp', 'Asp', 'Tyr'))
+
+xp = inner_join(x, genetic_code, by = 'Codon') %>%
+    group_by(Aminoacid) %>%
+    mutate_each(funs(. / sum(.)), -Codon, -Aminoacid) %>%
+    ungroup() %>%
+    select(-Aminoacid)
+
+xp
+```
