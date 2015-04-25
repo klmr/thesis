@@ -625,8 +625,8 @@ occurs in a given transcriptome. This is either the raw number of occurrences in
 the transcripts under consideration, or the number of occurrences, weighted by
 the expression of each transcript.
 
-Using the above example, and assuming the gene expression counts \(A: 10\) and
-\(B: 20\) counts, we can summarise the codon usage as follows:
+Using the above example, and assuming the gene expression counts \(A\text: 10\)
+and \(B\text: 20\), we can summarise the codon usage as follows:
 
 \begin{table}[H]
     \sisetup{
@@ -637,16 +637,16 @@ Using the above example, and assuming the gene expression counts \(A: 10\) and
     \begin{subtable}{0.5\textwidth}
         \centering
         \begin{tabu} to \textwidth
-            {@{}>{\collectcell\codon}l<{\endcollectcell}SSS@{}}
+            {@{}>{\collectcell\codon}l<{\endcollectcell}SSSS[table-figures-decimal=1]@{}}
             \toprule
-            \multicolumn{1}{@{}l}{Codon} & \(A\) & \(B\) & {\(A + B\)} \\
+            \multicolumn{1}{@{}l}{Codon} & \(A\) & \(B\) & \(\sum(A,B)\) & {\(\overline{A,B}\)} \\
             \midrule
-            AAA & 3 & 1 & 4\tabularnewline
-            AAG & 1 & 3 & 4\tabularnewline
-            AUG & 2 & 3 & 5\tabularnewline
-            GAC & 4 & 0 & 4\tabularnewline
-            GAU & 1 & 3 & 4\tabularnewline
-            UAC & 2 & 7 & 9\tabularnewline
+            AAA & 3 & 1 & 4 & 2.0\tabularnewline
+            AAG & 1 & 3 & 4 & 2.0\tabularnewline
+            AUG & 2 & 3 & 5 & 2.5\tabularnewline
+            GAC & 4 & 0 & 4 & 2.0\tabularnewline
+            GAU & 1 & 3 & 4 & 2.0\tabularnewline
+            UAC & 2 & 7 & 9 & 4.5\tabularnewline
             \bottomrule
         \end{tabu}
         \caption{Genomic codon usage}
@@ -655,16 +655,16 @@ Using the above example, and assuming the gene expression counts \(A: 10\) and
         \sisetup{table-figures-integer=2}
         \centering
         \begin{tabu} to \textwidth
-            {@{}>{\collectcell\codon}l<{\endcollectcell}SSS@{}}
+            {@{}>{\collectcell\codon}l<{\endcollectcell}SSSS@{}}
             \toprule
-            \multicolumn{1}{@{}l}{Codon} & \(A\) & \(B\) & {\(A + B\)} \\
+            \multicolumn{1}{@{}l}{Codon} & \(A\) & \(B\) & \(\sum(A,B)\) & {\(\overline{A, B}\)} \\
             \midrule
-            AAA & 30 & 20 & 50\tabularnewline
-            AAG & 10 & 60 & 70\tabularnewline
-            AUG & 20 & 60 & 80\tabularnewline
-            GAC & 40 & 0 & 40\tabularnewline
-            GAU & 10 & 60 & 70\tabularnewline
-            UAC & 20 & 140 & 160\tabularnewline
+            AAA & 30 & 20 & 50 & 25\tabularnewline
+            AAG & 10 & 60 & 70 & 35\tabularnewline
+            AUG & 20 & 60 & 80 & 40\tabularnewline
+            GAC & 40 & 0 & 40 & 20\tabularnewline
+            GAU & 10 & 60 & 70 & 35\tabularnewline
+            UAC & 20 & 140 & 160 & 80\tabularnewline
             \bottomrule
         \end{tabu}
         \caption{Codon usage weighted by gene expression}
@@ -673,11 +673,16 @@ Using the above example, and assuming the gene expression counts \(A: 10\) and
 \end{table}
 
 Note that we have omitted the stop codon, but not the start codon, since the
-latter corresponds to a \trna isoacceptor, while the former does not. The column
-\(A+B\) shows how the codon usage of a transcriptome consisting of these two
-genes would look like. In the following chapters, we will rarely look at the
-codon usage of single transcripts, and rather at either the sum codon usage or
-the mean codon usage of gene sets.
+latter corresponds to a \trna isoacceptor, while the former does not. The
+columns \(\sum(A,B)\) and \(\overline{A,B}\) show how the aggregated codon usage
+of a transcriptome consisting of these two genes would look like, either as the
+sum of the codon usage of all genes, or as the arithmetic mean. In the following
+chapters, we will rarely look at the codon usage of single transcripts, and
+rather at either the sum codon usage or the mean codon usage of gene sets. When
+comparing the codon usage of gene sets of different size (to determine, for
+instance, which codons are used more in condition \abbrsc{I} compared to
+condition \abbrsc{II}), we need to use the mean codon usage rather than the sum;
+for sets of the same size, either metric works.
 
 The \define{anticodon abundance} of an anticodon is the amount of \trna
 decoding a given anticodon, present in the cell at a given instance. Other

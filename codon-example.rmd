@@ -82,7 +82,7 @@ Codon usage.
 x = as.data.frame(sapply(sapply(data, factor, levels), table)) %>%
     add_rownames('Codon') %>%
     tbl_df()
-(x = mutate(x, `𝐴 + 𝐵` = 𝐴 + 𝐵))
+(x = mutate(x, `𝐴 + 𝐵` = 𝐴 + 𝐵, µ = `𝐴 + 𝐵` / 2))
 ```
 
 Codon usage with gene expression counts.
@@ -91,7 +91,7 @@ Codon usage with gene expression counts.
 (counts = list(𝐴 = 10, 𝐵 = 20))
 
 m = x %>% mutate_each(funs(. * counts$.), 2, 3) %>%
-    mutate(`𝐴 + 𝐵` = 𝐴 + 𝐵)
+    mutate(`𝐴 + 𝐵` = 𝐴 + 𝐵, µ = `𝐴 + 𝐵` / 2)
 
 m
 ```
