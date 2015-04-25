@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Apply some simple textual replacements
+
+sed -e 's/\\begin{verbatim}/\\begin{minted}{r}/' \
+    -e 's/\\end{verbatim}/\\end{minted}/' \
+    -e 's/\\begin{longtable}\[c\]/\\begin{center}\\begin{tabular}/' \
+    -e 's/\\end{longtable}/\\end{tabular}\\end{center}/' \
+    -e 's/\\includegraphics{\(.*\).png}/\\includegraphics[width=0.8\\textwidth]{\1}/' \
+    -e 's/\\caption{plot of chunk \(.*\)}/\\caption{\1}/'

@@ -20,3 +20,11 @@ cache
 summary
 figures
 thesis.synctex.gz
+rna-seq-example.html
+rna-seq-example.md
+figure
+summary
+figures
+style_klmrthesis/build/
+style_klmrthesis/dist/
+style_klmrthesis/klmrthesis.egg-info/

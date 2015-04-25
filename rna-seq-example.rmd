@@ -1,0 +1,158 @@
+```{r echo=FALSE}
+library = function (name)
+    suppressMessages(base::library(as.character(substitute(name)),
+                                   character.only = TRUE,
+                                   quietly = TRUE, warn.conflicts = FALSE))
+library(dplyr)
+library(pander)
+library(knitr)
+
+options(stringsAsFactors = FALSE)
+
+transform_counts = function (counts, ...)
+    mutate_each_(counts, funs_(lazyeval::lazy_dots(...)), col_data$Sample)
+
+summarize_each = summarise_each
+
+panderOptions('table.split.table', Inf)
+panderOptions('table.alignment.default',
+              function (df) ifelse(sapply(df, is.numeric), 'right', 'left'))
+panderOptions('table.alignment.rownames', 'left')
+
+# Enable automatic table reformatting.
+opts_chunk$set(render = function (object, ...) {
+    if (pander_supported(object))
+        pander(object, style = 'rmarkdown')
+    else if (isS4(object))
+        show(object)
+    else
+        print(object)
+})
+
+pander_supported = function (object)
+    UseMethod('pander_supported')
+
+pander_supported.default = function (object)
+    any(class(object) %in% sub('^pander\\.', '', methods('pander')))
+
+pander.table = function (x, ...)
+    pander(`rownames<-`(rbind(x), NULL), ...)
+
+# Helpers for dplyr tables
+
+is.tbl_df = function (x)
+    inherits(x, 'tbl_df')
+
+pander.tbl_df = function (x, ...)
+    pander(trunc_mat(x), ...)
+
+# Copied from dplyr:::print.trunc_mat
+pander.trunc_mat = function (x, ...) {
+    if (! is.null(x$table))
+        pander(x$table, ...)
+
+    if (length(x$extra) > 0) {
+        var_types = paste0(names(x$extra), ' (', x$extra, ')', collapse = ', ')
+        pander(dplyr:::wrap('Variables not shown: ', var_types))
+    }
+}
+
+# Disable code re-formatting, set caching and adjust figure output
+opts_chunk$set(tidy = FALSE,
+               cache = TRUE,
+               dev = c('png', 'pdf'),
+               fig.path = 'knitr/figure/',
+               cache.path = 'knitr/cache/')
+```
+
+We are going to use a small toy data set, containing expression measures of
+five genes `A`–`E` for four libraries.
+
+```{r}
+experiment = data.frame(
+    Gene = LETTERS[1 : 5],
+    Length = c(1000, 1000, 2000, 3000, 4000),
+    lib1 = c(1000, 1000, 2000, 3000, 4000),
+    lib2 = c(2000, 2000, 4000, 6000, 8000),
+    lib3 = c(1000, 4000, 2000, 3000, 4000),
+    lib4 = c(1500, 3500, 1500, 3000, 4000)
+)
+
+experiment
+
+col_data = data.frame(
+    Sample = paste0('lib', 1 : 4),
+    Condition = rep(c('control', 'treatment'), each = 2)
+)
+
+col_data
+```
+
+The `col_data` describes the *column data* of our experiment — in other words,
+the experimental set-up.
+
+The toy data set contains two conditions with two biological replicates each.
+Only one gene — `B` — is significantly changed between conditions:
+
+```{r}
+heatmap(as.matrix(select(experiment, one_of(col_data$Sample))),
+        scale = 'column', Rowv = NA, Colv = NA)
+```
+
+---
+
+Here is how the data is transformed into FPKM. All calculations are performed in
+log domain to avoid loss of precision in floating point calculations.
+
+```{r}
+fpkm = function (counts, transcript_lengths)
+    exp(log(counts) - log(transcript_lengths) - log(sum(counts)) + log(1e9))
+
+(fpkm_counts = transform_counts(experiment, fpkm(., Length)))
+```
+
+Here are TPM:
+
+```{r}
+tpm = function (counts, transcript_lengths) {
+    log_by_size = log(counts) - log(transcript_lengths)
+    exp(log_by_size - log(sum(exp(log_by_size))) + log(1E6))
+}
+
+(tpm_counts = transform_counts(experiment, tpm(., Length)))
+```
+
+And finally, library size factors. Unlike the previous methods, this uses data
+across samples, and calculates per-sample normalisation factors.
+
+```{r}
+size_factors = function (samples) {
+    log_samples = log(samples)
+    log_means = rowMeans(log_samples)
+    summarize_each(log_samples, funs(exp(median(. - log_means))))
+}
+
+(sf = size_factors(select(experiment, one_of(col_data$Sample))))
+```
+
+To obtain the normalised values, we scale each sample by its size factor:
+
+```{r}
+(sf_counts = transform_counts(experiment, . / sf$.))
+```
+
+---
+
+The last step is to test for differential expression between the two conditions,
+using DESeq2.
+
+```{r}
+library(DESeq2)
+
+dds_exp = select(experiment, one_of(col_data$Sample))
+rownames(dds_exp) = experiment$Gene
+dds = DESeqDataSetFromMatrix(dds_exp, col_data, design =  ~Condition)
+
+dds = DESeq(dds, fitType = 'mean', quiet = TRUE)
+results(dds)
+```

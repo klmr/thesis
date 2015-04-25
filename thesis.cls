@@ -30,6 +30,7 @@
 \RequirePackage[english,iso]{isodate}
 \RequirePackage{xspace}
 \RequirePackage[version=3]{mhchem}
+\RequirePackage{minted}
 \RequirePackage{scalefnt}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
@@ -124,6 +125,10 @@
 
 \colorlet{thesis@toccolor}{black}
 \colorlet{thesis@linkcolor}{black!70}
+
+\definecolor{codenormal}{HTML}{404040}
+\AtBeginEnvironment{minted}{\color{codenormal}}
+\usemintedstyle{klmrthesis}
 
 \hypersetup{
     hypertexnames=false,
@@ -452,6 +457,11 @@
 % Titles
 
 \newcommand*\second[1]{#1}
+
+% Fixes
+
+% Pandoc output produces `\endhead` in longtables, which we don’t use.
+\let\endhead\relax
 
 % vim:ft=tex
 \endinput
