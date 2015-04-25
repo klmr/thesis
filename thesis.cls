@@ -14,6 +14,7 @@
 \RequirePackage[markcase=lower]{scrlayer-scrpage}
 \RequirePackage{xcolor}
 \RequirePackage{marginnote}
+\RequirePackage{float}
 \RequirePackage[inline]{enumitem}
 \RequirePackage{wrapfig}
 \RequirePackage{microtype}
