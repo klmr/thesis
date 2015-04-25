@@ -24,7 +24,11 @@ and we thus expect many reads to map to multiple locations. This problem also
 exists for the other annotation types we are interested in. However, the
 strategy also explained in \cref{sec:chip} cannot be applied to non-\trna
 annotations since we cannot make the same assumptions about the binding
-profiles in the flanking regions of the genomic features.
+profiles in the flanking regions of the genomic features. In particular, while
+\trna transcription uses a type \abbrsc{II} transcription initiation, other
+\pol3 targets use different types of initiation, due to their different promoter
+and enhancer structure. These differences could have strong effects on the
+binding profile of active \pol3 on the target loci.
 
 I avoided this problem by only reporting a single match per read, even if
 multiple matches were possible. This assigns the read to an arbitrary locus
