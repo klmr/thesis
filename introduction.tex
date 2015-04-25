@@ -603,10 +603,81 @@ use several related measures:
     \item \raa.
 \end{enumerate}
 
+To illustrate how they relate to each other, I am going to use the following toy
+example of two transcripts consisting of \num{5} different types of codons (plus
+start and stop codons):
+
+\begin{table}[H]
+    \centering
+    \begin{tabu} to \textwidth {@{}l>{\collectcell\seq}l<{\endcollectcell}@{}}
+        \toprule
+        Gene & \multicolumn{1}{l@{}}{Sequence} \\
+        \midrule
+        \(A\) & AUG GAU UAC AAA GAC AAA GAC GAC AAA UAC AUG AAG GAC UGA \\
+        \(B\) & AUG AAA UAC GAU AUG AAG GAU UAC AUG AAG UAC UAC UAC AAG UAC GAU UAC UGA \\
+        \bottomrule
+    \end{tabu}
+    \tabcap{example-genes}{Example transcripts of two genes.}{}
+\end{table}
+
 The \define{codon usage} of a codon is the frequency with which this codon
 occurs in a given transcriptome. This is either the raw number of occurrences in
 the transcripts under consideration, or the number of occurrences, weighted by
 the expression of each transcript.
+
+Using the above example, and assuming the gene expression counts \(A: 10\) and
+\(B: 20\) counts, we can summarise the codon usage as follows:
+
+\begin{table}[H]
+    \sisetup{
+        table-figures-integer=1,
+        table-figures-decimal=0,
+        table-number-alignment=right
+    }
+    \begin{subtable}{0.5\textwidth}
+        \centering
+        \begin{tabu} to \textwidth
+            {@{}>{\collectcell\codon}l<{\endcollectcell}SSS@{}}
+            \toprule
+            \multicolumn{1}{@{}l}{Codon} & \(A\) & \(B\) & {\(A + B\)} \\
+            \midrule
+            AAA & 3 & 1 & 4\tabularnewline
+            AAG & 1 & 3 & 4\tabularnewline
+            AUG & 2 & 3 & 5\tabularnewline
+            GAC & 4 & 0 & 4\tabularnewline
+            GAU & 1 & 3 & 4\tabularnewline
+            UAC & 2 & 7 & 9\tabularnewline
+            \bottomrule
+        \end{tabu}
+        \caption{Genomic codon usage}
+    \end{subtable}%
+    \begin{subtable}{0.5\textwidth}
+        \sisetup{table-figures-integer=2}
+        \centering
+        \begin{tabu} to \textwidth
+            {@{}>{\collectcell\codon}l<{\endcollectcell}SSS@{}}
+            \toprule
+            \multicolumn{1}{@{}l}{Codon} & \(A\) & \(B\) & {\(A + B\)} \\
+            \midrule
+            AAA & 30 & 20 & 50\tabularnewline
+            AAG & 10 & 60 & 70\tabularnewline
+            AUG & 20 & 60 & 80\tabularnewline
+            GAC & 40 & 0 & 40\tabularnewline
+            GAU & 10 & 60 & 70\tabularnewline
+            UAC & 20 & 140 & 160\tabularnewline
+            \bottomrule
+        \end{tabu}
+        \caption{Codon usage weighted by gene expression}
+    \end{subtable}%
+    \tabcap{codon-usage}{Example codon usage.}{}
+\end{table}
+
+Note that we have omitted the stop codon, but not the start codon, since the
+latter corresponds to a \trna isoacceptor, while the former does not. The column
+\(A+B\) shows how the codon usage of a transcriptome consisting of these two
+genes would look like. In the following chapters, we will rarely look at the
+codon usage of single transcripts, and rather at either the sum codon usage or
+the mean codon usage of gene sets.
 
 The \define{anticodon abundance} of an anticodon is the amount of \trna
 decoding a given anticodon, present in the cell at a given instance. Other
