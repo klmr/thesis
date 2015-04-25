@@ -488,13 +488,28 @@ structure degrades, and gets recycled by the cell.
 \subsection{Translation}
 
 % <<<
-The translation of \mrna into proteins is assisted by a special apparatus called
-the \define{ribosome}. Ribosomes are large complexes of proteins and \rrna,
-forming two subunits. In eukaryotes, these subunits are the 40S and 60S subunit,
-respectively. During translation initiation, the 40S subunit scans along an
-\mrna transcript until it finds a signal sequence surrounding a start codon
-\citep{Kozak:2002}. There it is joined by the 60S subunit. The assembled
-ribosome then pulls the \mrna through a channel in its structure and
+So far we have established that \trna[s] are responsible for decoding individual
+codons on the \mrna transcript into individual amino acids, which are assembled
+into a protein. Unsurprisingly, this is not a spontaneous process in the cell.
+Precise coordination is required to initiate, maintain and terminate the
+process. All these parts are controlled by an intricate machinery, the
+\define{ribosome}. Ribosomes are large complexes of proteins and \rrna, forming
+two subunits. In eukaryotes, these subunits are the 40S and 60S subunit,
+respectively. At any given moment, millions of ribosomes are present in a cell,
+which is necessary to to meet the demand in protein production from a limited
+pool of \mrna transcripts.
+
+During translation initiation, the small ribosomal subunit binds an
+\define{initiator \xtrna{Met}} (\xtrna[i]{Met}) in its active site.
+\xtrna[i]{Met} differs from conventional \xtrna{Met} in its nucleotide
+composition, which enables it to bind to the small subunit of the ribosome
+unaided \citep{Kolitz:2010}. The complex then associates with the \fivep end of
+an \mrna transcript and scans along its body until it finds a signal sequence
+surrounding a start codon, which the bound \xtrna{Met}’s anticodon base-pairs
+with \citep{Kozak:2002}.
+
+There it is joined by the 60S subunit. The assembled ribosome then starts
+pulling the \mrna transcript through a channel in its structure and
 progressively translates the codons on the \mrna into amino acids, which are
 chained together to form a nascent polypeptide chain.
 % >>>
