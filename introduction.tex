@@ -542,20 +542,59 @@ release of the peptide chain, and the disassociation of the ribosomal complex.
 
 \section{Quantifying codon usage and anticodon abundance}
 
-\todo[inline]{Description of the goals of the thesis}
-
+% <<<
 We have seen how the genetic code defines the interface between \mrna and
 proteins, and how \trna[s] are the physical link between the codons on the one
 hand and the amino acids on the other hand. As the abundance of different \mrna
 transcripts varies with the cell state, so does the number of different codons
 that are used by these transcripts. This immediately suggests that the variable
 demand of codons to be decoded needs to be met, in some way, by a supply of
-\trna molecules carrying matching anticodons. In this thesis, I am going to
-explore this supply--demand relationship between codons and anticodons by
-investigating the abundance of \trna[s] in cells and its relationship to the
-demand of codons in the \mrna transcriptome.
+\trna molecules carrying matching anticodons. In this thesis, I am exploring
+this supply--demand relationship between codons and anticodons by investigating
+the abundance of \trna[s] in cells and its relationship to the demand of codons
+in the \mrna transcriptome.
 
-Throughout this thesis I am going to use several related measures:
+Studies of the relationship between codon usage and \trna anticodon isoacceptor
+abundance, as well as their changes in different cellular conditions go back at
+least to the 1980s \citep{Ikemura:1981}. These studies have focused on
+non-vertebrate systems, with most work being done in prokaryotes and
+single-cellular eukaryotes \citep{Ikemura:1985}. They have established a high
+correlation between the abundance of \trna anticodon isoacceptors and their
+corresponding codons. Furthermore, \citet{Ikemura:1981} hypothesises that codon
+choice is strongly constrained by the availability of \trna anticodon
+isoacceptors, both across changes of cellular condition and across evolution.
+The influence of \trna abundance on codon choice is particularly important in
+organisms where no or only limited gene expression regulation exists: to
+modulate protein abundance, alternative, post-transcriptional regulatory
+mechanisms must be in charge of controlling protein abundance. Codon bias
+constraints imposed by \trna anticodon isoacceptor abundance can fulfil this
+regulatory role \citep{Horn:2008}.
+
+This thesis focuses on \mmu development as a mammalian model system. It has
+previously been established that \trna gene transcription varies between
+different tissues in \hsa using microarray expression data for a subset of \trna
+genes \citep{Dittmar:2006}. Furthermore, it has been observed that tumour cells
+may drive overexpression of some \trna genes
+\citep{Winter:2000,Pavon-Eternod:2009}, and that, conversely, overexpressing
+\xtrna[i]{Met} leads to increased proliferation in human cells
+\citep{Pavon-Eternod:2013}. However, it remains unknown to what extent \trna
+gene expression varies under biological conditions, and whether these changes
+are stochastic or coordinated.
+
+Furthermore, it is unknown to what extent \trna anticodon isoacceptor abundance
+correlates with or influences codon usage bias. Importantly, it is not possible
+to infer this from the findings in non-mammalian organisms, since protein
+abundance is regulated differently, with a heavy focus on gene expression
+regulation via transcription factors in mammals. In fact, the strongly
+tissue-specific regulation of gene expression in mammals makes it plausible that
+translation-related effects have at best a limited regulatory effect on the
+abundance of proteins, and this is supported by recent estimates of \mrna and
+protein abundance \citep{Li:2014,Csardi:2014,Jovanovic:2015}.
+
+In the following chapters, we will take a closer look at changes in codon usage
+and \trna anticodon isoacceptor abundance, and at the quantitative relationship
+between codon usage and anticodon abundance. Throughout the text I am going to
+use several related measures:
 
 \begin{enumerate}
     \item codon usage,
@@ -590,8 +629,12 @@ Several publications use the term \cub to describe divergence in codon usage
 between different sets of genes within a genome, or differences between genomes.
 The \cub is then equivalent either to the codon usage as defined in this thesis,
 or the \rcu.
+% >>>
 
 \section{Structure of this thesis}
+
+% <<<
+% >>>
 
 \section{TO DOs}
 
@@ -606,10 +649,4 @@ or the \rcu.
         mammals! Dittmar [2006]
 \end{enumerate}}
 
-\todo{Take intro from paper}
-
-\subsection{Posttranscriptional modification}
-
-In particular A-to-I conversion (deamination), which is relevant in tRNA gene
-wobble base pairing!
 % vim: fmr=<<<,>>>
