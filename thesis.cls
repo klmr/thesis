@@ -338,6 +338,9 @@
 
 \newcommand*\marginfig[1]{\includegraphics[width=\marginparwidth]{#1}}
 
+\newcommand*\toverline[1]{\ensuremath{\overline{\hbox{#1}}\m@th}}
+\newcommand*\periodic[1]{{\mbox{(#1)}}}
+
 %\newcommand*\hashtag[1]{%
 %    {\mbox{\scalefont{0.75}\textcolor[HTML]{808080}{\#}\kern0.1em}#1}}
 \newcommand*\hashtag[1]{#1}

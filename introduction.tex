@@ -632,6 +632,7 @@ and \(B\text: 20\), we can summarise the codon usage as follows:
     \sisetup{
         table-figures-integer=1,
         table-figures-decimal=0,
+        table-text-alignment=right,
         table-number-alignment=right
     }
     \begin{subtable}{0.5\textwidth}
@@ -639,7 +640,7 @@ and \(B\text: 20\), we can summarise the codon usage as follows:
         \begin{tabu} to \textwidth
             {@{}>{\collectcell\codon}l<{\endcollectcell}SSSS[table-figures-decimal=1]@{}}
             \toprule
-            \multicolumn{1}{@{}l}{Codon} & \(A\) & \(B\) & \(\sum(A,B)\) & {\(\overline{A,B}\)} \\
+            \multicolumn{1}{@{}l}{Codon} & {\(A\)} & {\(B\)} & {\(\sum(A,B)\)} & {\(\overline{A,B}\)} \\
             \midrule
             AAA & 3 & 1 & 4 & 2.0\tabularnewline
             AAG & 1 & 3 & 4 & 2.0\tabularnewline
@@ -657,7 +658,8 @@ and \(B\text: 20\), we can summarise the codon usage as follows:
         \begin{tabu} to \textwidth
             {@{}>{\collectcell\codon}l<{\endcollectcell}SSS[table-figures-integer=3]S@{}}
             \toprule
-            \multicolumn{1}{@{}l}{Codon} & \(A\) & \(B\) & \(\sum(A,B)\) & {\(\overline{A, B}\)} \\
+            \multicolumn{1}{@{}l}{Codon} & {\(A\)} & {\(B\)} & {\(\sum(A,B)\)} &
+            {\(\overline{A, B}\)} \\
             \midrule
             AAA & 30 & 20 & 50 & 25\tabularnewline
             AAG & 10 & 60 & 70 & 35\tabularnewline
@@ -669,7 +671,10 @@ and \(B\text: 20\), we can summarise the codon usage as follows:
         \end{tabu}
         \caption{Codon usage weighted by gene expression}
     \end{subtable}%
-    \tabcap{codon-usage}{Example codon usage.}{}
+    \tabcap{codon-usage}{Example codon usage.}{“Genomic” codon usage is based
+    purely on the (genomic) sequence of codons of the transcript. Codon usage
+    weighted by expression multiplies each codon in a transcript by the
+    transcript’s measured abundance.}
 \end{table}
 
 Note that we have omitted the stop codon, but not the start codon, since the
