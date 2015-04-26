@@ -694,12 +694,17 @@ codes for, relative to all other synonymous codons. The \rcu of all synonymous
 codons sums to \num{1}. Let \(C_a\) be the set of all codons coding for amino
 acid \(a\), and \(c \in C_a\) a codon in that set. Furthermore, let \(x_c\) be
 the codon usage of codon \(c\), and \(m_c\) the \rcu of \(c\). Then, for all
-amino acids \(a\),
+amino acids \(a\) and all \(c \in C_a\),
 
-\begin{align}
-    m_c & = \frac{x_c}{\sum_{i \in C_a} x_i} \text{\ and consequently} \\
-    \sum_{i \in C_a} m_i & = 1 \text{\ .}
-\end{align}
+\begin{equation}
+    m_c = \frac{x_c}{\sum_{i \in C_a} x_i} \text{\ ,}
+\end{equation}
+
+and consequently
+
+\begin{equation}
+    \sum_{c \in C_a} m_c = 1 \text{\ .}
+\end{equation}
 
 Using the above example, we get
 
