@@ -581,27 +581,30 @@ may drive overexpression of some \trna genes
 gene expression varies under biological conditions, and whether these changes
 are stochastic or coordinated.
 
-Furthermore, it is unknown to what extent \trna anticodon isoacceptor abundance
-correlates with or influences codon usage bias. Importantly, it is not possible
-to infer this from the findings in non-mammalian organisms, since protein
-abundance is regulated differently, with a heavy focus on gene expression
-regulation via transcription factors in mammals. In fact, the strongly
-tissue-specific regulation of gene expression in mammals makes it plausible that
-translation-related effects have at best a limited regulatory effect on the
-abundance of proteins, and this is supported by recent estimates of \mrna and
-protein abundance \citep{Li:2014,Csardi:2014,Jovanovic:2015}.
+In particular, this implies that it is unknown whether mammalian cells use the
+\trna anticodon isoacceptor abundance to regulate the translation rate of
+protein-coding genes, and thus the flow of information from genes to proteins.
+As a first step in answering this question, we need to know to what extent \trna
+anticodon isoacceptor abundance correlates with codon usage bias. Importantly,
+it is not possible to infer this from the findings in non-mammalian organisms,
+since protein abundance is regulated differently, with a heavy focus on gene
+expression regulation via transcription factors in mammals. In fact, the
+strongly tissue-specific regulation of gene expression in mammals makes it
+plausible that translation-related effects have at best a limited regulatory
+effect on the abundance of proteins, and this is supported by recent estimates
+of \mrna and protein abundance \citep{Li:2014,Csardi:2014,Jovanovic:2015}.
 
 In the following chapters, we will take a closer look at changes in codon usage
 and \trna anticodon isoacceptor abundance, and at the quantitative relationship
 between codon usage and anticodon abundance. Throughout the text I am going to
 use several related measures:
 
-\begin{enumerate}
+\begin{shortenumerate}
     \item codon usage,
     \item \rcu,
     \item anticodon abundance and
     \item \raa.
-\end{enumerate}
+\end{shortenumerate}
 
 To illustrate how they relate to each other, I am going to use the following toy
 example of two transcripts consisting of \num{5} different types of codons (plus
@@ -687,14 +690,16 @@ rather at either the sum codon usage or the mean codon usage of gene sets. When
 comparing the codon usage of gene sets of different size (to determine, for
 instance, which codons are used more in condition \abbrsc{I} compared to
 condition \abbrsc{II}), we need to use the mean codon usage rather than the sum;
-for sets of the same size, either metric works.
+for sets of the same size, either metric works. However, we are generally not
+interested in the absolute number of codons used, but rather in the shift of use
+between synonymous codons. Here, using the \rcu is more appropriate.
 
-The \define{\rcu} of a codon is that codon’s contribution to the amino acid it
-codes for, relative to all other synonymous codons. The \rcu of all synonymous
-codons sums to \num{1}. Let \(C_a\) be the set of all codons coding for amino
-acid \(a\), and \(c \in C_a\) a codon in that set. Furthermore, let \(x_c\) be
-the codon usage of codon \(c\), and \(m_c\) the \rcu of \(c\). Then, for all
-amino acids \(a\) and all \(c \in C_a\),
+The \define{relative codon usage (\abbr{rcu})} of a codon is that codon’s
+contribution to the amino acid it codes for, relative to all other synonymous
+codons. The \rcu of all synonymous codons sums to \num{1}. Let \(C_a\) be the
+set of all codons coding for amino acid \(a\), and \(c \in C_a\) a codon in that
+set. Furthermore, let \(x_c\) be the codon usage of codon \(c\), and \(m_c\) the
+\rcu of \(c\). Then, for all amino acids \(a\) and all \(c \in C_a\),
 
 \begin{equation}
     m_c = \frac{x_c}{\sum_{i \in C_a} x_i} \text{\ ,}
@@ -705,8 +710,6 @@ and consequently
 \begin{equation}
     \sum_{c \in C_a} m_c = 1 \text{\ .}
 \end{equation}
-
-Using the above example, we get
 
 \textfloatbare{spill}{
     \sisetup{
@@ -764,23 +767,25 @@ values with a constant changes nothing (column \(A\) is the same in
 both in the case of the genomic \rcu and in the \rcu weighted by gene
 expression the sum \rcu and the mean \rcu are identical.
 
-The \define{anticodon abundance} of an anticodon is the amount of \trna
-decoding a given anticodon, present in the cell at a given instance. Other
-publications define the anticodon abundance in terms of \trna gene copy number;
-however, in the context of this thesis, the anticodon abundance is usually
-quantified by \trna gene expression, and is thus proportional to the number of
-\trna molecules of each anticodon isoacceptor present in the cell.
+The \define{anticodon abundance} of an anticodon is the amount of \trna decoding
+a given anticodon, present in the cell at a given instance. Other publications
+define the anticodon abundance purely in terms of \trna gene copy number;
+however, in the context of this thesis, the anticodon abundance is quantified by
+\trna gene expression, and is thus an estimate of the number of \trna molecules
+of each anticodon isoacceptor present in the cell.
 
-The \define{\raa} of an anticodon is defined equivalently to the \rcu based on
-the anticodon abundance. That is, the contribution of an anticodon to its amino
-acid isotype, relative to the other anticodons in the same isotype.
+The \define{relative anticodon abundance (\abbr{raa})} of an anticodon is
+defined equivalently to the \rcu based on the anticodon abundance. That is, the
+contribution of an anticodon to its amino acid isotype, relative to the other
+anticodons in the same isotype.
 
-In all of the above, I exclude the stop codons.
+For all of the above, I exclude the stop codons.
 
-Several publications use the term \cub to describe divergence in codon usage
-between different sets of genes within a genome, or differences between genomes.
-The \cub is then equivalent either to the codon usage as defined in this thesis,
-or the \rcu.
+Several publications use the term \define[\defineword{codon usage bias} the
+difference of in codon usage frequency or relative codon usage between sets of
+genes]{\cub} to describe divergence in codon usage between different sets of
+genes within a genome, or differences between genomes. The \cub is then
+equivalent either to the codon usage as defined in this thesis, or the \rcu.
 % >>>
 
 \section{Structure of this thesis}
