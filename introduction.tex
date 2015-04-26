@@ -689,16 +689,81 @@ instance, which codons are used more in condition \abbrsc{I} compared to
 condition \abbrsc{II}), we need to use the mean codon usage rather than the sum;
 for sets of the same size, either metric works.
 
+The \define{\rcu} of a codon is that codon’s contribution to the amino acid it
+codes for, relative to all other synonymous codons. The \rcu of all synonymous
+codons sums to \num{1}. Let \(C_a\) be the set of all codons coding for amino
+acid \(a\), and \(c \in C_a\) a codon in that set. Furthermore, let \(x_c\) be
+the codon usage of codon \(c\), and \(m_c\) the \rcu of \(c\). Then, for all
+amino acids \(a\),
+
+\begin{align}
+    m_c & = \frac{x_c}{\sum_{i \in C_a} x_i} \text{\ and consequently} \\
+    \sum_{i \in C_a} m_i & = 1 \text{\ .}
+\end{align}
+
+Using the above example, we get
+
+\textfloatbare{spill}{
+    \sisetup{
+        table-figures-integer=1,
+        table-figures-decimal=2,
+        table-text-alignment=right,
+        table-number-alignment=right
+    }
+    \begin{subtable}{0.5\textwidth}
+        \centering
+        \begin{tabu} to \textwidth
+            {@{}>{\collectcell\codon}l<{\endcollectcell}lSSS[table-figures-decimal=1]S[table-figures-decimal=1]@{}}
+            \toprule
+            \multicolumn{1}{@{}l}{Codon} & \abbrsc{AA} & {\(A\)} & {\(B\)} &
+            {\(\sum(A,B)\)} & {\(\overline{A,B}\)} \\
+            \midrule
+            AAA & Lys & 0.75 & 0.25 & 0.5 & 0.5\tabularnewline
+            AAG & Lys & 0.25 & 0.75 & 0.5 & 0.5\tabularnewline
+            AUG & Met & 1.0  & 1.0  & 1.0 & 1.0\tabularnewline
+            GAC & Asp & 0.8  & 0.0  & 0.5 & 0.5\tabularnewline
+            GAU & Asp & 0.2  & 1.0  & 0.5 & 0.5\tabularnewline
+            UAC & Tyr & 1.0  & 1.0  & 1.0 & 1.0\tabularnewline
+            \bottomrule
+        \end{tabu}
+        \caption{\label{tab:rcu-a}Genomic \abbr{rcu}}
+    \end{subtable}%
+    \begin{subtable}{0.5\textwidth}
+        \centering
+        \begin{tabu} to \textwidth
+            {@{}>{\collectcell\codon}l<{\endcollectcell}lSSrr@{}}
+            \toprule
+            \multicolumn{1}{@{}l}{Codon} & \abbrsc{AA} & {\(A\)} & {\(B\)} &
+            {\(\sum(A,B)\)} & {\(\overline{A, B}\)} \\
+            \midrule
+            AAA & Lys & 0.75 & 0.25 & 0.41\periodic{6} & 0.41\periodic{6}\tabularnewline
+            AAG & Lys & 0.25 & 0.75 & 0.58\periodic{3} & 0.58\periodic{4}\tabularnewline
+            AUG & Met & 1.0 & 1.0 & 1.0 & 1.0\tabularnewline
+            GAC & Asp & 0.8 & 0.0 & 0.\periodic{36} & 0.\periodic{36}\tabularnewline
+            GAU & Asp & 0.2 & 1.0 & 0.\periodic{63} & 0.\periodic{63}\tabularnewline
+            UAC & Tyr & 1.0 & 1.0 & 1.0 & 1.0\tabularnewline
+            \bottomrule
+        \end{tabu}
+        \caption{\label{tab:rcu-b}\abbr{rcu} weighted by gene expression}
+    \end{subtable}%
+    \tabcap{rcu}{Example \abbr{rcu}}{with the amino acid for each codon shown;
+    in each column, the values for the same amino acid sum to \num{1}.}
+}
+
+\Cref{tab:rcu} illustrates two interesting things. First, when considering only
+a single gene, it is immaterial whether we consider expression or not: since the
+\rcu is a \emph{ratio} of the overall codon usage, multiplying all codon usage
+values with a constant changes nothing (column \(A\) is the same in
+\cref{tab:rcu-a} and \cref{tab:rcu-b}, and so is column \(B\)). And secondly,
+both in the case of the genomic \rcu and in the \rcu weighted by gene
+expression the sum \rcu and the mean \rcu are identical.
+
 The \define{anticodon abundance} of an anticodon is the amount of \trna
 decoding a given anticodon, present in the cell at a given instance. Other
 publications define the anticodon abundance in terms of \trna gene copy number;
 however, in the context of this thesis, the anticodon abundance is usually
 quantified by \trna gene expression, and is thus proportional to the number of
 \trna molecules of each anticodon isoacceptor present in the cell.
-
-The \define{\rcu} of a codon is that codon’s contribution to the amino acid it
-codes for, relative to all other synonymous codons. The \rcu of all synonymous
-codons sums to \num{1}.
 
 The \define{\raa} of an anticodon is defined equivalently to the \rcu based on
 the anticodon abundance. That is, the contribution of an anticodon to its amino

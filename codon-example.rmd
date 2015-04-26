@@ -90,23 +90,33 @@ Codon usage with gene expression counts.
 ```{r}
 (counts = list(𝐴 = 10, 𝐵 = 20))
 
-m = x %>% mutate_each(funs(. * counts$.), 2, 3) %>%
+xp = x %>% mutate_each(funs(. * counts$.), 2, 3) %>%
     mutate(`𝐴 + 𝐵` = 𝐴 + 𝐵, µ = `𝐴 + 𝐵` / 2)
 
-m
+xp
 ```
 
 Relative codon usage.
 
 ```{r}
 genetic_code = data.frame(Codon = levels,
-                          Aminoacid = c('Lys', 'Lys', 'Met', 'Asp', 'Asp', 'Tyr'))
+                          AA = c('Lys', 'Lys', 'Met', 'Asp', 'Asp', 'Tyr'))
 
-xp = inner_join(x, genetic_code, by = 'Codon') %>%
-    group_by(Aminoacid) %>%
-    mutate_each(funs(. / sum(.)), -Codon, -Aminoacid) %>%
-    ungroup() %>%
-    select(-Aminoacid)
+m = inner_join(genetic_code, x, by = 'Codon') %>%
+    group_by(AA) %>%
+    mutate_each(funs(. / sum(.)), -Codon, -AA) %>%
+    ungroup()
 
-xp
+m
+```
+
+Relative codon usage using expression counts.
+
+```{r}
+mp = inner_join(genetic_code, xp, by = 'Codon') %>%
+    group_by(AA) %>%
+    mutate_each(funs(. / sum(.)), -Codon, -AA) %>%
+    ungroup()
+
+mp
 ```
