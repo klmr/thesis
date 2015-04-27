@@ -250,16 +250,20 @@
     \caption{\label{tab:#1}\labelfont{#2} #3}
     \endgroup}
 
+\newcommand*\floatpos{!ht}
+
 \newcommand\align@body[1]{%
-    \begin{figure}[h!]
+    % http://tex.stackexchange.com/a/11342/42
+    \expandafter\figure\expandafter[\floatpos]%
         #1
-    \end{figure}}
+    \endfigure}
 
 \newlength\fig@align@width
 
 \newcommand\align@spill[1]{%
-    % Use <http://tex.stackexchange.com/a/10507/42> to align properly.
-    \begin{figure}[h!]
+    % http://tex.stackexchange.com/a/11342/42
+    \expandafter\figure\expandafter[\floatpos]%
+        % Use <http://tex.stackexchange.com/a/10507/42> to align properly.
         \checkoddpage%
         \edef\side{\ifoddpage l\else r\fi}%
         \setlength\fig@align@width{\textwidth}
@@ -269,7 +273,7 @@
             \begin{minipage}{\fig@align@width}
                 #1
             \end{minipage}}
-    \end{figure}}
+    \endfigure}
 
 \newcommand\alignwrap@impl[3][]{
     \setlength\wrapoverhang{\marginparwidth}
