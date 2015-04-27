@@ -574,12 +574,12 @@ in the \mrna transcriptome.
 The existence of a relationship between codon usage and anticodon abundance,
 with the codon usage adapting to the availability of matching anticodon
 \trna[s], was first demonstrated in \species{eco} in the early 1980s
-\citep{Ikemura:1981,Ikemura:1985}. The influence of \trna abundance on codon
-choice is particularly important in organisms where no or only limited gene
-expression regulation exists: to modulate protein abundance, alternative,
-post-transcriptional regulatory mechanisms must be in charge of controlling
-protein abundance. Codon bias constraints imposed by \trna anticodon isoacceptor
-abundance can fulfil this regulatory role \citep{Horn:2008}.
+\citep{Ikemura:1981,Ikemura:1981a,Ikemura:1985}. The influence of \trna
+abundance on codon choice is particularly important in organisms where no or
+only limited gene expression regulation exists: to modulate protein abundance,
+alternative, post-transcriptional regulatory mechanisms must be in charge of
+controlling protein abundance. Codon bias constraints imposed by \trna anticodon
+isoacceptor abundance can fulfil this regulatory role \citep{Horn:2008}.
 
 This thesis focuses on \mmu development as a mammalian model system. It has
 previously been established that \trna gene transcription varies between
@@ -790,13 +790,28 @@ defined equivalently to the \rcu based on the anticodon abundance. That is, the
 contribution of an anticodon to its amino acid isotype, relative to the other
 anticodons in the same isotype.
 
-For all of the above, I exclude the stop codons.
-
 Several publications use the term \define[\defineword{codon usage bias} the
 difference of in codon usage frequency or relative codon usage between sets of
 genes]{\cub} to describe divergence in codon usage between different sets of
 genes within a genome, or differences between genomes. The \cub is then
-equivalent either to the codon usage as defined in this thesis, or the \rcu.
+equivalent to the variation in either the codon usage as defined above, or the
+\rcu.
+
+To study whether \trna anticodon isoacceptor availability influences translation
+efficiency, we want to compare the demand in codons in transcribed genes to the
+supply in matching anticodon aminoacyl-\trna[s]. In this thesis, we do this by
+calculating the correlation between the \rcu and the \raa. This gives us a
+measure of how well the set of codons in a gene, gene set or transcriptome are
+adapted to the \trna abundance. This correlation ignores wobble base pairing; in
+fact, some codons are not matched by any anticodon and would thus negatively
+impact the correlation. In the following we disregarded these codons when
+calculating the codon--anticodon correlation, rather than estimating the extent
+of matching of a given anticodon to different codons via wobbling. Despite this
+shortcoming, we find that this simple correlation works well in estimating
+codon--anticodon correlation (\cref{sec:trna},
+\cref{fig:codon-anticodon-abundance}), and performs comparably to other
+measures, such as distributing a codon’s usage between all its matching \trna
+anticodons according to their abundance \citep{Ikemura:1981}.
 % >>>
 
 \section{Structure of this thesis}
