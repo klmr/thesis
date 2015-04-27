@@ -358,6 +358,7 @@
 \newspecies{hsa}{Homo sapiens}
 \newspecies{dmel}{Drosophila melanogaster}
 \newspecies{cel}{Caenorhabditis elegans}
+\newspecies{eco}{Escherichia coli}
 
 \newcommand*\abbr[1]{\csuse{abbr@#1}}
 
