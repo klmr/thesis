@@ -1,41 +1,31 @@
-\chapter{\abbr{rna} sequencing quantifies protein-coding gene expression}
-\todo{Move to intro}
+\section{\abbr{rna} sequencing quantifies protein-coding gene expression}
 
-\section{The transcriptome reflects the state of the cell}
+\subsection{The transcriptome reflects the state of the cell}
 
-Cells are complex, self-contained units of life, with a cell membrane made up of
-a lipid bilayer, which defines a boundary between the outside world and
-everything that belongs to the cell. Inside the cell, a highly complex machinery
-made up of many parts keeps the cell alive.
-
-As we have seen in the introduction, the central part of this machinery is
-abstracted by the Central Dogma of molecular biology, with the \dna at one end
-encoding the hereditary identity of the cell, and the proteins at the other end
-as the effectors of this information.
+As we have seen, the central part of the cellular machinery is abstracted by the
+central dogma of molecular biology, with the \dna at one end encoding the
+hereditary identity of the cell, and the proteins at the other end as the
+effectors of this information.
 
 It is therefore proteins that determine how a cell behaves, and changes in
 proteins abundance ultimately determine changes in cellular function. The
 entirety of protein abundance in the cell at a given instance is called the
 \define{proteome}. Unfortunately, quantifying the proteome in an unbiased
 fashion is hard and expensive\todo[ref]{}. Instead, modern biology uses the
-abundance of \mrna molecules, which code for individual proteins (the
-\define{transcriptome}), as an accurate proxy of the proteome. The
-appropriateness of this approach has been verified in numerous
-studies\todo[ref]{}.\todo{Post-translational modifications? Mention in the intro?}
-
-\section{Measuring \abbr{mrna} expression levels}
-
-\todo{Add more, older historical context: blotting, rt-PCR, qrt-PCR}
+abundance of \mrna molecules, coding for individual proteins (the
+\define[\defineword{transcriptome} the entirety of the \rna molecules present in
+the cell at a given time]{transcriptome}), as an accurate proxy of the proteome.
+The appropriateness of this approach has been verified in numerous
+studies\todo[ref]{}.
 
 \subsection{Microarrays}
 
-\todo{In ~2000}
-Historically, the abundance of \mrna has been determined using specific probes,
-which hybridise to complementary target \mrna sequences. In order to determine
-the abundance of many different \mrna[s] simultaneously, large arrays of
-different probes can be generated and queried in parallel. Due to their
-miniaturisation, these arrays are known as \define{expression
-microarrays} \citep{Schena:1995}.\todo{Talk about variety of arrays? cDNA arrays, Affy, Illumina}
+Until recently, the abundance of \mrna has been mostly determined using specific
+probes, which hybridise to complementary target \mrna sequences. In order to
+determine the abundance of many different \mrna[s] simultaneously, large arrays
+of different probes can be generated and queried in parallel. Due to their
+miniaturisation, these arrays are known as \define{expression microarrays}
+\citep{Schena:1995}.
 
 While microarrays are still playing an important role in transcriptome analysis,
 they have recently been superseded by another technology due, mainly, to the
@@ -71,7 +61,7 @@ high-quality results, is highly replicable, has very low noise, and is sensitive
 to transcripts present at low concentration (with a typical protocol, even
 single transcripts are often picked up).
 
-\subsubsection{\abbr{rnaseq} sample preparation}
+\paragraph{\abbr{rnaseq} sample preparation}
 
 \rnaseq analysis starts with the enrichment of relevant transcripts from a
 sample’s total \rna pool. This is important since the \rna fraction that we are
@@ -112,7 +102,7 @@ high-throughput sequencing machine (\cref{fig:rna-seq-workflow}).
     reference and counted on features of interest. (Adapted from
     \citet{Mortazavi:2008}).\todo{Figure draft}}
 
-\subsubsection{Computational processing of the sequencing information}
+\paragraph{Computational processing of the sequencing information}
 
 Sequencing the \rnaseq samples yields short-read libraries, typically several
 tens of millions of reads in size, with reads of uniform length from \SI{25}{bp}
@@ -136,7 +126,7 @@ sequenced reads, as well as the identification of antisense information within
 (intronic regions in) a gene body, which would otherwise confound the expression
 estimate \citep{Parkhomchuk:2009}.\todo{Figure}
 
-\subsubsection{Expression normalisation}
+\subsection{Expression normalisation}
 
 Since the ultimate goal of \rnaseq is to quantify transcript abundance, the next
 step is to quantify the number of reads mapping to genomic features. In the
@@ -189,7 +179,7 @@ their absolute abundance in the original sample was the same.
 To compare transcript abundance across biological samples, a different approach
 has to be taken instead.
 
-\subsubsection{Differential expression}
+\subsection{Differential expression}
 
 One of the main uses of \rnaseq data is to compare and contrast gene expression
 between different conditions, such a between tissues, between different species,
