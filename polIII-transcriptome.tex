@@ -31,21 +31,84 @@ profiles in the flanking regions of the genomic features. In particular, while
 and enhancer structure. These differences could have strong effects on the
 binding profile of active \pol3 on the target loci.
 
-I avoided this problem by only reporting a single match per read, even if
-multiple matches were possible. This assigns the read to an arbitrary locus
-amongst its possible match hits. As long as all potential match positions for a
-read fall into the same type of annotation, this does not pose a problem for the
+I avoided this by only reporting a single match per read, even if multiple
+matches were possible. This assigns the read to an arbitrary locus amongst its
+possible match hits. As long as all potential match positions for a read fall
+into the same type of annotation, this should not pose a problem for the
 analysis: all we are interested in is to say which annotation type a read falls
 into, not where on the genome.
 
-\todo[inline]{Show distribution of features binding pol3}
+I then counted reads overlapping with each of the annotations mentioned above
+and calculated \tpm[s]. \Cref{fig:pol3-coverage} compares the abundance of \pol3
+binding on different features. As expected, \trna accounts for a majority of the
+total binding. Unfortunately, this makes it hard to assess the remaining
+variability visually. The remainder of the data is therefore summarised again in
+tabular format, for just one stage (\cref{tab:pol3-coverage}).
 
-Disregarding unannotated regions, we can see that \trna gene transcription
-accounts for about \num{25} per cent of the total \pol3 binding across mouse
-development. The remainder is split up between other types of non-coding
-\rna[s].
+\textfig{pol3-coverage}{body}{\textwidth}
+    {Polymerase \abbrsc{III} coverage,}
+    {compared across different feature types in six stages of development in
+    liver. Strikingly, the E18.5 stage shows strongly reduced overall \trna
+    activity. This is due to a single replicate, which pulls down the average.}
 
-… with a special focus on one class
-of \define{retrotransposons}: \abbr{transsine}s.
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{@{}lr@{}}
+        \toprule
+        Feature & {Prop (\%)} \\
+        \midrule
+        \abbr{rrna} & 31.1 \\
+        \abbr{transsine} & 11.7 \\
+        \abbr{ncrna} & 10.6 \\
+        repeat & 10.3 \\
+        \abbrsc{LTR} & 10.2 \\
+        pseudogene & 9.7 \\
+        protein-coding & 9.3 \\
+        \abbr{transline} & 7.2 \\
+        \bottomrule
+    \end{tabular}
+    \tabcap{pol3-coverage}{Polymerase \abbrsc{III} coverage}{excluding
+    \abbr{trna} genes for liver E15.5.}
+\end{table}
 
-\todo[inline]{Zoom in on SINEs}
+Interestingly, the proportions with the extreme skew towards \trna genes shown
+in \cref{fig:pol3-coverage} are similar to those reported in \citet{Raha:2010}
+for \pol2 association with \pol3 genes and repeats. As can be seen in
+\cref{tab:pol3-coverage}, with the exception of \rrna and \abbr{transline}, all
+features have very similar coverage proportions. These numbers are probably
+skewed by the \pol3 \chipseq background signal, which has not been removed from
+the data, on the assumption that, as long as all features are susceptible to the
+same amount of spurious signal, the influence on the proportions would be
+negligible. Comparing the signal strength from the input libraries and the \pol3
+\chip reveals that this may not be the case after all (see \cref{sec:appendix}).
+The analysis therefore needs to be repeated with careful consideration being
+given to the background noise levels.
+
+Nevertheless, taken together with the observation reported by
+\citet{Carriere:2012}, the results compelled me to take a closer look at the
+binding of \transsine by \pol3. \transsine are a type of retrotransposons that
+are highly abundant in the genome: as much as \SI{13}{per cent} of the genome
+falls into \transsine[s] in mammalian genomes, and there are in the order of
+\num{1500000} gene copies \citep{Lander:2001}. The fact that they possess a
+\pol3 promoter means that they can, in some cases, be transcribed in vitro
+\citep{White:1998}. It is generally assumed that they do not perform a function
+in the cell and are usually not actively transcribed. However, as the results by
+\citet{Carriere:2012} indicate that there is indeed limited transcription of
+\transsine in mammals, we should be able to observe this in our \pol3 \chip
+data.
+
+Testing this is not trivial, since \transsine[s] are repeat elements and we thus
+cannot directly map reads to unique locations, similar to \trna genes. In the
+following, rather than looking at the flanking sequences to disambiguate
+non-uniquely mapping reads as I did for \trna, I pooled classes of \transsine
+gene copies and mapped \pol3 \chipseq reads to the consensus sequence of
+\num{676} classes (downloaded from \name{RepBase} \citep{Jurka:2005}). I find
+low but significant enrichment of \pol3 to \transsine consensus sequences,
+compared to input (\cref{fig:sine-summary}).
+
+\textfig{sine-summary}{spill}{\textwidth}
+{\abbr{transsine} binding by \abbr{pol3} across development in liver and brain.}{}
+
+Despite the challenges of working with repeat regions, the quantification of
+changes in \transsine binding by \pol3 during mouse development seems feasible,
+and I will pursue this project further.
