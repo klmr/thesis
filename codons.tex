@@ -226,7 +226,7 @@ frequencies within a sample were normalised by the total codon frequency in the
 sample, to obtain codon proportions:
 
 \begin{equation}
-    x_i^* = \sum_{g\in G} x_{ig} \left(\sum_j \sum_{g\in G} x_{jg}\right)^{-1}
+    x_i^* = \left(\sum_{g\in G} x_{ig}\right) \bigg/ \left(\sum_j \sum_{g\in G} x_{jg}\right)
 \end{equation}
 
 Where \(i, j \in \codon{AAA},\dots,\codon{TTT}\) are the codons (excluding stop
