@@ -42,8 +42,11 @@ following disadvantages \citep{Casneuf:2007,Marioni:2008}:
         while identical transcripts’ relative abundances can be compared across
         arrays, abundance of different transcripts \emph{on the same array}
         cannot be compared.
-    \item \todo[inline]{Splicing (mention Burge:2008 here?)}
-    \item \todo[inline]{Allele-specific expression}
+    \item Several interesting biological questions which cannot be answered by
+        microarray analysis at all, or only with difficulties, become tractable
+        using \abbr{rnaseq}; these include the analysis of isoforms from
+        alternative splicing \citep{Katz:2010} and of allele-specific expression
+        \citep{Pickrell:2010}.
 \end{enumerate*}
 
 \subsection{\abbr{rnaseq}}
@@ -53,10 +56,7 @@ sequencing for \rna quantification
 \citep{Nagalakshmi:2008,Mortazavi:2008,Marioni:2008}. In contrast to other \rna
 quantification approaches, whole-transcriptome shotgun sequencing (now typically
 known as \rnaseq) is entirely unbiased in that it does not rely on a
-pre-selected set of transcripts to assay.
-\todo{Mention splicing (\citet{Katz:2010}) and allele-specific
-expression (\citet{Pickrell:2010})}
-The approach has been shown to yield
+pre-selected set of transcripts to assay. The approach has been shown to yield
 high-quality results, is highly replicable, has very low noise, and is sensitive
 to transcripts present at low concentration (with a typical protocol, even
 single transcripts are often picked up).
@@ -149,12 +149,10 @@ where \(x^*_i\) is the \rpkm of transcript \(i\), \(x_i\) is the raw tread count
 on the transcript, \(\tilde l_i\) is the effective length of the transcript
 (i.e.\ its length minus the fragment length plus \num{1}) and \(n\) is the
 library size (in number of reads). The constant multiplier \num{1e9} merely
-serves to make otherwise very small values more manageable. As a consequence, a
-single transcript in the sample yields in the order of \SI{1}{\rpkm} (but this
-is sample dependent). With the advent of paired-end sequencing the \rpkm has
-been supplanted by the \fpkm, simply replacing the number of reads in the
-equation with the number of fragments (i.e.\ the read pairs rather than single
-reads in the case of paired-end data).
+serves to make otherwise very small values more manageable. With the advent of
+paired-end sequencing the \rpkm has been supplanted by the \fpkm, simply
+replacing the number of reads in the equation with the number of fragments
+(i.e.\ the read pairs rather than single reads in the case of paired-end data).
 
 A related measure is \tpm, which additionally normalise by the total transcript
 abundance \citep{Li:2010}. In other words,
