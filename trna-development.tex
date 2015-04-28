@@ -309,11 +309,11 @@ across all genes:
     c_{xy} = \sum_i c_{xiy} \text{\ .}
 \end{equation}
 
-Relative codon usages \(c_{xy}^*\) were then calculated by subtracting each
-codon usage by the sum of the codon usages of a given stage:
+Relative codon usages \(c_{xy}^*\) were then calculated by dividing each codon
+usage by the sum of the codon usages of a given stage:
 
 \begin{equation}
-    c_{xy}^* = c_{xy}\left(\sum_k c_{ky}\right)^{-1} \text{\ .}
+    c_{xy}^* = \frac{c_{xy}}{\sum_k c_{ky}} \text{\ .}
 \end{equation}
 
 We find that at the transcriptome level, codon abundance is highly stable across

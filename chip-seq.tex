@@ -80,9 +80,9 @@ target \trna gene \(i\) randomly with probability
 
 \begin{equation}
     p_i = \begin{cases}
-        c_i\left(\sum_{x \in T}c_x\right)^{-1} &
+        c_i \big/ \sum_{x \in T}c_x &
             \text{if \(\sum_{x \in T}c_x \neq 0\),} \\
-        \vert T \rvert^{-1} & \text{otherwise.}
+        1 \big/ \vert T \rvert & \text{otherwise.}
     \end{cases}
 \end{equation}
 
