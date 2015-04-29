@@ -3,21 +3,32 @@
 
 \subsection{\abbr{chipseq} is a \abbr{dna} binding assay}
 
-\chipseq is a family of assays based on high-throughput sequencing, like
-\rnaseq, but predating the latter \citet{Johnson:2007}. There are several
-distinct applications of \chipseq but they all rely on the identification and
-quantification of binding sites of specific proteins to \dna. The most common
-use of \chipseq is the identification of novel \tf binding
-sites\todo[ref]{ENCODE and others}.
+\define[\defineword{\abbr{chipseq}} \chip followed by sequencing]{\chipseq} is a
+family of assays based on high-throughput sequencing, similar to \rnaseq, but
+pre-dating the latter \citep{Johnson:2007}. Unlike \rnaseq, which quantifies the
+abundance of \rna transcripts in the cell, \chipseq pinpoints loci of
+protein--\dna interaction for specific proteins that can be targeted with an
+antibody. There are several distinct applications of \chipseq that all rely on
+the identification and quantification of binding sites of specific proteins to
+\dna. The most common uses of \chipseq are
+\begin{enumerate*}
+    \item the identification of novel \tf binding sites by targeting specific,
+        known \tf[s], and
+    \item the profiling of histone modifications such as methylation or
+        acetylation, which reveal information about the transcriptional activity
+        of the proximal sequence (see \cref{sec:transcription})
+        \citep{Barski:2007}.
+\end{enumerate*}
 
 Briefly, a sample is prepared by cross-linking proteins to the \dna in solution
-using formaldehyde. Next, sonication or MNase treatment is used to shear \dna
-into smaller fragments. Some of these fragments will have the protein of
-interest bound. Using an antibody that recognises the protein of interest as
-specifically and sensitively as possible, these fragments are purified. The
-protein is then unlinked and the \dna fraction is again purified, size selected,
-ligated to sequencing adapters, amplified and sequenced
-(\cref{fig:chip-seq-workflow}).\todo[ref]{}\todo{Something about the challenges of ChIP (antibody affinity etc.)}
+using formaldehyde to ensure that transient interactions are captured, instead
+of being dissolved during the assay preparation. Next, sonication or MNase
+treatment is used to shear \dna into smaller fragments. Some of these fragments
+will have the protein of interest bound. Using an antibody that recognises the
+protein of interest as specifically and sensitively as possible, these fragments
+are purified. The protein is then unlinked and the remaining \dna fraction is
+again purified, size selected, ligated to sequencing adapters, amplified and
+sequenced (\cref{fig:chip-seq-workflow}) \citep{Park:2009}.
 
 \textfig{chip-seq-workflow}{body}{0.5\textwidth}
     {Possible \chipseq workflow.}
