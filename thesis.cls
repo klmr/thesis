@@ -122,6 +122,7 @@
 \newcommand*\secondaryname{orange}
 \newcommand*\tertiaryname{green}
 \newcommand*\quarternaryname{purple}
+\newcommand*\quinaryname{yellow}
 
 \colorlet{thesis@toccolor}{black}
 \colorlet{thesis@linkcolor}{black!70}
