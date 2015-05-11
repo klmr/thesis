@@ -117,7 +117,16 @@ from both ends or from one end only. In the first case, instead of a single read
 per fragment we end up with paired-end reads, which are separated by a known
 distance. Mapping and assembling paired-end reads creates further algorithmic
 challenges but increases the amount of information contained in a read (pair),
-which increases the amount of unambiguously mappable data.\todo[ref]{}\todo{Figure}
+which increases the amount of unambiguously mappable data
+(\cref{fig:paired-end-reads}) \citep{Langmead:2012}.
+
+\textfig{paired-end-reads}{body}{0.75\textwidth}
+    {Transcript fragment with paired-end reads.}
+    {The transcript is sequenced from both ends, resulting in a read pair whose
+    distance to each other can be inferred from the known approximate fragment
+    length. As long as one of the reads is “anchored” by being uniquely mapped,
+    the paired read can be used to improve the mapping confidence in a repeat
+    region.}
 
 Another distinction is made for fragments which are tagged and selected in such
 a way as to be strand-specific. This allows identification of the strand from
