@@ -89,11 +89,9 @@ also polyadenylated and exported from the nucleus into the cytoplasm
 \citep{Cheng:2005}.
 
 The enriched \rna is subsequently fragmented to a uniform length of about
-\SI{200}{nt}, and reverse transcribed into \cdna. The order of these two steps
-may vary, as both variants have advantages and disadvantages.\todo{Mention
-amplification?} Ultimately,
-though, the result is a \cdna library of fragments which are then sequenced on a
-high-throughput sequencing machine (\cref{fig:rna-seq-workflow}).
+\SI{200}{nt}, and reverse transcribed into \cdna. Ultimately, the result is a
+\cdna library of fragments which are then sequenced on a high-throughput
+sequencing machine (\cref{fig:rna-seq-workflow}).
 
 \textfig{rna-seq-workflow}{body}{0.8\textwidth}
     {Possible \rnaseq workflow.}
@@ -112,7 +110,7 @@ up to (currently) about \SI{125}{bp}. These are then mapped to a reference ---
 either the whole genome or the transcriptome --- or assembled \emph{de novo}
 (usually in absence of a suitable reference). This assigns reads to genomic
 locations, which can be queried and matched to features (usually genes or
-exons).\todo[ref]{Cox:2006?}\todo{Add code examplea}
+exons) \citep{Cox:2007,Kim:2013,Anders:2014}.
 
 One important distinction depends on whether the \cdna fragments were sequenced
 from both ends or from one end only. In the first case, instead of a single read
