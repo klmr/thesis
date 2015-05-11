@@ -30,9 +30,17 @@ are purified. The protein is then unlinked and the remaining \dna fraction is
 again purified, size selected, ligated to sequencing adapters, amplified and
 sequenced (\cref{fig:chip-seq-workflow}) \citep{Park:2009}.
 
-\textfig{chip-seq-workflow}{body}{0.5\textwidth}
-    {Possible \chipseq workflow.}
-    {\todo{Add correct image, explanation}}
+\textfig{chip-seq-workflow}{body}{0.75\textwidth}
+    {Typical \chipseq workflow.}
+    {Starting from a sample with a target protein bound to \dna (\num{1}),
+    the protein is covalently cross-linked to the \dna (mainly with
+    formaldehyde, \num{2}). Next, the \dna is fragmented (mainly via sonication,
+    \num{3}) and the protein-bound fragments are immunoprecipitated with a
+    specific antibody targeting the protein of interest (\num{4}). The protein
+    is unlinked and the \dna purified (\num{5}). This is followed by sequencing
+    library preparation, sequencing and mapping of the read data back to the
+    reference (\num{6}). This workflow follows the general outline presented in
+    e.g.\ \citet{Landt:2012}.}
 
 \subsection{Quantifying expression of \abbr{trna} genes}
 
