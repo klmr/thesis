@@ -666,13 +666,14 @@ In particular, this implies that it is unknown whether mammalian cells use the
 protein-coding genes, and thus the flow of information from genes to proteins.
 As a first step in answering this question, we need to know to what extent \trna
 anticodon isoacceptor abundance correlates with codon usage bias. Importantly,
-it is not possible to infer this from the findings in non-mammalian organisms,
-since protein abundance is regulated differently, with a heavy focus on gene
+it is not possible to infer this from findings in non-mammalian organisms, since
+protein abundance is regulated differently, with a heavy focus on gene
 expression regulation via transcription factors in mammals. In fact, the
 strongly tissue-specific regulation of gene expression in mammals makes it
 plausible that translation-related effects have at best a limited regulatory
 effect on the abundance of proteins, and this is supported by recent estimates
-of \mrna and protein abundance \citep{Li:2014,Csardi:2014,Jovanovic:2015}.
+of a strong correlation between \mrna and protein abundance
+\citep{Li:2014,Csardi:2014,Jovanovic:2015}.\todo{@John: I don’t think this is true}
 
 In the following chapters, we will take a closer look at changes in codon usage
 and \trna anticodon isoacceptor abundance, and at the quantitative relationship
@@ -763,8 +764,8 @@ and \(B\text: 20\), we can summarise the codon usage as follows:
 Note that we have omitted the stop codon, but not the start codon, since the
 latter corresponds to a \trna isoacceptor, while the former does not. The
 columns \(\sum(A,B)\) and \(\overline{A,B}\) show how the aggregated codon usage
-of a transcriptome consisting of these two genes would look like, either as the
-sum of the codon usage of all genes, or as the arithmetic mean. In the following
+of a transcriptome consisting of these two genes would look, either as the sum
+of the codon usage of all genes, or as the arithmetic mean. In the following
 chapters, we will rarely look at the codon usage of single transcripts, and
 rather at either the sum codon usage or the mean codon usage of gene sets. When
 comparing the codon usage of gene sets of different size (to determine, for
@@ -836,7 +837,7 @@ and consequently
     \end{subtable}%
     \tabcap{rcu}{Example \abbr{rcu}}{with the amino acid for each codon shown;
     in each column, the values for the same amino acid sum to \num{1}.
-    Parenthesised decimals denote periodic decimals.}
+    Parentheses denote periodic decimals.}
 }
 
 \Cref{tab:rcu} illustrates two interesting things. First, when considering only
@@ -860,7 +861,7 @@ contribution of an anticodon to its amino acid isotype, relative to the other
 anticodons in the same isotype.
 
 Several publications use the term \define[\defineword{codon usage bias} the
-difference of in codon usage frequency or relative codon usage between sets of
+difference in codon usage frequency or relative codon usage between sets of
 genes]{\cub} to describe divergence in codon usage between different sets of
 genes within a genome, or differences between genomes. The \cub is then
 equivalent to the variation in either the codon usage as defined above, or the
