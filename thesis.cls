@@ -253,15 +253,16 @@
 
 \newcommand*\floatpos{!ht}
 
-\newcommand\align@body[1]{%
+\newcommand\align@body[2]{%
     % http://tex.stackexchange.com/a/11342/42
     \expandafter\figure\expandafter[\floatpos]%
         #1
+        #2
     \endfigure}
 
 \newlength\fig@align@width
 
-\newcommand\align@spill[1]{%
+\newcommand\align@spill[2]{%
     % http://tex.stackexchange.com/a/11342/42
     \expandafter\figure\expandafter[\floatpos]%
         % Use <http://tex.stackexchange.com/a/10507/42> to align properly.
@@ -274,6 +275,7 @@
             \begin{minipage}{\fig@align@width}
                 #1
             \end{minipage}}
+            #2
     \endfigure}
 
 \newcommand\alignwrap@impl[3][]{
@@ -285,7 +287,7 @@
         #3
     \end{wrapfigure}}
 
-\newcommand\align@wrap[1]{\alignwrap@impl{0.5\textwidth}{#1}}
+\newcommand\align@wrap[2]{\alignwrap@impl{0.5\textwidth}{#1#2}}
 
 % Thin wrapper around align@wrap, for use in the document instead of
 % textfloat(bare), when the width needs to be set explicitly.
@@ -298,9 +300,7 @@
     % #3: content
     % #4: figure caption
     % #5: figure description
-    \csuse{align@#2}{%
-        #3
-        \figcap{#1}{#4}{#5}}}
+    \csuse{align@#2}{#3}{\figcap{#1}{#4}{#5}}}
 
 \newcommand\textfloatbare[2]{
     % #1: alignment command
