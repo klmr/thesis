@@ -256,8 +256,8 @@
 \newcommand\align@body[2]{%
     % http://tex.stackexchange.com/a/11342/42
     \expandafter\figure\expandafter[\floatpos]%
-        #1
-        #2
+        #1%
+        #2%
     \endfigure}
 
 \newlength\fig@align@width
@@ -273,9 +273,9 @@
         \addtolength\fig@align@width{\marginparsep}
         \makebox[\textwidth][\side]{%
             \begin{minipage}{\fig@align@width}
-                #1
+                #1%
             \end{minipage}}
-            #2
+            #2%
     \endfigure}
 
 \newcommand\alignwrap@impl[3][]{
@@ -284,7 +284,7 @@
     \setlength\fig@align@width{\wrapoverhang}
     \addtolength\fig@align@width{#2}
     \begin{wrapfigure}[#1]{o}{\fig@align@width}
-        #3
+        #3%
     \end{wrapfigure}}
 
 \newcommand\align@wrap[2]{\alignwrap@impl{0.5\textwidth}{#1#2}}
