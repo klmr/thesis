@@ -364,6 +364,7 @@
 \newspecies{dmel}{Drosophila melanogaster}
 \newspecies{cel}{Caenorhabditis elegans}
 \newspecies{eco}{Escherichia coli}
+\newspecies{scer}{Saccharomyces cerevisiae}
 
 \newcommand*\abbr[1]{\csuse{abbr@#1}}
 

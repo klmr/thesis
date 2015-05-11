@@ -133,7 +133,16 @@ a way as to be strand-specific. This allows identification of the strand from
 which fragments originate, and aids in the unambiguous reassembly of the
 sequenced reads, as well as the identification of antisense information within
 (intronic regions in) a gene body, which would otherwise confound the expression
-estimate \citep{Parkhomchuk:2009}.\todo{Figure}
+estimate (\cref{fig:strand-specific-rna-seq}) \citep{Yassour:2010}.
+
+\textfig{strand-specific-rna-seq}{spill}{\textwidth}
+    {Effect of strand-specific mapping on feature identification.}
+    {\rnaseq coverage data from \species{scer} without strand specificity (top)
+    and from two libraries prepared with forward- and reverse-strand specific
+    protocols, as well as the feature units thus found. This example show that
+    strand-specific mapping can lead to the discovery of new reverse-strand
+    features, which may skew the expression quantification of forward-strand
+    features (figure modified from \citet{Yassour:2010}, licensed under CC-BY).}
 
 \subsection{Expression normalisation}
 
