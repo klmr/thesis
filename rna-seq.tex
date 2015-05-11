@@ -95,12 +95,12 @@ sequencing machine (\cref{fig:rna-seq-workflow}).
 
 \textfig{rna-seq-workflow}{body}{0.8\textwidth}
     {Possible \rnaseq workflow.}
-    {Starting from a total \rna sample, the \rna of interest is enriched either
-    via poly(A) selection or \rrna depletion. The enriched fraction is
-    fragmented and size-selected. The fragments are reverse transcribed into
-    \cdna and sequenced. The resulting sequencing reads are aligned back to a
-    reference and counted on features of interest. (Adapted from
-    \citet{Mortazavi:2008}).}
+    {Starting from a total \rna sample (\num{1}), the \rna of interest is
+    enriched either via poly(A) selection or \rrna depletion (\num{2}). The
+    enriched fraction is fragmented and size-selected (\num{3}). The fragments
+    are reverse transcribed into \cdna (\num{4}) and sequenced. The resulting
+    sequencing reads are aligned back to a reference (\num{5}) and counted on
+    features of interest (adapted from \citet{Mortazavi:2008}).}
 
 \subsubsection{Computational processing of the sequencing information}
 
@@ -188,9 +188,9 @@ It is important to note that both approaches give a sample dependent abundance,
 and thus neither of these units makes measured transcript abundance comparable
 across different experiments: Consider two biological conditions which are
 identical except for a transcript \(X\), which is highly abundant in condition
-\num{1}, and not present in condition \num{2}. If we sequence the same amount of
+\(A\), and not present in condition \(B\). If we sequence the same amount of
 \mrna from both samples, relatively fewer fragments of the non-\(X\) transcript
-will exists for condition \num{1} relative to condition \num{2}, even though
+will exists for condition \(A\) relative to condition \(B\), even though
 their absolute abundance in the original sample was the same
 \citep{Robinson:2010a}.
 
@@ -207,7 +207,8 @@ the phenotypic change.
 
 To find statistically significant differences in gene expressions between two
 samples, we want to test the null hypothesis that the gene count in both samples
-comes from the same distribution with the same mean.
+comes from the same distribution with the same mean (\(H_0: \mu_{iA} =
+\mu_{iB}\) for a gene \(i\) between two conditions \(A\) and \(B\)).
 
 Reads are assumed to be sampled independently from a population, thus read
 counts on a given feature can be approximated by a Poisson distribution
@@ -221,17 +222,17 @@ can be used instead.
 \end{equation}
 
 for each gene \(i\) in library \(j\), with mean \(\mu_{ij}\) and variance
-\(\sigma^2_{ij}\).\todo{Formula for \(\sigma^2\)}
+\(\sigma^2_{ij}\).\todo{Formulas for \(\mu\), \(\sigma^2\)}
 
 To account for different sampling depth across libraries, it is furthermore
 assumed that most genes do not drastically change expression between biological
 samples. But the few that are highly expressed in some but not all samples have
 a large influence on the total count. Thus, rather than normalising by the
-ratios between total library sizes, each library \(j = 1 \dots m\) is normalised
-by a summary of the ratios between read counts for all \(n\) genes across
-libraries. Generalised to more than two libraries, gene expression ratios are
-calculated as the ratio of each gene’s read count to the geometric mean across
-samples:
+ratios between total library sizes, each library \(j = 1 \dots m\) can be
+normalised by a summary of the ratios between read counts for all \(n\) genes
+across libraries \citep{Robinson:2010a,Anders:2010}. Generalised to more than
+two libraries, gene expression ratios can be calculated as the ratio of each
+gene’s read count to the geometric mean across samples:
 
 \begin{equation}
     s_j = \operatorname{median}_{i = 1}^n
@@ -245,4 +246,4 @@ small number of samples. Different solutions for this problem exist.
 \name{edgeR} \citep{Robinson:2010} fixes one parameter per sample and only
 estimates the other for each gene, while \name{DESeq} by \citet{Anders:2010}
 pools data across genes of similar expression strength, and performs local
-regression to find the dispersion.\todo{need to mention estimation of dispersion parameter}
+regression to find the dispersion.
