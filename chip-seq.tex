@@ -10,7 +10,7 @@ similar to \rnaseq, but pre-dating the latter \citep{Johnson:2007}. Unlike
 \chipseq pinpoints loci of protein--\dna interaction for specific proteins that
 can be targeted with an antibody. There are several distinct applications of
 \chipseq that all rely on the identification and quantification of binding sites
-of specific proteins to \dna. The most common uses of \chipseq are
+of specific proteins to \dna. The most common uses of \chipseq are:
 \begin{enumerate*}
     \item the identification of novel \tf binding sites by targeting specific,
         known \tf[s], and
@@ -22,13 +22,15 @@ of specific proteins to \dna. The most common uses of \chipseq are
 
 Briefly, a sample is prepared by cross-linking proteins to the \dna in solution
 using formaldehyde to ensure that transient interactions are captured, instead
-of being dissolved during the assay preparation. Next, sonication or MNase
-treatment is used to shear \dna into smaller fragments. Some of these fragments
-will have the protein of interest bound. Using an antibody that recognises the
-protein of interest as specifically and sensitively as possible, these fragments
-are purified. The protein is then unlinked and the remaining \dna fraction is
-again purified, size selected, ligated to sequencing adapters, amplified and
-sequenced (\cref{fig:chip-seq-workflow}) \citep{Park:2009}.
+of being dissolved during the assay preparation. Next, sonication or
+\define[\defineword{MNase} \dna-cleaving enzyme (nuclease) purified from
+specific bacteria]{MNase} treatment is used to shear \dna into smaller
+fragments. Some of these fragments will have the protein of interest bound.
+Using an antibody that recognises the protein of interest as specifically and
+sensitively as possible, these fragments are purified. The protein is then
+unlinked and the remaining \dna fraction is again purified, size selected,
+ligated to sequencing adapters, amplified and sequenced
+(\cref{fig:chip-seq-workflow}) \citep{Park:2009}.
 
 \textfig{chip-seq-workflow}{body}{0.75\textwidth}
     {Typical \chipseq workflow.}
