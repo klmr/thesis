@@ -163,14 +163,15 @@ abundance, the \rpkm, defined as
         \text{\ ,}
 \end{equation}
 
-where \(x^*_i\) is the \rpkm of transcript \(i\), \(x_i\) is the raw tread count
-on the transcript, \(\tilde l_i\) is the effective length of the transcript
-(i.e.\ its length minus the fragment length plus \num{1}) and \(n\) is the
-library size (in number of reads). The constant multiplier \num{1e9} merely
-serves to make otherwise very small values more manageable. With the advent of
-paired-end sequencing the \rpkm has been supplanted by the \fpkm, simply
-replacing the number of reads in the equation with the number of fragments
-(i.e.\ the read pairs rather than single reads in the case of paired-end data).
+where \(x^*_i\) is the \rpkm of transcript \(i\), \(x_i\) is the raw  number of
+reads annotated with transcript \(i\), \(\tilde l_i\) is the effective length of
+the transcript (i.e.\ its length minus the fragment length plus \num{1}) and
+\(n\) is the library size (in number of reads). The constant multiplier
+\num{1e9} merely serves to make otherwise very small values more manageable.
+With the advent of paired-end sequencing the \rpkm has been supplanted by the
+\fpkm, simply replacing the number of reads in the equation with the number of
+fragments (i.e.\ the read pairs rather than single reads in the case of
+paired-end data).
 
 A related measure is \tpm, which additionally normalise by the total transcript
 abundance \citep{Li:2010}. In other words,
@@ -190,22 +191,23 @@ identical except for a transcript \(X\), which is highly abundant in condition
 \num{1}, and not present in condition \num{2}. If we sequence the same amount of
 \mrna from both samples, relatively fewer fragments of the non-\(X\) transcript
 will exists for condition \num{1} relative to condition \num{2}, even though
-their absolute abundance in the original sample was the same.
+their absolute abundance in the original sample was the same
+\citep{Robinson:2010a}.
 
 To compare transcript abundance across biological samples, a different approach
-has to be taken instead.
+has to be taken.
 
 \subsection{Differential expression}
 
 One of the main uses of \rnaseq data is to compare and contrast gene expression
-between different conditions, such a between tissues, between different species,
-between healthy and tumour tissues, \etc. By doing so, we hope to establish
-which genes characterise differences and may thus be \emph{causal} of the
-phenotypic change.
+between different conditions, such as between tissues, between different
+species, between healthy and tumour tissues, \etc. By doing so, we hope to
+establish which genes characterise differences and may thus be \emph{causal} of
+the phenotypic change.
 
 To find statistically significant differences in gene expressions between two
 samples, we want to test the null hypothesis that the gene count in both samples
-comes from the same distribution with the same mean.\todo{More detail?}
+comes from the same distribution with the same mean.
 
 Reads are assumed to be sampled independently from a population, thus read
 counts on a given feature can be approximated by a Poisson distribution
