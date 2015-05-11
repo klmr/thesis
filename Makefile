@@ -81,7 +81,7 @@ clean: cleancache
 	${RM} figures.make
 	${RM} $(patsubst %.rmd,%.md,$(wildcard *.rmd))
 	${RM} style_klmrthesis/{build,dist,klmrthesis.egg-info}
-	${RM} _minted*
+	${RM} -r _minted*
 
 .PHONY: cleanall
 cleanall: clean
