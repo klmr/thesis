@@ -522,8 +522,10 @@ all hits in \cref{sec:appendix}).
 In the absence of clear evidence for nearby \tf binding sites driving
 differential expression, we hypothesised that the transcriptional regulation of
 nearby protein-coding genes might influence \trna gene expression. I therefore
-went on to look for enrichment of differentially expressed \trna genes in close
-vicinity to differentially expressed protein-coding genes.
+went on to look for enrichment of \de \trna genes in close vicinity to
+differentially expressed protein-coding genes: an enrichment of \de over non-\de
+\trna genes near \de protein-coding genes may indicate that regulation of \trna
+and protein-coding differential gene expression is driven by common factors.
 
 A test for colocalisation of differentially expressed \trna genes and
 differentially expressed \mrna genes was performed between developmental stages
@@ -543,16 +545,16 @@ nondifferentially expressed \trna genes with varying significance thresholds
 (\numlist{0.1;0.05;0.01}).
 
 As for the case of \tf binding sites, I was unable to demonstrate such an
-association unambiguously: for the contrasts mentioned above, I performed
-\num{9} tests each: one per combination of significance threshold and window
-size. The unadjusted \(p\)-values for liver are given in
-\cref{tab:colocalisation-liver}. Although some of the values fall below common
-thresholds for significance, to properly reject the hypothesis we would require
-a more consistent picture. Instead, modifying the parameters changes the outcome
-drastically. The best we can conclude is that for a window size of \SI{50}{kb}
-there seems to be some evidence of an effect, if we choose our significance
-threshold for differential expression of protein-coding genes stringently.
-However, in brain no such effect exists (\cref{sec:appendix}).
+association unambiguously: for the contrasts mentioned above (liver E15.5--P22,
+brain P4--P29), I performed \num{9} tests each: one per combination of
+significance threshold and window size. The unadjusted \(p\)-values for liver
+are given in \cref{tab:colocalisation-liver}. Although some of the values fall
+below common thresholds for significance, to properly reject the hypothesis we
+would require a more consistent picture. Instead, modifying the parameters
+changes the outcome drastically. The best we can conclude is that for a window
+size of \SI{50}{kb} there seems to be some evidence of an effect, if we choose
+our significance threshold for differential expression of protein-coding genes
+stringently. However, in brain no such effect exists (\cref{sec:appendix}).
 
 \begin{table}[!ht]
     \centering
