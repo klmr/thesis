@@ -519,11 +519,11 @@ suggesting that the upstream region of \trna genes does not contain regulatory
 sequences explaining the observed differences in \trna gene expression (table of
 all hits in \cref{sec:appendix}).
 
-In the absence of clear evidence for nearby \tf binding sites, we hypothesised
-that the transcription regulation of nearby protein-coding genes might influence
-\trna gene expression. I therefore went on to look for enrichment of
-differentially expressed \trna genes in close vicinity to differentially
-expressed protein-coding genes.
+In the absence of clear evidence for nearby \tf binding sites driving
+differential expression, we hypothesised that the transcriptional regulation of
+nearby protein-coding genes might influence \trna gene expression. I therefore
+went on to look for enrichment of differentially expressed \trna genes in close
+vicinity to differentially expressed protein-coding genes.
 
 A test for colocalisation of differentially expressed \trna genes and
 differentially expressed \mrna genes was performed between developmental stages
@@ -533,17 +533,59 @@ up-regulated \trna gene \(i\) we counted the number of up-regulated
 protein-coding genes, \(n_i\), and the total number of protein-coding genes,
 \(b_i\), in a genomic region centred on the \trna gene of interest. The analysis
 was performed for different window sizes (\SIlist{10;50;100}{kb}). This allowed
-us to compute the ratio \(r_i = {n_i}/{b_i}\), which represents \todo{… xyz}. We
-repeated this analysis for each non-differentially expressed \trna gene \(j\) to
-obtain the ratio \(r_j^*\). A Kolmogorov–Smirnov test was performed to assess
-whether the distribution of \(r\), corresponding to the ratios of up-regulated
+us to compute the ratio \(r_i = {n_i}/{b_i}\). We repeated this analysis for
+each non-differentially expressed \trna gene \(j\) to obtain the ratio
+\(r_j^*\). A Kolmogorov–Smirnov test was performed to assess whether the
+distribution of \(r\), corresponding to the ratios of up-regulated
 protein-coding genes in the vicinity of up-regulated \trna genes, was
 significantly different from the distribution \(r^*\) in the vicinity of
 nondifferentially expressed \trna genes with varying significance thresholds
 (\numlist{0.1;0.05;0.01}).
 
-As for the case of \tf binding sites, we were unable to demonstrate such an
-association.\todo{figure}
+As for the case of \tf binding sites, I was unable to demonstrate such an
+association unambiguously: for the contrasts mentioned above, I performed
+\num{9} tests each: one per combination of significance threshold and window
+size. The unadjusted \(p\)-values for liver are given in
+\cref{tab:colocalisation-liver}. Although some of the values fall below common
+thresholds for significance, to properly reject the hypothesis we would require
+a more consistent picture. Instead, modifying the parameters changes the outcome
+drastically. The best we can conclude is that for a window size of \SI{50}{kb}
+there seems to be some evidence of an effect, if we choose our significance
+threshold for differential expression of protein-coding genes stringently.
+However, in brain no such effect exists (\cref{sec:appendix}).
+
+\begin{table}[!ht]
+    \centering
+    \sisetup{
+        table-text-alignment=right,
+        table-number-alignment=right
+    }
+    \begin{tabular}{
+            @{}S[table-figures-decimal=0]
+            S[table-figures-decimal=2]
+            S[table-figures-decimal=3]@{}
+        }
+        \toprule
+        {Window size [\si{kb}]} & {Threshold} & {\(p\)-value} \\
+        \midrule
+        10 & 0.1 & 0.285 \\
+        10 & 0.05 & 0.358 \\
+        10 & 0.01 & 0.409 \\
+        50 & 0.1 & 0.013 \\
+        50 & 0.05 & 0.005 \\
+        50 & 0.01 & 0.001 \\
+        100 & 0.1 & 0.118 \\
+        100 & 0.05 & 0.107 \\
+        100 & 0.01 & 0.10 \\
+        \bottomrule
+    \end{tabular}
+    \tabcap{colocalisation-liver}
+        {Unadjusted \(p\)-values of colocalisation tests in liver.}
+        {The first column gives the window size (in \si{kb}) in which
+        colocalised protein-coding genes were counted. The second column give
+        the \(p\)-value significance threshold below which protein-coding genes
+        were called differentially expressed.}
+\end{table}
 
 Besides \emph{cis}-regulatory \emph{sequence} features, another possibility is
 that chromatin modifications are associated with the changes in \trna gene
