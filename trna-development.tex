@@ -21,32 +21,14 @@ is primarily a metabolic organ \citep{Si-Tayeb:2010}. Brain, by contrast, is a
 highly heterogeneous organ made up of many different cell types, with dynamic
 changes all through development \citep{Liscovitch:2013}.
 
-\alignwrap[10]{0.3\textwidth}{%
-    \vspace{-0.5\baselineskip}
-    \begin{tabular}{@{}lll@{}}
-        \toprule
-        & \abbr{mrna} & \abbr{trna} \\
-        \midrule
-        Raw counts per replicate & \(m_{ij}\) & \(t_{ij}\) \\
-        Normalised counts per replicate & \(m_{ij}^*\) & \(t_{ij}^*\) \\
-        Counts of merged replicates & \(m_{iy}'\) & \(t_{iy}'\) \\
-        (Anti-)codon level counts & \(c_{xy}\) & \(a_{xy}\) \\
-        \bottomrule
-    \end{tabular}
-    \tabcap{variables}
-        {Summary of the matrix and subscript names.}
-        {\(i\) is the index of a gene; \(j\) is the index of a
-        library replicate; \(x\) is an (anti-)codon;  \(y\) is the index of a
-        developmental stage.}}
-
-Each experiment was performed in two biological replicates, which were highly
-correlated (\cref{fig:trna-replicate-variability}).
 \Cref{fig:trna-project-outline} summarises the experimental
 procedure.\footnote{The wet-lab work of this project was performed by Bianca
 Schmitt, who was also a joint first author on the manuscript. Claudia Kutter
 provided guidance with the interpretation of the results and helped with the
-creation of the figures.} \Cref{tab:variables} summarises the names used to
-refer to data throughout this chapter.
+creation of the figures.} Each experiment was performed in two biological
+replicates, which were highly correlated
+(\cref{fig:trna-replicate-variability}). \Cref{tab:variables} summarises the
+variable names used to refer to data throughout this chapter.
 
 \textfig[\todo{Remove background gradients from graphics}]
     {trna-project-outline}{body}{0.8\textwidth}
@@ -63,6 +45,25 @@ refer to data throughout this chapter.
     {Replicate variability.}
     {Shown are the Spearman correlation coefficients between pairwise biological
     replicates for the \trna count data (left) and the \mrna count data (right).}
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        & \abbr{mrna} & \abbr{trna} \\
+        \midrule
+        Raw counts per replicate & \(m_{ij}\) & \(t_{ij}\) \\
+        Normalised counts per replicate & \(m_{ij}^*\) & \(t_{ij}^*\) \\
+        Counts of merged replicates & \(m_{iy}'\) & \(t_{iy}'\) \\
+        (Anti-)codon level counts & \(c_{xy}\) & \(a_{xy}\) \\
+        \bottomrule
+    \end{tabular}
+    \tabcap{variables}
+        {Summary of the matrix and subscript names.}
+        {\(i\) is the index of a gene; \(j\) is the index of a library
+        replicate; \(x\) is an (anti-)codon;  \(y\) is the index of a
+        developmental stage.}
+\end{table}
 
 In addition to the six time points described above, tissue was also collected at
 two earlier stages, E9.5 and E12.5. However, the embryo at such early stages of
