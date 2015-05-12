@@ -437,7 +437,7 @@
     % Fix for spacing from <http://tex.stackexchange.com/a/74469/42>
     \begingroup
     \setlength\fboxsep{0pt}%
-    \colorbox[HTML]{FFA0A0}{\reducedstrut#1\/}%
+    \colorbox{primary}{\reducedstrut#1\/}%
     \endgroup}
 
 \newenvironment{shortenumerate}{%
