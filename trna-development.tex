@@ -143,7 +143,7 @@ correlation between all replicates,
         libraries \(i\), \(j\),}
 \end{equation}
 
-where \(m_{\cdot i}^*\) is the \(i\)th column of the matrix \(M^*\).
+where \(m_{\cdot i}^*\) denotes the \(i\)th column of the matrix \(M^*\).
 
 I then performed \pca on the correlation matrix, which allows variation in the
 data to be projected onto uncorrelated axes, so that the first axis represents
@@ -690,7 +690,7 @@ development, and this variation follows clear patterns, which require active
 regulation. We furthermore find that variability within the transcribed
 \trna pool vanishes at the isoacceptor level: the \trna genes within each
 anticodon isoacceptor family vary across developmental stages, but the sum of
-their expression is stable (\cref{fig:codon-anticodon-abundance}).
+their expression is stable (\cref{fig:codon-anticodon-abundance} centre left).
 
 This might imply (anti-)correlation of expression across stages between the
 genes of an isoacceptor family. Alternatively, \trna gene expression might vary
@@ -708,24 +708,24 @@ Spearman’s rank correlation (across developmental stages) between the expressi
 values of each pair of its corresponding \trna genes, i.e.\ we calculate
 
 \begin{equation}
-    c_{ij} = \operatorname{cor}(x_i, x_j) \text{\ for \(i, j \in T\),
-        \(i < j\),}
+    r_{ij} = \operatorname{cor}(x_{i\cdot}, x_{j\cdot}) \text{\ for \(i, j \in
+        T\), \(i < j\),}
 \end{equation}
 
-where \(T\) is the set of \trna genes in the isoacceptor family, and \(x_i\) is
-the vector of expression values of the \(i\)th \trna gene across all stages of
-development. For the same set of genes, we calculated a null set of correlations
-as follows:
+where \(T\) is the set of \trna genes in the isoacceptor family, and
+\(x_{i\cdot}\) is the vector of expression values of the \(i\)th \trna gene
+across all stages of development. For the same set of genes, we calculated a
+null set of correlations as follows:
 
 \begin{equation}
-    b_{ijk} = \operatorname{cor}(\operatorname{perm}_k(x_i), x_j)
-        \text{\ for \(i, j \in T, i < j; k \in 1\dots\lvert x_i\rvert!\)\ .}
+    b_{ijk} = \operatorname{cor}(\operatorname{perm}_k(x_{i\cdot}), x_{j\cdot})
+        \text{\ for \(i, j \in T, i < j; k \in 1\dots\lvert x_{i\cdot}\rvert!\)\ .}
 \end{equation}
 
-Here, \(\operatorname{perm}_k(x_i)\) is the \(k\)th permutation of the vector
-\(x_i\).
+Here, \(\operatorname{perm}_k(x_{i\cdot})\) is the \(k\)th permutation of the
+vector \(x_{i\cdot}\).
 
-Next, we used the \(\chi^2\)-test to investigate whether there was a significant
+Next, we used a \(\chi^2\)-test to investigate whether there was a significant
 difference between the background \(b\) and the observed correlation
 distributions \(c\). We only performed the test for the \num{27} isoacceptor
 families with six or more genes, since isoacceptor families with less than six
@@ -748,26 +748,27 @@ To establish this, I defined \num{69} clusters of all genomically annotated
 \trna genes that lie within \SI{7.5}{kb} of each other. I counted how many
 active \trna genes of an isoacceptor family colocalised in a genomic cluster
 with \trna genes of the same isoacceptor family, before calculating the fraction
-of \trna for each isoacceptor family belonging to a genomic cluster. To test
-whether genes in isoacceptor families tend to genomically colocalise more than
-expected by chance, we randomly assigned \trna genes to isoacceptor families
-(preserving the actual isoacceptor family gene numbers) \num{1000} times. I then
-tested whether the mean percentage of clustering \trna genes per isoacceptor
-family differed from the mean percentage expected by chance, by using a binomial
-test. Finally, I tested whether there was a difference in these percentages
-between isoacceptor families that show evidence for compensation, and
-isoacceptor families that show no such evidence by applying a \(\chi^2\)-test.
+of \trna genes for each isoacceptor family belonging to a genomic cluster. To
+test whether genes in isoacceptor families tend to genomically colocalise more
+than expected by chance, we randomly assigned \trna genes to isoacceptor
+families (preserving the actual isoacceptor family gene numbers) \num{1000}
+times. I then tested whether the mean percentage of clustering \trna genes per
+isoacceptor family differed from the mean percentage expected by chance, by
+using a binomial test. Finally, I tested whether there was a difference in these
+percentages between isoacceptor families that show evidence for compensation,
+and isoacceptor families that show no such evidence by applying a
+\(\chi^2\)-test.
 
 \parrule
 
 In summary, we show that \trna gene expression varies pervasively across mouse
 development in different tissues. This variation follows concerted patterns that
-are evidence of specific regulation of \trna gene transcription. Although we
+provide evidence of specific regulation of \trna gene transcription. Although we
 have been unable to pinpoint a mechanism for the specific gene expression
 patterns  we observed, there is a broad correlation between \trna gene activity
 and the existence of histone marks for active gene expression. The precise
-purpose of the \trna gene regulation remain similarly unclear, since we find that
-both the codon usage and the anticodon isoacceptor abundance are stable
+purpose of the \trna gene regulation remains similarly unclear, since we find
+that both the codon usage and the anticodon isoacceptor abundance are stable
 across development, and thus do not need to be adjusted using specific \trna
 gene expression changes.
 
