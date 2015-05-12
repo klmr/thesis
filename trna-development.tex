@@ -117,6 +117,7 @@ in calmodulin (\protein{CALM1}), where transcription increases after birth
         \vspace{-\baselineskip}
         \subcaption{\label{fig:apob-afp}Gene expression changes of
             \gene{mmu}{Apob} and \gene{mmu}{Afp}.}
+        \vspace{\baselineskip}
     \endgroup
     \par
     \begingroup
@@ -145,8 +146,8 @@ where \(m_{\cdot i}^*\) is the \(i\)th column of the matrix \(M^*\).
 
 I then performed \pca on the correlation matrix, which allows variation in the
 data to be projected onto uncorrelated axes, so that the first axis represents
-the greatest variance of the data, and the second axis represents the second
-greatest variance.
+the component that explains the most variance of the data, and the second axis
+represents the second component.
 
 The resulting \pca in \cref{fig:mrna-pca} shows that the biggest source of
 variance in the correlation structure of the expression data is tissue identity,
@@ -155,8 +156,8 @@ remaining variance, \num{60} per cent is explained by progression of tissue
 development in a way that nicely mirrors the known biology: the plot’s \(y\)
 axis shows the linear progression of development from early stages at the bottom
 to late stages at the top. We observe a much stronger variation on the \(y\)
-axis for liver data: the cause of this could be due to the fact that the tissue
-is more homogeneous, and changes in gene expression are therefore more
+axis for liver data: this could be explained by noting that the liver is more
+homogeneous than the brain, and changes in gene expression are therefore more
 coordinated; it might also reflect the change in liver function from a
 haematopoietic to a metabolic organ around birth.
 
@@ -197,25 +198,26 @@ data (non-strand-specific \SI{36}{bp} single-end reads sequenced by
 \name{Illumina} \name{Genome Analyzer~IIx} or \name{HiSeq~2000}) using
 \name{\abbrsc{BWA}} version 0.5.9-r16 \citep{Li:2009a} using default parameters.
 Next, non-uniquely mapping reads were reallocated probabilistically according to
-the description given above, using the \trna gene annotation from the
-\name{Genomic \trna Database}, described in \citet{Chan:2009}. For each \trna
-gene (again excluding mitochondrial \trna genes because the genetic code of the
-mitochondrial \mrna genes differs from the nuclear genetic code), reads were
-summed within each \trna gene locus and in the \SI{\pm100}{bp} flanking regions.
+the description given in the previous chapter, using the \trna gene annotation
+from the \name{Genomic \trna Database}, described in \citet{Chan:2009}. For each
+\trna gene (again excluding mitochondrial \trna genes because the genetic code
+of the mitochondrial \mrna genes differs from the nuclear genetic code), reads
+were summed within each \trna gene locus and in the \SI{\pm100}{bp} flanking
+regions.
 
 \trna genes that were unexpressed in all experimental conditions were excluded
-from the further analysis, to reduce the effect of multiple testing
-\citep{Bourgon:2010}, and to exclude potential pseudogenes in the annotation. To
+from further analysis, to reduce the effect of multiple testing
+\citep{Bourgon:2010} and to exclude potential pseudogenes in the annotation. To
 be called expressed, a \trna gene had to be present in all replicates of at
 least one condition with a count of at least \num{10}, after size-factor
 normalisation. The threshold \num{10} was chosen so that small variations in
 either direction would have a minimal impact on the thresholding. The following
-analysis is thus using only the \num{311} expressed out of \num{433} total genes
-(\num{72} per cent).
+analysis is thus performed using \num{311} expressed out of \num{433} total
+\trna genes (\num{72} per cent).
 
 Unlike proteins, \trna[s] do not perform a cell type specific function; instead,
 their continued presence is required for the maintenance of transcription in all
-cellular conditions. We therefore did not expect many changes of the levels of
+cellular conditions. We therefore did not expect many changes in the levels of
 \trna gene expression over the course of development, and we do in fact observe
 that many \trna gene expression levels remain stable (\cref{fig:trna-counts}).
 Nevertheless, we also observe that around \num{50} per cent of all \trna genes
@@ -272,9 +274,8 @@ some evidence that such a selection takes place
 \citep{Ikemura:1981,Ikemura:1985,Yang:2008}.
 
 We therefore went on to quantify the codon pool corresponding to each given
-transcriptome\footnote{I shall refrain from using the term “codome” to refer to
-the -ome of codons.}, as well as the pool of available \trna genes, grouped by
-their anticodon isoacceptor identity.
+transcriptome, as well as the pool of available \trna genes, grouped by their
+anticodon isoacceptor identity.
 
 \section{Every mouse \abbr{mrna} transcriptome encodes the same distribution of
 triplet codons and amino acids}
@@ -282,18 +283,19 @@ triplet codons and amino acids}
 The codon pool of a given \mrna transcript is given by the distribution of
 triplet codons in its sequence. There are \num{64} possible triplet codons, of
 which \num{61} encode \num{20} different amino acids, and three encode the stop
-codon, marking the end of translation.\footnote{My analysis ignores
+codon, marking the end of translation.\footnote{The analysis ignores
 selenocysteine, which is a \num{21}st possible amino acid, and which can be
-encoded by the stop codons \codon{UGA} under rare circumstances.} Using this
-information and the transcript abundance quantified by our \rnaseq data, I
-calculated the abundance of each triplet codon as well as each amino acid in the
-transcriptome of each developmental stage. I then compared these across stages
-to find out how they varied.
+encoded by the stop codons \codon{UGA} under rare circumstances (see
+\cref{sec:trna-intro}).} Using this information and the transcript abundance
+quantified by our \rnaseq data, I calculated the abundance of each triplet codon
+as well as each amino acid in the transcriptome of each developmental stage. I
+then compared these across stages to find out how they varied.
 
 First, for every gene, the number of occurrences of each codon in the longest
-annotated transcript (which is often called the “canonical” transcript) was
-determined and this value was multiplied by the gene’s expression (normalised
-for transcript length):
+annotated transcript (which is often called the “canonical”
+transcript\footnote{\url{http://www.ensembl.org/Help/Glossary?id=346}, retrieved
+2014-05-12.}) was determined and this value was multiplied by the gene’s
+expression (normalised for transcript length):
 
 \begin{equation}
     c_{xiy} = \text{codon}_{xiy} \cdot \frac{m_{iy}'}{l_{i}} \text{\ ,}
