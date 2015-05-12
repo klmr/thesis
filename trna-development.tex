@@ -609,16 +609,35 @@ For each of these factors, I assayed their association with
 
 in both liver and brain.
 
-To test for association of a factor with \trna gene expression, I investigated
-whether a given factor was present in the vicinity of a \trna locus. I then
-performed Fisher’s exact test on the number expressed versus unexpressed \trna
-genes with at least one mark in its vicinity. Occurrence of these chromatin
-marks was measured \SIlist{0.1;0.5;1}{kb} upstream of and downstream from \trna
-genes. Our embryonic (E15.5) and adult (P29) \pol3 data was complemented with
-embryonic (E14.5) and adult (P56) \chipseq data, as different time points were
-selected in our and in the \citet{Shen:2012} study. Likewise, our brain P29 data
-was compared with P56 data by using the union of “cortex” and “cerebellum”
-\chipseq binding locations from \citet{Shen:2012}.
+To test for association of the \chip factors with \trna gene expression, I noted
+whether a signal for a given \chip target was present in the vicinity of a \trna
+locus. I then compared the number of expressed versus unexpressed \trna genes
+with at least one such \chip signal in its vicinity, using Fisher’s exact test,
+with the contingency table shown in \cref{tab:chip-contingency}.
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+         & \multicolumn{2}{c}{\abbr{chip} signal}\\
+        \cmidrule(l){2-3}
+        \trna & Present & Absent \\
+        \midrule
+        Expressed & \(a\) & \(b\) \\
+        Unexpressed & \(c\) & \(d\) \\
+        \bottomrule
+    \end{tabular}
+    \tabcap{chip-contingency}
+        {Contingency table of \chip signal enrichment.}
+        {}
+\end{table}
+
+Occurrence of these chromatin marks was measured \SIlist{0.1;0.5;1}{kb} upstream
+of and downstream from \trna genes. Our embryonic (E15.5) and adult (P29) \pol3
+data was complemented with embryonic (E14.5) and adult (P56) \chipseq data, as
+different time points were selected in our and in the \citet{Shen:2012} study.
+Likewise, our brain P29 data was compared with P56 data by using the union of
+“cortex” and “cerebellum” \chipseq binding locations from \citet{Shen:2012}.
 
 In liver, between E15.5 and P29, we did indeed find a significant association
 between differentially expressed \trna genes and levels of H3K27ac (\(p <
