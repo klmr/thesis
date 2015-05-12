@@ -299,12 +299,14 @@ transcript\footnote{\url{http://www.ensembl.org/Help/Glossary?id=346}, retrieved
 expression (normalised for transcript length):
 
 \begin{equation}
-    c_{xiy} = \text{codon}_{xiy} \cdot \frac{m_{iy}'}{l_{i}} \text{\ ,}
+    c_{xiy} = \text{codon}_{xi} \cdot \frac{m_{iy}'}{l_{i}} \text{\ ,}
 \end{equation}
 
-where \(\text{codon}_{xiy}\) is the number of occurrences of codon \(x\) in gene
-\(i\) at stage \(y\), and \(l_i\) is the length of the canonical transcript of
-gene \(i\).
+where \(\text{codon}_{xi}\) is the number of occurrences of codon \(x\) in the
+canonical transcript of gene \(i\), \(m_{iy}'\) is the gene expression count of
+gene \(i\) in condition \(y\) (averaged across the replicates of condition \(y\)
+after library size normalisation), and \(l_i\) is the length of the canonical
+transcript of gene \(i\).
 
 Next, the overall usage of each codon was obtained by summing these values
 across all genes:
@@ -313,12 +315,16 @@ across all genes:
     c_{xy} = \sum_i c_{xiy} \text{\ .}
 \end{equation}
 
-Relative codon usages \(c_{xy}^*\) were then calculated by dividing each codon
-usage by the sum of the codon usages of a given stage:
+Relative codon usage (\rcu) values \(c_{xy}^*\) were then calculated by dividing
+each codon usage value by the sum of the codon usage values of a given
+condition:
 
 \begin{equation}
-    c_{xy}^* = \frac{c_{xy}}{\sum_k c_{ky}} \text{\ .}
+    c_{xy}^* = \frac{c_{xy}}{\sum_{k\in \operatorname{syn}(x)} c_{ky}} \text{\ ,}
 \end{equation}
+
+where \(\operatorname{syn}(c)\) is the set of synonymous codons to which \(c\)
+belongs.
 
 We find that at the transcriptome level, codon abundance is highly stable across
 development in both tissues (Spearman’s \(\rho > 0.97\)) ---
@@ -337,8 +343,8 @@ genes. For each developmental stage, I created \num{100} such random background
 distributions. I then calculated the triplet codon usage for the rearranged
 protein-coding \rna expression distributions.
 
-\Cref{fig:codon-anticodon-abundance} top middle and right shows that even for
-simulated transcriptomes the codon usage remains unchanged. In fact, both
+\Cref{fig:codon-anticodon-abundance} top middle and right shows that, even for
+simulated transcriptomes, the codon usage remains unchanged. In fact, both
 observed and simulated transcriptomes seem to simply reflect the codon abundance
 found in the coding part of the genome, regardless of the sometimes strong
 variations in gene expression between different transcriptomes.
