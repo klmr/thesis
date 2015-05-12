@@ -20,14 +20,14 @@
 \RequirePackage{microtype}
 \RequirePackage{tocstyle}
 \RequirePackage{polyglossia}
-\RequirePackage[natbib, style=authoryear, maxnames=2, useprefix]{biblatex}
+\RequirePackage[natbib, backend=biber, style=authoryear, maxnames=2, useprefix]{biblatex}
 \RequirePackage{booktabs}
 \RequirePackage{tabu}
 \RequirePackage{collcell}
 \RequirePackage[all]{onlyamsmath}
 \RequirePackage{siunitx}
 \RequirePackage{textcase}
-\RequirePackage[english,iso]{isodate}
+\RequirePackage[english, iso]{isodate}
 \RequirePackage{xspace}
 \RequirePackage[version=3]{mhchem}
 \RequirePackage{minted}
@@ -38,7 +38,7 @@
 \RequirePackage{ifoddpage}
 \RequirePackage{hyperref}
 % “… cleveref must be loaded *last*”
-\RequirePackage[nameinlink,noabbrev]{cleveref}
+\RequirePackage[nameinlink, noabbrev]{cleveref}
 
 % General settings
 
