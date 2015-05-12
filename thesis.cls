@@ -302,10 +302,11 @@
     % #5: figure description
     \csuse{align@#2}{#3}{\figcap{#1}{#4}{#5}}}
 
-\newcommand\textfloatbare[2]{
+\newcommand\textfloatbare[3]{
     % #1: alignment command
     % #2: content
-    \csuse{align@#1}{#2}}
+    % #3: non-spilled content
+    \csuse{align@#1}{#2}{#3}}
 
 \newcommand\textfig[6][]{%
     % #1: content inside figure (optional)
