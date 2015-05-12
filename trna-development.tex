@@ -377,8 +377,8 @@ tight regulation of \abbr{trna} gene expression}
 
 Next, I looked at the abundance of the matching \trna isoacceptors by summing
 the expression of all \trna genes belonging to the same isoacceptor family.
-Anticodon abundance was calculated by averaging the expression values for all
-\trna genes in a given anticodon isoacceptor family.
+Relative anticodon abundance (\raa) was calculated by averaging the expression
+values for all \trna genes in a given anticodon isoacceptor family.
 \Cref{fig:codon-anticodon-abundance} centre left shows the relative anticodon
 isoacceptor abundance of the arginine isotype family. Again we find that the
 abundance stays stable across development in both tissues (Spearman’s \(\rho >
@@ -387,7 +387,7 @@ abundance stays stable across development in both tissues (Spearman’s \(\rho >
 In the same way as for the \mrna transcriptome, I then simulated \num{100}
 random \trna transcriptomes per developmental stage and calculated the relative
 abundance of all isoacceptor families. Unlike the observed \trna data, we find
-that simulated \trna transcriptomes create highly variable pools of anticodon
+that simulated \trna transcriptomes create more variable pools of anticodon
 isoacceptors (\cref{fig:codon-anticodon-abundance} centre middle and right). The
 variability observed here is explained by the fact that there are only \num{433}
 \trna genes in \mmu (of which only \num{311} were expressed in our samples),
@@ -406,9 +406,15 @@ Codons and anticodon-carrying \trna[s] form the biochemical interface between
 the genetic code and the amino acid sequence of proteins during \mrna
 translation. I investigated this correspondence between \mrna-driven codon
 demand and \trna anticodon supply by looking at the correlation between a
-codons’ usage in the \mrna transcriptome and its matching \trna anticodon
-isoacceptor abundance at the same developmental stage
-(\cref{fig:codon-anticodon-abundance} bottom left).
+codons’ frequency in the \mrna transcriptome as a fraction of the overall codon
+count \(c_{xy}'\), and its matching \trna anticodon isoacceptor abundance
+\(a_{xy}'\) at the same developmental stage \(y\)
+(\cref{fig:codon-anticodon-abundance} bottom left):
+
+\begin{align}
+    c_{xy}' &= \frac{c_{xy}}{\sum_k c_{ky}}\\
+    a_{xy}' &= \frac{a_{xy}}{\sum_k a_{ky}}
+\end{align}
 
 To compare how well the anticodon supply of a given transcriptome was adapted to
 its codon demand, I initially calculated the Spearman rank correlation between
@@ -422,25 +428,34 @@ It is possible to account for wobble base pairing in several different ways
 describe the \tai, which takes into account the possible wobble base pairings
 when calculating the fit between codon usage and \trna gene copy number. For my
 analysis, rather than accounting for all possible base pairings, I opted for a
-simplified version in which only unmatched codons were treated differently, and
-all other codons were matched directly to their corresponding anticodons, as
-described above. Orphan codons were matched to all anticodons that they
-recognise via wobble base pairing, by distributing the \trna abundance of these
-\trna genes between all matched codons. More abundant codons received
-proportionally more of the anticodon abundance. Let \(a\) be the abundance of a
-single anticodon that matches codons \(1\dots n\), and \(c_1\dots c_n\) their
-codon usage. Then, for the sake of correlating codon usage with anticodon
-abundance, we calculated the adjusted abundance \(a^*\) as
+simplified version where only unmatched codons were treated differently, and all
+other codons were matched directly to their corresponding anticodons, as
+described above.
+
+Orphan codons were matched to all anticodons that they recognise via wobble base
+pairing, by distributing the \trna abundance of these \trna genes between all
+matched codons; abundant codons received proportionally more of the anticodon
+abundance. More precisely, let \(x\) be an orphan codon and
+\(\operatorname{wobble}(x)\) the anticodons that match \(x\) via wobble base
+pairing. We then adjust the abundance for each \(x' \in
+\operatorname{wobble}(x)\) according to the following rule:
 
 \begin{equation}
-    a_i^* = \frac{a \cdot c_i}{\sum_j c_j} \text{\ .}
+    a_{x'y}'' = \left(\sum_{k \in \operatorname{wobble}(x)} a_{ky}'\right) \cdot
+        \frac{c_{x'y}'}{\sum_{k \in \operatorname{wobble}(x)} c_{ky}} \text{\ .}
 \end{equation}
 
-Afterwards, we calculate codon--anticodon correlations using the codon usage and
-the adjusted anticodon abundance. This yielded broadly comparable results to the
-simple correlations ignoring wobble base pairing and unmatched codons
-(\cref{sec:appendix}). I will discuss how to improve this using a \tai adapted
-to \trna gene expression in the conclusion (\cref{sec:conclusion}).
+In other words, we pool the frequency of anticodons that wobble base pair with
+orphan codons, and let each contribute a fraction proportional to its (directly
+matching) codon frequency. For those anticodons \(x\) which do not wobble base
+pair to orphan codons, we set \(a_{xy}'' = a_{xy}'\).
+
+Finally, I calculated codon--anticodon correlations between the codon usage and
+the adjusted anticodon abundance, \(\operatorname{cor}(c_{\cdot y}', a_{\cdot
+y}'')\). This yielded broadly comparable results to the simple correlations
+ignoring wobble base pairing and unmatched codons (\cref{sec:appendix}). I will
+briefly discuss how to improve this using a \tai adapted to \trna gene
+expression in the conclusion (\cref{sec:conclusion}).
 
 Across both tissues and all stages of development, we find that \mrna triplet
 codon demand and \trna anticodon isoacceptor abundance are highly correlated
