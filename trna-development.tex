@@ -65,17 +65,18 @@ refer to data throughout this chapter.
     replicates for the \trna count data (left) and the \mrna count data (right).}
 
 In addition to the six time points described above, tissue was also collected at
-two earlier stages, E9.5 and E12.5. Unfortunately, the embryo at such early
-stages of development is too small to permit collecting enough tissue-specific
-material. For that reason, we used the whole embryo at E9.5 and separated the
-E12.5 embryo into torso and upper body. The subsequent analysis was performed on
-the six later stages in liver and brain. However, the earlier stages were able
-confirm the general patterns found by analysing the remaining data
-(\cref{sec:appendix}).\todo{add supplementary PCA}
+two earlier stages, E9.5 and E12.5. However, the embryo at such early stages of
+development is too small, and the tissue development has not progressed far
+enough, to permit collecting enough tissue-specific material. For that reason we
+used the whole embryo at E9.5 and separated the E12.5 embryo into torso and
+upper body. The subsequent analysis was performed on the six later stages in
+liver and brain. However, the earlier stages confirmed the general patterns
+found by analysing the remaining data (\cref{sec:appendix}).
 
 The analysis and the results presented in this chapter are published as
 \texttitle{High-resolution mapping of transcriptional dynamics across tissue
-development reveals a stable \mrna[–]\trna interface} \citet{Schmitt:2014}.
+development reveals a stable \mrna[–]\trna interface} [Schmitt,
+Rudolph\andothersdelim\& al., \cite*{Schmitt:2014}].
 
 \section{Protein-coding gene expression changes dynamically during mouse
 development}
@@ -87,27 +88,26 @@ mapped to the \mmu reference genome (\abbr{ncbim37}) using
 \name{\lowsc{i}\abbrsc{RAP}} \citep{Fonseca:2014} and \name{TopHat2}
 \citep{Kim:2013}. Read counts were quantified using \name{HTSeq}
 \citep{Anders:2014}, and assigned to protein-coding genes from the
-\name{Ensembl} release \num{67} \citep{Flicek:2014}.\todo{add \chipseq and
-\rnaseq pipeline flowcharts}
+\name{Ensembl} release \num{67} \citep{Flicek:2014}.
 
 We excluded mitochondrial chromosomes from the analysis, because mitochondrial
-genes use a slightly distinct genetic code\todo[ref]{}. Furthermore, we excluded
-sex chromosomes.
+genes use a slightly distinct genetic code \citep{Osawa:1989}. Furthermore, we
+excluded sex chromosomes.
 
 Changes in the expression of protein-coding genes, leading to changes in
-abundance of proteins, are known to drive cellular behaviour\todo[ref]{}. Our
-data confirms that tissue development in mice is accompanied by large-scale
-changes in the \mrna transcriptome. This is nicely illustrated by looking at
-individual gene expression counts, plotted against their genomic location
-(\cref{fig:mrna-expression-change}). For example, in the liver we can confirm
-the functional relevance of apolipoprotein B (\protein{APOB}) as the
-primary carrier of lipoproteins, which becomes increasingly relevant as the
-organ shifts to metabolism \citep{Knott:1986}. Similarly, \mrna gene expression
-changes highlight the role of α-fetoproteine (\protein{AFP}) as the
-fetal version of serum albumin (\cref{fig:apob-afp}) \citep{Chen:1997}. In the
-brain, shifts can be seen in the activity of the neural \tf
-\protein{FOXP2}, the expression of which continuously decreases, and in
-calmodulin (\protein{CALM1}), where transcription increases after birth
+abundance of proteins, are known to drive cellular behaviour
+\citep{Brawand:2011}. Our data confirms that tissue development in mice is
+accompanied by large-scale changes in the \mrna transcriptome. This is nicely
+illustrated by looking at individual gene expression counts, plotted against
+their genomic location (\cref{fig:mrna-expression-change}). For example, in the
+liver we can confirm the functional relevance of apolipoprotein B
+(\protein{APOB}) as the primary carrier of lipoproteins, which becomes
+increasingly relevant as the organ shifts to metabolism \citep{Knott:1986}.
+Similarly, \mrna gene expression changes highlight the role of α-fetoproteine
+(\protein{AFP}) as the fetal version of serum albumin (\cref{fig:apob-afp})
+\citep{Chen:1997}. In the brain, shifts can be seen in the activity of the
+neural \tf \protein{FOXP2}, the expression of which continuously decreases, and
+in calmodulin (\protein{CALM1}), where transcription increases after birth
 \citep{Tsui:2013,Huang:2011}.
 
 \textfloat{mrna-expression-change}{spill}{%
