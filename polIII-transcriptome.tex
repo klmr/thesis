@@ -1,16 +1,15 @@
 \chapter{The \abbr{pol3} transcriptome consists of more than just \abbr{trna}}
 \label{sec:pol3}
 
-Less than \num{5} per cent of the mammalian genome, in terms of sequence length,
-is protein coding. Much less than \num{1} per cent codes for \trna[s]. Indeed,
-most of the genome as we know it is untranscribed\todo[ref]{}. Nevertheless,
-\pol3 transcription can occur at a wide range, and \trna genes form only a part
-of the overall \pol3 transcriptome. In this chapter we are going to take a look
-at other members of the \pol3 transcriptome.
+Less than \num{5} per cent of the human genome is protein-coding. Much less than
+\num{1} per cent of the genome codes for \trna[s] \citep{Lander:2001}.
+Nevertheless, \pol3 can transcribe a variety of \rna species, with \trna genes
+forming only a part of the overall \pol3 transcriptome. In this chapter we
+briefly interrogate other members of the \pol3 transcriptome.
 
 For this analysis, I re-examined the \chipseq data in the developing liver of
 \mmu from \cref{sec:trna}. I was interested in generating a profile of how much
-binding of \pol3 occurs to different functionally annotated regions of the
+binding of \pol3 occurs to different functionally annotated regions in the
 genome. \Cref{sec:trna} examined just one such region, the \trna genes. To
 compare this with the amount of binding in other genomic features, I quantified
 the \chipseq reads that mapped to annotated features from the \abbr{grcm38}
@@ -20,16 +19,16 @@ is known that \pol3 binds to, and potentially drives transcription of several
 types of retrotransposons \citep{Carriere:2012}, which are screened and
 annotated by \name{RepeatMasker} \citep{Smit:2014}.
 
-As explained in \cref{sec:chip}, many \trna[s] are results of gene duplications
-and we thus expect many reads to map to multiple locations. This problem also
-exists for the other annotation types we are interested in. However, the
-strategy also explained in \cref{sec:chip} cannot be applied to non-\trna
-annotations since we cannot make the same assumptions about the binding
-profiles in the flanking regions of the genomic features. In particular, while
-\trna transcription uses a type \abbrsc{II} transcription initiation, other
-\pol3 targets use different types of initiation, due to their different promoter
-and enhancer structure. These differences could have strong effects on the
-binding profile of active \pol3 on the target loci.
+As explained in \cref{sec:chip}, many \trna genes arise through gene
+duplications and we thus expect many reads to map to multiple locations. This
+problem also exists for the other annotation types we are interested in.
+However, the strategy also explained in \cref{sec:chip} cannot be applied to
+non-\trna annotations since we cannot make the same assumptions about the
+binding profiles in the flanking regions of the genomic features. In particular,
+while \trna transcription uses a type \abbrsc{II} transcription initiation,
+other \pol3 targets use different types of initiation, due to their different
+promoter and enhancer structure. These differences could have strong effects on
+the binding profile of active \pol3 on the target loci.
 
 I avoided this by only reporting a single match per read, even if multiple
 matches were possible. This assigns the read to an arbitrary locus amongst its
