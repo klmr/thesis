@@ -4,8 +4,11 @@
 Less than \num{5} per cent of the human genome is protein-coding. Much less than
 \num{1} per cent of the genome codes for \trna[s] \citep{Lander:2001}.
 Nevertheless, \pol3 can transcribe a variety of \rna species, with \trna genes
-forming only a part of the overall \pol3 transcriptome. In this chapter we
-briefly interrogate other members of the \pol3 transcriptome.
+forming only a part of the overall \pol3 transcriptome. Notable other targets of
+\pol3 transcription are the 5S \rrna (a part of the ribosome) as well as the U6
+\lowsc{sn}\rna which forms part of the spliceosome, a large riboprotein that is
+implicated in the post-transcriptional processing of \rna[s] \citep{White:1998}.
+In this chapter I briefly interrogate other members of the \pol3 transcriptome.
 
 For this analysis, I re-examined the \chipseq data in the developing liver of
 \mmu from \cref{sec:trna}. I was interested in generating a profile of how much
@@ -36,6 +39,14 @@ amongst its possible match hits. As long as all potential match positions for a
 read fall into the same type of annotation, this should not pose a problem for
 the analysis: all we are interested in is which annotation type a read
 falls into, not where on the genome.
+
+The annotations used in this analysis required some manual curation. Excluded
+from the subsequent analysis are repeat types “simple repeats”, which stands for
+small repeats of a few bases, and “tandem repeats”, where the variability of the
+copy number between the reference and the sample makes it impossible to
+quantify the \chip signal. Furthermore, I merged other types of repeats, except
+those corresponding to retrotransposons and those corresponding to other gene
+copies (such as \trna[s]), which I counted separately.
 
 I then counted reads overlapping with each of the annotations mentioned above
 and calculated \tpm[s]. \Cref{fig:pol3-coverage} compares the abundance of \pol3
