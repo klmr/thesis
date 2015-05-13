@@ -1,6 +1,8 @@
 \chapter{The \abbr{pol3} transcriptome consists of more than just \abbr{trna}}
 \label{sec:pol3}
 
+\section{A profile of \abbr{pol3} binding across different features}
+
 Less than \num{5} per cent of the human genome is protein-coding. Much less than
 \num{1} per cent of the genome codes for \trna[s] \citep{Lander:2001}.
 Nevertheless, \pol3 can transcribe a variety of \rna species, with \trna genes
@@ -12,7 +14,7 @@ In this chapter I briefly interrogate other members of the \pol3 transcriptome.
 
 For this analysis, I re-examined the \chipseq data in the developing liver of
 \mmu from \cref{sec:trna}. I was interested in generating a profile of how much
-binding of \pol3 occurs to different functionally annotated regions in the
+binding of \pol3 occurs at different functionally annotated regions in the
 genome. \Cref{sec:trna} examined just one such region, the \trna genes. To
 compare this with the amount of binding in other genomic features, I quantified
 the \chipseq reads that mapped to annotated features from the \abbr{grcm38}
@@ -20,7 +22,9 @@ mouse genome annotation curated by \name{Ensembl} (release \num{75})
 \citep{Flicek:2014}. Furthermore, I used data from annotated repeats because it
 is known that \pol3 binds to, and potentially drives transcription of, several
 types of retrotransposons \citep{Carriere:2012}, which are screened and
-annotated by \name{RepeatMasker} \citep{Smit:2014}.
+annotated by \name{RepeatMasker} \citep{Smit:2014}. \abbr{Pol3} \chipseq reads
+were mapped to the \mmu reference genome \abbr{grcm38} using \name{Bowtie}
+\citep{Langmead:2009}.
 
 As explained in \cref{sec:chip}, many \trna genes arise through gene duplication
 events and we thus expect many reads to map to multiple locations. This problem
@@ -59,7 +63,8 @@ tabular format, for just one stage (\cref{tab:pol3-coverage}).
     {Polymerase \abbrsc{III} coverage,}
     {compared across different feature types in six stages of development in
     liver. Strikingly, the E18.5 stage shows strongly reduced overall \trna
-    activity. This is due to a single replicate, which pulls down the average.}
+    activity. This is due to a single, divergent replicate, which pulls down the
+    average.}
 
 \begin{table}[!ht]
     \centering
@@ -94,40 +99,100 @@ libraries and the \pol3 \chip reveals that this may not be the case (see
 \cref{sec:appendix}). The analysis therefore needs to be repeated with careful
 consideration being given to the background noise levels.
 
-Nevertheless, taken together with the observation reported by
-\citet{Carriere:2012}, the results compelled me to take a closer look at the
-binding of \transsine by \pol3. \transsine are a type of retrotransposons that
-are highly abundant in the genome: as much as \num{13} per cent of the genome is
-a \transsine in mammals, and there are of the order of \num{1500000} gene copies
-\citep{Lander:2001}. The fact that they possess a \pol3 promoter means that they
-can, in some cases, be transcribed in vitro \citep{White:1998}. It is generally
-assumed that they do not perform a function in the cell and are usually not
-actively transcribed. However, as the results by \citet{Carriere:2012} indicate
-that there is indeed limited transcription of \transsine in mammals, we should
-be able to observe this in our \pol3 \chip data.
+\subsection{\abbr{transsine}s are transcribed by \abbr{pol3}}
+
+Taken together with the observation reported by \citet{Carriere:2012}, the
+results compelled me to take a closer look at the binding of \transsine by
+\pol3. \transsine[s] are a type of retrotransposon that are highly abundant in
+the genome: as much as \num{13} per cent of the genome is a \transsine in
+mammals, and there are of the order of \num{1500000} gene copies
+\citep{Lander:2001}. \transsine[s] are are anywhere from \SIrange{100}{700}{bp}
+in length and are typically composed of three elements: the \define{head}, the
+\define{body} and the \define{tail}. The head of \transsine[s] is derived from
+\pol3-transcribed \rna[s]. The body is an unrelated piece of sequence often
+containing fragments from \transline[s]. The tail, finally, usually consists of
+a simple repeat.
+
+In mammals, most \transsine[s], which form the class of \define{Alu} elements,
+are derived from the (\pol3-transcribed) 7SL \ncrna. Many others, forming
+different classes of \transsine[s], are derived from different \trna genes
+\citep{Vassetzky:2013}.
+
+The fact that they possess a \pol3 promoter means that they can, in some cases,
+be transcribed in vitro \citep{White:1998}. It is generally assumed that they do
+not perform a function in the cell and are usually not actively transcribed.
+However, as the results by \citet{Carriere:2012} indicate that there is indeed
+limited transcription of \transsine in mammals, we should be able to observe
+this in our \pol3 \chip data. It is my hope that, in examining \transsine
+transcription, we may be able to learn more about the transcription regulation
+of \trna genes: the similar promoter structure of \trna-derived \transsine[s]
+suggests that the mechanism of gene regulation may be similar here. Furthermore,
+since \transsine[s] are not evolutionarily conserved and perform no vital
+function in the cell, their active transcription will always happen
+incidentally. Comparing the upstream sequence composition of active and inactive
+\transsine[s] and of related \trna genes may enable us to pinpoint common
+sequence motifs necessary for active transcription.
 
 Testing this is not trivial, since \transsine[s] are repeat elements and we thus
-cannot directly map reads to unique locations, similar to \trna genes. In the
-following, rather than looking at the flanking sequences to disambiguate
-non-uniquely mapping reads as I did for \trna, I pooled classes of \transsine
-gene copies and mapped \pol3 \chipseq reads to the consensus sequence of
-\num{676} classes (downloaded from \name{RepBase} \citep{Jurka:2005}). I find
-low but significant enrichment of \pol3 to \transsine consensus sequences,
-compared to input (\cref{fig:sine-summary}).
+cannot directly map reads to unique locations, similar to the case of \trna
+genes. In the following, rather than looking at the flanking sequences to
+disambiguate non-uniquely mapping reads as I did for \trna, I pooled classes of
+\transsine gene copies into \num{676} classes (downloaded from \name{RepBase}
+\citep{Jurka:2005}). I then generated a reference transcriptome from the
+consensus sequences of the \transsine classes. Reads from \pol3 \chipseq were
+then mapped to this reference using \name{Bowtie}.
+
+Across two tissues (liver and brain) and six stages of development I find that
+on average \num{63} per cent of the \transsine classes (\num{431} out of
+\num{676}) show nonzero coverage. In these, there is low but significant
+enrichment of \pol3 binding compared to the input libraries (\chipseq experiment
+performed without antibody to quantify the noise introduced by the experiment).
+The amount of \pol3 binding to the various \transsine classes varies across
+\num{4} orders of magnitude. An overview over the magnitude of binding is shown
+in \cref{fig:sine-summary}.
 
 \textfig{sine-summary}{spill}{\textwidth}
-{\abbr{transsine} binding by \abbr{pol3} across development in liver and brain.}{}
+    {\abbr{transsine} binding by \abbr{pol3} across development in liver and
+    brain.}
+    {Raw counts of \abbr{pol3} binding to different \abbr{transsine} classes.
+    Classes with count equal to \num{0} have been filtered out.}
 
 Despite the challenges of working with repeat regions, the quantification of
-changes in \transsine binding by \pol3 during mouse development seems feasible,
-and I will pursue this project further.
+changes in \transsine binding by \pol3 during mouse development seems thus
+feasible. The next problem to solve is the handling of experimental noise, shown
+in the input libraries. Conventional \chipseq protocols for the identification
+of protein binding sites or histone modifications use these libraries during
+peak-calling to quantify and filter out the background signal
+\citep{Zhang:2008}. The naive way of handling this, simply subtracting the input
+count from the \pol3 count, will yield negative values in many cases where the
+signal is low and noise is high (about \num{40} per cent in this dataset).
 
-\todo[inline]{%
-\begin{enumerate}
-    \item Why?
-    \item How do I account for noise/input?
-    \item What do classes of SINEs rather than individual loci tell us?
-    \item How does expression change across development?
-    \item Make a list of which classes are expressed highest, look for
-        commonalities with \trna[s]
-\end{enumerate}}
+After accounting for noise, the remaining expressed \transsine classes can be
+classified based on the \rna they are derived from. Different classes of
+\transsine have a highly variable number of gene copies, from
+\numrange{100}{1000000}. When comparing \pol3 binding between these classes,
+it is important to account for these differences, since higher gene copies will
+have proportionally higher binding.
+
+In summary, I have shown that \trna genes account for the vast majority of the
+overall \pol3 binding. After this, \rrna genes show the most binding, and
+following this, \transsine[s]. I have mapped the \pol3 \chip data against
+consensus sequences for \num{676} \transsine classes to show that many of these
+classes have nonzero \pol3 binding. In the future, I plan to investigate how
+\pol3 binding varies between different classes of \transsine[s], in particular
+with regards to their origin. Furthermore, I plan to investigate how this
+binding changes across development, and whether this variation in binding
+correlates between any of the \transsine classes and related \trna genes.
+Finally, if such a correlation is found, I will look for common upstream
+sequence elements that are absent in other \transsine classes. However, this
+last step may require looking at the upstream sequence of individual
+\transsine[s] rather than that of \transsine classes unless it turns out that
+the upstream sequences of individual \transsine[s] within a class is conserved.
+
+I have focused on \transsine[s] due to their interesting similarity to \trna
+genes. A similar analysis as for \transsine[s] can of course also be performed
+for other repeat classes that showed similar levels of \pol3 binding in the
+previous analysis. In fact, there is potential for the \transsine analysis to
+yield a framework to facilitate this kind of sequencing analysis for repeat
+features, which are notoriously hard to work with in the context of
+high-throughput sequencing due to their inherent non-mappability.
