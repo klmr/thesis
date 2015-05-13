@@ -174,7 +174,7 @@
 
 \sisetup{detect-all}
 
-\setstretch{1.1}
+\onehalfspacing
 
 \renewcommand*\dictumwidth{0.75\textwidth}
 \renewcommand*\dictumauthorformat[1]{---~#1}
