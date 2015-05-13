@@ -151,22 +151,33 @@ conditions. The analysis was done in two parts. Firstly, the fold change of gene
 expression between normal tissue and a given condition was calculated for each
 protein-coding gene. The mean expression fold change of each \go term, mapped to
 a colour map, was plotted on top of the \go terms in the \pca
-(\cref{fig:gingold-3c} bottom). This was done separately for various
-conditions, including several tumour samples and cell lines with induced
-differentiation. In all examined conditions, there seems to be a marked gradient
-of \mrna expression enrichment from left to right. This illustrates that the
-first principal component of the \pca does indeed separate \go terms by their
-specificity to either proliferating or differentiating cellular
-programmes.\todo{John: Does it? Assuming “normal” cells are proliferating? Does
-this not beg the question of comparing tumour/differentiating directly?}
+(\cref{fig:gingold-3c} bottom). This was done separately for various conditions,
+including several tumour samples and cell lines with induced differentiation. In
+all examined conditions, there seems to be a marked gradient of \mrna expression
+enrichment from left to right. The authors used this to suggest that the first
+principal component of the \pca separates \go terms by their specificity to
+either proliferating or differentiating cellular programmes.\todo{John: Does it?
+Assuming “normal” cells are proliferating? Does this not beg the question of
+comparing tumour/differentiating directly?}
 
-Secondly, to estimate translation efficiency they calculated the change in
-abundance of the \trna genes whose isoacceptors decode the codons of the genes
-in each \go term, and averaged across them.\todo{Unclear, add equations} The fold change in translation
-efficiency between healthy tissue and the sample under consideration was again
-mapped to a colour gradient, which was overlaid over the \pca
-(\cref{fig:gingold-3c} top). Again there appears to be a gradient of how
-well different \go terms are adapted to the \trna anticodon pool of a given
+Secondly, to estimate translation efficiency they calculated the fold change of
+\trna gene expression for isoacceptor \trna[s] that decode the codons of the
+genes in each \go term, and averaged across them, weighted by codon usage.
+Adopting the notation for anticodon abundance from \cref{sec:trna}, we can
+define the fold change in translation efficiency \(e_{AB}\) between two
+conditions \(A\), \(B\) for a multiset of codons \(C\) as:
+
+\begin{align}
+    F & = \frac{a_{\cdot A}}{a_{\cdot B}} \\
+    e_{AB} & = \sum_{c \in C} \frac{1}{|d(c)|} \sum_{f \in F_{d(c)}} f \text{\ ,}
+\end{align}
+
+where \(d(C)\) is the set of anticodons that can decode the codon \(c\).
+
+The fold change in translation efficiency between normal tissue and the sample
+under consideration was again mapped to a colour gradient, which was overlaid on
+the \pca (\cref{fig:gingold-3c} top). Again there appears to be a gradient of
+how well different \go terms are adapted to the \trna anticodon pool of a given
 condition, following the first principal component of the \pca.
 
 Although interesting, the authors did not calculate correlations between the
