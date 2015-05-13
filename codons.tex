@@ -16,7 +16,7 @@ dynamically to decode this set of codons with high efficiency.
 
 Because its conclusions are highly relevant to our own research we evaluated the
 paper carefully. In the following, I will first describe the paper’s main
-findings, to the extent that they are relevant to our own research. I will then
+findings to the extent that they are relevant to our own research. I will then
 discuss new experimental data and computational analyses we performed to explore
 how our previous results relate to this paper.
 
@@ -36,23 +36,23 @@ supply and codon demand might influence the rate of production of proteins from
 \subsection{\abbr{trna} anticodons change in abundance in tumour tissues}
 
 \citet{Gingold:2014} designed custom microarrays to probe the expression levels
-of the \trna[s] of most anticodons present in human, excluding those prone to
-cross-hybridi\-sation, or where a low in silico screening score predicts that
-they may be pseudogenes. Using these microarrays, they assayed the abundance of
-anticodon isoacceptors in healthy B cells and in B-cell derived lymphomas. They
-showed that there are specific anticodon isoacceptors whose abundance changes
-reproducibly in tumours compared to healthy tissue, while other anticodon
-isoacceptors do not change their abundance. This mirrors results reported
-previously \citep{Pavon-Eternod:2009}.
+of the \trna[s] of most anticodons present in the human genome, excluding those
+prone to cross-hybridi\-sation, or where a low in silico screening score
+predicts that they may be pseudogenes. Using these microarrays, they assayed the
+abundance of anticodon isoacceptors in healthy B cells and in B-cell derived
+lymphomas. They showed that there are specific anticodon isoacceptors whose
+abundance changes reproducibly in tumours compared to healthy tissue, while
+other anticodon isoacceptors do not change their abundance. This mirrors results
+reported previously \citep{Pavon-Eternod:2009}.
 
-In addition, they determined \trna anticodon abundance analysis levels for all
-samples and applied hierarchical clustering to the resulting matrix of \trna
-expression profiles. They observed that samples were clustered into two groups,
-corresponding to tumour cell types and differentiating cell types. When
-performing an equivalent clustering on \mrna gene expression values for the same
-samples, they observe that samples cluster not by whether they are tumours, but
-rather by their tissue of origin, i.e.\ by the tissue from which the tumour or
-cell line was derived.
+In addition, they used their array-based assays to determine \trna anticodon
+abundance levels for all samples and applied hierarchical clustering to the
+resulting matrix of \trna expression profiles. They observed that samples
+clustered into two groups, corresponding to tumour cell types and
+differentiating cell types. When performing an equivalent clustering on \mrna
+gene expression values for the same samples, they observe that samples cluster
+not by whether they are tumours, but rather by their tissue of origin, i.e.\ by
+the tissue from which the tumour or cell line was derived.
 
 \subsection{Codon usage differs between genes involved in cell proliferation and
 genes involved in differentiation}
@@ -63,7 +63,7 @@ process”) on the one hand, and tumour tissue (“M phase of mitotic cell cycle
 on the other hand. They show that the codon usage bias in these two \go terms
 (averaged over all containing genes) clearly differs
 (\cref{fig:go-term-codon-usage}): the genes in both \go terms preferentially use
-different synonymous codons.\todo{GO annotation for cell cycle etc will contain + and - regulators}
+different synonymous codons.
 
 \textfig{go-term-codon-usage}{body}{0.6\textwidth}
     {Codon usage bias in two \abbr{go} terms.}
@@ -79,20 +79,31 @@ of the \go terms into two distinct sets, one encompassing multi-cellular \go
 terms and the other cell autonomous \go terms. They argue that these two sets of
 \go terms correspond to \go terms functionally responsible for maintaining cell
 homoeostasis on the one hand, and rapid cellular division, such as that found in
-tumours, on the other hand. In other words, different gene families specific to
-rapidly dividing as opposed to healthy, mature cells have a distinct codon
-composition.\todo{GO hierarchy? Term selection? Slice through GO tree --- remove
-gene redundancy in sets. Not independent data points [John: “would be very helpful”]}
+tumours, on the other hand. In other words, gene families specific to
+rapidly dividing as opposed to healthy, mature cells have distinct codon
+composition.
 
 It is however worth noting that the choice of \go terms highlighted in the \pca
 is somewhat arbitrary: It is for instance not clear why “translation” should be
 more active during cellular division than in stable cells. The authors rather
 describe the relevant set as “cell autonomous” \go terms, but the paper’s
-argument implicitly assumes that this corresponds to cell division. Furthermore,
-the allocation of genes to \go terms was performed via simple textual matching,
-such that \go sub-categories whose description contains the text
-“differentiation and proliferation” would be counted as belonging to the \go
-super-category “differentiation”.
+argument implicitly assumes that this is associated with cell division.
+Furthermore, the allocation of genes to \go terms was performed via simple
+textual matching, such that \go sub-categories whose description contains the
+text “differentiation and proliferation” would be counted as belonging to the
+\go super-category “differentiation”.
+
+A better strategy for the selection of \go terms would ensure that allocated
+uniquely to a single \go term without overlap between the sets, to ensure
+pairwise independence between the data points: because the \go hierarchy allows
+individual \go terms to have multiple parents, a naive \go term selection can
+lead to child terms (and hence genes) present in several categories. This can be
+corrected by applying a \go trimming algorithm (e.g. \citet{Jantzen:2011}).
+
+Furthermore, \go terms generally do not distinguish between positive and
+negative influence of a gene on a phenotype. As a consequence, the \go term “M
+phase of mitotic cell cycle” contains both activators and inhibitors of M phase,
+and the containing genes’ expression may be anticorrelated.
 
 \textfloat{go-cub-pca}{spill}
     {%
