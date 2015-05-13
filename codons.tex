@@ -188,14 +188,14 @@ Furthermore, the absolute range of changes is extremely small compared to the
 overall fold change (range of fold change \numrange{0.86}{0.905} in one case,
 corresponding to less than \num{5} per cent of the maximum fold change), and the
 lack of statistical analysis makes it impossible to tell whether these changes
-are in fact significant. It is also important to note that the fold change range
-in predicted translation efficiency is positive: Consequently, \go categories
-that are unspecific for a given condition according to \cref{fig:go-cub-pca},
-and should thus be less adapted to the \trna anticodon abundance, are in fact
-better adapted according to this analysis (\cref{fig:gingold-3c}). This is a
-recurring feature for all conditions tested in this way, and is potentially
-inconsistent with the claim that the \trna anticodon pool is specially adapted
-to cell condition specific gene sets.
+are in fact significant. It is also important to note that the entire fold
+change range in predicted translation efficiency is \(< 1\): Consequently, \go
+categories that are specific for a given condition according to
+\cref{fig:go-cub-pca}, and should thus be better adapted to the \trna anticodon
+abundance, are in fact less well adapted according to this analysis
+(\cref{fig:gingold-3c}). This is a recurring feature for all conditions tested
+in this way, and is potentially inconsistent with the claim that the \trna
+anticodon pool is specially adapted to cell condition specific gene sets.
 
 \textfloat{gingold-3c}{body}{%
     \centering
@@ -221,17 +221,18 @@ to cell condition specific gene sets.
 different cellular conditions?}
 
 To explore how these two findings — the stability of the anticodon pool through
-development on the one hand \citep{Schmitt:2014}, and the malleability of the
-anticodon pool to match the codon demand of highly expressed protein-coding
-genes on the other hand \citep{Gingold:2014} — we examined differences between
-healthy tissue and tumour cell lines in \mmu and \hsa.
+development on the one hand [Schmitt, Rudolph,\andothersdelim\& al.,
+\cite*{Schmitt:2014}], and the malleability of the anticodon pool to match the
+codon demand of highly expressed protein-coding genes on the other hand
+\citep{Gingold:2014} — we examined differences between healthy tissue and tumour
+cell lines in \mmu and \hsa.
 
 \subsection{The effect of gene set size on codon usage bias}
 
 Since we were already in possession of some relevant \trna data we decided to
 use our own data to recapitulate these findings. A first observation was that we
-had looked at the whole transcriptome, \citet{Gingold:2014} had looked at
-specific subsets. While both approaches are valid, some caution is necessary
+had looked at the whole transcriptome, while \citet{Gingold:2014} had looked at
+specific subsets. Although both approaches are valid, some caution is necessary
 when comparing the results: the smaller the set of genes, the larger the effects
 of random sampling of the genes become. Subsequently, when analysing a
 particular feature, such as codon usage bias, random sampling will contribute
@@ -543,8 +544,8 @@ of the transcriptome. Many questions still remain open.
 
 \subsubsection{Codon--anticodon adaptation to distinct cellular conditions}
 
-One caveat of the analysis of the codon--anticodon correlation between subset of
-the transcriptome is the treatment of replicates. In \cref{fig:cub-aab},
+One caveat of the analysis of the codon--anticodon correlation between subsets
+of the transcriptome is the treatment of replicates. In \cref{fig:cub-aab},
 biological replicates of each sample were treated independently, rather than
 pooled: correlations were calculated between all pairwise combinations of
 \rnaseq and \pol3 \chipseq data of the samples under consideration. Each data
