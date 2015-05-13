@@ -636,17 +636,21 @@ with the contingency table shown in \cref{tab:chip-contingency}.
 
 Occurrence of these chromatin marks was measured \SIlist{0.1;0.5;1}{kb} upstream
 of and downstream from \trna genes. Our embryonic (E15.5) and adult (P29) \pol3
-data was complemented with embryonic (E14.5) and adult (P56) \chipseq data, as
-different time points were selected in our and in the \citet{Shen:2012} study.
-Likewise, our brain P29 data was compared with P56 data by using the union of
-“cortex” and “cerebellum” \chipseq binding locations from \citet{Shen:2012}.
+data was complemented with embryonic (E14.5) and adult (P56) \chipseq data from
+the \citet{Shen:2012} study. Although these stages do not match precisely,
+similar patterns of expression are present and should thus be complemented by
+similar patterns of histone marks. In addition, the \citet{Shen:2012} data split
+adult brain tissue up into “cerebellum” and “cortex”. I merged these two data
+sets for the subsequent comparison against our whole brain P29 samples by using
+the union of \chipseq binding locations.
 
-In liver, between E15.5 and P29, we did indeed find a significant association
-between differentially expressed \trna genes and levels of H3K27ac (\(p <
-10^{-4}\), Fisher’s exact test; \cref{tab:histone-results}\todo{Wrong table.
-Mention others? Which?}). H3K4me3 and \pol2
-showed a less strong association, and no significant association with H3K4me1 or
-\ctcf was found.
+In my test of active against inactive \trna genes I unsurprisingly found
+strongly significant enrichment of histone marks for active transcription in
+both embryonic and adult tissues. I also found association of active \trna genes
+with \pol2 binding and with \ctcf. Enrichment of enhancer marks, by contrast,
+was not present --- but this may simply be due to the fact that enhancers are
+typically more distal (\cref{tab:active-histone}). This confirms previous
+findings \citep{Barski:2010,Oler:2010}.
 
 \begin{table}[h!]
     \centering
@@ -663,19 +667,75 @@ showed a less strong association, and no significant association with H3K4me1 or
         \cmidrule(l){2-3}
         Factor & \multicolumn{1}{r}{{Embryo}} & \multicolumn{1}{r@{}}{{Adult}} \\
         \midrule
-        H3K4me3 & 1.85e-32 & 1.27e-29 \\
-        Enhancer & 1 & 1.46e-2 \\
-        H3K27ac & 9.00e-33 & 1.99e-21 \\
-        \abbr{pol2} & 9.38e-5 & 1.85e-4 \\
-        \abbr{ctcf} & 2.24e-3 & 2.09e-4 \\
+        Liver \\
+        \quad H3K4me3 & 1.85e-32 & 1.27e-29 \\
+        \quad Enhancer & 1.00 & 1.46e-2 \\
+        \quad H3K27ac & 9.00e-33 & 1.99e-21 \\
+        \quad \abbr{Pol2} & 9.38e-5 & 1.85e-4 \\
+        \quad \abbr{ctcf} & 2.24e-3 & 2.09e-4 \\
+        \addlinespace
+        Brain \\
+        \quad H3K4me3 & 3.11e-28 & 3.18e-32 \\
+        \quad Enhancer & 3.11e-01 & 1.00 \\
+        \quad H3K27ac & 8.49e-21 & 1.16e-14 \\
+        \quad \abbr{Pol2} & 3.93e-13 & 1.35e-12 \\
+        \quad \abbr{ctcf} & 2.33e-05 & 2.76e-05 \\
         \bottomrule
     \end{tabular}
 
-    \tabcap{histone-results}
-    {Evidence for enrichment of different factors near expressed \trna genes.}
-    {Shown are \(p\)-values for the hypothesis of no difference in presence of
-    the specified factor between expressed and unexpressed \trna genes in
-    embryonic and adult tissue liver, using a window size of \SI{\pm 0.5}{kb}.}
+    \tabcap{active-histone}
+    {Enrichment of different \chip targets near active \trna genes.}
+    {Shown are the unajusted \(p\)-values for the hypothesis of no enrichment of
+    a \chip signal near expressed \trna genes, compared to unexpressed \trna
+    genes, using a window size of \SI{\pm 0.5}{kb}; other window sizes show less
+    evidence for enrichment.}
+\end{table}
+
+Next, I performed the same test specifically for upregulated \de genes between
+E15.5 and P29. Rather than considering all expressed \trna genes as before, I
+thus only consider genes that are specific to either embryonic or adult tissue.
+I found consistent significant enrichment of H3K27ac and, to a lesser extent,
+H3K4me3 and \pol2 in embryonic and adult liver. In contrast, brain shows no
+enrichment.
+
+\begin{table}[h!]
+    \centering
+    \sisetup{
+        table-figures-integer=1,
+        table-figures-decimal=2,
+        table-figures-exponent=2,
+        table-sign-exponent=true,
+        table-number-alignment=right
+    }
+    \begin{tabular}{@{}lSS@{}}
+        \toprule
+        & \multicolumn{2}{@{}c@{}}{{Developmental stage}} \\
+        \cmidrule(l){2-3}
+        Factor & \multicolumn{1}{r}{{Embryo}} & \multicolumn{1}{r@{}}{{Adult}} \\
+        \midrule
+        Liver \\
+        \quad H3K4me3 & 1.77E-02 & 1.44E-09 \\
+        \quad Enhancer & 1.00E+00 & 6.83E-03 \\
+        \quad H3K27ac & 5.17E-08 & 1.86E-09 \\
+        \quad \abbr{Pol2} & 8.86E-03 & 8.96E-02 \\
+        \quad \abbr{ctcf} & 1.08E-02 & 2.42E-02 \\
+        \addlinespace
+        Brain \\
+        \quad H3K4me3 & 7.65E-01 & 5.53E-01 \\
+        \quad Enhancer & 5.36E-01 & 1.00E+00 \\
+        \quad H3K27ac & 7.98E-02 & 7.37E-01 \\
+        \quad \abbr{Pol2} & 7.16E-01 & 2.32E-01 \\
+        \quad \abbr{ctcf} & 1.00E+00 & 1.00E+00 \\
+        \bottomrule
+    \end{tabular}
+
+    \tabcap{de-histone}
+    {Enrichment of different \chip targets near differentially expressed \trna
+    genes.}
+    {Shown are the unajusted \(p\)-values for the hypothesis of no enrichment of
+    a \chip signal near differentially expressed, upregulated \trna genes,
+    compared to non-\de \trna genes, using a window size of \SI{\pm 0.5}{kb};
+    other window sizes show less evidence for enrichment.}
 \end{table}
 
 Though limited, this association of differentially expressed \trna genes histone
