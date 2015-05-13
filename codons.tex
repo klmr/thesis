@@ -156,9 +156,7 @@ including several tumour samples and cell lines with induced differentiation. In
 all examined conditions, there seems to be a marked gradient of \mrna expression
 enrichment from left to right. The authors used this to suggest that the first
 principal component of the \pca separates \go terms by their specificity to
-either proliferating or differentiating cellular programmes.\todo{John: Does it?
-Assuming “normal” cells are proliferating? Does this not beg the question of
-comparing tumour/differentiating directly?}
+either proliferating or differentiating cellular programmes.
 
 Secondly, to estimate translation efficiency they calculated the fold change of
 \trna gene expression for isoacceptor \trna[s] that decode the codons of the
@@ -534,7 +532,7 @@ question can be found in the conclusion in \cref{sec:conclusion}.
     \cref{fig:go-cub-pca,fig:go-aa-pca}. The \(y\) coordinate corresponds to
     the mean \gc bias of the \go gene set.}
 
-\subsection{Discussion}
+\section{Discussion}
 
 In this chapter I extended the analysis from \cref{sec:trna}, and contrasted it
 with the findings by \citet{Gingold:2014}. We have moved beyond the variation of
@@ -543,10 +541,10 @@ usage and anticodon isoacceptor abundance in the transcriptome in the face of
 major changes in cell function. However, contrary to previous reports I was
 unable to find evidence for a selective adaptation of the \trna pool to
 cell-specific subsets of genes. The work presented in this chapter constitutes
-just the start of our investigation into the codon usage variability of subsets
+the beginning of our investigation into the codon usage variability of subsets
 of the transcriptome. Many questions still remain open.
 
-\subsubsection{Codon--anticodon adaptation to distinct cellular conditions}
+\subsection{Codon--anticodon adaptation to distinct cellular conditions}
 
 One caveat of the analysis of the codon--anticodon correlation between subsets
 of the transcriptome is the treatment of replicates. In \cref{fig:cub-aab},
@@ -572,7 +570,18 @@ measure of \trna adaptation is the \tai, which accounts for wobble base pairing
 in a species-specific manner. Extending the analysis to use the \tai is ongoing
 work.
 
-\subsubsection{Evolutionary conservation of codon--anticodon adaptation}
+Furthermore, our selection of \go terms for proliferation and differentiation
+may be an inadequate description of cell-type specific gene expression. In
+addition to concerns already outlined in \cref{sec:gingold-codon-bias}, we need
+to question the assumption that the \go term “pattern specification process” is
+specific to cells from adult liver. In fact, although \citet{Gingold:2014}
+contrast tumour samples with healthy, differentiated cells, they test
+codon--anticodon adaptation on cells after induced differentiation rather than
+differentiated cells, which may be better matched by the “pattern specification
+process” \go term. To improve our analysis, I could use \go terms resulting from
+a gene set enrichment analysis of the adult liver samples.
+
+\subsection{Evolutionary conservation of codon--anticodon adaptation}
 
 If a mechanism leading to the adaptation of the cellular \trna pool to different
 cellular conditions existed, we would expect this to be well conserved across

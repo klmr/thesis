@@ -44,7 +44,7 @@ following disadvantages \citep{Casneuf:2007,Marioni:2008}:
         strength. Since this effect is probe dependent, this means that
         while identical transcripts’ relative abundances can be compared across
         arrays, abundance of different transcripts \emph{on the same array}
-        cannot be compared.\todo{John suggests removing b/c still hard with RNA-seq; but we do this in our studies}
+        cannot be compared.
     \item Several interesting biological questions which cannot be answered by
         microarray analysis at all, or only with difficulties, become tractable
         using \abbr{rnaseq}; these include the analysis of isoforms from
@@ -222,17 +222,17 @@ can be used instead.
 \end{equation}
 
 for each gene \(i\) in library \(j\), with mean \(\mu_{ij}\) and variance
-\(\sigma^2_{ij}\).\todo{Formulas for \(\mu\), \(\sigma^2\)}
+\(\sigma^2_{ij}\).
 
 To account for different sampling depth across libraries, it is furthermore
 assumed that most genes do not drastically change expression between biological
 samples. But the few that are highly expressed in some but not all samples have
 a large influence on the total count. Thus, rather than normalising by the
 ratios between total library sizes, each library \(j = 1 \dots m\) can be
-normalised by a summary of the ratios between read counts for all \(n\) genes
-across libraries \citep{Robinson:2010a,Anders:2010}. Generalised to more than
-two libraries, gene expression ratios can be calculated as the ratio of each
-gene’s read count to the geometric mean across samples:
+normalised by a summary of the ratios between read counts for all \(n\) genes or
+a subset of the genes across libraries \citep{Robinson:2010a,Anders:2010}.
+Generalised to more than two libraries, gene expression ratios can be calculated
+as the ratio of each gene’s read count to the geometric mean across samples:
 
 \begin{equation}
     s_j = \operatorname{median}_{i = 1}^n
