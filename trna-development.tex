@@ -351,8 +351,10 @@ variations in gene expression between different transcriptomes.
 
 \begingroup% Necessary to prevent paragraph indent vanishing subsequently.
 \textfloatbare{spill}
-    {\includegraphics[width=\textwidth]{codon-anticodon-abundance}}{}
+    {\ifoddpage\else\raggedleft\fi%
+    \includegraphics[width=0.95\textwidth]{codon-anticodon-abundance}}{}
 
+\vspace{-\baselineskip}
 \figcapof{codon-anticodon-abundance}
     {Codon and anticodon abundance across stages of development.}
     {The figure consists of three panels (right, middle, left) with three
