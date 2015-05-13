@@ -15,27 +15,27 @@ compare this with the amount of binding in other genomic features, I quantified
 the \chipseq reads that mapped to annotated features from the \abbr{grcm38}
 mouse genome annotation curated by \name{Ensembl} (release \num{75})
 \citep{Flicek:2014}. Furthermore, I used data from annotated repeats because it
-is known that \pol3 binds to, and potentially drives transcription of several
+is known that \pol3 binds to, and potentially drives transcription of, several
 types of retrotransposons \citep{Carriere:2012}, which are screened and
 annotated by \name{RepeatMasker} \citep{Smit:2014}.
 
-As explained in \cref{sec:chip}, many \trna genes arise through gene
-duplications and we thus expect many reads to map to multiple locations. This
-problem also exists for the other annotation types we are interested in.
-However, the strategy also explained in \cref{sec:chip} cannot be applied to
-non-\trna annotations since we cannot make the same assumptions about the
-binding profiles in the flanking regions of the genomic features. In particular,
-while \trna transcription uses a type \abbrsc{II} transcription initiation,
-other \pol3 targets use different types of initiation, due to their different
-promoter and enhancer structure. These differences could have strong effects on
-the binding profile of active \pol3 on the target loci.
+As explained in \cref{sec:chip}, many \trna genes arise through gene duplication
+events and we thus expect many reads to map to multiple locations. This problem
+also exists for the other annotation types we are interested in. However, the
+strategy also explained in \cref{sec:chip} cannot be applied to non-\trna
+annotations since we cannot make the same assumptions about the binding profiles
+in the flanking regions of the genomic features. In particular, while \trna
+transcription uses a type \abbrsc{II} transcription initiation, other \pol3
+targets use different types of initiation, due to their different promoter and
+enhancer structure. These differences could have strong effects on the binding
+profile of active \pol3 on the target loci.
 
-I avoided this by only reporting a single match per read, even if multiple
-matches were possible. This assigns the read to an arbitrary locus amongst its
-possible match hits. As long as all potential match positions for a read fall
-into the same type of annotation, this should not pose a problem for the
-analysis: all we are interested in is to say which annotation type a read falls
-into, not where on the genome.
+I overcame this challenge by only reporting a single match per read, even if
+multiple matches were possible. This assigns the read to an arbitrary locus
+amongst its possible match hits. As long as all potential match positions for a
+read fall into the same type of annotation, this should not pose a problem for
+the analysis: all we are interested in is which annotation type a read
+falls into, not where on the genome.
 
 I then counted reads overlapping with each of the annotations mentioned above
 and calculated \tpm[s]. \Cref{fig:pol3-coverage} compares the abundance of \pol3
@@ -44,7 +44,7 @@ total binding. Unfortunately, this makes it hard to assess the remaining
 variability visually. The remainder of the data is therefore summarised again in
 tabular format, for just one stage (\cref{tab:pol3-coverage}).
 
-\textfig{pol3-coverage}{body}{\textwidth}
+\textfig{pol3-coverage}{spill}{\textwidth}
     {Polymerase \abbrsc{III} coverage,}
     {compared across different feature types in six stages of development in
     liver. Strikingly, the E18.5 stage shows strongly reduced overall \trna
@@ -79,22 +79,21 @@ numbers are probably skewed by the \pol3 \chipseq background signal, which has
 not been removed from the data, on the assumption that, as long as all features
 are susceptible to the same amount of spurious signal, the influence on the
 proportions would be negligible. Comparing the signal strength from the input
-libraries and the \pol3 \chip reveals that this may not be the case after all
-(see \cref{sec:appendix}). The analysis therefore needs to be repeated with
-careful consideration being given to the background noise levels.
+libraries and the \pol3 \chip reveals that this may not be the case (see
+\cref{sec:appendix}). The analysis therefore needs to be repeated with careful
+consideration being given to the background noise levels.
 
 Nevertheless, taken together with the observation reported by
 \citet{Carriere:2012}, the results compelled me to take a closer look at the
 binding of \transsine by \pol3. \transsine are a type of retrotransposons that
-are highly abundant in the genome: as much as \num{13} per cent of the genome
-falls into \transsine[s] in mammalian genomes, and there are in the order of
-\num{1500000} gene copies \citep{Lander:2001}. The fact that they possess a
-\pol3 promoter means that they can, in some cases, be transcribed in vitro
-\citep{White:1998}. It is generally assumed that they do not perform a function
-in the cell and are usually not actively transcribed. However, as the results by
-\citet{Carriere:2012} indicate that there is indeed limited transcription of
-\transsine in mammals, we should be able to observe this in our \pol3 \chip
-data.
+are highly abundant in the genome: as much as \num{13} per cent of the genome is
+a \transsine in mammals, and there are of the order of \num{1500000} gene copies
+\citep{Lander:2001}. The fact that they possess a \pol3 promoter means that they
+can, in some cases, be transcribed in vitro \citep{White:1998}. It is generally
+assumed that they do not perform a function in the cell and are usually not
+actively transcribed. However, as the results by \citet{Carriere:2012} indicate
+that there is indeed limited transcription of \transsine in mammals, we should
+be able to observe this in our \pol3 \chip data.
 
 Testing this is not trivial, since \transsine[s] are repeat elements and we thus
 cannot directly map reads to unique locations, similar to \trna genes. In the
