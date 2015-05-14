@@ -23,6 +23,7 @@
 \RequirePackage[natbib, backend=biber, style=authoryear, maxnames=2, useprefix]{biblatex}
 \RequirePackage{booktabs}
 \RequirePackage{tabu}
+\RequirePackage{longtable}
 \RequirePackage{collcell}
 \RequirePackage[all]{onlyamsmath}
 \RequirePackage{siunitx}
