@@ -253,6 +253,8 @@
     \caption{\label{tab:#1}\labelfont{#2} #3}
     \endgroup}
 
+\newcommand*\tabcapof[3]{\captionof{table}{\label{tab:#1}\labelfont{#2} #3}}
+
 \newcommand*\floatpos{!ht}
 
 \newcommand\align@body[2]{%

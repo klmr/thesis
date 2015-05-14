@@ -1,0 +1,19 @@
+\textfloatbare{spill}
+    {\ifoddpage\else\raggedleft\fi%
+    \begin{tabular}{@{}ll>{\collectcell\seq}l<{\endcollectcell}lr>{\collectcell\seq}l<{\endcollectcell}@{}}
+        \toprule
+        Tissue & Contrast & \multicolumn{1}{l}{QueryID} & TargetID &
+        {\(p\)-value} & \multicolumn{1}{l}{TargetConsensus} \\
+        \midrule
+        Brain & E18.5–P22 & TTAGCTTTGTTTCTTTGTTTT & MA0041.1 & 0.01 & GAATGTTTGTTT \\
+        Brain & E18.5–P22 & TTAGCTTTGTTTCTTTGTTTT & MA0042.1 & 0.03 & GGATGTTTGTTT \\
+        Brain & P4–P22 & GTCAACTCCCTCCCCAGATCCCACCCGCC & MA0068.1 & 0.04 & GAAAAATTTCCCATACTCCACTCCCCCCCC \\
+        Brain & P4–P22 & GTCAACTCCCTCCCCAGATCCCACCCGCC & MA0079.2 & 0.04 & CCCCGCCCCC \\
+        \bottomrule
+    \end{tabular}}{}
+
+\tabcapof{meme-hits}
+    {Significantly enriched \name{\abbrsc{MEME}} hits}
+    {Shown are hits that are significantly enriched at the \num{5} per cent
+    threshold after correcting for multiple testing, given with their
+    corrected \(p\)-values.}

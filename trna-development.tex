@@ -72,7 +72,7 @@ enough, to permit collecting enough tissue-specific material. For that reason we
 used the whole embryo at E9.5 and separated the E12.5 embryo into torso and
 upper body. The subsequent analysis was performed on the six later stages in
 liver and brain. However, the earlier stages confirmed the general patterns
-found by analysing the remaining data (\cref{sec:appendix}).
+found by analysing the remaining data (\cref{fig:pca-all-stages}).
 
 The analysis and the results presented in this chapter are published as
 \texttitle{High-resolution mapping of transcriptional dynamics across tissue
@@ -458,7 +458,8 @@ pair to orphan codons, we set \(a_{xy}'' = a_{xy}'\).
 Finally, I calculated codon--anticodon correlations between the codon usage and
 the adjusted anticodon abundance, \(\operatorname{cor}(c_{\cdot y}', a_{\cdot
 y}'')\). This yielded broadly comparable results to the simple correlations
-ignoring wobble base pairing and unmatched codons (\cref{sec:appendix}). I will
+ignoring wobble base pairing and unmatched codons
+(\cref{fig:codon-anticodon-correlation-with-wobble-only-missing}). I will
 briefly discuss how to improve this using a \tai adapted to \trna gene
 expression in the conclusion (\cref{sec:conclusion}).
 
@@ -517,11 +518,14 @@ Subsequently, \name{TOMTOM} \citep{Gupta:2007} was used to search for motifs
 enriched in the \name{MEME} output by exploiting databases of known \tf binding
 sites. I used the databases \identifier{JASPAR\_CORE\_2009\_vertebrates} and
 \identifier{uniprobe\_mouse}. A minimum overlap of \SI{5}{bp} with an
-\(E\)-value threshold of \num{10} was required. The analysis failed to reveal
-strongly enriched, annotated motifs present consistently across stages,
-suggesting that the upstream region of \trna genes does not contain regulatory
-sequences explaining the observed differences in \trna gene expression (table of
-all hits in \cref{sec:appendix}).
+\(E\)-value threshold of \num{10} was required. Although we found \num{4}
+significantly enriched motifs in total (at the \num{5} per cent significance
+threshold after correcting for multiple testing), these motifs were not present
+consistently across stages (they are enriched for differential expression
+between non-adjacent stages), which would be necessary to explain the
+differential expression we observe (\cref{tab:meme-hits}). This suggests that
+the upstream region of \trna genes does not contain known regulatory sequences
+explaining our observations.
 
 In the absence of clear evidence for nearby \tf binding sites driving
 differential expression, we hypothesised that the transcriptional regulation of
