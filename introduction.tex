@@ -9,7 +9,7 @@ Dobzhansky)\footnotemark]{Nothing in biology makes sense […]}
 % <<<
 At the core of every living being is its genetic inheritance. The genetic
 inheritance describes information that is passed down from parents to their
-offspring, and contains a blueprint detailing, in essence, how to construct a
+offspring. It contains a blueprint detailing, in essence, how to construct a
 new individual from a single cell in a process called \define{embryogenesis}.
 This genetic inheritance is physically present in the form of \dna in almost
 every living cell.\footnote{And to some extent in non-living particles called
@@ -38,14 +38,14 @@ later, this still largely holds true.
     has still not been observed. Notably, the \emph{absent} transfers in the
     original publication are still considered largely non-existent.}
 
-The very high-level view of the central dogma was complemented by a detailed
-mechanistic description over the years, and the efforts to fill in all the
-details are still ongoing. In this thesis I will present the results of my
-exploration of one small aspect concerning the translation of \rna into
-proteins. To better explain how it fits into the general picture of the central
-dogma, we first need to understand its leading actors and their interplay. The
-three main roles in the central dogma are fulfilled by \dna, \rna and proteins,
-respectively, and we are now going to take a look at all of them in turn.
+Over the years, the very high-level view of the central dogma was complemented
+by a detailed mechanistic description and the efforts to fill in all the details
+are still ongoing. In this thesis I will present the results of my exploration
+of one small aspect concerning the translation of \rna into proteins. To better
+explain how it fits into the general picture of the central dogma, we first need
+to understand its leading actors and their interplay. The three main roles in
+the central dogma are fulfilled by \dna, \rna and proteins, respectively, and we
+are now going to take a look at all of them in turn.
 % >>>
 
 \subsection{\abbr{dna}}
@@ -64,7 +64,7 @@ different types of \define{nucleobases}: adenine (\nA), cytosine (\nC), guanine
 (\nG) and thymine (\nT). Thus, \dna can be thought of as a long string of four
 different letters, and that is indeed how it is often represented. Text is
 written from left to right in Western cultures. By convention, \dna is written
-from \fivep to \threep. The numbers refer to the numbering of the carbon atoms
+from \fivep to \threep. These numbers refer to the numbering of the carbon atoms
 in each nucleotide’s ribose, with the \threep carbon atom forming a covalent
 bond with the phosphate of the next nucleotide, which is itself attached to the
 \fivep carbon of its ribose. In this way, a \fivep \ce C atom is exposed at one
@@ -76,11 +76,12 @@ the bases on each chain pairing up such that every \nA on one chain is paired
 with a \nT on the other, and each \nC is paired with a \nG. This striking
 symmetry is known as Watson–Crick base pairing, after its discoverers
 \citep{Watson:1953}. Thus, \dna is made up of two complementary strands,
-redundantly holding the genetic information. This redundancy is used in \dna
-copying (which occurs at every cell division, and is the mechanism by which
-genetic information is passed from one cell to its offspring) to synthesise two
-newly formed \dna molecules, each of which contains one strand of the parent
-\dna molecule (\define{semiconservative replication}) \citep{Meselson:1958}.
+redundantly holding the genetic information (\cref{fig:dna}). This redundancy is
+used in \dna copying (which occurs at every cell division, and is the mechanism
+by which genetic information is passed from one cell to its offspring) to
+synthesise two newly formed \dna molecules, each of which contains one strand of
+the parent \dna molecule (\define{semiconservative replication})
+\citep{Meselson:1958}.
 
 \begin{figure}
     \hspace{-\dimexpr\oddsidemargin+1in}%
@@ -88,7 +89,8 @@ newly formed \dna molecules, each of which contains one strand of the parent
     \figcap{dna}{\abbr{dna} double helix}{with a single, transcribed gene. The
     intertwined lines form the phosphoribose backbone of the \dna. Each vertical
     line connecting the backbones corresponds to a base pair. The zoomed in
-    cartoon shows the complementary base pairing. The length of the gene is
+    cartoon shows the complementary base pairing, with different colours
+    corresponding to different nucleobases. The length of the gene is
     understated, the overwhelming majority of transcribed pieces of \dna are
     much longer (protein-coding genes being many hundred to thousands of base
     pairs long).}
@@ -96,8 +98,8 @@ newly formed \dna molecules, each of which contains one strand of the parent
 
 \dna is not made up of a single polymer chain, but rather is partitioned into
 several long pieces, called \define{chromosomes}. Each chromosome forms a single
-molecule. However, even on each chromosome the genetic information is not stored
-in one consecutive piece: Rather, \dna consists of relatively short stretches
+molecule. However, even on a chromosome the genetic information is not stored in
+one consecutive piece: Rather, \dna consists of relatively short stretches
 encoding a specific function, separated by long stretches that do not directly
 encode any function. The “function” is what is transmitted, as per the central
 dogma, to \rna and, in many cases, on to proteins. Such self-contained,
@@ -110,18 +112,19 @@ function, a gene has to be transcribed into a catalytically active form, the
 \subsection{\abbr{rna}}
 
 % <<<
-\rna is the product of transcription of a gene from \dna. Unlike the latter,
-\rna is created as a single strand. This has two consequences: First, \rna is
-much less stable than \dna, and slowly degrades. \rna thus has a finite
-life-time, and the pool of \rna must be replenished by continuous transcription.
-Second, single-stranded ribonucleic acid spontaneously changes its spatial
-conformation by forming Watson--Crick base pairs between nucleotides in its own
-sequence, where this is \define[\defineword{steric effect} atoms occupy discrete
-space and cannot overlap]{sterically} possible (i.e.\ where forming such a bond
-does not require bending the chain too much to “snap” it). The resulting
-structure can have functional consequences for the \rna. Because the structure
-is determined by, and exists on a higher level than the sequence identity of the
-\rna, it is called \define{secondary structure}.
+\rna is the product of transcription of a gene from \dna. \rna is chemically
+similar to \dna but unlike the latter, \rna is created as a single strand. This
+has two consequences: First, \rna is much less stable than \dna, and slowly
+degrades. \rna thus has a finite life-time, and the pool of \rna must be
+replenished by continuous transcription. Second, single-stranded ribonucleic
+acid spontaneously changes its spatial conformation by forming Watson--Crick
+base pairs between nucleotides in its own sequence, where this is
+\define[\defineword{steric effect} atoms occupy discrete space and cannot
+overlap]{sterically} possible (i.e.\ where forming such a bond does not require
+bending the chain too much to “snap” it). The resulting structure can confer
+biochemical functions to the \rna. Because the structure is determined by, and
+exists on a higher level than the sequence identity of the \rna, it is called
+\define{secondary structure}.
 
 Another difference between \dna and \rna is the use of slightly different
 nucleobases: instead of \nT, \rna uses \nU (uracil), which, like \nT, base-pairs
@@ -146,12 +149,14 @@ This results in different \mrna genes being transcribed at highly different
 levels, leading to several orders of magnitude of difference in \mrna abundance.
 Even more strikingly, the same \mrna can be transcribed at different levels
 under different conditions. \mrna is further processed in several steps before
-the mature \mrna is exported from the cell’s nucleus into the cytoplasm, where
-it is translated into proteins, and, over time, decays. Taken together, this
-leads to very differentiated \mrna profiles under different conditions, which
-imbue cells with a unique phenotype. This forms the basis of cellular
-differentiation into different cell types and tissues in multicellular
-eukaryotes.
+the mature \mrna is exported from the cell’s \define[\defineword{nucleus} centre
+of eukaryotic cells, hosting the \dna]{nucleus} into the
+\define[\defineword{cytoplasm} space filling the cell, excluding all enclosed
+compartments, such as the nucleus]{cytoplasm}, where it is translated into
+proteins, and, over time, decays. Taken together, this leads to very
+differentiated \mrna profiles under different conditions, which imbue cells with
+a unique phenotype. This forms the basis of cellular differentiation into
+different cell types and tissues in multicellular eukaryotes.
 % >>>
 
 \subsection{Proteins}
@@ -161,7 +166,7 @@ Proteins, finally, are the main effectors of cell function. Like \dna and \rna,
 they consist of chains of smaller molecules, so-called
 \define[{\defineword{amino acid} molecule consisting of an amino–carboxyl
 backbone and a specific side-chain (example: valine)\\%
-\marginfig{amino-acid}}]{amino acids}, which are strung together to form
+\marginfig{amino-acid}}]{amino acids}, that are strung together to form
 \define{polypeptides}. Each amino acid is a small molecule with unique
 properties which, jointly, shape the function of the final protein. Individual
 amino acids are strung together in a chemical reaction that links a carboxyl
@@ -217,7 +222,7 @@ few nucleotides of the \rna have been synthesised, the polymerase disassociates
 from the \tf proteins, and the polymerase starts moving along the gene body,
 transcribing it as it goes (this may require the presence of other \tf[s] called
 \define{activators}, which are recruited by \define{enhancer} motifs elsewhere
-on the \dna).
+on the \dna; \cref{fig:transcription}).
 
 Eukaryotic chromosomes are very long — human chromosome \num{1} is around
 \SI{8.5}{\centi\metre} stretched from end to end — and, to fit into the cell, is
@@ -247,18 +252,19 @@ histones thus regulate the activity of genes.
 The process by which proteins are created from \mrna transcripts is more complex
 than the 1:1 transcription of \dna into \rna, which after all use a common
 alphabet to encode the information they carry. By contrast, the
-\define{translation} of \mrna transcripts into proteins requires a code to
-interpret the genetic information.
+\define{translation} of \mrna transcripts into proteins requires a
+\define[\defineword{code} set of rules for interpreting a piece of
+information]{code} to interpret the genetic information.
 
 There are \num{20} different amino acids that are encoded by just \num{4}
 different nucleotides. To allow this, several nucleotides must be combined to
 form a larger unit coding for an amino acid. In the universal \define{genetic
 code}, shared by all known species, this is accomplished by grouping three
-consecutive nucleotides together to form non-overlapping \define{triplet codons}
-along the \mrna. This results in \(4^3 = 64\) possible codons, more than three
-times the number of amino acids. As a consequence, the genetic code is
-\define{degenerate}: most amino acids can be encoded by more than a single
-codon.
+consecutive nucleotides together to form non-overlapping, ungapped
+\define{triplet codons} along the \mrna. This results in \(4^3 = 64\) possible
+codons, more than three times the number of amino acids. As a consequence, the
+genetic code is \define{degenerate}: most amino acids can be encoded by more
+than a single codon.
 
 \begin{table}[!ht]
     \centering
@@ -344,6 +350,7 @@ pairing of a part of the \rna sequence termed the \define{anticodon}. These
 adapter molecules are called \trna.
 
 \trna[s]\marginpar{
+    \vspace{-6cm}%
     \includegraphics[width=\marginparwidth]{trna-asn}
     \vspace{-\baselineskip}
     \figcapof{trna-asn}{\xtrna{Asn} secondary structure.}{ The \abbr{trna}
@@ -380,7 +387,7 @@ take various forms for different types of genes. In the case of \trna genes, a
 so-called \define{class~\abbrsc{II}} \pol3 transcription initiation is
 performed. Unlike protein-coding genes, whose promoters lie upstream of the
 actual gene body, the class~\abbrsc{II} promoter is found \emph{inside} a \trna
-gene, in two disjoint, strongly conserved regions called the \define{A box} and
+gene in two disjoint, strongly conserved regions called the \define{A box} and
 \define{B box}, respectively. The A box starts about \SI{10}{bp} downstream from
 the \tss, whereas the B box can be found at a variable distance of about
 \SIrange{30}{60}{bp} downstream from the A box. \trna transcription is initiated
@@ -414,11 +421,11 @@ exclude \trna[s] for the amino acid selenocysteine, which is not part of the
 standard genetic code, and which was consequently excluded from the subsequent
 analysis. Selenocysteine is generally not included in analyses with a focus on
 codons in the published literature, as it requires \define{translational
-recoding}, an altogether different translation mechanism. Furthermore, the
-prevalence of proteins incorporating selenocysteine is very small
-\citep{Reeves:2009}. Although this does not mean that selenocysteine is
-biologically irrelevant, it means that we can safely ignore its effect for
-whole-genome studies of codons and anticodon abundance.
+recoding}, an altogether different translation mechanism, not covered by the
+genetic code. Furthermore, the prevalence of proteins incorporating
+selenocysteine is very small \citep{Reeves:2009}. Although this does not mean
+that selenocysteine is biologically irrelevant, it means that we can safely
+ignore its effect for whole-genome studies of codon and anticodon abundance.
 
 After transcription, the newly formed precursor \trna transcript undergoes
 processing to form a mature \trna. As for all types of \rna, this happens while
@@ -453,7 +460,7 @@ As \cref{tab:genetic-code} shows, there are \num{61} different codons. However,
 not all of these have corresponding anticodon \trna[s] --- as mentioned, there
 are only \num{50} different anticodon isoacceptors in \mmu; for example,
 \codon{CUC} codes for leucine, yet there is no matching \anticodon{GAG}
-anticodon \trna. Instead, a \codon{CUC} codon can pair with a \trna carrying a
+anticodon \trna. Instead, a \codon{CUC} codon can pair with a \trna carrying an
 \anticodon{AAG} anticodon. The mismatching \threep base of the codon is known as
 the \define{wobble position} due to its ability to “wobble” around during codon
 recognition, and thus form hydrogen bonds that would not be sterically possible
@@ -483,7 +490,7 @@ possible wobble base pairings.
         \nC & \nG \\
         \nG & \nC, \nU \\
         \nU & \nA \\
-        \nI & \nC, \nU \\
+        \nI & \nA, \nC, \nU \\
         \bottomrule
     \end{tabular}
     \tabcap{wobble}{Simplified wobble base pairing rules.}{These are the rules
@@ -491,7 +498,7 @@ possible wobble base pairings.
     pairing rules due to slight differences in the structure of the translation
     apparatus. In practice, more pairings are possible (though most are
     uncommon), and there exist several other modified bases with unique pairing
-    properties. Table based on \citet{Alberts:2002}.}
+    properties \citep{Murphy:2004}. Table based on \citet{Alberts:2002}.}
 \end{table}
 
 \subsubsection{Amino acid activation}
@@ -547,8 +554,8 @@ During translation initiation, the small ribosomal subunit binds an
 composition, which enables it to bind to the small subunit of the ribosome
 unaided \citep{Kolitz:2010}. The complex then associates with the \fivep end of
 an \mrna transcript and scans along its \fivep \utr until it finds a signal
-sequence surrounding a start codon, with which the bound \xtrna{Met}’s anticodon
-base-pairs \citep{Kozak:2002}.
+sequence surrounding a start codon, with which the bound \xtrna[i]{Met}’s
+anticodon base-pairs \citep{Kozak:2002}.
 
 The 40S subunit of the ribosome is now joined by the 60S subunit. Next, the
 assembled ribosome starts pulling the \mrna transcript through a channel in its

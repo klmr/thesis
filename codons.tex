@@ -356,15 +356,16 @@ stochastic variability in smaller gene sets (\cref{fig:codon-project-outline}).
 Cell specific subsets of the transcriptome can be defined in several ways. My
 analysis used two possible definitions: Firstly, I looked at differentially
 expressed genes between healthy and tumour cells, and called genes
-condition-specific if they were significantly differentially expressed (adjusted
-\(p < 0.001\)), their expression was high (mean expression across conditions in
-the upper quartile of all mean expression levels), and their fold change between
-the conditions was also high (taking the \num{200} genes with the highest fold
-change; correlation type “\abbr{de}”). Secondly, I took the gene sets of the two
-most extreme \go terms found by \citet{Gingold:2014} according to the variance
-in codon usage, which they describe as highly specific for proliferating cells
-(\go term “M phase of mitotic cell cycle”) and differentiating/differentiated
-cells (\go term “pattern specification process”; correlation type “\abbr{go}”).
+condi\-ti\-on-specific if they were significantly differentially expressed
+(adjusted \(p < 0.001\)), their expression was high (mean expression across
+conditions in the upper quartile of all mean expression levels), and their fold
+change between the conditions was also high (taking the \num{200} genes with the
+highest fold change; correlation type “\abbr{de}”). Secondly, I took the gene
+sets of the two most extreme \go terms found by \citet{Gingold:2014} according
+to the variance in codon usage, which they describe as highly specific for
+proliferating cells (\go term “M phase of mitotic cell cycle”) and
+differentiating/differentiated cells (\go term “pattern specification process”;
+correlation type “\abbr{go}”).
 
 Unfortunately, \go term annotations differ vastly between \hsa and \mmu and, in
 particular, one of the two condition specific \go terms (according to the \pca
