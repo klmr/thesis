@@ -26,6 +26,7 @@
 \RequirePackage{collcell}
 \RequirePackage[all]{onlyamsmath}
 \RequirePackage{siunitx}
+\RequirePackage{nth}
 \RequirePackage{textcase}
 \RequirePackage[english, iso]{isodate}
 \RequirePackage{xspace}
