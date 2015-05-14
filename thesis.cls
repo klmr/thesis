@@ -33,6 +33,7 @@
 \RequirePackage{xspace}
 \RequirePackage[version=3]{mhchem}
 \RequirePackage{minted}
+\RequirePackage[explicit]{titlesec}
 \RequirePackage{scalefnt}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
@@ -169,6 +170,61 @@
     \scshape%
     \thesis@romanfalse%
     \addfontfeature{LetterSpace=10}}
+
+% FIXME Does not work.
+\renewcommand*\partformat{\Huge\addfontfeature{LetterSpace=10}\MakeTextUppercase{\partname}}
+
+\newcommand*\thesis@chapternumber{%
+    \rmfamily%
+    \fontsize{72}{72}%
+    \color{black!50}%
+    %\color{cambridgeblue}%
+    \mdseries%
+    \selectfont}
+
+\setkomafont{chapter}{%
+    \rmfamily%
+    \fontsize{28}{32}%
+    \color{black}%
+    \selectfont}
+
+\newlength\thesis@chapter@labelwidth
+\newlength\thesis@chapter@width
+\newlength\thesis@chapter@orig
+
+\titleformat{\chapter}
+{\gdef\chapterlabel{}}
+{\begingroup%
+    \usekomafont{chapter}%
+    \gdef\chapterlabel{\thechapter}%
+\endgroup}% label
+{0pt}% Sep
+{\begingroup%
+    \usekomafont{chapter}%
+    \settowidth\thesis@chapter@labelwidth{{\thesis@chapternumber\chapterlabel}}%
+    \setlength\thesis@chapter@orig{\textwidth}%
+    \setlength\thesis@chapter@width{\textwidth}%
+    \addtolength\thesis@chapter@width{\marginparwidth}%
+    \addtolength\thesis@chapter@width{\marginparsep}%
+    \makebox[\textwidth][l]{%
+        \begin{minipage}{\thesis@chapter@width}
+            \begin{minipage}{\thesis@chapter@orig}
+                \hyphenpenalty=10000%
+                \exhyphenpenalty=10000%
+                \raggedright#1%
+            \end{minipage}%
+            \hspace{\marginparsep}%
+            {\thesis@chapternumber\chapterlabel}
+    \end{minipage}}
+    \endgroup%
+    \setbox0\vbox{\use@preamble{chapter@u}%
+    \vskip-\parskip}%
+    \setlength\@tempdimb{\ht0}%
+    \addtolength\@tempdimb{\dp0}%
+    \box0%
+\vskip-\@tempdimb}% Before
+
+\titlespacing*{\chapter}{0pt}{0pt}{*15}
 
 \newcommand\thesis@heading[1]{%
     \MakeTextLowercase{#1}}
