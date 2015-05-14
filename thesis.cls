@@ -43,7 +43,7 @@
 % General settings
 
 \setmainlanguage[variant=uk]{english}
-\graphicspath{{gfx/}}
+\graphicspath{{gfx/}{gfx/supplements/}}
 
 % General formatting
 

@@ -4,6 +4,7 @@
 *.fls
 *.pdf
 !gfx/*.pdf
+!gfx/supplements/*.pdf
 *.out
 *.bbl
 *.blg
