@@ -39,10 +39,10 @@ profile of active \pol3 on the target loci.
 
 I overcame this challenge by only reporting a single match per read, even if
 multiple matches were possible. This assigns the read to an arbitrary locus
-amongst its possible match hits. As long as all potential match positions for a
+amongst its possible matches. As long as all potential match positions for a
 read fall into the same type of annotation, this should not pose a problem for
-the analysis: all we are interested in is which annotation type a read
-falls into, not where on the genome.
+the analysis: all we are interested in is which annotation type a read falls
+into, not where on the genome.
 
 The annotations used in this analysis required some manual curation. Excluded
 from the subsequent analysis are repeat types “simple repeats”, which stands for
@@ -90,19 +90,20 @@ Interestingly, the proportions with the extreme skew towards \trna genes shown
 in \cref{fig:pol3-coverage} are similar to those reported in
 \citet{Raha:2010,Canella:2012} for \pol2 association with \pol3 genes and
 repeats. As can be seen in \cref{tab:pol3-coverage}, with the exception of \rrna
-and \abbr{transline}, all features have very similar coverage proportions. These
+and \transline[s], all features have very similar coverage proportions. These
 numbers are probably skewed by the \pol3 \chipseq background signal, which has
 not been removed from the data, on the assumption that, as long as all features
 are susceptible to the same amount of spurious signal, the influence on the
 proportions would be negligible. Comparing the signal strength from the input
 libraries and the \pol3 \chip reveals that this may not be the case (see
-\cref{sec:appendix}). The analysis therefore needs to be repeated with careful
-consideration being given to the background noise levels.
+\cref{sec:appendix}). Consequently, in the future it will be important to verify
+that the results described below are robust after properly modelling background
+noise levels.
 
 \subsection{\abbr{transsine}s are transcribed by \abbr{pol3}}
 
 Taken together with the observation reported by \citet{Carriere:2012}, the
-results compelled me to take a closer look at the binding of \transsine by
+results compelled me to take a closer look at the binding of \transsine[s] by
 \pol3. \transsine[s] are a type of retrotransposon that are highly abundant in
 the genome: as much as \num{13} per cent of the genome is a \transsine in
 mammals, and there are of the order of \num{1500000} gene copies
@@ -123,7 +124,7 @@ be transcribed in vitro \citep{White:1998}. It is generally assumed that they do
 not perform a function in the cell and are usually not actively transcribed.
 However, as the results by \citet{Carriere:2012} indicate that there is indeed
 limited transcription of \transsine in mammals, we should be able to observe
-this in our \pol3 \chip data. It is my hope that, in examining \transsine
+this in our \pol3 \chip data. It is my hope that in examining \transsine
 transcription, we may be able to learn more about the transcription regulation
 of \trna genes: the similar promoter structure of \trna-derived \transsine[s]
 suggests that the mechanism of gene regulation may be similar here. Furthermore,
