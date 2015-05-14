@@ -156,6 +156,29 @@ The code used in the analysis of the data for this chapter can be found at
     of each panel. Amino acid isotypes outside the \num{99} per cent confidence
     interval (grey area) are named.}
 
+\textfig{colocalisation-e155-p22}{spill}{\textwidth}
+    {Differentially expressed \trna genes show no colocalisation with
+    differentially expressed protein-coding genes.}
+    {In each plot, the blue line is the cumulative distribution of the ratio of
+    the number of upregulated \mrna genes to the number of all \mrna genes in
+    the neighbourhood of each upregulated \trna gene. The green line is the
+    cumulative distribution of the ratios of the number of upregulated \mrna
+    genes (\fdr cutoff \num{0.01}) to the number of all \mrna genes, in the
+    neighbourhood of each \trna gene that is not differentially expressed.
+    Significant differences between these two distributions reveal situations
+    where upregulated \trna genes are significantly (by Kolmogorov–Smirnov test)
+    associated with upregulated protein-coding genes. Different window sizes
+    were used, ranging from \SIlist{10;50;100}{kb} around \trna genes. Pairwise
+    comparison of (A–C) E15.5 and P22 in liver as well as (D–F) P4 and P29 in
+    brain are shown. This analysis was repeated using two additional \fdr
+    cutoffs (\num{0.05} and \num{0.}, data for liver in
+    \cref{tab:colocalisation-liver}, not shown for brain). Under the assumption
+    that there was an observable colocalisation effect, we would expect there to
+    be a robust signal, i.e.\ consistent significance across different tested
+    parameters. However, of the \num{18} tests, only one was significant
+    (corrected \(p<0.013\)), after correcting for multiple testing (Bonferroni),
+    indicating the absence of any strong localisation effect.}
+
 \chapter{Supplementary material for \texorpdfstring{\cref*{sec:codons}}{chapter 3}}
 
 \chapter{Supplementary material for \texorpdfstring{\cref*{sec:pol3}}{chapter 4}}
