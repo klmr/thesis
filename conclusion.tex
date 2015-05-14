@@ -13,19 +13,20 @@ criticism of evolution, stating
 \end{quote}
 
 This statement is as relevant today as it was then --- both as an admonishment
-of ignorance of basic biological facts, and as serving as a summary of our
-understanding. In fact, modern evolutionary synthesis, which is the prevailing
-explanatory model employed today, and which is itself an evolution of the
-Darwinian theory of descent with modification by means of natural selection, is
-unchallenged in this status, and is corroborated by every new piece of evidence.
+about the still prevalent ignorance of basic biological facts, and serving as a
+succinct summary of our understanding of biology. In fact, modern evolutionary
+synthesis, which is the prevailing explanatory model employed today, and which
+is itself an evolution of the Darwinian theory of descent with modification by
+means of natural selection, is unchallenged in this status, and is corroborated
+by every new piece of evidence.
 
 In \texttitle{The making of the fittest}, Sean Carroll argues that the best
-evidence for evolution we have is the genetic record which we can read in the
-\dna of the living species \citep{Carroll:2006}. Carroll was mainly talking
+evidence for evolution we have is the genetic record that we can read in the
+\dna of all living species \citep{Carroll:2006}. Carroll was mainly talking
 about the similarity between homologous genes in different species. But one of
 the most striking examples of strong conservation is the near-universal genetic
-code. In billions of years of evolution, the instruction set used to encode the
-building blocks of proteins has remained virtually unchanged.
+code: During billions of years of evolution, the instruction set used to encode
+the building blocks of proteins has remained virtually unchanged.
 
 In contrast with the conservation of the genetic code itself, the implementation
 of this code shows some degree of variation, most notably in the variation of
@@ -40,22 +41,38 @@ anticodon isoacceptor \trna abundance remains very stable across different
 stages of development, and matches the codon demand of the transcriptome which,
 itself, also shows very little variation.
 
+As there is no effect on the abundance of the \trna anticodon isoacceptor pools,
+it remains unclear why such variation of the \trna gene expression exists;
+however, I have shown that the variation is not stochastic but rather the
+product of coordinated regulation, precisely to ensure the stability of the
+anticodon pool. As a consequence, this may simply be a stabilising mechanism to
+buffer extrinsically caused changes in the expression of individual \trna genes.
+The precise mechanism of the \trna gene expression regulation remains unclear
+even though I found some evidence of correlation with specific histone marks.
+
 Despite the existence of larger variations in codon usage between subsets of
-genes, some of which are cell type specific, we were unable to find evidence for
-a regulatory effect of this codon bias on translation rates via higher
-adaptation to a cell type specific \trna anticodon isoacceptor pool in mammals.
-On the contrary, the variation in the \trna anticodon abundance does not seem to
+genes, some of which are cell type specific, I was unable to find evidence for a
+regulatory effect of this codon bias on translation rates via higher adaptation
+to a cell type specific \trna anticodon isoacceptor pool in mammals. On the
+contrary, the variation in the \trna anticodon abundance does not seem to
 correlate with cell type specific codon demand. This finding, presented in
-\cref{sec:codons} lends support to a view that has recently been challenged,
-that translational selection via codon bias, if present at all, plays a
-negligible role in mammalian systems. It will be interesting to see how this
-controversy will unfold.
+\cref{sec:codons} lends support to a view that has recently been challenged
+\citep{Gingold:2014,Wilusz:2015}: that translational selection via codon bias,
+if present at all, plays a negligible role in mammalian systems. It will be
+interesting to see how this controversy will unfold.
+
+I have started exploring other potential sources of the cell type specific codon
+bias observed in mammals, which are unrelated to the regulation of translation
+rate. My first intuition was that the codon bias might be a stochastic artefact
+caused by the small size of the gene sets under consideration. However, while
+this does have an effect on codon bias, it is insufficient to explain all the
+observed codon bias in most gene sets. I will continue exploring genomic \gc
+bias as another potential cause of this effect.
 
 The \pol3 \chipseq data generated for the projects presented in this thesis
 provides a wealth of information beyond just \trna gene activity.
 \Cref{sec:pol3} takes a brief glimpse at genome-wide \pol3 binding and confirms
-previous reports of the association of \pol3 with \transsine loci in vivo. I
-will investigate these closer in the future.
+previous reports of the association of \pol3 with \transsine loci in vivo.
 
 \section{Future directions}
 
@@ -65,8 +82,8 @@ While providing unprecedented insight into the controlled variability of \trna
 gene transcription, \cref{sec:trna} has failed to establish a mechanism for the
 differential regulation of \trna gene transcription. Known features of \pol3
 recruitment, such as transcription factor binding and specific histone marks,
-could not conclusively be shown to cause the differences we observed in the
-\trna gene transcription between different stages of development. My analysis
+could not conclusively be shown to cause the differences I observed in the \trna
+gene transcription between different stages of development. My analysis
 deliberately excluded the internal promoters of \trna genes from the search for
 specific motifs since it has previously been reported that variation of the
 internal promoter of \trna genes is unrelated to variation in gene expression
@@ -122,10 +139,28 @@ high correlation between the codon demand and matching \trna anticodon
 isoacceptor pool. However, arguing about the relative adaptiveness of different
 gene sets or transcriptomes may make it  necessary to consider wobble base
 pairing to model the codon--anticodon interaction more precisely. The \tai
-\citep{Dos_Reis:2003} offers a way of quantifying \trna adaptation based on
-\trna gene copy numbers for each isoacceptor family. The \tai considers only
-simplified wobble rules (\cref{tab:wobble}), rather than the extended rule set
-for modified nucleobases \citep{Murphy:2004}. Future work that is planned for
-the analysis presented in \cref{sec:codons} includes adapting the \tai for use
-with \trna expression data and using it in preference to a codon--anticodon
-correlation coefficient.
+\citep{Dos_Reis:2003} offers a way of quantifying codon--anticodon adaptation by
+considering (simplified, see \cref{tab:wobble}) wobble base pairing rules.
+However, it is conventionally based on the \trna isoacceptor gene copy number as
+a measure of anticodon abundance. I plan to improve this using our \trna gene
+expression data, which offer a more accurate anticodon isoacceptor abundance
+measure, instead. In addition, it may be possible to extend the \tai metric by
+considering extended wobble base pairing rules \citep{Murphy:2004} --- although
+it is likely that this will have a very limited effect on the adaptation value.
+
+\subsection{\abbr{Pol3} transcription of \abbr{transsine}s}
+
+The next step in the analysis of \transsine expression requires a framework for
+the robust quantification of \pol3 binding signal over background noise. After
+this, individual \transsine classes need to be grouped by their \rna gene of
+origin. This will allow us to perform a biologically meaningful analysis of
+the variation of expression, and will potentially yield insight into the
+regulation of related \trna genes.
+
+\clearpage
+
+\begin{center}
+    \vspace*{\fill}
+    \includegraphics[width=\textwidth]{trna-3d}
+    \vspace*{\fill}
+\end{center}
