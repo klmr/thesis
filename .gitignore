@@ -11,6 +11,8 @@
 *.bcf
 *.toc
 *.run.xml
+*.lof
+*.lot
 thesis-blx.bib
 bib_sources.conf
 references.bib
