@@ -112,12 +112,13 @@ either the whole genome or the transcriptome --- or assembled \emph{de novo}
 locations, which can be queried and matched to features (usually genes or
 exons) \citep{Cox:2007,Kim:2013,Anders:2014}.
 
-One important distinction depends on whether the \cdna fragments were sequenced
-from both ends or from one end only. In the first case, instead of a single read
-per fragment we end up with paired-end reads, which are separated by a known
-distance. Mapping and assembling paired-end reads creates further algorithmic
-challenges but increases the amount of information contained in a read (pair),
-which increases the amount of unambiguously mappable data
+It is important to distinguish whether the \cdna fragments were sequenced from
+both ends or from one end only. In the first case, instead of a single read per
+fragment we end up with paired-end reads, which are separated by an
+approximately known distance (the fragment length minus the lengths of the
+sequence reads). Mapping and assembling paired-end reads creates further
+algorithmic challenges but increases the amount of information contained in a
+read (pair), which increases the amount of unambiguously mappable data
 (\cref{fig:paired-end-reads}) \citep{Langmead:2012}.
 
 \textfig{paired-end-reads}{body}{0.75\textwidth}
