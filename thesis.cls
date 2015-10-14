@@ -459,7 +459,13 @@
 
 % List of abbreviations.
 \newcommand*\listofabbrevs{%
-    \printglossary[title={List of abbreviations},type=\acronymtype,nonumberlist]}
+    % Work around limitation in glossaries in setting page heading.
+    % See <http://tex.stackexchange.com/a/34291/42>, in particular:
+    % “If more than one \markboth happens on the same page, then Latex takes the
+    % last left mark and the first right mark.”
+    \markboth{list of abbreviations}{list of abbreviations}%
+    \printglossary[title={List of abbreviations},type=\acronymtype,nonumberlist]%
+    \markboth{list of abbreviations}{list of abbreviations}}
 
 \newcommand\define[2][]{\emph{\hashtag{#2}}\showdefinition{#1}}
 \newcommand*\defineword[1]{\textbf{#1}\quad}
