@@ -39,6 +39,7 @@
 \RequirePackage{subcaption}
 \RequirePackage{ragged2e}
 \RequirePackage{ifoddpage}
+\RequirePackage[xindy, toc, nopostdot]{glossaries}
 \RequirePackage{hyperref}
 % “… cleveref must be loaded *last*”
 \RequirePackage[nameinlink, noabbrev]{cleveref}
@@ -449,13 +450,16 @@
     % #2 macro name
     % #3 expanded abbreviation
     \csdef{abbr@#2}{#3}
+    \ifblank{#1}{}{\newacronym{#2}{#3}{#1}}%
     \expandafter\gnewcommand\csname abbrev@#2\endcsname[1]{%
         \expandafter\grenewcommand\csname abbrev@#2\endcsname[1]{\abbr{#2}####1}%
         \ifblank{#1}{\define{\abbr{#2}}##1}{#1##1 (\define{\abbr{#2}})}}%
     \expandafter\newrobustcmd\expandafter*\csname #2\endcsname[1][]{%
         \csuse{abbrev@#2}{##1}\xspace}}
 
-\input{abbreviations.tex}
+% List of abbreviations.
+\newcommand*\listofabbrevs{%
+    \printglossary[title={List of abbreviations},type=\acronymtype,nonumberlist]}
 
 \newcommand\define[2][]{\emph{\hashtag{#2}}\showdefinition{#1}}
 \newcommand*\defineword[1]{\textbf{#1}\quad}
@@ -513,6 +517,10 @@
         \setlength\parskip{0pt}
         \setlength\parsep{0pt}}
     {\end{itemize}}
+
+\makeglossaries
+\input{abbreviations.tex}
+\glsaddall[types=\acronymtype]
 
 % Organisation
 
