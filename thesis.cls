@@ -106,7 +106,7 @@
 \DefineBibliographyStrings{english}{andothers = {\&~al\adddot}}
 
 \setkomafont{title}{\rmfamily\Huge}
-\setkomafont{subject}{\normalfont\normalcolor\Large}
+\setkomafont{subject}{\normalfont\normalcolor}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
 \definecolor{cambridgeblue}{RGB}{163, 193, 173}
