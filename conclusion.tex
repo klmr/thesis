@@ -156,18 +156,29 @@ results reported in the literature.
 
 \todo[inline]{Alternative explanations for gene-specific codon bias}
 
-I have started exploring other potential sources of the cell type specific codon
-bias observed in mammals, which are unrelated to the regulation of translation
-rate. My first intuition was that the codon bias might be a stochastic artefact
-caused by the small size of the gene sets under consideration. However, while
-this does have an effect on codon bias, it is insufficient to explain all the
-observed codon bias in most gene sets. I will continue exploring genomic \gc
-bias as another potential cause of this effect.
+At the end of the project outlined in \cref{sec:codons}, I have started
+exploring other potential sources of the cell type-specific codon bias observed
+in mammals, unrelated to the regulation of translation rate. My first intuition
+was that the codon bias might be a stochastic artefact caused by the small size
+of the gene sets under consideration. However, whilst stochastic variation does
+have an effect on codon bias, it is insufficient to explain all the observed
+codon bias in most gene sets. I will continue exploring genomic \gc bias as
+another potential cause of this effect.
+
+\subsection{The extended \abbr{pol3} transcriptome}
 
 The \pol3 \chipseq data generated for the projects presented in this thesis
 provides a wealth of information beyond just \trna gene activity.
 \Cref{sec:pol3} takes a brief glimpse at genome-wide \pol3 binding and confirms
-previous reports of the association of \pol3 with \transsine loci in vivo.
+that \pol3 binding can be used to assess gene activity of genes with known
+\pol3-driven transcription.
+
+In particular, I was able to assess binding of \pol3 to the promoter region of
+\transsine loci. The problem of multi-mapping reads and the high number of
+\transsine gene copies makes it hard to assess the activity of individual
+\transsine genes. However, by collapsing \transsine gene families, I could
+corroborate previous reports of \transsine transcription in vivo
+\citep{Carriere:2012}.
 
 \section{Future directions}
 
