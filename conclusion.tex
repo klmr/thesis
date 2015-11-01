@@ -21,18 +21,23 @@ means of natural selection, is unchallenged in this status, and is corroborated
 by every new piece of evidence.
 
 In \texttitle{The making of the fittest}, Sean Carroll argues that the best
-evidence for evolution we have is the genetic record that we can read in the
-\dna of all living species \citep{Carroll:2006}. Carroll was mainly talking
-about the similarity between homologous genes in different species. But one of
-the most striking examples of strong conservation is the near-universal genetic
-code: During billions of years of evolution, the instruction set used to encode
-the building blocks of proteins has remained virtually unchanged.
+evidence for evolution we have is the genetic record that we can now read
+directly in the \dna of all living species \citep{Carroll:2006}. Carroll was
+mainly talking about the similarity between homologous genes in different
+species. But one of the most striking examples of strong conservation is the
+near-universal genetic code: Throughout billions of years of evolution, the
+instruction set used to encode the building blocks of proteins has remained
+virtually unchanged.
 
 In contrast with the conservation of the genetic code itself, the implementation
 of this code shows some degree of variation, most notably in the variation of
 the selection of preferential synonymous codons (reviewed in
 \citet{Ermolaeva:2001}) on the one hand, and in the divergence of the \trna
 genes \citep{Kutter:2011} on the other hand.
+
+\section{Discussion}
+
+\subsection{Regulation of \abbr{trna} gene expression}
 
 In \cref{sec:trna}, I have summarised our research into the variability of the
 \trna genes, not across evolution, but across development. Our findings mirror a
@@ -45,11 +50,58 @@ As there is no effect on the abundance of the \trna anticodon isoacceptor pools,
 it remains unclear why such variation of the \trna gene expression exists;
 however, I have shown that the variation is not stochastic but rather the
 product of coordinated regulation, precisely to ensure the stability of the
-anticodon pool. As a consequence, this may simply be a stabilising mechanism to
-provide a buffer against extrinsically caused changes in the expression of
-individual \trna genes. The precise mechanism of the \trna gene expression
-regulation remains unclear even though I found some evidence of correlation with
-specific histone marks.
+anticodon pool. One might thus suspect that the observed variation in \trna gene
+expression is simply a consequence of a stabilising mechanism to provide a
+buffer against extrinsically caused changes in the expression of individual
+\trna genes.
+
+On the other hand, the variability in \trna gene expression may be due to a
+regulatory role, which is a common theme of \ncrna[s]: Many different types of
+\ncrna are known to be implicated in the regulation of gene expression through a
+variety of mechanisms \citep{Mattick:2006}. For example, \lncrna[s] have been
+shown to bind to chromatin and help shape its conformation \citep{Rinn:2012},
+and small \rna fragments from different sources are involved in \rna silencing
+via a machinery known as \risc \citep{Hamilton:1999,Hammond:2000}.
+
+Although \trna[s] have a “canonical” role — to act as adapters in the process of
+translation — this of course does not preclude other roles. In fact, there is
+evidence that ties \trna-derived fragments to different regulatory roles. As
+mentioned in the introduction, about ten per cent of the bases in the \trna[s]
+transcript are post-transcriptionally modified. Some of these modifications
+impact the stability of the transcript. For example, it is known that
+cytosine-\num{5} methylation in the anticodon loop of \trna[s], which is
+prevalent in actively transcribed \trna[s], inhibits endonucleolytic cleavage.
+Absence of this methylation leads to cleavage and the accumulation of \threep
+and \fivep fragments \citep{Thompson:2008}. Furthermore, there is evidence that
+overabundance of \fivep \trna fragments lead to cellular stress
+\citep{Blanco:2014}.
+
+But not only the \fivep fragment of \trna[s] is catalytically active: the
+\threep ends of specific \trna[s] have been shown to act as primers for the
+transcription of endogenous retroviruses such as \hivi \citep{Litvak:1994} in a
+highly sequence-specific manner. In general, the expression of such retroviruses
+is detrimental for the cell and, by implication, excess abundance of specific
+\trna-derived fragments affects the cell’s fitness negatively. This exerts a
+selective pressure to evolve a mechanism for suppressing such fragments. One way
+of depleting their abundance is to downregulate the expression of originator\todo{ugly, better word?}
+\trna genes in response to the detection of excess \trna fragments.
+
+In sum, the regulatory role of \trna transcripts adds another dimension to the
+need for the regulation of their abundance. In fact, the dependence on specific
+enzymes (such as \protein{mmu}{NSUN2} in mouse) to methylate \trna[s], and thus
+to ensure their stability hints at the fundamental importance of preventing the
+formation of excess \trna-derived fragments \citep{Blanco:2014}.
+
+The precise mechanism of the \trna gene expression regulation remains unclear.
+Corroborating previous reports \citep{Oler:2010}, I have found some evidence
+that \trna gene activity correlates with specific histone marks. However, it is
+unclear whether this is a cause or a consequence of differential regulation, and
+it is insufficient to account for differences in the expression of \trna genes
+in close vicinity. Furthermore, there is so far no mechanism for the dynamic
+feedback necessary for effecting the compensatory effect between genes in an
+isoacceptor family.
+
+\subsection{Absence of evidence for codon bias-dependent translation efficiency in mammals}
 
 Despite the existence of larger variations in codon usage between subsets of
 genes, some of which are cell type specific, I was unable to find evidence for a
@@ -61,6 +113,48 @@ correlate with cell type specific codon demand. This finding, presented in
 \citep{Gingold:2014,Wilusz:2015}: that translational selection via codon bias,
 if present at all, plays a negligible role in mammalian systems. It will be
 interesting to see how this controversy will unfold.
+
+If true, this implies that codon bias has not conserved the regulatory role it
+plays in unicellular organisms of all domains of life \colorbox{yellow}{REF},
+where it is well established that codon bias influences translation efficiency
+to control gene-specific expression levels. Why would this central role of codon
+bias be present in unicellular organisms but not in complex multicellular
+animals? The following is an attempt at an explanation.
+
+In contrast to unicellular organisms, multicellular organisms need to encode the
+fundamentally different functionality of distinct cell types in a single, static
+genome. This is achieved through a highly sophisticated regulatory machinery
+whose dynamic evolution has been revealed in recent years, in particular with a
+focus on mammalian systems \colorbox{yellow}{REF, Berthelot}. While  organisms
+consisting of a single cell type also employ gene regulatory networks, the
+complexity of the regulatory machinery in organisms with many cell types is much
+higher in comparison, and in particular relies heavily on distal regulatory
+elements and epigenetic modification.
+
+However, despite only consisting of a single cell type, unicellular life still
+needs to dynamically adapt to different environments. Besides using simple
+transcriptional control, they also rely heavily on translational control by
+means of gene specific codon bias variation. In multicellular organisms, the
+existence of a more direct control of gene expression via transcription
+regulation obviates the need for this less direct mechanism.
+
+The effect this has is further heightened by the simpler genomic \trna landscape
+in unicellular organisms: while mammals have several hundred \trna genes, with
+up to dozens of gene copies per anticodon, unicellular organisms possess fewer
+anticodons, and usually just a single \trna gene copy per anticodon
+\citep{Chan:2009}. As a consequence, the downregulation of even just a single
+\trna gene copy has profound consequences on the cytosolic \trna concentration,
+and thus the ability of the cell to translate individual codons. This acts as a
+powerful pressure on the selection of suitable codons.
+
+I suggest that these two factors — the relatively higher complexity of
+transcriptional regulation in mammals, and the higher impact of variation in
+\trna gene transcription on variation in
+\trna availability and thus on translation efficiency in unicellular organisms —
+is sufficient to explain the results we observe here as well as established
+results reported in the literature.
+
+\todo[inline]{Alternative explanations for gene-specific codon bias}
 
 I have started exploring other potential sources of the cell type specific codon
 bias observed in mammals, which are unrelated to the regulation of translation
