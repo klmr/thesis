@@ -257,11 +257,22 @@ it is likely that this will have a very limited effect on the adaptation value.
 \subsection{\abbr{Pol3} transcription of \abbr{transsine}s}
 
 The next step in the analysis of \transsine expression requires a framework for
-the robust quantification of \pol3 binding signal over background noise. After
-this, individual \transsine classes need to be grouped by their \rna gene of
-origin. This will allow us to perform a biologically meaningful analysis of
-the variation of expression, and will potentially yield insight into the
-regulation of related \trna genes.
+the robust quantification of \pol3 binding signal over background noise. I
+intend to use alignment-free quantification methods \colorbox{yellow}{REF} to
+quantify \pol3 binding on individual gene loci, extending the approach used for
+\trna genes. This approach also allows a robust estimate of background noise
+from \chip input libraries. To verify the validity of this approach, lacking
+independent suitable \transsine expression data, I will computationally generate
+high-throughput sequencing read libraries from simulated \transsine gene
+expression profiles, and test for concordance between the simulation and the
+expression estimated by the pipeline.
+
+Using this framework for estimating \transsine gene expression, I can then
+investigate whether \trna gene derived \transsine[s] possess elements of
+transcription regulation in comon with their \trna gene of origin. To do this,
+individual \transsine classes will to be grouped by their origin, and their
+expression across mouse development will be correlated with the expression of
+their source \trna gene to look for common factors.
 
 \clearpage
 
