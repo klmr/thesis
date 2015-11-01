@@ -486,10 +486,11 @@
 
 \newcommand*\gene@hsa[1]{\textsc{\MakeTextLowercase{\textit{#1}}}}
 \newcommand*\gene@mmu[1]{\textit{#1}}
-
 \newcommand*\gene[2]{\csuse{gene@#1}{#2}}
 
-\newcommand*\protein[1]{\textrm{\textsc{\MakeTextLowercase{#1}}}}
+\newcommand*\protein@hsa[1]{\textrm{\textsc{\MakeTextLowercase{#1}}}}
+\newcommand*\protein@mmu[1]{\textrm{\textsc{\MakeTextLowercase{#1}}}}
+\newcommand*\protein[2]{\csuse{protein@#1}{#2}}
 
 % Formatting of biological sequences
 
