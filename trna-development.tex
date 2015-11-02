@@ -129,9 +129,9 @@ birth \citep{Tsui:2013,Huang:2011}.
             \gene{mmu}{Calm1}.}
     \endgroup}
     {Example of gene expression changes in development.}
-    {The four genes are representative for tissue- and stage-specific genes,
+    {The four genes are representative for tissue- and stage-specific genes
     whose expression changes drive cell function. These changes can go up or
-    down over the course of development, correspoding to either an up- or
+    down over the course of development, corresponding to either an up- or
     downregulation. Figure created by Bianca Schmitt.}
 
 For a more systematic analysis, I took the matrix of normalised count data of
@@ -177,7 +177,10 @@ genes across the weaning boundary, in both liver and brain.
     {\abbr{pca} of \abbr{mrna} gene expression per developmental stage.}
     {Rotations \num{1} and \num{2} of the correlation matrix of
     protein-coding gene expression in each developmental stage. The percentage
-    on the axes shows the amount of variance explained by each rotation.}
+    on the axes shows the amount of variance explained by each rotation. Points
+    corresponding to liver samples are coloured in red, points correspoding to
+    brain samples are coloured in yellow; stages of development go from light
+    colours to dark colours.}
     {mrna-de-matrix}
     {Number of differentially expressed \abbr{mrna} genes between stages.}
     {Each off-diagonal square shows the number of differentially
@@ -243,7 +246,7 @@ dynamics.
 Surprisingly, the \trna gene expression differences follow similar patterns to
 those observed in \mrna genes, with the first two principal components resulting
 from the application of \pca to the rank correlation matrix again corresponding
-to the tissue an developmental stage (\cref{fig:trna-pca}). The observed
+to the tissue and developmental stage (\cref{fig:trna-pca}). The observed
 patterns are incompatible with mere \emph{random} expression changes (which
 would result in an unordered cloud of points). Something must account for these
 concerted changes in \trna gene expression.
@@ -252,7 +255,10 @@ concerted changes in \trna gene expression.
     {\abbr{pca} of \abbr{trna} gene expression per developmental stage.}
     {Rotations \num{1} and \num{2} of the correlation matrix of
     \trna gene expression in each developmental stage. The percentage on the
-    axes shows the amount of variance explained by each rotation.}
+    axes shows the amount of variance explained by each rotation. Points
+    corresponding to liver samples are coloured in red, points correspoding to
+    brain samples are coloured in yellow; stages of development go from light
+    colours to dark colours.}
 
 In the case of the protein-coding genes, we can explain the nonrandom changes in
 gene expression by known gene regulatory mechanisms, which control the
@@ -412,7 +418,7 @@ Codons and anticodon-carrying \trna[s] form the biochemical interface between
 the genetic code and the amino acid sequence of proteins during \mrna
 translation. I investigated this correspondence between \mrna-driven codon
 demand and \trna anticodon supply by looking at the correlation between a
-codons’ frequency in the \mrna transcriptome as a fraction of the overall codon
+codon’s frequency in the \mrna transcriptome as a fraction of the overall codon
 count \(c_{xy}'\), and its matching \trna anticodon isoacceptor abundance
 \(a_{xy}'\) at the same developmental stage \(y\)
 (\cref{fig:codon-anticodon-abundance} bottom left):
@@ -764,7 +770,7 @@ their expression is stable (\cref{fig:codon-anticodon-abundance} centre left).
 
 This might imply (anti-)correlation of expression across stages between the
 genes of an isoacceptor family. Alternatively, \trna gene expression might vary
-randomly without, regard to other \trna genes in the same isoacceptor family. An
+randomly without regard to other \trna genes in the same isoacceptor family. An
 example of each of these two scenarios is shown in
 \cref{fig:compensation-a,fig:compensation-c}). To test this systematically, we
 compared the distribution of correlations between genes within each isoacceptor
