@@ -307,10 +307,10 @@
 \newcommand*\tabcap[3]{%
     \begingroup%
     \def\@captype{table}
-    \caption{\label{tab:#1}\labelfont{#2} #3}
+    \caption[#2]{\label{tab:#1}\labelfont{#2} #3}
     \endgroup}
 
-\newcommand*\tabcapof[3]{\captionof{table}{\label{tab:#1}\labelfont{#2} #3}}
+\newcommand*\tabcapof[3]{\captionof{table}[#2]{\label{tab:#1}\labelfont{#2} #3}}
 
 \newcommand*\floatpos{!ht}
 
