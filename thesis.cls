@@ -189,7 +189,6 @@
     \color{black}%
     \selectfont}
 
-\newlength\thesis@chapter@labelwidth
 \newlength\thesis@chapter@width
 \newlength\thesis@chapter@orig
 
@@ -202,21 +201,20 @@
 {0pt}% Sep
 {\begingroup%
     \usekomafont{chapter}%
-    \settowidth\thesis@chapter@labelwidth{{\thesis@chapternumber\chapterlabel}}%
     \setlength\thesis@chapter@orig{\textwidth}%
     \setlength\thesis@chapter@width{\textwidth}%
     \addtolength\thesis@chapter@width{\marginparwidth}%
     \addtolength\thesis@chapter@width{\marginparsep}%
     \makebox[\textwidth][l]{%
         \begin{minipage}{\thesis@chapter@width}
-            \begin{minipage}{\thesis@chapter@orig}
+            \begin{minipage}[t]{\thesis@chapter@orig}
                 \hyphenpenalty=10000%
                 \exhyphenpenalty=10000%
                 \raggedright#1%
             \end{minipage}%
             \hspace{\marginparsep}%
             {\thesis@chapternumber\chapterlabel}
-    \end{minipage}}
+        \end{minipage}}
     \endgroup%
     \setbox0\vbox{\use@preamble{chapter@u}%
     \vskip-\parskip}%
