@@ -135,7 +135,7 @@ and the containing genes’ expression may be anticorrelated.
             \end{tabu}
         \end{minipage}
     }
-    {\pca of mean \go term codon usage.}
+    {\abbr{pca} of mean \abbr{go} term codon usage.}
     {Each dot corresponds to one \go term. The position of the dots is derived
     by rotating the matrix of the mean codon usage of the genes belonging to
     each \go term. Created using methods of \citet{Gingold:2014} (the precise
@@ -206,8 +206,8 @@ anticodon pool is specially adapted to cell condition specific gene sets.
         \includegraphics[width=\textwidth]{gingold-3c-mrna}\\[-0.3\baselineskip]
         \subcaption{\label{fig:gingold-3c-b}Fold change in \abbr{mrna} level}
     \endgroup}
-    {Projection of the \trna and \mrna expression changes on the codon usage
-    map for cells after induced differentiation via retinoic acid.}
+    {Projection of the \abbr{trna} and \abbr{mrna} expression changes on the
+    codon usage map for cells after induced differentiation via retinoic acid.}
     {Both panels show the same \pca that I reproduced in \cref{fig:go-cub-pca}.
     In the top panel, the colours correspond to the fold change in predicted
     translation efficiency of the genes constituting each \go term, given the
@@ -279,7 +279,7 @@ of each \go term, along with an indication of whether the observed variation is
 explained by random variation alone.
 
 \textfig{significant-go-term-cub-var}{spill}{\textwidth}
-    {\go term codon usage variation.}
+    {\abbr{go} term codon usage variation.}
     {Each point corresponds to a \go term whose Pearson correlation of codon
     usage with the genomic background is plotted against its gene set size.
     \go terms with an \fdr-adjusted \(p < 0.05\) are coloured in red.}
@@ -468,12 +468,12 @@ identity as a confounding factor (by computing \rcu instead of codon usage), the
 categories (\cref{fig:go-rcu-pca}).
 
 \textfigtwo{go-aa-pca}
-    {\pca of mean \go term amino acid usage.}
+    {\abbr{pca} of mean \abbr{go} term amino acid usage.}
     {Each dot corresponds to one \go term. The position of the dots is derived
     by rotating the matrix of the mean amino acid usage of the genes belonging
     to each \go term. Colours and symbols as in \cref{fig:go-cub-pca}.}
     {go-rcu-pca}
-    {\pca of mean \go term \rcu.}
+    {\abbr{pca} of mean \abbr{go} term \abbr{rcu}.}
     {Each dot corresponds to one \go term. The position of the dots is derived
     by rotating the matrix of the mean \rcu of the genes belonging to each \go
     term. Colours and symbols as in \cref{fig:go-cub-pca}.}
@@ -517,17 +517,17 @@ question can be found in the conclusion in \cref{sec:conclusion}.
     {%
         \begin{minipage}{0.5\textwidth}
             \includegraphics[width=\textwidth]{cub-pc1-vs-gc}%
-            \subcaption{\label{fig:cu-vs-gc}\gc bias against codon usage
+            \subcaption{\label{fig:cu-vs-gc}\abbr{gc} bias against codon usage
             (Pearson’s \(\rho = -0.96\)).}
         \end{minipage}%
         \begin{minipage}{0.5\textwidth}
             \includegraphics[width=\textwidth]{aa-pc2-vs-gc}%
-            \subcaption{\label{fig:aa-vs-gc}\gc bias against amino acid usage
-            (Pearson’s \(\rho = -0.58\)).}
+            \subcaption{\label{fig:aa-vs-gc}\abbr{gc} bias against amino acid
+            usage (Pearson’s \(\rho = -0.58\)).}
         \end{minipage}%
     }
-    {\gc bias against a principal component of the \go term codon \& amino acid
-    usage \pca.}
+    {\abbr{gc} bias against a principal component of the \abbr{go} term codon \&
+    amino acid usage \abbr{pca}.}
     {Each point represents one \go term. The \(x\) coordinate corresponds to
     that of the named principal component of the \pca in
     \cref{fig:go-cub-pca,fig:go-aa-pca}. The \(y\) coordinate corresponds to

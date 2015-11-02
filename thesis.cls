@@ -301,8 +301,8 @@
 
 \let\labelfont\textbf
 
-\newcommand*\figcap[3]{\caption{\label{fig:#1}\labelfont{#2} #3}}
-\newcommand*\figcapof[3]{\captionof{figure}{\label{fig:#1}\labelfont{#2} #3}}
+\newcommand*\figcap[3]{\caption[#2]{\label{fig:#1}\labelfont{#2} #3}}
+\newcommand*\figcapof[3]{\captionof{figure}[#2]{\label{fig:#1}\labelfont{#2} #3}}
 
 \newcommand*\tabcap[3]{%
     \begingroup%

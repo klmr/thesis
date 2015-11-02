@@ -174,12 +174,12 @@ post-weaning stages, with a large jump in the number of differentially expressed
 genes across the weaning boundary, in both liver and brain.
 
 \textfigtwo{mrna-pca}
-    {\pca of \mrna gene expression per developmental stage.}
+    {\abbr{pca} of \abbr{mrna} gene expression per developmental stage.}
     {Rotations \num{1} and \num{2} of the correlation matrix of
     protein-coding gene expression in each developmental stage. The percentage
     on the axes shows the amount of variance explained by each rotation.}
     {mrna-de-matrix}
-    {Number of differentially expressed \mrna genes between stages:}
+    {Number of differentially expressed \abbr{mrna} genes between stages.}
     {Each off-diagonal square shows the number of differentially
     expressed genes (at a significance threshold of \(p<0.01\)) between
     the two indicated developmental stages.}
@@ -228,14 +228,14 @@ shows a genomic locus containing \trna genes that displays these different
 dynamics.
 
 \textfigtwo{trna-counts}
-    {Overview over \trna gene expression change.}
+    {Overview over \abbr{trna} gene expression change.}
     {Bar plots show different types of \trna gene expression dynamics: \trna
     genes without change in their expression levels, \trna genes with changes to
     their expression levels, which are nevertheless expressed in all stages of
     development across both tissues; and \trna genes which are only expressed in
     a subset of all conditions. Figure created by Claudia Kutter.}
     {liver-trna-expression-change}
-    {Example of dynamically changing \trna genes.}
+    {Example of dynamically changing \abbr{trna} genes.}
     {Genomic region showing different types of \trna gene expression behaviour;
     the label colours on the x axis corresponds to the colours in
     \cref{fig:trna-counts}. Figure created by Bianca Schmitt.}
@@ -249,7 +249,7 @@ would result in an unordered cloud of points). Something must account for these
 concerted changes in \trna gene expression.
 
 \textfig{trna-pca}{body}{0.8\textwidth}
-    {\pca of \trna gene expression per developmental stage.}
+    {\abbr{pca} of \abbr{trna} gene expression per developmental stage.}
     {Rotations \num{1} and \num{2} of the correlation matrix of
     \trna gene expression in each developmental stage. The percentage on the
     axes shows the amount of variance explained by each rotation.}
@@ -638,7 +638,7 @@ with the contingency table shown in \cref{tab:chip-contingency}.
         \bottomrule
     \end{tabular}
     \tabcap{chip-contingency}
-        {Contingency table of \chip signal enrichment.}
+        {Contingency table of \abbr{chip} signal enrichment.}
         {}
 \end{table}
 
@@ -692,7 +692,7 @@ findings \citep{Barski:2010,Oler:2010}.
     \end{tabular}
 
     \tabcap{active-histone}
-    {Enrichment of different \chip targets near active \trna genes.}
+    {Enrichment of different \abbr{chip} targets near active \abbr{trna} genes.}
     {Shown are the unajusted \(p\)-values for the hypothesis of no enrichment of
     a \chip signal near expressed \trna genes, compared to unexpressed \trna
     genes, using a window size of \SI{\pm 0.5}{kb}; other window sizes show less
@@ -738,8 +738,8 @@ enrichment.
     \end{tabular}
 
     \tabcap{de-histone}
-    {Enrichment of different \chip targets near differentially expressed \trna
-    genes.}
+    {Enrichment of different \abbr{chip} targets near differentially expressed
+    \abbr{trna} genes.}
     {Shown are the unajusted \(p\)-values for the hypothesis of no enrichment of
     a \chip signal near differentially expressed, upregulated \trna genes,
     compared to non-\de \trna genes, using a window size of \SI{\pm 0.5}{kb};
@@ -856,32 +856,32 @@ a new challenge.
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[height=6cm]{correlation-cag}
-        \subcaption{\label{fig:compensation-a}Isoacceptor \anticodon{CAG} \trna
-            gene expression levels in liver across development.\\\ }
+        \subcaption{\label{fig:compensation-a}Isoacceptor \anticodon{CAG}
+            \abbr{trna} gene expression levels in liver across development.\\\ }
     \end{minipage}
     \hspace{0.05\textwidth}%
     \begin{minipage}{0.4\textwidth}
         \centering
         \includegraphics[height=6cm]{compensation-cag}
         \subcaption{\label{fig:compensation-b}Density curve of isoacceptor
-            \anticodon{CAG} \trna gene expression correlations.}
+            \anticodon{CAG} \abbr{trna} gene expression correlations.}
     \end{minipage}
     \par
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[height=6cm]{correlation-gcc}
-        \subcaption{\label{fig:compensation-c}Isoacceptor \anticodon{GCC} \trna
-            gene expression levels in liver across development.\\\ }
+        \subcaption{\label{fig:compensation-c}Isoacceptor \anticodon{GCC}
+            \abbr{trna} gene expression levels in liver across development.\\\ }
     \end{minipage}
     \hspace{0.05\textwidth}%
     \begin{minipage}{0.4\textwidth}
         \centering
         \includegraphics[height=6cm]{compensation-gcc}
         \subcaption{\label{fig:compensation-d}Density curve of isoacceptor
-            \anticodon{GCC} \trna gene expression correlations.}
+            \anticodon{GCC} \abbr{trna} gene expression correlations.}
     \end{minipage}}
-    {\trna gene expression is compensated at the anticodon isoacceptor level
-    during mouse development.}
+    {\abbr{trna} gene expression is compensated at the anticodon isoacceptor
+    level during mouse development.}
     {Panels (a) and (c) show two examples of \trna gene isoacceptor families and
     their gene expression across development (row-normalised). In panel (a) we
     can see two clusters of coordinated expression: the top \num{5} genes are
