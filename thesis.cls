@@ -213,7 +213,7 @@
                 \raggedright#1%
             \end{minipage}%
             \hspace{\marginparsep}%
-            {\thesis@chapternumber\chapterlabel}
+            {\thesis@chapternumber\addfontfeature{Numbers=Lining}{\chapterlabel}}
         \end{minipage}}
     \endgroup%
     \setbox0\vbox{\use@preamble{chapter@u}%
