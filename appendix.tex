@@ -7,6 +7,9 @@
 \setcounter{chapter}{0}
 \renewcommand\thechapter{\Alph{chapter}}
 
+\begingroup
+\renewcommand*\floatpos{H}
+
 \chapter{Supplementary material for \texorpdfstring{\cref*{sec:trna}}{chapter 2}}
 
 The material in this section has been taken from the supplementary figures \&
@@ -14,12 +17,14 @@ methods of Schmitt, Rudolph,\andothersdelim\& al. [\cite*{Schmitt:2014}] with
 minimal changes to the figure legends. The figures and their captions have been
 created jointly by Bianca Schmitt, Claudia Kutter and me.
 
+\section{Code}
+
 The code used in the analysis of the data for this chapter can be found at
 \url{https://github.com/klmr/trna} and
 \url{https://github.com/klmr/trna-chip-pipeline}.
 
-\begingroup
-\renewcommand*\floatpos{H}
+\section{Supplementary figures and tables}
+\newpage
 
 \thispagestyle{empty}
 \textfig{trna-workflow}{spill}{\textwidth}
@@ -201,11 +206,27 @@ The code used in the analysis of the data for this chapter can be found at
 
 \chapter{Supplementary material for \texorpdfstring{\cref*{sec:codons}}{chapter 3}}
 
+\section{Code}
+
+The code used in the analysis of the data for this chapter can be found at
+\url{https://github.com/klmr/codons}.
+
+\section{Supplementary tables}
+\newpage
+
 \input{./data/GO_m_phase.tex}
 
 \input{./data/GO_psp.tex}
 
 \chapter{Supplementary material for \texorpdfstring{\cref*{sec:pol3}}{chapter 4}}
+
+\section{Code}
+
+The code used in the analysis of the data for this chapter can be found at
+\url{https://github.com/klmr/pol3-seq}.
+
+\section{Supplementary figures}
+\newpage
 
 \textfig{pol3-inputs}{spill}{\textwidth}
     {Input library coverage}
