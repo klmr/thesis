@@ -39,6 +39,7 @@
 \RequirePackage{subcaption}
 \RequirePackage{ragged2e}
 \RequirePackage{ifoddpage}
+\RequirePackage{adjustbox}
 \RequirePackage[xindy, toc, nopostdot]{glossaries}
 \RequirePackage{hyperref}
 % “… cleveref must be loaded *last*”
@@ -189,9 +190,6 @@
     \color{black}%
     \selectfont}
 
-\newlength\thesis@chapter@width
-\newlength\thesis@chapter@orig
-
 \titleformat{\chapter}
 {\gdef\chapterlabel{}}
 {\begingroup%
@@ -201,20 +199,17 @@
 {0pt}% Sep
 {\begingroup%
     \usekomafont{chapter}%
-    \setlength\thesis@chapter@orig{\textwidth}%
-    \setlength\thesis@chapter@width{\textwidth}%
-    \addtolength\thesis@chapter@width{\marginparwidth}%
-    \addtolength\thesis@chapter@width{\marginparsep}%
     \makebox[\textwidth][l]{%
-        \begin{minipage}{\thesis@chapter@width}
-            \begin{minipage}[t]{\thesis@chapter@orig}
-                \hyphenpenalty=10000%
-                \exhyphenpenalty=10000%
-                \raggedright#1%
-            \end{minipage}%
-            \hspace{\marginparsep}%
-            {\thesis@chapternumber\addfontfeature{Numbers=Lining}{\chapterlabel}}
-        \end{minipage}}
+        \begin{adjustbox}{minipage=\textwidth, valign=t}
+            \hyphenpenalty=10000%
+            \exhyphenpenalty=10000%
+            \raggedright#1%
+        \end{adjustbox}%
+        \hspace{\marginparsep}%
+        \begin{adjustbox}{minipage=\marginparwidth, valign=t}
+            {\thesis@chapternumber\addfontfeature{Numbers=Lining}{\chapterlabel}}%
+        \end{adjustbox}}
+        \vspace{-\baselineskip}
     \endgroup%
     \setbox0\vbox{\use@preamble{chapter@u}%
     \vskip-\parskip}%
