@@ -177,7 +177,7 @@
 
 \newcommand*\thesis@chapternumber{%
     \rmfamily%
-    \fontsize{72}{72}%
+    \fontsize{128}{128}%
     \color{black!50}%
     %\color{cambridgeblue}%
     \mdseries%
