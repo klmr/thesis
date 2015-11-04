@@ -20,7 +20,7 @@
 \RequirePackage{microtype}
 \RequirePackage{tocstyle}
 \RequirePackage{polyglossia}
-\RequirePackage[natbib, backend=biber, style=authoryear, maxnames=2, useprefix]{biblatex}
+\RequirePackage[natbib, backend=biber, style=authoryear, maxcitenames=2, maxbibnames=99, useprefix]{biblatex}
 \RequirePackage{booktabs}
 \RequirePackage{tabu}
 \RequirePackage{longtable}
@@ -424,7 +424,7 @@
 \newcommand*\abbr[1]{\csuse{abbr@#1}}
 
 % The following needs global versions of (re)newcommand.
-% This implementation is form http://tex.stackexchange.com/a/51750/42.
+% This implementation is from http://tex.stackexchange.com/a/51750/42.
 \def\gnewcommand{\g@star@or@long\gnew@command}
 \def\grenewcommand{\g@star@or@long\grenew@command}
 \def\g@star@or@long#1{%
