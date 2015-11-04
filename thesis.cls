@@ -40,8 +40,8 @@
 \RequirePackage{ragged2e}
 \RequirePackage{ifoddpage}
 \RequirePackage{adjustbox}
+\RequirePackage{hyperref} % [glossaries] “You must load hyperref *first*”
 \RequirePackage[xindy, toc, nopostdot]{glossaries}
-\RequirePackage{hyperref}
 % “… cleveref must be loaded *last*”
 \RequirePackage[nameinlink, noabbrev]{cleveref}
 
@@ -462,7 +462,10 @@
     % “If more than one \markboth happens on the same page, then Latex takes the
     % last left mark and the first right mark.”
     \markboth{list of abbreviations}{list of abbreviations}%
-    \printglossary[title={List of abbreviations},type=\acronymtype,nonumberlist]%
+    \renewcommand*{\glsgroupskip}{}
+    \begin{singlespace}
+        \printglossary[title={List of abbreviations},type=\acronymtype,nonumberlist]%
+    \end{singlespace}
     \markboth{list of abbreviations}{list of abbreviations}}
 
 \newcommand\define[2][]{\emph{\hashtag{#2}}\showdefinition{#1}}
