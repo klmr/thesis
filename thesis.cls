@@ -450,6 +450,11 @@
     \expandafter\newrobustcmd\expandafter*\csname #2\endcsname[1][]{%
         \csuse{abbrev@#2}{##1}\xspace}}
 
+% Declare an abbreviation as never expanded (except in the list of
+% abbreviations).
+\newcommand\neverexpandabbr[1]{%
+    \expandafter\grenewcommand\csname abbrev@#1\endcsname[1]{\abbr{#1}##1}}
+
 % List of abbreviations.
 \newcommand*\listofabbrevs{%
     % Work around limitation in glossaries in setting page heading.
