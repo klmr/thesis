@@ -11,6 +11,8 @@
 *.bcf
 *.toc
 *.run.xml
+*.lof
+*.lot
 thesis-blx.bib
 bib_sources.conf
 references.bib
@@ -34,3 +36,7 @@ style_klmrthesis/build/
 style_klmrthesis/dist/
 style_klmrthesis/klmrthesis.egg-info/
 _minted*
+*.glg
+*.glo
+*.gls
+*.xdy

@@ -1,4 +1,5 @@
 \section{\abbr{rna} sequencing quantifies protein-coding gene expression}
+\label{sec:rna}
 
 \subsection{The transcriptome reflects the state of the cell}
 
@@ -12,11 +13,11 @@ proteins abundance ultimately determine changes in cellular function. The
 entirety of protein abundance in the cell at a given instance is called the
 \define{proteome}. Unfortunately, quantifying the proteome in an unbiased
 fashion is hard and expensive \citep{Graumann:2008}. Instead, modern biology
-uses the abundance of \mrna molecules, coding for individual proteins (the
+often uses the abundance of \mrna molecules, coding for individual proteins (the
 \define[\defineword{transcriptome} the entirety of the \rna molecules present in
 the cell at a given time]{transcriptome}), as an accurate proxy of the proteome.
-The appropriateness of this approach has been verified in numerous
-studies \citep{Nagaraj:2011,Nookaew:2012}.
+The appropriateness of this approach has been verified in numerous studies
+\citep{Nagaraj:2011,Nookaew:2012}.
 
 \subsection{Microarrays}
 
@@ -47,7 +48,7 @@ following disadvantages \citep{Casneuf:2007,Marioni:2008}:
         cannot be compared.
     \item Several interesting biological questions which cannot be answered by
         microarray analysis at all, or only with difficulties, become tractable
-        using \abbr{rnaseq}; these include the analysis of isoforms from
+        using new methods; these include the analysis of isoforms from
         alternative splicing \citep{Katz:2010} and of allele-specific expression
         \citep{Pickrell:2010}.
 \end{enumerate*}
@@ -94,7 +95,7 @@ The enriched \rna is subsequently fragmented to a uniform length of about
 sequencing machine (\cref{fig:rna-seq-workflow}).
 
 \textfig{rna-seq-workflow}{body}{0.75\textwidth}
-    {Typical \rnaseq workflow.}
+    {Typical \abbr{rnaseq} workflow.}
     {Starting from a total \rna sample (\num{1}), the \rna of interest is
     enriched either via poly(A) selection or \rrna depletion (\num{2}). The
     enriched fraction is fragmented and size-selected (\num{3}). The fragments
@@ -112,12 +113,13 @@ either the whole genome or the transcriptome --- or assembled \emph{de novo}
 locations, which can be queried and matched to features (usually genes or
 exons) \citep{Cox:2007,Kim:2013,Anders:2014}.
 
-One important distinction depends on whether the \cdna fragments were sequenced
-from both ends or from one end only. In the first case, instead of a single read
-per fragment we end up with paired-end reads, which are separated by a known
-distance. Mapping and assembling paired-end reads creates further algorithmic
-challenges but increases the amount of information contained in a read (pair),
-which increases the amount of unambiguously mappable data
+It is important to distinguish whether the \cdna fragments were sequenced from
+both ends or from one end only. In the first case, instead of a single read per
+fragment we end up with paired-end reads, which are separated by an
+approximately known distance (the fragment length minus the lengths of the
+sequence reads). Mapping and assembling paired-end reads creates further
+algorithmic challenges but increases the amount of information contained in a
+read (pair), which increases the amount of unambiguously mappable data
 (\cref{fig:paired-end-reads}) \citep{Langmead:2012}.
 
 \textfig{paired-end-reads}{body}{0.75\textwidth}
@@ -213,9 +215,9 @@ comes from the same distribution with the same mean (\(H_0: \mu_{iA} =
 Reads are assumed to be sampled independently from a population, thus read
 counts on a given feature can be approximated by a Poisson distribution
 \citep{Mortazavi:2008, Marioni:2008}. However, actual expression data has been
-shown to be over-dispersed compared to the model \citep{Robinson:2007}. In order
-to accurately model this greater dispersion, a negative binomial distribution
-can be used instead.
+shown to be over-dispersed compared to this model \citep{Robinson:2007}. In
+order to accurately model this greater dispersion, a negative binomial
+distribution can be used instead.
 
 \begin{equation}
     X_{ij} \sim \operatorname{NB}(\mu_{ij}, \sigma^2_{ij}) \text{\ ,}

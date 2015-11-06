@@ -16,19 +16,29 @@
     samp-ling
 }
 
-\title{Investigating the link between\\\abbr{trna} and \abbr{mrna} abundance\\in mammals}
-\subject{This dissertation is submitted for the degree of\\Doctor of Philosophy}
+\titlehead{%
+    \parbox{0.5\textwidth}{\includegraphics[height=12mm]{logo-uofc-cmyk}}%
+    \parbox{0.5\textwidth}{\raggedleft%
+        \includegraphics[height=12mm]{logo-embl-ebi-cmyk}}%
+    % Obligatory logo margin
+    \vspace{-1.5\baselineskip}%
+    \vspace{12mm}}
+\title{Investigating the link between\\tRNA and mRNA abundance\\in mammals}
+\subject{This dissertation is submitted for the degree of Doctor of Philosophy}
 \author{Konrad \second{Ludwig Moritz} Rudolph}
 \publishers{%
-    \includegraphics[width=0.3\textwidth]{st-edmunds-coat-of-arms}
-    \\[0.5\baselineskip]
+    %\vfill doesn’t work properly on title page due to excess glue
+    \vspace{6\baselineskip}
     St Edmund’s College,\\
     University of Cambridge\\[0.2\baselineskip]
     EMBL-EBI}
 
 \lowertitleback{%
     \centering
-    {\footnotesize Licensed under Creative Commons Attribution (CC BY) 3.0}
+    {\footnotesize The source code of the thesis is available at
+        \url{https://github.com/klmr/thesis}.
+
+    Licensed under Creative Commons Attribution (CC BY) 3.0}
     \\[2mm]
     \href{http://creativecommons.org/licenses/by/3.0/}{%
         \raisebox{-0.25em}{\includegraphics[width=1em]{cc}
@@ -41,6 +51,15 @@
 \begingroup
     \hypersetup{linkcolor=thesis@toccolor}
     \tableofcontents
+    \listofabbrevs
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listfigurename}
+    \listoffigures
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\listtablename}
+    \listoftables
 \endgroup
 
 \chapterfile{summary}

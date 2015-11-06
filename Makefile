@@ -62,7 +62,7 @@ ${references}: ${bib_sources}
 .PHONY: pygments_stylesheet
 pygments_stylesheet: $(shell find ./style_klmrthesis -print)
 	(cd ./style_klmrthesis; python setup.py install --force)
-	# Invalidate cached minted stylesheet
+	@# Invalidate cached minted stylesheet
 	${RM} _minted*/klmrthesis.pygstyle
 
 # Cleanup
@@ -80,7 +80,7 @@ clean: cleancache
 	${RM} xelatex*.fls
 	${RM} figures.make
 	${RM} $(patsubst %.rmd,%.md,$(wildcard *.rmd))
-	${RM} style_klmrthesis/{build,dist,klmrthesis.egg-info}
+	${RM} -r style_klmrthesis/{build,dist,klmrthesis.egg-info}
 	${RM} -r _minted*
 
 .PHONY: cleanall

@@ -1,10 +1,13 @@
 % General technical terms
 
 \abbrev[principal components analysis]{pca}{\abbrsc{PCA}}
-\abbrev{fdr}{\abbrsc{FDR}}
-\abbrev[read counts per kilobase of transcript per million mapped
-reads]{rpkm}{\abbrsc{RPKM}}
-\abbrev{fpkm}{\abbrsc{FPKM}}
+\abbrev[false discovery rate]{fdr}{\abbrsc{FDR}}
+\neverexpandabbr{fdr}
+\abbrev[read count per kilobase of transcript per million mapped
+    reads]{rpkm}{\abbrsc{RPKM}}
+\abbrev[fragments per kilobase of transcript per million mapped read
+    pairs]{fpkm}{\abbrsc{FPKM}}
+\neverexpandabbr{fpkm}
 \abbrev[transcripts per million]{tpm}{\abbrsc{TPM}}
 \abbrev[differentially expressed]{de}{\abbrsc{DE}}
 
@@ -14,8 +17,11 @@ reads]{rpkm}{\abbrsc{RPKM}}
 \abbrev[high-throughput sequencing]{hts}{\abbrsc{HTS}}
 
 \abbrev[chromatin immunoprecipitation]{chip}{\lowsc{Ch}\abbrsc{IP}}
-\abbrev{chipseq}{\abbr{chip}-seq}
-\abbrev{rnaseq}{\abbr{rna}-seq}
+\abbrev[chromatin immunoprecipitation followed by
+    sequencing]{chipseq}{\abbr{chip}-seq}
+\neverexpandabbr{chipseq}
+\abbrev[\abbr{rna} sequencing]{rnaseq}{\abbr{rna}-seq}
+\neverexpandabbr{rnaseq}
 
 \abbrev[\abbr{trna} adaptation index]{tai}{\lowsc{t}\abbrsc{AI}}
 
@@ -44,6 +50,7 @@ reads]{rpkm}{\abbrsc{RPKM}}
 \abbrev[ribosomal \abbr{rna}]{rrna}{\lowsc{r}\abbr{rna}}
 \abbrev[non-coding \abbr{rna}]{ncrna}{\lowsc{nc}\abbr{rna}}
 \abbrev[long non-coding \abbr{rna}]{lncrna}{\lowsc{lnc}\abbr{rna}}
+\abbrev[\abbr{rna}-induced silencing complex]{risc}{\abbrsc{RISC}}
 
 \newcommand*\xtrna[2][]{\ensuremath{\text{\abbr{trna}}_\text{#1}^\text{#2}}}
 
@@ -53,26 +60,27 @@ reads]{rpkm}{\abbrsc{RPKM}}
 \abbrev[transcription start site]{tss}{\abbrsc{TSS}}
 \abbrev[transcription factor]{tf}{\abbrsc{TF}}
 \abbrev[untranslated region]{utr}{\abbrsc{UTR}}
-\abbrev{ccctc}{\abbrsc{CCCTC}}
-\abbrev[\abbr{ccctc}-binding factor]{ctcf}{\abbrsc{CTCF}}
-\abbrev{tfiiib}{\abbrsc{TFIIIB}}
-\abbrev{tfiiic}{\abbrsc{TFIIIC}}
+\abbrev[\seq{CCCTC}-binding factor]{ctcf}{\abbrsc{CTCF}}
+\abbrev[transcription factor \abbrsc{III} B]{tfiiib}{\abbrsc{TFIIIB}}
+\neverexpandabbr{tfiiib}
+\abbrev[transcription factor \abbrsc{III} C]{tfiiic}{\abbrsc{TFIIIC}}
+\neverexpandabbr{tfiiic}
 \abbrev[\seq{TATA} binding protein]{tbp}{\abbrsc{TBP}}
 
 \newcommand*\pol[1]{\csuse{pol#1}}
 \abbrev{pol1}{pol~\abbrsc{I}}
 \abbrev{pol2}{pol~\abbrsc{II}}
 \abbrev{pol3}{pol~\abbrsc{III}}
-\abbrev{Pol1}{Pol~\abbrsc{I}}
-\abbrev{Pol2}{Pol~\abbrsc{II}}
-\abbrev{Pol3}{Pol~\abbrsc{III}}
+\abbrev[\abbr{dna}-dependent \abbr{rna} polymerase \abbrsc{I}]{Pol1}{Pol~\abbrsc{I}}
+\abbrev[\abbr{dna}-dependent \abbr{rna} polymerase \abbrsc{II}]{Pol2}{Pol~\abbrsc{II}}
+\abbrev[\abbr{dna}-dependent \abbr{rna} polymerase \abbrsc{III}]{Pol3}{Pol~\abbrsc{III}}
 
 \newcommand*\fivep{\num{5}\ensuremath{'}\xspace}
 \newcommand*\threep{\num{3}\ensuremath{'}\xspace}
 
 % Databases
 
-\abbrev{ncbim37}{\abbrsc{NCBIM37}}
+\abbrev[\abbrsc{NCBI} mouse genome build 37]{ncbim37}{\abbrsc{NCBIM37}}
 \abbrev[Genome Reference Consortium Mouse Build 38]{grcm38}{\abbrsc{GRC}\lowsc{m}38}
 \abbrev[Gene Expression Omnibus]{geo}{\abbrsc{GEO}}
 \abbrev[Gene Ontology]{go}{\abbrsc{GO}}
@@ -81,6 +89,8 @@ reads]{rpkm}{\abbrsc{RPKM}}
 
 \newcommand*\mmu{\species{mmu}}
 \newcommand*\hsa{\species{hsa}}
+
+\abbrev[type-1 human immunodeficiency virus]{hivi}{\abbrsc{HIV}-1}
 
 % Other
 

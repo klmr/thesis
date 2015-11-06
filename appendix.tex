@@ -7,6 +7,9 @@
 \setcounter{chapter}{0}
 \renewcommand\thechapter{\Alph{chapter}}
 
+\begingroup
+\renewcommand*\floatpos{H}
+
 \chapter{Supplementary material for \texorpdfstring{\cref*{sec:trna}}{chapter 2}}
 
 The material in this section has been taken from the supplementary figures \&
@@ -14,17 +17,19 @@ methods of Schmitt, Rudolph,\andothersdelim\& al. [\cite*{Schmitt:2014}] with
 minimal changes to the figure legends. The figures and their captions have been
 created jointly by Bianca Schmitt, Claudia Kutter and me.
 
+\section{Code}
+
 The code used in the analysis of the data for this chapter can be found at
 \url{https://github.com/klmr/trna} and
 \url{https://github.com/klmr/trna-chip-pipeline}.
 
-\begingroup
-\renewcommand*\floatpos{H}
+\section{Supplementary figures and tables}
+\newpage
 
 \thispagestyle{empty}
 \textfig{trna-workflow}{spill}{\textwidth}
     {Workflow of the genome-wide identification and analysis of protein-coding
-    and \trna genes.}
+    and \abbr{trna} genes.}
     {(A) \rnaseq analysis of protein-coding gene expression, differential
     expression analysis and codon usage analysis. (B) \chipseq analysis of \pol3
     occupancy at \trna gene loci, differential expression analysis of \trna
@@ -33,21 +38,21 @@ The code used in the analysis of the data for this chapter can be found at
 \input{./data/expressed-trnas.tex}
 
 \textfig{mrna-heatmap}{spill}{\textwidth}
-    {Hierarchical clustering of \mrna gene expression correlations.}
+    {Hierarchical clustering of \abbr{mrna} gene expression correlations.}
     {The heatmap shows the Spearman correlations of \mrna gene expression values,
     representing the same data as \cref{fig:mrna-pca}. The samples cluster
     hierarchically by tissue, followed by developmental stage.}
 
 \textfig{trna-heatmap}{spill}{\textwidth}
-    {Hierarchical clustering of \trna gene expression correlations.}
+    {Hierarchical clustering of \abbr{trna} gene expression correlations.}
     {The heatmap shows the Spearman correlations of \trna gene expression values,
     representing the same data as \cref{fig:trna-pca}. The samples cluster
     hierarchically by tissue, followed by developmental stage, with few
     exceptions.}
 
 \textfig{correlation-plots-rnaseq-pol3}{text}{0.7\textwidth}
-    {Correlation of \rnaseq and \pol3 \chipseq data during mouse liver and brain
-    development.}
+    {Correlation of \abbr{rnaseq} and \abbr{pol3} \abbr{chipseq} data during
+    mouse liver and brain development.}
     {Correlation of (A) protein-coding gene expression across developmental
     stages, (B) \trna gene expression as measured by \pol3 occupancy, (C)
     triplet codon usage in protein-coding genes, (D) \trna anticodon
@@ -55,7 +60,7 @@ The code used in the analysis of the data for this chapter can be found at
     amino acid isotype.}
 
 \textfig{pca-all-stages}{spill}{\textwidth}
-    {Early developmental stage-specific \trna genes are lowly expressed.}
+    {Early developmental stage-specific \abbr{trna} genes are lowly expressed.}
     {(A) Factorial map of the \pca of \pol3 occupied \trna gene expression
     levels in liver (red), brain (yellow), embryonic body without head (light
     red) and head (light yellow) of stage E12.5, as well as whole E9.5 embryo
@@ -70,15 +75,16 @@ The code used in the analysis of the data for this chapter can be found at
     are specific for the embryonic stage (“specific”).}
 
 \textfig{codon-usage-mrna}{spill}{\textwidth}
-    {Observed codon usage in \mrna transcriptomes of developing mouse liver.}
+    {Observed codon usage in \abbr{mrna} transcriptomes of developing mouse
+    liver.}
     {Proportional frequencies (\rcu) weighted by transcript expression are shown
     for triplet codons ordered by amino acid as a bar plot, where grey shading
     is by triplet codon. Data is obtained from liver \rnaseq data of all \num{6}
     developmental stages.}
 
 \textfig{anticodon-abundance-trna}{spill}{\textwidth}
-    {Observed anticodon abundance of \trna isoacceptors of developing mouse
-    liver.}
+    {Observed anticodon abundance of \abbr{trna} isoacceptors of developing
+    mouse liver.}
     {Proportional frequencies weighted by \trna gene expression (\raa) are shown
     for anticodon isoacceptors ordered by amino acid isotype as a bar plot,
     where grey shading is by anticodon. Data is obtained from liver \pol3
@@ -110,8 +116,8 @@ The code used in the analysis of the data for this chapter can be found at
     left panels.}
 
 \textfig{rnaseq-pol3-aa-usage-brain}{spill}{\textwidth}
-    {\mrna codon usage and \pol3 occupancy of \trna isotypes in developing mouse
-    brain tissue.}
+    {\abbr{mrna} codon usage and \abbr{pol3} occupancy of \abbr{trna} isotypes
+    in developing mouse brain tissue.}
     {Proportional frequency weighted by transcript expression of (A) arginine
     triplet codons, (B) amino acids, (C) \pol3 binding of arginine isoacceptors
     and (D) \pol3 binding of amino acid isotypes. Grey shading is by triplet
@@ -136,20 +142,21 @@ The code used in the analysis of the data for this chapter can be found at
     highly and (iii) lowly expressed protein-coding gene sets.}
 
 \textfig{transcriptomic-pol3-codon-usage}{spill}{\textwidth}
-    {Transcriptomic \mrna codon usage and \pol3 binding to \trna isoacceptors
-    correlate in developing mouse liver and brain.}
+    {Transcriptomic \abbr{mrna} codon usage and \abbr{pol3} binding to
+    \abbr{trna} isoacceptors correlate in developing mouse liver and brain.}
     {Plots show correlation of proportional \pol3 binding to \trna isoacceptors
     (\(x\)-axis) and transcriptomic codon frequencies weighted by expression
     obtained from \rnaseq data (\(y\)-axis). Correlation plots for developing
     liver (A–F) and brain (G–L) are shown. Indexed box in top left indicates
     developmental stage. Grey dots represent degenerated codons. Spearman’s rank
-    correlation coefficients (\(\rho\)) are reported along with their \(p\)-values
-    (\(p\)) in bottom right of each panel.}
+    correlation coefficients (\(\rho\)) are reported along with their
+    \(p\)-values (\(p\)) in bottom right of each panel.}
 
 \thispagestyle{empty}
 \textfig{codon-anticodon-correlation-with-wobble-only-missing}{spill}{\textwidth}
-    {Transcriptomic \mrna codon usage and wobble corrected \pol3 binding to
-    \trna isoacceptors correlate in developing mouse liver and brain.}
+    {Transcriptomic \abbr{mrna} codon usage and wobble corrected \abbr{pol3}
+    binding to \abbr{trna} isoacceptors correlate in developing mouse liver and
+    brain.}
     {Plots show correlation of proportional \pol3 binding to \trna isoacceptors
     corrected according to wobble pairing (\(x\)-axis) and transcriptomic codon
     frequencies weighted by expression obtained from \rnaseq data (\(y\)-axis).
@@ -160,8 +167,8 @@ The code used in the analysis of the data for this chapter can be found at
 
 \thispagestyle{empty}
 \textfig{transcriptomic-pol3-aa}{spill}{\textwidth}
-    {Transcriptomic \mrna amino acid usage and \pol3 binding to \trna isotypes
-    correlate in developing mouse liver and brain.}
+    {Transcriptomic \abbr{mrna} amino acid usage and \abbr{pol3} binding to
+    \abbr{trna} isotypes correlate in developing mouse liver and brain.}
     {Plots show correlation of \pol3 binding to \trna isotypes (\(x\)-axis) and
     transcriptomic amino acid frequencies weighted by expression obtained from
     \rnaseq data (\(y\)-axis). Correlation plots for developing liver (A–F) and
@@ -175,7 +182,7 @@ The code used in the analysis of the data for this chapter can be found at
 \input{./data/meme-hits.tex}
 
 \textfig{colocalisation-e155-p22}{spill}{\textwidth}
-    {Differentially expressed \trna genes show no colocalisation with
+    {Differentially expressed \abbr{trna} genes show no colocalisation with
     differentially expressed protein-coding genes.}
     {In each plot, the blue line is the cumulative distribution of the ratio of
     the number of upregulated \mrna genes to the number of all \mrna genes in
@@ -199,18 +206,34 @@ The code used in the analysis of the data for this chapter can be found at
 
 \chapter{Supplementary material for \texorpdfstring{\cref*{sec:codons}}{chapter 3}}
 
+\section{Code}
+
+The code used in the analysis of the data for this chapter can be found at
+\url{https://github.com/klmr/codons}.
+
+\section{Supplementary tables}
+\newpage
+
 \input{./data/GO_m_phase.tex}
 
 \input{./data/GO_psp.tex}
 
 \chapter{Supplementary material for \texorpdfstring{\cref*{sec:pol3}}{chapter 4}}
 
+\section{Code}
+
+The code used in the analysis of the data for this chapter can be found at
+\url{https://github.com/klmr/pol3-seq}.
+
+\section{Supplementary figures}
+\newpage
+
 \textfig{pol3-inputs}{spill}{\textwidth}
     {Input library coverage}
-    {of different features in six stages of development in liver. The analysis was
-    performed under the assumption that different features have similar amount
-    of input binding (normalised for feature length). As we can see here, this
-    is not quite the case.}
+    {of different features in six stages of development in liver. The analysis
+    was performed under the assumption that different features have similar
+    amount of input binding (normalised for feature length). As we can see here,
+    this is not quite the case.}
 
 \textfig{sine-summary-1}{spill}{\textwidth}
     {\abbr{transsine} binding by \abbr{pol3} across development in liver and

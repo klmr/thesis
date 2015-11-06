@@ -4,15 +4,17 @@
 To study how changes in \mrna gene expression relate to changes in \trna gene
 expression, we collected tissue samples from six time points in mouse (\mmu)
 development: two before birth (E15.5 and E18.5, which stands for \num{15.5} and
-\num{18.5} days after gestation of the oocyte, respectively); two shortly after
-birth, happening around E20 (P0.5 and P4 --- \num{0.5} and \num{4} days after
-birth, respectively) and two after weaning the juvenile mice (P22 and P29).
+\num{18.5} days after fertilisation of the oocyte, respectively); two shortly
+after birth, happening around E20 (P0.5 and P4 --- \num{0.5} and \num{4} days
+after birth, respectively) and two after weaning the juvenile mice (P22 and
+P29).
 
 For each of these time points, tissue was collected from whole liver and whole
 brain (\define[\defineword{homogenise} breaking apart and mixing the tissue in
 such a way that all the cell types will be evenly distributed throughout the
 sample]{homogenised}) and prepared for \rnaseq and \pol3 \chipseq in order to
-assay \mrna and \trna gene expression. The tissues were chosen for their
+assay \mrna and \trna gene expression as explained in
+\cref{sec:rna,sec:chip}. The tissues were chosen for their
 interesting shifts in physiology during development: the liver is a homogeneous
 organ predominantly made up of a single cell type --- around \num{70} per cent
 hepatocytes --- and liver function changes fundamentally at birth; prenatal
@@ -101,14 +103,14 @@ accompanied by large-scale changes in the \mrna transcriptome. This is nicely
 illustrated by looking at individual gene expression counts, plotted against
 their genomic location (\cref{fig:mrna-expression-change}). For example, in the
 liver we can confirm the functional relevance of apolipoprotein B
-(\protein{APOB}) as the primary carrier of lipoproteins, which becomes
+(\protein{mmu}{APOB}) as the primary carrier of lipoproteins, which becomes
 increasingly relevant as the organ shifts to metabolism \citep{Knott:1986}.
 Similarly, \mrna gene expression changes highlight the role of α-fetoproteine
-(\protein{AFP}) as the fetal version of serum albumin (\cref{fig:apob-afp})
+(\protein{mmu}{AFP}) as the fetal version of serum albumin (\cref{fig:apob-afp})
 \citep{Chen:1997}. In the brain, shifts can be seen in the activity of the
-neural \tf \protein{FOXP2}, the expression of which continuously decreases, and
-in calmodulin (\protein{CALM1}), where transcription increases after birth
-\citep{Tsui:2013,Huang:2011}.
+neural \tf \protein{mmu}{FOXP2}, the expression of which continuously decreases,
+and in calmodulin (\protein{mmu}{CALM1}), where transcription increases after
+birth \citep{Tsui:2013,Huang:2011}.
 
 \textfloat{mrna-expression-change}{spill}{%
     \centering
@@ -127,9 +129,9 @@ in calmodulin (\protein{CALM1}), where transcription increases after birth
             \gene{mmu}{Calm1}.}
     \endgroup}
     {Example of gene expression changes in development.}
-    {The four genes are representative for tissue- and stage-specific genes,
+    {The four genes are representative for tissue- and stage-specific genes
     whose expression changes drive cell function. These changes can go up or
-    down over the course of development, correspoding to either an up- or
+    down over the course of development, corresponding to either an up- or
     downregulation. Figure created by Bianca Schmitt.}
 
 For a more systematic analysis, I took the matrix of normalised count data of
@@ -172,12 +174,15 @@ post-weaning stages, with a large jump in the number of differentially expressed
 genes across the weaning boundary, in both liver and brain.
 
 \textfigtwo{mrna-pca}
-    {\pca of \mrna gene expression per developmental stage.}
+    {\abbr{pca} of \abbr{mrna} gene expression per developmental stage.}
     {Rotations \num{1} and \num{2} of the correlation matrix of
     protein-coding gene expression in each developmental stage. The percentage
-    on the axes shows the amount of variance explained by each rotation.}
+    on the axes shows the amount of variance explained by each rotation. Points
+    corresponding to liver samples are coloured in red, points correspoding to
+    brain samples are coloured in yellow; stages of development go from light
+    colours to dark colours.}
     {mrna-de-matrix}
-    {Number of differentially expressed \mrna genes between stages:}
+    {Number of differentially expressed \abbr{mrna} genes between stages.}
     {Each off-diagonal square shows the number of differentially
     expressed genes (at a significance threshold of \(p<0.01\)) between
     the two indicated developmental stages.}
@@ -226,14 +231,14 @@ shows a genomic locus containing \trna genes that displays these different
 dynamics.
 
 \textfigtwo{trna-counts}
-    {Overview over \trna gene expression change.}
+    {Overview over \abbr{trna} gene expression change.}
     {Bar plots show different types of \trna gene expression dynamics: \trna
     genes without change in their expression levels, \trna genes with changes to
     their expression levels, which are nevertheless expressed in all stages of
     development across both tissues; and \trna genes which are only expressed in
     a subset of all conditions. Figure created by Claudia Kutter.}
     {liver-trna-expression-change}
-    {Example of dynamically changing \trna genes.}
+    {Example of dynamically changing \abbr{trna} genes.}
     {Genomic region showing different types of \trna gene expression behaviour;
     the label colours on the x axis corresponds to the colours in
     \cref{fig:trna-counts}. Figure created by Bianca Schmitt.}
@@ -241,16 +246,19 @@ dynamics.
 Surprisingly, the \trna gene expression differences follow similar patterns to
 those observed in \mrna genes, with the first two principal components resulting
 from the application of \pca to the rank correlation matrix again corresponding
-to the tissue an developmental stage (\cref{fig:trna-pca}). The observed
+to the tissue and developmental stage (\cref{fig:trna-pca}). The observed
 patterns are incompatible with mere \emph{random} expression changes (which
 would result in an unordered cloud of points). Something must account for these
 concerted changes in \trna gene expression.
 
 \textfig{trna-pca}{body}{0.8\textwidth}
-    {\pca of \trna gene expression per developmental stage.}
+    {\abbr{pca} of \abbr{trna} gene expression per developmental stage.}
     {Rotations \num{1} and \num{2} of the correlation matrix of
     \trna gene expression in each developmental stage. The percentage on the
-    axes shows the amount of variance explained by each rotation.}
+    axes shows the amount of variance explained by each rotation. Points
+    corresponding to liver samples are coloured in red, points correspoding to
+    brain samples are coloured in yellow; stages of development go from light
+    colours to dark colours.}
 
 In the case of the protein-coding genes, we can explain the nonrandom changes in
 gene expression by known gene regulatory mechanisms, which control the
@@ -356,7 +364,7 @@ variations in gene expression between different transcriptomes.
 \vspace{-\baselineskip}
 \figcapof{codon-anticodon-abundance}
     {Codon and anticodon abundance across stages of development.}
-    {The figure consists of three panels (right, middle, left) with three
+    {The figure consists of three panels (left, middle, right) with three
     subfigures (top, centre, bottom) each. The left panel shows observed data
     for each of the developmental stages in liver (brain data is comparable).
     The middle and right panels show simulated data from randomised
@@ -410,7 +418,7 @@ Codons and anticodon-carrying \trna[s] form the biochemical interface between
 the genetic code and the amino acid sequence of proteins during \mrna
 translation. I investigated this correspondence between \mrna-driven codon
 demand and \trna anticodon supply by looking at the correlation between a
-codons’ frequency in the \mrna transcriptome as a fraction of the overall codon
+codon’s frequency in the \mrna transcriptome as a fraction of the overall codon
 count \(c_{xy}'\), and its matching \trna anticodon isoacceptor abundance
 \(a_{xy}'\) at the same developmental stage \(y\)
 (\cref{fig:codon-anticodon-abundance} bottom left):
@@ -636,7 +644,7 @@ with the contingency table shown in \cref{tab:chip-contingency}.
         \bottomrule
     \end{tabular}
     \tabcap{chip-contingency}
-        {Contingency table of \chip signal enrichment.}
+        {Contingency table of \abbr{chip} signal enrichment.}
         {}
 \end{table}
 
@@ -690,7 +698,7 @@ findings \citep{Barski:2010,Oler:2010}.
     \end{tabular}
 
     \tabcap{active-histone}
-    {Enrichment of different \chip targets near active \trna genes.}
+    {Enrichment of different \abbr{chip} targets near active \abbr{trna} genes.}
     {Shown are the unajusted \(p\)-values for the hypothesis of no enrichment of
     a \chip signal near expressed \trna genes, compared to unexpressed \trna
     genes, using a window size of \SI{\pm 0.5}{kb}; other window sizes show less
@@ -736,8 +744,8 @@ enrichment.
     \end{tabular}
 
     \tabcap{de-histone}
-    {Enrichment of different \chip targets near differentially expressed \trna
-    genes.}
+    {Enrichment of different \abbr{chip} targets near differentially expressed
+    \abbr{trna} genes.}
     {Shown are the unajusted \(p\)-values for the hypothesis of no enrichment of
     a \chip signal near differentially expressed, upregulated \trna genes,
     compared to non-\de \trna genes, using a window size of \SI{\pm 0.5}{kb};
@@ -762,7 +770,7 @@ their expression is stable (\cref{fig:codon-anticodon-abundance} centre left).
 
 This might imply (anti-)correlation of expression across stages between the
 genes of an isoacceptor family. Alternatively, \trna gene expression might vary
-randomly without, regard to other \trna genes in the same isoacceptor family. An
+randomly without regard to other \trna genes in the same isoacceptor family. An
 example of each of these two scenarios is shown in
 \cref{fig:compensation-a,fig:compensation-c}). To test this systematically, we
 compared the distribution of correlations between genes within each isoacceptor
@@ -773,9 +781,9 @@ centred on \num{0} (\cref{fig:compensation-b,fig:compensation-d}). This allows
 us to test whether the observed correlations significantly diverge from the
 background model:
 
-For each isoacceptor that is encoded by more than two \trna genes, we calculated
+For each isoacceptor that is encoded by more than two \trna genes, I calculated
 Spearman’s rank correlation (across developmental stages) between the expression
-values of each pair of its corresponding \trna genes, i.e.\ we calculate
+values of each pair of its corresponding \trna genes, i.e.\ I calculate
 
 \begin{equation}
     r_{ij} = \operatorname{cor}(x_{i\cdot}, x_{j\cdot}) \text{\ for \(i, j \in
@@ -784,7 +792,7 @@ values of each pair of its corresponding \trna genes, i.e.\ we calculate
 
 where \(T\) is the set of \trna genes in the isoacceptor family, and
 \(x_{i\cdot}\) is the vector of expression values of the \(i\)th \trna gene
-across all stages of development. For the same set of genes, we calculated a
+across all stages of development. For the same set of genes, I calculated a
 null set of correlations as follows:
 
 \begin{equation}
@@ -854,32 +862,32 @@ a new challenge.
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[height=6cm]{correlation-cag}
-        \subcaption{\label{fig:compensation-a}Isoacceptor \anticodon{CAG} \trna
-            gene expression levels in liver across development.\\\ }
+        \subcaption{\label{fig:compensation-a}Isoacceptor \anticodon{CAG}
+            \abbr{trna} gene expression levels in liver across development.\\\ }
     \end{minipage}
     \hspace{0.05\textwidth}%
     \begin{minipage}{0.4\textwidth}
         \centering
         \includegraphics[height=6cm]{compensation-cag}
         \subcaption{\label{fig:compensation-b}Density curve of isoacceptor
-            \anticodon{CAG} \trna gene expression correlations.}
+            \anticodon{CAG} \abbr{trna} gene expression correlations.}
     \end{minipage}
     \par
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[height=6cm]{correlation-gcc}
-        \subcaption{\label{fig:compensation-c}Isoacceptor \anticodon{GCC} \trna
-            gene expression levels in liver across development.\\\ }
+        \subcaption{\label{fig:compensation-c}Isoacceptor \anticodon{GCC}
+            \abbr{trna} gene expression levels in liver across development.\\\ }
     \end{minipage}
     \hspace{0.05\textwidth}%
     \begin{minipage}{0.4\textwidth}
         \centering
         \includegraphics[height=6cm]{compensation-gcc}
         \subcaption{\label{fig:compensation-d}Density curve of isoacceptor
-            \anticodon{GCC} \trna gene expression correlations.}
+            \anticodon{GCC} \abbr{trna} gene expression correlations.}
     \end{minipage}}
-    {\trna gene expression is compensated at the anticodon isoacceptor level
-    during mouse development.}
+    {\abbr{trna} gene expression is compensated at the anticodon isoacceptor
+    level during mouse development.}
     {Panels (a) and (c) show two examples of \trna gene isoacceptor families and
     their gene expression across development (row-normalised). In panel (a) we
     can see two clusters of coordinated expression: the top \num{5} genes are

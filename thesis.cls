@@ -20,7 +20,7 @@
 \RequirePackage{microtype}
 \RequirePackage{tocstyle}
 \RequirePackage{polyglossia}
-\RequirePackage[natbib, backend=biber, style=authoryear, maxnames=2, useprefix]{biblatex}
+\RequirePackage[natbib, backend=biber, style=authoryear, maxcitenames=2, maxbibnames=99, useprefix]{biblatex}
 \RequirePackage{booktabs}
 \RequirePackage{tabu}
 \RequirePackage{longtable}
@@ -39,7 +39,9 @@
 \RequirePackage{subcaption}
 \RequirePackage{ragged2e}
 \RequirePackage{ifoddpage}
-\RequirePackage{hyperref}
+\RequirePackage{adjustbox}
+\RequirePackage{hyperref} % [glossaries] “You must load hyperref *first*”
+\RequirePackage[xindy, toc, nopostdot]{glossaries}
 % “… cleveref must be loaded *last*”
 \RequirePackage[nameinlink, noabbrev]{cleveref}
 
@@ -105,7 +107,7 @@
 \DefineBibliographyStrings{english}{andothers = {\&~al\adddot}}
 
 \setkomafont{title}{\rmfamily\Huge}
-\setkomafont{subject}{\normalfont\normalcolor\Large}
+\setkomafont{subject}{\normalfont\normalcolor}
 \isodash{\ensuremath{\cdot}}% Replacement for `‧` = U+‧2027 HYPHENATION POINT
 
 \definecolor{cambridgeblue}{RGB}{163, 193, 173}
@@ -176,7 +178,7 @@
 
 \newcommand*\thesis@chapternumber{%
     \rmfamily%
-    \fontsize{72}{72}%
+    \fontsize{128}{128}%
     \color{black!50}%
     %\color{cambridgeblue}%
     \mdseries%
@@ -188,10 +190,6 @@
     \color{black}%
     \selectfont}
 
-\newlength\thesis@chapter@labelwidth
-\newlength\thesis@chapter@width
-\newlength\thesis@chapter@orig
-
 \titleformat{\chapter}
 {\gdef\chapterlabel{}}
 {\begingroup%
@@ -201,21 +199,17 @@
 {0pt}% Sep
 {\begingroup%
     \usekomafont{chapter}%
-    \settowidth\thesis@chapter@labelwidth{{\thesis@chapternumber\chapterlabel}}%
-    \setlength\thesis@chapter@orig{\textwidth}%
-    \setlength\thesis@chapter@width{\textwidth}%
-    \addtolength\thesis@chapter@width{\marginparwidth}%
-    \addtolength\thesis@chapter@width{\marginparsep}%
     \makebox[\textwidth][l]{%
-        \begin{minipage}{\thesis@chapter@width}
-            \begin{minipage}{\thesis@chapter@orig}
-                \hyphenpenalty=10000%
-                \exhyphenpenalty=10000%
-                \raggedright#1%
-            \end{minipage}%
-            \hspace{\marginparsep}%
-            {\thesis@chapternumber\chapterlabel}
-    \end{minipage}}
+        \begin{adjustbox}{minipage=\textwidth, valign=t}
+            \hyphenpenalty=10000%
+            \exhyphenpenalty=10000%
+            \raggedright#1%
+        \end{adjustbox}%
+        \hspace{\marginparsep}%
+        \begin{adjustbox}{minipage=\marginparwidth, valign=t}
+            {\thesis@chapternumber\addfontfeature{Numbers=Lining}{\chapterlabel}}%
+        \end{adjustbox}}
+        \vspace{-\baselineskip}
     \endgroup%
     \setbox0\vbox{\use@preamble{chapter@u}%
     \vskip-\parskip}%
@@ -300,16 +294,16 @@
 
 \let\labelfont\textbf
 
-\newcommand*\figcap[3]{\caption{\label{fig:#1}\labelfont{#2} #3}}
-\newcommand*\figcapof[3]{\captionof{figure}{\label{fig:#1}\labelfont{#2} #3}}
+\newcommand*\figcap[3]{\caption[#2]{\label{fig:#1}\labelfont{#2} #3}}
+\newcommand*\figcapof[3]{\captionof{figure}[#2]{\label{fig:#1}\labelfont{#2} #3}}
 
 \newcommand*\tabcap[3]{%
     \begingroup%
     \def\@captype{table}
-    \caption{\label{tab:#1}\labelfont{#2} #3}
+    \caption[#2]{\label{tab:#1}\labelfont{#2} #3}
     \endgroup}
 
-\newcommand*\tabcapof[3]{\captionof{table}{\label{tab:#1}\labelfont{#2} #3}}
+\newcommand*\tabcapof[3]{\captionof{table}[#2]{\label{tab:#1}\labelfont{#2} #3}}
 
 \newcommand*\floatpos{!ht}
 
@@ -430,7 +424,7 @@
 \newcommand*\abbr[1]{\csuse{abbr@#1}}
 
 % The following needs global versions of (re)newcommand.
-% This implementation is form http://tex.stackexchange.com/a/51750/42.
+% This implementation is from http://tex.stackexchange.com/a/51750/42.
 \def\gnewcommand{\g@star@or@long\gnew@command}
 \def\grenewcommand{\g@star@or@long\grenew@command}
 \def\g@star@or@long#1{%
@@ -449,13 +443,30 @@
     % #2 macro name
     % #3 expanded abbreviation
     \csdef{abbr@#2}{#3}
+    \ifblank{#1}{}{\newacronym{#2}{#3}{#1}}%
     \expandafter\gnewcommand\csname abbrev@#2\endcsname[1]{%
         \expandafter\grenewcommand\csname abbrev@#2\endcsname[1]{\abbr{#2}####1}%
         \ifblank{#1}{\define{\abbr{#2}}##1}{#1##1 (\define{\abbr{#2}})}}%
     \expandafter\newrobustcmd\expandafter*\csname #2\endcsname[1][]{%
         \csuse{abbrev@#2}{##1}\xspace}}
 
-\input{abbreviations.tex}
+% Declare an abbreviation as never expanded (except in the list of
+% abbreviations).
+\newcommand\neverexpandabbr[1]{%
+    \expandafter\grenewcommand\csname abbrev@#1\endcsname[1]{\abbr{#1}##1}}
+
+% List of abbreviations.
+\newcommand*\listofabbrevs{%
+    % Work around limitation in glossaries in setting page heading.
+    % See <http://tex.stackexchange.com/a/34291/42>, in particular:
+    % “If more than one \markboth happens on the same page, then Latex takes the
+    % last left mark and the first right mark.”
+    \markboth{list of abbreviations}{list of abbreviations}%
+    \renewcommand*{\glsgroupskip}{}
+    \begin{singlespace}
+        \printglossary[title={List of abbreviations},type=\acronymtype,nonumberlist]%
+    \end{singlespace}
+    \markboth{list of abbreviations}{list of abbreviations}}
 
 \newcommand\define[2][]{\emph{\hashtag{#2}}\showdefinition{#1}}
 \newcommand*\defineword[1]{\textbf{#1}\quad}
@@ -476,10 +487,11 @@
 
 \newcommand*\gene@hsa[1]{\textsc{\MakeTextLowercase{\textit{#1}}}}
 \newcommand*\gene@mmu[1]{\textit{#1}}
-
 \newcommand*\gene[2]{\csuse{gene@#1}{#2}}
 
-\newcommand*\protein[1]{\textrm{\textsc{\MakeTextLowercase{#1}}}}
+\newcommand*\protein@hsa[1]{\textrm{\textsc{\MakeTextLowercase{#1}}}}
+\newcommand*\protein@mmu[1]{\textrm{\textsc{\MakeTextLowercase{#1}}}}
+\newcommand*\protein[2]{\csuse{protein@#1}{#2}}
 
 % Formatting of biological sequences
 
@@ -513,6 +525,10 @@
         \setlength\parskip{0pt}
         \setlength\parsep{0pt}}
     {\end{itemize}}
+
+\makeglossaries
+\input{abbreviations.tex}
+\glsaddall[types=\acronymtype]
 
 % Organisation
 

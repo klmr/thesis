@@ -11,8 +11,8 @@ Shortly after the publication of our research on \trna gene regulation during
 mouse development, \citet{Gingold:2014} published \texttitle{A Dual Program for
 Translation Regulation in Cellular Proliferation and Differentiation}. They
 report that cells with different functional characteristics preferentially use
-different sets of codons, and that the pool of active \trna[s] adapts
-dynamically to decode this set of codons with high efficiency.
+distinct sets of codons, and that the pool of active \trna[s] adapts dynamically
+to decode this set of codons with high efficiency.
 
 Because its conclusions are highly relevant to our own research we evaluated the
 paper carefully. In the following, I will first describe the paper’s main
@@ -58,7 +58,7 @@ the tissue from which the tumour or cell line was derived.
 genes involved in differentiation}
 \label{sec:gingold-codon-bias}
 
-Next, \citet{Gingold:2014} looked at protein coding genes within \go terms that
+Next, \citet{Gingold:2014} looked at protein-coding genes within \go terms that
 they functionally associated with healthy, adult tissue (“pattern specification
 process”) on the one hand, and tumour tissue (“M phase of mitotic cell cycle”)
 on the other hand. They show that the codon usage bias in these two \go terms
@@ -135,7 +135,7 @@ and the containing genes’ expression may be anticorrelated.
             \end{tabu}
         \end{minipage}
     }
-    {\pca of mean \go term codon usage.}
+    {\abbr{pca} of mean \abbr{go} term codon usage.}
     {Each dot corresponds to one \go term. The position of the dots is derived
     by rotating the matrix of the mean codon usage of the genes belonging to
     each \go term. Created using methods of \citet{Gingold:2014} (the precise
@@ -206,10 +206,10 @@ anticodon pool is specially adapted to cell condition specific gene sets.
         \includegraphics[width=\textwidth]{gingold-3c-mrna}\\[-0.3\baselineskip]
         \subcaption{\label{fig:gingold-3c-b}Fold change in \abbr{mrna} level}
     \endgroup}
-    {Projection of the \trna and \mrna expression changes on the codon usage
-    map for cells after induced differentiation via retinoic acid.}
-    {Both panels show the same \pca that I reproduced in \cref{fig:go-cub-pca}.
-    In the top panel, the colours correspond to the fold change in predicted
+    {Projection of the \abbr{trna} and \abbr{mrna} expression changes onto the
+    codon usage map for cells after induced differentiation via retinoic acid.}
+    {Both panels show the same \pca reproduced in \cref{fig:go-cub-pca}. In the
+    top panel, the colours correspond to the fold change in predicted
     translation efficiency of the genes constituting each \go term, given the
     change in cellular abundance of \trna anticodons compared to normal cells.
     The bottom panel shows the mean fold change in \mrna levels per \go term
@@ -255,12 +255,6 @@ codons), \(g\in G\) are the genes in the sample, \(x_{ig}\) is the codon
 frequency of codon \(i\) in gene \(g\), and \(x_i^*\) is the relative codon
 frequency of codon \(i\) in the sample. We have \(\sum_i x_i^*=1\).
 
-This was done \num{10000} times for each \go term gene set size. Next, I
-calculated the Pearson correlation between the codon proportions of each sample
-with the genome-wide codon proportions (across all annotated coding sequences).
-\Cref{fig:sample-size-dependent-cub} plots the distribution of the correlations
-against the gene set sizes.
-
 \textfig{sample-size-dependent-cub}{spill}{\textwidth}
     {Dependence of codon usage variability on sample size.}
     {Genes were randomly sample from the human genome to create sets of sizes
@@ -271,6 +265,12 @@ against the gene set sizes.
     the third quartile; the mean is indicated as a black dot. The second and
     ninety eighth percentile are hinted at with smaller dots.}
 
+This was done \num{10000} times for each \go term gene set size. Next, I
+calculated the Pearson correlation between the codon proportions of each sample
+with the genome-wide codon proportions (across all annotated coding sequences).
+\Cref{fig:sample-size-dependent-cub} plots the distribution of the correlations
+against the gene set sizes.
+
 I used these distributions to calculate empirical \(p\)-values for each \go term
 in order to test the null hypothesis \(H_0\): the divergence in codon usage from
 a background distribution is indistinguishable from random variation for this
@@ -279,10 +279,12 @@ of each \go term, along with an indication of whether the observed variation is
 explained by random variation alone.
 
 \textfig{significant-go-term-cub-var}{spill}{\textwidth}
-    {\go term codon usage variation.}
+    {\abbr{go} term codon usage variation.}
     {Each point corresponds to a \go term whose Pearson correlation of codon
     usage with the genomic background is plotted against its gene set size.
-    \go terms with an \fdr-adjusted \(p < 0.05\) are coloured in red.}
+    \go terms with an \fdr-adjusted empirical \(p < 0.05\) are coloured in red.
+    The continuous lines denote the second and ninety eighth percentile of the
+    simulated data from \cref{fig:sample-size-dependent-cub}.}
 
 The plot illustrates that the variation of many \go terms is expected by chance;
 however, more than half (\num{421} out of \num{791}, \num{53} per cent) show
@@ -331,11 +333,11 @@ would be present across different tumour types
     {\mrna and \trna expression was quantified for three different cellular
     conditions in both human (healthy adult liver, HepG2 \& Huh7) and mouse
     (healthy adult liver, Hepa1-6 \& Hepa1c1c7). Each experiment was performed
-    in multiple replicates. Each distribution (“matching”, “mismatching” and
-    “cell specific” corresponds to a comparison between the codons of a gene set
-    and the anticodons of a sample. The cartoon shows how these were combined to
+    in multiple replicates. Each category (“matching”, “mismatching” and “cell
+    specific”) corresponds to a comparison between the codons of a gene set and
+    the anticodons of a sample. The cartoon shows how these were combined to
     obtain the distributions. Each sample condition has a different colour.
-    \mrna transcripts in more bold colours correspond to cell type specific
+    \mrna transcripts in bolder colours correspond to cell type specific
     transcripts.}
 
 The analysis compares different scenarios that should, according to the
@@ -468,12 +470,12 @@ identity as a confounding factor (by computing \rcu instead of codon usage), the
 categories (\cref{fig:go-rcu-pca}).
 
 \textfigtwo{go-aa-pca}
-    {\pca of mean \go term amino acid usage.}
+    {\abbr{pca} of mean \abbr{go} term amino acid usage.}
     {Each dot corresponds to one \go term. The position of the dots is derived
     by rotating the matrix of the mean amino acid usage of the genes belonging
     to each \go term. Colours and symbols as in \cref{fig:go-cub-pca}.}
     {go-rcu-pca}
-    {\pca of mean \go term \rcu.}
+    {\abbr{pca} of mean \abbr{go} term \abbr{rcu}.}
     {Each dot corresponds to one \go term. The position of the dots is derived
     by rotating the matrix of the mean \rcu of the genes belonging to each \go
     term. Colours and symbols as in \cref{fig:go-cub-pca}.}
@@ -517,17 +519,17 @@ question can be found in the conclusion in \cref{sec:conclusion}.
     {%
         \begin{minipage}{0.5\textwidth}
             \includegraphics[width=\textwidth]{cub-pc1-vs-gc}%
-            \subcaption{\label{fig:cu-vs-gc}\gc bias against codon usage
+            \subcaption{\label{fig:cu-vs-gc}\abbr{gc} bias against codon usage
             (Pearson’s \(\rho = -0.96\)).}
         \end{minipage}%
         \begin{minipage}{0.5\textwidth}
             \includegraphics[width=\textwidth]{aa-pc2-vs-gc}%
-            \subcaption{\label{fig:aa-vs-gc}\gc bias against amino acid usage
-            (Pearson’s \(\rho = -0.58\)).}
+            \subcaption{\label{fig:aa-vs-gc}\abbr{gc} bias against amino acid
+            usage (Pearson’s \(\rho = -0.58\)).}
         \end{minipage}%
     }
-    {\gc bias against a principal component of the \go term codon \& amino acid
-    usage \pca.}
+    {\abbr{gc} bias plotted against a principal component of the \abbr{go} term
+    codon \& amino acid usage \abbr{pca}.}
     {Each point represents one \go term. The \(x\) coordinate corresponds to
     that of the named principal component of the \pca in
     \cref{fig:go-cub-pca,fig:go-aa-pca}. The \(y\) coordinate corresponds to
